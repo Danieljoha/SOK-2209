@@ -1,0 +1,344 @@
+---
+format: 
+  pdf:
+    include-before-body:
+      - dokumentobjekter/texstuff/forsidesok2209.tex  
+    geometry:
+      - top=20mm
+      - left=20mm
+      - heightrounded
+    fontsize: 12pt
+    documentclass: scrartcl
+    papersize: a4
+    toc-title: "Innholdsfortegnelse"
+    toccolor: black
+echo: false
+message: false
+warning: false
+bibliography: dokumentobjekter/texstuff/references-sok2209.bib
+csl: dokumentobjekter/texstuff/norsk-apa-manual.csl
+crossref: 
+  lof-title: "Figurliste"
+  fig-title: "Figur"
+  lot-title: "Tabelliste"
+  tbl-title: "Tabell"
+header-includes:
+  - \usepackage{wrapfig}
+  - \usepackage{subcaption}
+  - \usepackage{amsmath}
+  - \usepackage{cancel}
+  - \usepackage{hyperref}
+  - \usepackage{tikz}
+  - \usetikzlibrary{shapes.geometric, arrows, arrows.meta, positioning, calc}
+  - \usepackage{tabularx}
+  - \renewcommand{\maketitle}{}
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyhf{} 
+  - \fancyhead[L]{\rightmark}
+  - \fancyhead[R]{\thepage}
+  - \fancyfoot[C]{\thepage}
+  - \usepackage{colortbl}
+  - \definecolor{cornflowerblue}{RGB}{100,149,237}
+  - \definecolor{darkblue}{RGB}{115,150,255}
+  - \definecolor{lighterblue}{RGB}{131, 191, 212} 
+  - \definecolor{lightblue}{RGB}{178,211,220}
+keep-tex: false
+nocite: |
+  @*
+---
+
+```{=tex}
+
+\thispagestyle{plain}
+\begin{center}
+    \Large
+    \textbf{Forord}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\hypersetup{linkcolor=black}
+\renewcommand{\contentsname}{Innholdsfortegnelse}
+\renewcommand*{\figureautorefname}{Figur}
+\renewcommand*{\tableautorefname}{Tabell}
+\tableofcontents
+\listoffigures
+\listoftables
+\hypersetup{linkcolor=blue}
+\newpage
+```
+
+
+
+```{r}
+rm(list = ls())
+library(tidyverse)
+library(zoo)
+library(scales)
+library(ggrepel)
+library(readxl)
+library(httr)
+library(jsonlite)
+library(rjstat)
+library(readr)
+```
+
+
+# notater
+
+er det avvik mellom fastsatt arbeidstid og hvor mye folk arbeider?
+
+Er folk overarbeidet?
+
+
+Hvordan har antall legebesøk endret seg samtidig som legemeldt sykefravær har endret seg. er leger overarbeidet og skriver ut for mye sykefravær? 
+
+Er sykefraværet et problem? Hvordan har sysselsettingsrate endret seg med sykefravær? er det spesiell korrelasjon mellom egenmeldt og legemeldt der?
+
+
+Dårlig ledelse og lite engasjerte arbeidere?
+
+
+
+
+https://www.dagensperspektiv.no/synspunkt/benedicte-langseth-eide-svarer-hr-norge-om-sykefravaer-og-ledelse/1262876
+
+
+https://www.nord24.no/nar-bedriftene-sliter-med-hoyt-sykefravar-ringer-de-benedicte-disse-tiltakene-nytter/s/5-32-197683
+
+
+
+
+
+https://www.mdpi.com/1660-4601/18/8/4327
+
+
+The results provide longitudinal evidence that two well-established job resources (i.e., social support and feedback) predicted work engagement, that work engagement was negatively related to sick leave and that this relation was mediated by subjective health. By showing that health-related indicators could also be outcomes of the motivational process in the JD-R model, we have strengthened the model.
+
+
+
+
+
+
+
+https://munin.uit.no/handle/10037/15801
+
+The results also revealed that both workaholics and work-engaged employees put in more hours at work than was expected of them. We found that workaholism was negatively related to work-related health, whereas work engagement was positively related to work-related health. These findings support the notion of workaholism and work engagement as two different forms of working hard. 
+
+
+
+
+
+```{r}
+
+
+
+
+tryCatch({df_12440 <- read_csv(file.path("Data", "df_12440.csv"), show_col_types = FALSE)}, error = function(err) {
+  df_12440 <- "https://data.ssb.no/api/v0/no/table/12440/"
+  
+  
+  query <- '{
+    "query": [
+      {
+        "code": "Kjonn",
+        "selection": {
+          "filter": "item",
+          "values": [
+            "0",
+            "2",
+            "1"
+          ]
+        }
+      },
+      {
+        "code": "NACE2007",
+        "selection": {
+          "filter": "vs:NACE260sykefratot3",
+          "values": [
+            "A-U",
+            "A",
+            "B",
+            "C",
+            "D-E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L-M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R-U",
+            "00"
+          ]
+        }
+      },
+      {
+        "code": "Sykefraver2",
+        "selection": {
+          "filter": "item",
+          "values": [
+            "Alt",
+            "E",
+            "L"
+          ]
+        }
+      },
+      {
+        "code": "ContentsCode",
+        "selection": {
+          "filter": "item",
+          "values": [
+            "SykefravProsent"
+          ]
+        }
+      }
+    ],
+    "response": {
+      "format": "json-stat2"
+    }
+  }'
+
+
+  
+  df_12440 <- df_12440 %>%
+    POST(body = query, encode = "json")
+
+  df_12440 <-  df_12440 %>%
+    content("text") %>%
+    fromJSONstat() %>%
+    as_tibble() 
+  
+  
+  
+  write_csv(df_12440, file.path("Data", "df_12440.csv"))
+  
+  
+  df_12440 <<-  df_12440
+  
+
+})
+
+  
+write_csv(df_12440, file.path("Data", "df_12440.csv"))
+
+
+```
+
+
+
+
+
+
+
+
+
+
+```{r}
+NSD3201 <- read_csv("Data/NSD3201.csv", show_col_types = FALSE)
+problems(NSD3201)
+```
+
+
+
+
+
+
+Oppbygging
+
+# 1. Innledning / bakgrunn / problemdiskusjon
+
+## Redegjør for temaområde og oppgavens plass i dette. Presentere problemstilling og hvorfor denne er interessant å finne ut av.
+
+# 2. Teoretisk grunnlag
+
+## Gjør rede for relevant teori på temaområdet med særlig fokus på den teorien dere har valgt å benytte for å svare på problemstillingen.
+
+# 3. Metode og datagrunnlaget
+
+## Forklar og begrunn metodevalg i henhold til problemstillingen. Beskriv hvordan data til oppgaven er fremskaffet. Gi en innledende oversikt over data (deskriptiv statistikk).
+
+# 4. Empiri/resultater
+
+## Her presenteres den empiriske analysen og dens resultater. Vanligvis vil en empirisk analyse bestå av en regresjonsanalyse med flere variabler. Andre muligheter kan diskuteres med veilederen.
+
+# 5. Diskusjon/konklusjon
+
+## Dette kapitlet drøfter resultatene i forhold til problemstillingen. Hva er funnet ut av, hva gjenstår, hvilke styrker og svakheter har analysen?
+
+# 6. Referanseliste
+
+## Her føres opp kilder og litteratur som er benyttet i oppgaven.
+
+# 7. Vedlegg
+
+## Vedlegg skal nummereres og ha underoverskrift.
+
+
+
+
+
+
+
+\clearpage
+
+# Referanser
+
+::: {#refs}
+:::
+
+\clearpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\appendix
+
+\section {Appendix Generell KI bruk}
+
+I løpet av koden så kan det ses mange \# kommentarer der det er skrevet for eks "#fillbetween q1 and q2". Når vi skriver kode i Visual Studio Code og Rstudio så er det en plugin som heter Github Copilot. Når vi skriver slike kommentarer eller bare skriver kode så kan den foresøke å fullføre kodelinjene mens vi skriver de. Noen ganger klarer den det, men andre ikke. Det er vanskelig å dokumentere hvert bruk der den er brukt siden det "går veldig fort" men siden vi ikke har fått på plass en slik dokumentasjon så kan all kode der det er brukt kommentarer antas som at det er brukt Github Copilot. Nærmere info om dette KI verktøyet kan ses på <https://github.com/features/copilot>
+
+\clearpage
+
+
+
+
+
+
+
+
+
+
+
+
+
