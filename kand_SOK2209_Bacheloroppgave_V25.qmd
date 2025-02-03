@@ -424,18 +424,6 @@ t.test(NSD3201$sfpros_uten_feriekorr_2023[NSD3201$wkapinnt+NSD3201$aksje+NSD3201
 wilcox.test(NSD3201$sfpros_uten_feriekorr_2023 ~ NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt > NSD3201$lonn, data = NSD3201)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ```
 
 

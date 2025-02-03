@@ -1,5 +1,5 @@
 ---
-title: "tittel?"
+title: "Presentasjon av problemstilling"
 subtitle: "SOK-2209 Bacheloroppgave"
 date: last-modified
 date-format: "DD-MM-YYYY"
@@ -40,7 +40,7 @@ Kan ikke anta hvert enkelt individ har samme nyttefunksjon. forskjell mellom de 
 knytte seg at vi da har at etterspørsel etter sykefravær er forskjellig fra rik/fattig
 og er da 
 
-etterspørsel etter sykefravær = h(antall arbeidstimer+fraværstid) - en eller anna faktor - (forhold mellom alder, motivasjon og kanskje antall barn)
+etterspørsel etter sykefravær = h(antall arbeidstimer+fraværstid) - sensitivitet for (full lønn for kontraktsfestede timer (wh∗) + ikke-arbeidsrelaterte inntekter) - (forhold mellom alder, motivasjon og kanskje antall barn)
 
 
 
@@ -76,18 +76,11 @@ Kanskje Kjonn
 
 ## notater
 
-lasta jo inn dataen allerede før derek svarte så man kan jo lage grafan som vise det der. men at vi da starte presentasjonen me problemstillinga, så kordan teori og da modell som skal forklare. kordan variabler, så trekke inn det me sysselsetting og arbeidsledighet, og psykiske lidelser med diskusjon om ledelse fra den 2022 ssb dataen
-
-
-
+kordan variabler, så trekke inn det me sysselsetting og arbeidsledighet, og psykiske lidelser med diskusjon om ledelse fra den 2022 ssb dataen
 
 
 kunne tenkt mæ å få 2 tilpasninge, en for "rike" og en for vanlige tho eller noe. kanskje mokke til forklaringsvariable så man da har
 rik/fattig, ledelse(betyr lite for rik), kontroll over eget arbeid 
-
-
-
-
 
 
 så høy disiplineringseffekt -> lavere sykefravær blandt arbeidere
@@ -96,11 +89,10 @@ så 2023 lav arbeidsledighet, liten disiplineringseffekt -> sykefravær lik mell
 
 
 
+## notater
+
 til oppgaven hvis man vil ha me ulikhet så ligg det noen variabler der for lønn og renteinntekt, kapitalinntekt, aksjeutbytte
 i konsumtilpasning mellom fritid og konsum så vil jo lønn og da jobb ha mindre å si om du er rik så du til større grad er på jobb av valg og ikke nødvendighet så mer sykefravær blandt de versus de med inntekt fra lønn
-
-
-
 
 
 
