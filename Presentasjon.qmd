@@ -1,6 +1,18 @@
 ---
-title: "Untitled"
-format: revealjs
+title: "tittel?"
+subtitle: "SOK-2209 Bacheloroppgave"
+date: last-modified
+date-format: "DD-MM-YYYY"
+echo: false
+warning: false
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: black
+    parallaxBackgroundImage: 'dokumentobjekter/texstuff/dog.png'
+    parallax-background-size: "1920px 1080px"
+    parallax-background-horizontal: 0
+    parallax-background-vertical: 0
 ---
 
 
