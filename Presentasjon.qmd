@@ -18,14 +18,61 @@ format:
 
 ## problemstilling
 
+Vil en økning i formueulikhet føre til høyere sykefravær? Om så hvordan kan det skje. Er det forskjell mellom de med formue og de uten?
+
+
+
+Kan økningen i formueulikhet føre til redusert motivasjon til arbeid og det og få barn? Hvorfor forskjell i kvinners sykefravær når fertilitetsraten går ned.
+
+Psykiske lidelser?
+
+::: notes
 sku vel egentlig starta me å si kor æ starta på det der, og det va me den en vanlig nyttefunksjon som vist i den forelesinga. men lage 2 eller noe. ikke at hvert enkelt individ er den samme. trur det er stor forskjell på ønsket arbeidstid om man er motivert eller ikke, og jeg antar da at en ren maksimering etter bare konsum blir feil når folk vil ha bolig osv. så maksimere under 2 bibetingelser, konsum og investering. 
 
-har ikke sett på dataen utenom det bilde der om fødselsrate men trur man kan lage noe der som da kan knytte seg at vi da har at etterspørsel etter sykefravær er forskjellig fra rik/fattig
-og er da = h(antall arbeidstimer+fraværstid) - en eller anna faktor - (forhold mellom alder, motivasjon og kanskje antall barn) 
-
-eller noe sånt me en for rik og en for fattig
-
 fertilitetsrate ikke konsisent med endring i sykefravær kvinner
+:::
+
+
+## Funksjon
+
+Kan ikke anta hvert enkelt individ har samme nyttefunksjon. forskjell mellom de med formue, og de uten. 
+
+knytte seg at vi da har at etterspørsel etter sykefravær er forskjellig fra rik/fattig
+og er da 
+
+etterspørsel etter sykefravær = h(antall arbeidstimer+fraværstid) - en eller anna faktor - (forhold mellom alder, motivasjon og kanskje antall barn)
+
+
+
+
+
+## unngå  wet roads causes rain
+
+
+
+
+## Variabler
+
+Sykefraværprosent uten feriekorrigering, fra register
+
+sfpros_uten_feriekorr_2022 
+
+sfpros_uten_feriekorr_2023
+
+kullaldr 
+
+Sp59g  tilfreds med jobben
+
+SpMotEng_ny motivasjon/engasjement
+
+
+
+kanskje barn05 / barn617 (har små barn/skolebarn)
+
+Kanskje Kjonn
+
+
+
 
 ## notater
 
@@ -57,28 +104,3 @@ i konsumtilpasning mellom fritid og konsum så vil jo lønn og da jobb ha mindre
 
 
 
-
-## unngå  wet roads causes rain
-
-
-
-
-## Variabler
-
-Sykefraværprosent uten feriekorrigering, fra register
-
-sfpros_uten_feriekorr_2022 
-
-sfpros_uten_feriekorr_2023
-
-kullaldr 
-
-Sp59g  tilfreds med jobben
-
-SpMotEng_ny motivasjon/engasjement
-
-
-
-kanskje barn05 / barn617 (har små barn/skolebarn)
-
-Kanskje Kjonn
