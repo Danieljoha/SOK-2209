@@ -465,6 +465,154 @@ Oppbygging
 
 
 
+
+
+
+
+
+
+
+
+
+```{r}
+
+
+
+test1 <- NSD3201 %>% 
+  select(kullaldr, lonn, agg_f_08) %>% 
+  na.omit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+test2 <- test1 %>%
+  mutate(
+    NETTO_FORMUE = as.numeric(agg_f_08),
+    NETTO_INNTEKT = as.numeric(lonn),
+    age = as.numeric(kullaldr),  
+    age_group = case_when(
+      age >= 18 & age <= 25 ~ "18-25",
+      age > 25 & age <= 35 ~ "25-35",
+      age > 35 & age <= 45 ~ "35-45",
+      age > 45 & age <= 55 ~ "45-55",
+      age > 55 & age <= 65 ~ "55-65",
+      age > 65 ~ "65+",
+      TRUE ~ "Under 18"
+    )
+  ) %>%
+  group_by(age_group) %>%
+  mutate(
+    decile_formue = ntile(NETTO_FORMUE, 10)
+  ) %>%
+  group_by(age_group, decile_formue) %>%
+  summarise(
+    total_wealth = sum(NETTO_FORMUE, na.rm = TRUE),
+    min_wealth = min(NETTO_FORMUE, na.rm = TRUE),
+    max_wealth = max(NETTO_FORMUE, na.rm = TRUE),
+    median_wealth = median(NETTO_FORMUE, na.rm = TRUE),
+    mean_wealth = mean(NETTO_FORMUE, na.rm = TRUE),
+
+    total_income = sum(NETTO_INNTEKT, na.rm = TRUE),
+    min_income = min(NETTO_INNTEKT, na.rm = TRUE),
+    max_income = max(NETTO_INNTEKT, na.rm = TRUE),
+    median_income = median(NETTO_INNTEKT, na.rm = TRUE),
+    mean_income = mean(NETTO_INNTEKT, na.rm = TRUE),
+
+    count = n(),
+    .groups = "drop"
+  )
+
+
+
+
+
+
+test1 %>%
+  mutate(
+    NETTO_FORMUE = as.numeric(agg_f_08),
+    NETTO_INNTEKT = as.numeric(lonn),
+    age = as.numeric(kullaldr)) %>% 
+  summarise(sum_formue = sum(NETTO_FORMUE, na.rm = TRUE),
+            sum_inntekt = sum(NETTO_INNTEKT, na.rm = TRUE)) %>%
+  pivot_longer(cols = c(sum_formue, sum_inntekt), names_to = "type", values_to = "sum") 
+#ggsave("inntektformue.png", width = 10, height = 7, units = "in", dpi = 2000)
+
+
+
+
+test3 <- test1 %>%
+  mutate(
+    NETTO_FORMUE = as.numeric(agg_f_08),
+    NETTO_INNTEKT = as.numeric(lonn),
+    age = as.numeric(kullaldr)) %>% 
+  mutate(
+    decile_formue = ntile(NETTO_FORMUE, 10)
+  ) %>%
+  group_by(decile_formue) %>%
+  summarise(
+    total_wealth = sum(NETTO_FORMUE, na.rm = TRUE),
+    min_wealth = min(NETTO_FORMUE, na.rm = TRUE),
+    max_wealth = max(NETTO_FORMUE, na.rm = TRUE),
+    median_wealth = median(NETTO_FORMUE, na.rm = TRUE),
+    mean_wealth = mean(NETTO_FORMUE, na.rm = TRUE),
+
+    total_income = sum(NETTO_INNTEKT, na.rm = TRUE),
+    min_income = min(NETTO_INNTEKT, na.rm = TRUE),
+    max_income = max(NETTO_INNTEKT, na.rm = TRUE),
+    median_income = median(NETTO_INNTEKT, na.rm = TRUE),
+    mean_income = mean(NETTO_INNTEKT, na.rm = TRUE),
+
+    count = n(),
+    .groups = "drop"
+  ) %>% 
+  mutate(
+    wealth_share = total_wealth/7747733000
+    
+  )
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \clearpage
 
 # Referanser
