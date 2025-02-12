@@ -470,6 +470,107 @@ Oppbygging
 
 
 
+# 1 Innledning
+## a) Hva omhandler oppgaven – Beskriv temaet i én eller to setninger. Dette kan være hele problemstillingen.
+
+## b) Motiver hvorfor temaet er viktig å studere fra et samfunns(økonomisk) perspektiv
+
+
+## c) Evt. Gi en kort bakgrunn til temaet i Norge 
+
+Kommentar: Rekkefølgen på b og c kan endres.
+
+
+# 2. Problemstilling (dersom denne ikke allerede har blitt definert)
+
+
+# 3. Tidligere forskning
+
+
+## 3.1 (Relevant til temaet)
+• Definisjon/forklaring av hva begrepene betyr
+• Forklaring av hvorfor dette er viktig for samfunnet
+
+## 3.2 (Relevant til problemstillingen)
+
+### a) Definere begrepene kortfattet
+
+### b) Forklar kortfattet hva tidligere forskning har funnet generelt om problemstillingen (hvorfor det er viktig å studere fra et sammfunsperspektiv)
+
+### c) Forklar teori og empiriske funn knyttet til koblingen som du vil undersøke. Være nøye med å gjøre rede for mekanismer!
+
+
+# 4. Hypoteser
+
+# 5. Metode
+
+## 5.1 Datamaterial
+
+## 5.1..1 Datakilde og utvalg
+
+## 5.1..2 Variabler
+
+### a) Avhengig variabel
+
+### b) Variabler knyttet til hypotese
+
+### c) Kontrollvariabler
+
+Kommentar: Deskriptiv statistikk kan evt legges til som avsnitt 5.1.3
+
+
+## 5.2 Økonometrisk modell
+
+### a) Ligning til modellen
+
+### b) Forklaring av alle deler i modellen
+
+### c) Beskrivning av økonometrisk metode
+
+Kommentar: C kan tas først eller sist.
+
+
+# 6. Resultat
+
+## 6.1 Deskriptiv statistikk
+
+### a) Tabell med alle variabler som er tatt med i analysen
+
+### b) Eventuelt figurer over «problematiske» variabler
+
+### c) Kommentarer til datamaterialet
+
+Kommentar: avsnitt 6.1 kan flyttes til et avsnitt 5.1.3
+
+## 6.2 Økonometrisk analyse
+
+### a) Tabell med resultat fra regresjonsanalysen(e)
+
+### b) Redegjørelse for resultat knyttet til hypoteser
+
+### c) Redegjørelse for effekt av kontrollvariabler
+
+### d) Redegjørelse for svakheter i modellen/data
+
+
+# 7. Diskusjon
+
+## a) Oppsummering av hva formålet med oppgaven var, og hva analysen viste
+
+## b) Diskusjon av hvilke konklusjoner som kan trekkes fra dette og om resultatene er forenlig med tidligere funn/teori
+
+
+## c) Diskusjon av svakheter i analysen
+
+## d) Diskusjon av implikasjoner for policy gitt svakheter
+
+
+## e) Eventuelt: diskusjon av hva framtidig forskning kan forske videre på (basert påderes funn og svakheter i analysen)
+
+
+
+
+
 
 
 
@@ -938,3 +1039,204 @@ tryCatch({df_12439 <- read_csv(file.path("Data", "df_12439.csv"), show_col_types
 
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+trur kanskje vi ender med en diffligning som me solow
+sia vi kan da si at sykefravær forklares av ditt å datt, og mange av ditt og datt forklares av formuenivå så de får egene ligninger som for eks motivasjon kan være funksjon av formue, alder og utdanning eller noe for eks
+
+
+Kanskje en form for "intensitet" i hvor sensitiv du er. 
+
+
+
+Jeg tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt.
+
+
+
+trur vi blir å få noe bue på den effekten. fattige, vanlige, rike, megarike vil ha ulik effekt av motivasjon og sånt. e du megarik så har det jo ingenting og si, e du syk eller vil ta fri så blir du hjemme, men samtidig så vil du kanskje være spesielt sensitiv om du e fattig og at om du da e syk eller vil ta fri så vil du både ha dårligere utgangspunkt i jobbtype og sånt, og også kunne rett å slett være mer syk
+
+mens de i midten rundt "vanlige" mot bare rike kan ha 0 effekt, men kommer vel an på kor mye man ska mene formue har å si til hvor sensitiv du er til endringer eller potentielle endringer i inntekt
+derfor æ tenkte å bare ha det til å være en funksjon av formue kunne være enklere
+motivasjon og sånt altså
+både på bunn og på topp så vil du også ha økt den stygge m'en ved at du får statlige overføringe som fattig
+men mye kapitalfortjeneste som rik
+
+
+så formue har effekt på hvor mye utdanning du har. formue har effekt på hvilken motivasjon du har. formue har effekt på m som er annen inntekt utenom jobb. 
+etterspørsel av sykefravær er da en diffligning 
+
+
+g = formue, j = alder, k = utdanning, l = motivasjon
+
+$$
+t^a = h* - \alpha w - \beta(m(g) + h^*w) - (l(g)+k(g)+j(g))
+$$
+
+
+## Notater
+
+
+
+
+### Inntektsfattigdom og levekårsfattigdom
+
+https://www.ssb.no/sosiale-forhold-og-kriminalitet/artikler-og-publikasjoner/inntektsfattig-eller-levekaarsfattig 
+
+
+Hva så med en mer absolutt tilnærming i form av et forbruksbudsjett inkludert faktiske bokostnader? Det enkleste målet som ikke tar hensyn til verken studenter eller formuende, har omtrent like sterk sammenheng med levekårsfattigdom som den vi finner ved EU60, og dermed noe sterkere enn ved OECD50. Ved å holde studenter og/eller formuende utenfor definisjonen med budsjettilnærming, får vi de samme virkningene som vi har sett tidligere. Det å holde formuende utenfor bidrar til sterkere sammenheng med levekårsfattigdom, mens det å holde studenter utenfor ikke gjør det.
+
+Våre funn viser dermed at det ikke er avgjørende om vi definerer inntektsfattigdom absolutt (ved bruk av husholdningsbudsjett) eller relativt (ved bruk av ekvivalensskala og inntektsfordeling) når vi ser på sammenhengen med levekårsfattigdom. Den viktigste faktoren synes å være at vi tar hensyn til formue, som er en buffer mot mange av levekårsproblemene. Det har imidlertid ikke særlig betydning å ta hensyn til studenter i denne sammenhengen, selv om det bidrar til å redusere andelen inntektsfattige
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Helse og formue
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC8225390/
+
+controlling for community-average wealth, age, sex, household size, community size, and distance to markets. Wealthier people largely had better outcomes while inequality associated with more respiratory disease, a leading cause of mortality. Greater inequality and lower wealth were associated with higher blood pressure. Psychosocial factors did not mediate wealth-health associations. Thus, relative socio-economic position and inequality may affect health across diverse societies, though this is likely exacerbated in high-income countries.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Gatsby curve
+
+
+"great gatsby curve" med vedvarende inntekt på tvers av generasjoner. og siden fattige ikke blir spesielt mye fattigere enn middelklassen, men at det heller er rikere som flyr fremover. -> kanskje større forskjell på median og gjennomsnittlig inntekt/formue altså flere som er ikke rike som jobber i mer sånn lav inntekt yrker og barnehager å sånt me mye sykdom
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### karriærevalg, utdanning osv.
+
+fattigere har dårligere tilgang på "career role models" som gjør at de kanskje ikke vet om de bedre yrkene og sånt og dermed igjen blir mindre utdanna og sånt
+https://www.gallup.com/analytics/506696/amazon-research-hub.aspx
+
+
+
+
+
+
+
+
+
+
+
+### Stress? glemte studie her
+
+inntektsusikkerhet -> økt stress
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Motivasjonseffekt av ulikhet
+
+
+"The motivational cost of inequality: Opportunity gaps reduce the willingness to work"
+https://pmc.ncbi.nlm.nih.gov/articles/PMC7473543/
+
+
+
+
+
+
+
+
+
+https://www.brookings.edu/articles/income-inequality-social-mobility-and-the-decision-to-drop-out-of-high-school/
+
+
+ulikhet gjør at fattige blir mindre motivert siden dem føler det å bli rik er "umulig" og dermed investerer mindre i seg -> lavere motivasjon og lavere utdanning. 
+kanskje mer fysisk arbeid. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
