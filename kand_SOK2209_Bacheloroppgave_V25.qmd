@@ -1088,7 +1088,7 @@ etterspørsel av sykefravær er da en diffligning
 g = formue, j = alder, k = utdanning, l = motivasjon
 
 $$
-t^a = h* - \alpha w - \beta(m(g) + h^*w) - (l(g)+k(g)+j(g))
+t^a = h^* - \alpha w - \beta(m(g) + h^*w) - (l(g)+k(g)+j(g))
 $$
 
 
