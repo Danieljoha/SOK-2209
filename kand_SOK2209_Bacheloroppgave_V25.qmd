@@ -1060,8 +1060,6 @@ tryCatch({df_12439 <- read_csv(file.path("Data", "df_12439.csv"), show_col_types
 
 
 
-trur kanskje vi ender med en diffligning som me solow
-sia vi kan da si at sykefravær forklares av ditt å datt, og mange av ditt og datt forklares av formuenivå så de får egene ligninger som for eks motivasjon kan være funksjon av formue, alder og utdanning eller noe for eks
 
 
 Kanskje en form for "intensitet" i hvor sensitiv du er. 
@@ -1082,14 +1080,36 @@ men mye kapitalfortjeneste som rik
 
 
 så formue har effekt på hvor mye utdanning du har. formue har effekt på hvilken motivasjon du har. formue har effekt på m som er annen inntekt utenom jobb. 
-etterspørsel av sykefravær er da en diffligning 
 
 
 g = formue, j = alder, k = utdanning, l = motivasjon
 
+* v = dummyvariabel
+
 $$
-t^a = h^* - \alpha w - \beta(m(g) + h^*w) - (l(g)+k(g)+j(g))
+t^a = h^* - \alpha w - \beta(m(g) + h^*w) - (k\cdot v+j\cdot v)
 $$
+
+Dummy variabler for ulike aldersgrupper. beholde en ligning for alle men da bruke de dummyvariablene. dermed kunne tolke bare en variabel. 
+
+
+forskjellige typer inntekt påvirke forskjellig i m variabelen. 
+
+
+Grunn til cb er at den er enkel og at vi nesten alltid tar log av dataen. om vi har 0 variabler så blir det bare tull.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Notater
