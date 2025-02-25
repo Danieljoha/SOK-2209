@@ -1,0 +1,178 @@
+---
+format: 
+  pdf:
+    include-before-body:
+      - dokumentobjekter/texstuff/prosjektbeskrivelse.tex  
+    geometry:
+      - top=20mm
+      - left=20mm
+      - heightrounded
+    fontsize: 12pt
+    documentclass: scrartcl
+    papersize: a4
+    toc-title: "Innholdsfortegnelse"
+    toccolor: black
+echo: false
+message: false
+warning: false
+bibliography: dokumentobjekter/texstuff/prosjektbeskrivelse.bib
+csl: dokumentobjekter/texstuff/norsk-apa-manual.csl
+crossref: 
+  lof-title: "Figurliste"
+  fig-title: "Figur"
+  lot-title: "Tabelliste"
+  tbl-title: "Tabell"
+header-includes:
+  - \usepackage{wrapfig}
+  - \usepackage{subcaption}
+  - \usepackage{amsmath}
+  - \usepackage{cancel}
+  - \usepackage{hyperref}
+  - \usepackage{tikz}
+  - \usetikzlibrary{shapes.geometric, arrows, arrows.meta, positioning, calc}
+  - \usepackage{tabularx}
+  - \renewcommand{\maketitle}{}
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyhf{} 
+  - \fancyhead[L]{\rightmark}
+  - \fancyhead[R]{\thepage}
+  - \fancyfoot[C]{\thepage}
+  - \usepackage{colortbl}
+  - \definecolor{cornflowerblue}{RGB}{100,149,237}
+  - \definecolor{darkblue}{RGB}{115,150,255}
+  - \definecolor{lighterblue}{RGB}{131, 191, 212} 
+  - \definecolor{lightblue}{RGB}{178,211,220}
+keep-tex: false
+nocite: |
+  @*
+---
+
+```{=tex}
+\hypersetup{linkcolor=black}
+\renewcommand{\contentsname}{Innholdsfortegnelse}
+\renewcommand*{\figureautorefname}{Figur}
+\renewcommand*{\tableautorefname}{Tabell}
+\tableofcontents
+\listoffigures
+\listoftables
+\hypersetup{linkcolor=blue}
+\newpage
+```
+
+# Introduksjon
+
+
+## Bakgrunn
+
+
+## Problemstilling
+
+
+\newpage
+
+# Mål og hensikt
+
+
+## Formål
+
+
+## Avgrensning
+
+\newpage
+# Teoretisk grunnlag
+
+
+## Teori
+
+
+## Modellering
+
+
+## Litteraturgjennomgang
+
+\newpage
+
+# Metode
+
+## Valg av metode
+
+
+## Data
+
+
+## Analysemetode
+
+\newpage
+
+# Tidsplan
+
+
+## Planlegging
+
+
+## Risikovurdering
+
+\newpage
+
+# Forventede resultater
+
+
+## Resultatsforventninger
+
+
+## Betydning
+
+\newpage
+
+# Analyse
+
+
+## Analyse av data
+
+
+## Analyse av resultater
+
+
+## Analyse av metode
+
+\newpage
+
+# Diskusjon
+
+## Diskusjon av resultater
+
+
+## Diskusjon av metode
+
+
+## Diskusjon av data
+
+
+## Diskusjon av teori
+
+
+\newpage
+
+# Konklusjon
+
+
+## Konklusjon av resultater
+
+
+\newpage
+
+# Videre arbeid
+
+
+## Anbefalinger
+
+
+## Forslag til videre arbeid
+
+
+\newpage
+
+## Referanser
+
+
