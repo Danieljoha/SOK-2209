@@ -68,6 +68,128 @@ nocite: |
 
 ## Problemstilling
 
+### Oppgavens bakgrunn, tema, samt presentasjon av problemstilling («Hva?»)
+
+Vil en økning i formueulikhet føre til høyere sykefravær? 
+
+
+### Begrunnelse for problemstillingen («Hvorfor?»)
+
+I årene etter finanskrisen så har vi sett en økning i formueulikhet, og spesielt etter pandemien. Når lønningene ikke har økt like mye som prisene på eiendeler så har det blitt relativt dyrere for fattige og unge og opparbeide seg formue som egen bolig osv. Vi tenker da at det kan være en sammenheng mellom økning i formueulikhet og sykefravær.  
+
+
+
+
+### Summarisk oversikt over teorigrunnlag for å belyse/drøfte problemet og en grov disposisjon av oppbyggingen av teorikapitlet («Hvordan?»).
+
+
+
+Vi har sett på bruken av en Job Demand Resource modell siden vi tror at jobbressurser og jobbkrav har en effekt på motivasjon og sykefravær. Ved å da ta med prosessen til hvordan jobbressurser og jobbkrav påvirker motivasjon og stress så tror vi at vi kan bedre isolere effekten av formueulikhet og boligtilgang på motivasjon, og dermed sykefravær. 
+
+Vi tar dette med siden vi tror at vi vil få et veldig positivt resultat som ikke bare kan tildeles til formueulikhet og boligtilgang. 
+
+
+
+
+For jobbressurser så tenker vi å ta med variablene: 
+QPS72_ny - Få støtte/hjelp i arbeidet fra nærmeste sjef
+QPS73_ny - Få støtte/hjelp i arbeidet fra kollegaer 
+
+Raad3a_ny - Tilbakemeld fra nærmeste sjef hvordan utført jobben
+QPS78_ny - Arb.resultater verdsatt av nærmeste sjef 
+
+Sp56a2 - Grad selv bestemme hvilke oppgaver skal få
+Sp56b2 - Grad kan selv bestemme hvordan arbeidet skal gjøres
+QPS47 - Grad kan selv bestemme ditt arbeidstempo
+QPS53 - Grad kan påvirke beslutn viktige for ditt arbeid? 
+
+
+
+
+
+
+
+
+For jobbkrav tar vi Tilgjengelig1 og 2 for forventningene om hvor mye det jobbes på fritiden og hvor mye det jobbes. 
+QPS15_ny - For mye å gjøre
+QPS14_ny - Nødvendig å arbeide i et høyt tempo
+Sp47f - Mye å gjøre - sløyfe lunsjen/jobbe ekstra 
+Sp47a - Selv bestemme når ta pauser fra arbeidet 
+
+
+
+
+
+**Job demand = jobbkrav**
+**Job resource = jobbressurs**
+**Wealth inequality = formueulikhet**
+**Housing affordability = Boligtilgang evt sykepleierindeksen**
+
+
+$$
+\begin{align*}
+SF &= \beta_0 + \beta_1JK + \beta_2M + \beta_3FU + \beta_4HA + \epsilon_1 \\
+M &= \alpha_0 + \alpha_1JR + \alpha_2FU + \alpha_3HA + \epsilon_2 
+\end{align*}
+$$
+
+SF er sykefravær, JK er jobbkrav, M er motivasjon, FU er Formue ulikhet, HA er Housing Affordability, JR er jobb ressurser.
+
+
+Grunnen til at vi tar med JK og JR er fordi vi tror at det er en sammenheng mellom disse og sykefravær og vil dermed kunne isolere effekten av FU og HA på M og dermed SF.
+
+
+
+
+
+
+
+
+
+
+Jeg tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt.
+
+
+
+
+så formue har effekt på hvor mye utdanning du har. formue har effekt på hvilken motivasjon du har. formue har effekt på m som er annen inntekt utenom jobb. 
+
+
+g = formue, j = alder, k = utdanning, l = motivasjon
+
+* v = dummyvariabel
+
+$$
+t^a = h^* - \alpha w - \beta(m(g) + h^*w) - (k\cdot v+j\cdot v)
+$$
+
+Dummy variabler for ulike aldersgrupper. beholde en ligning for alle men da bruke de dummyvariablene. dermed kunne tolke bare en variabel. 
+
+
+forskjellige typer inntekt påvirke forskjellig i m variabelen. 
+
+
+
+
+
+
+
+### Kort om den empiriske metoden som vil bli brukt samt datagrunnlaget. Er dataene åpent tilgjengelig eller er det knyttet risiko til innhenting av data?
+
+
+
+
+
+
+### Oversikt over kjernelitteratur som vil bli brukt i oppgaven.
+
+
+
+
+
+### En tidsplan med milepæler
+
+
 
 \newpage
 
@@ -90,6 +212,15 @@ nocite: |
 
 
 ## Litteraturgjennomgang
+
+
+
+
+
+
+
+
+
 
 \newpage
 

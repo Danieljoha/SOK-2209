@@ -61,11 +61,6 @@ nocite: |
 
 
 
-
-
-
-
-
 \newpage
 \hypersetup{linkcolor=black}
 \renewcommand{\contentsname}{Innholdsfortegnelse}
@@ -77,6 +72,321 @@ nocite: |
 \hypersetup{linkcolor=blue}
 \newpage
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1 Innledning
+
+Redegjør for temaområde og oppgavens plass i dette. Presentere problemstilling og hvorfor denne er interessant å finne ut av.
+
+
+## a) Hva omhandler oppgaven – Beskriv temaet i én eller to setninger. Dette kan være hele problemstillingen.
+
+
+
+## b) Motiver hvorfor temaet er viktig å studere fra et samfunns(økonomisk) perspektiv
+
+
+
+
+
+## c) Evt. Gi en kort bakgrunn til temaet i Norge 
+
+Kommentar: Rekkefølgen på b og c kan endres.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 2. Tidligere forskning
+
+
+## 2.1 (Relevant til temaet)
+• Definisjon/forklaring av hva begrepene betyr
+• Forklaring av hvorfor dette er viktig for samfunnet
+
+## 2.2 (Relevant til problemstillingen)
+
+### a) Definere begrepene kortfattet
+
+### b) Forklar kortfattet hva tidligere forskning har funnet generelt om problemstillingen (hvorfor det er viktig å studere fra et sammfunsperspektiv)
+
+### c) Forklar teori og empiriske funn knyttet til koblingen som du vil undersøke. Være nøye med å gjøre rede for mekanismer!
+
+
+
+
+
+# 3. Teoretisk grunnlag
+
+## Gjør rede for relevant teori på temaområdet med særlig fokus på den teorien dere har valgt å benytte for å svare på problemstillingen.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 4. Hypoteser
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 5. Metode og datagrunnlag
+
+Forklar og begrunn metodevalg i henhold til problemstillingen. Beskriv hvordan data til oppgaven er fremskaffet. Gi en innledende oversikt over data (deskriptiv statistikk).
+
+
+## 5.1 Datamaterial
+
+## 5.1..1 Datakilde og utvalg
+
+## 5.1..2 Variabler
+
+### a) Avhengig variabel
+
+### b) Variabler knyttet til hypotese
+
+### c) Kontrollvariabler
+
+Kommentar: Deskriptiv statistikk kan evt legges til som avsnitt 5.1.3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 5.2 Økonometrisk modell
+
+### a) Ligning til modellen
+
+### b) Forklaring av alle deler i modellen
+
+### c) Beskrivning av økonometrisk metode
+
+Kommentar: C kan tas først eller sist.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 6. Resultat
+
+Her presenteres den empiriske analysen og dens resultater. Vanligvis vil en empirisk analyse bestå av en regresjonsanalyse med flere variabler. Andre muligheter kan diskuteres med veilederen.
+
+
+
+
+## 6.1 Deskriptiv statistikk
+
+### a) Tabell med alle variabler som er tatt med i analysen
+
+### b) Eventuelt figurer over «problematiske» variabler
+
+### c) Kommentarer til datamaterialet
+
+Kommentar: avsnitt 6.1 kan flyttes til et avsnitt 5.1.3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 6.2 Økonometrisk analyse
+
+### a) Tabell med resultat fra regresjonsanalysen(e)
+
+### b) Redegjørelse for resultat knyttet til hypoteser
+
+### c) Redegjørelse for effekt av kontrollvariabler
+
+### d) Redegjørelse for svakheter i modellen/data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 7. Diskusjon
+
+Dette kapitlet drøfter resultatene i forhold til problemstillingen. Hva er funnet ut av, hva gjenstår, hvilke styrker og svakheter har analysen?
+
+
+## a) Oppsummering av hva formålet med oppgaven var, og hva analysen viste
+
+## b) Diskusjon av hvilke konklusjoner som kan trekkes fra dette og om resultatene er forenlig med tidligere funn/teori
+
+
+## c) Diskusjon av svakheter i analysen
+
+## d) Diskusjon av implikasjoner for policy gitt svakheter
+
+
+## e) Eventuelt: diskusjon av hva framtidig forskning kan forske videre på (basert påderes funn og svakheter i analysen)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -92,48 +402,6 @@ library(jsonlite)
 library(rjstat)
 library(readr)
 ```
-
-
-# notater
-
-er det avvik mellom fastsatt arbeidstid og hvor mye folk arbeider?
-
-Er folk overarbeidet?
-
-
-Hvordan har antall legebesøk endret seg samtidig som legemeldt sykefravær har endret seg. er leger overarbeidet og skriver ut for mye sykefravær? 
-
-Er sykefraværet et problem? Hvordan har sysselsettingsrate endret seg med sykefravær? er det spesiell korrelasjon mellom egenmeldt og legemeldt der?
-
-
-Dårlig ledelse og lite engasjerte arbeidere?
-
-
-
-
-https://www.dagensperspektiv.no/synspunkt/benedicte-langseth-eide-svarer-hr-norge-om-sykefravaer-og-ledelse/1262876
-
-
-https://www.nord24.no/nar-bedriftene-sliter-med-hoyt-sykefravar-ringer-de-benedicte-disse-tiltakene-nytter/s/5-32-197683
-
-
-
-
-
-https://www.mdpi.com/1660-4601/18/8/4327
-
-
-The results provide longitudinal evidence that two well-established job resources (i.e., social support and feedback) predicted work engagement, that work engagement was negatively related to sick leave and that this relation was mediated by subjective health. By showing that health-related indicators could also be outcomes of the motivational process in the JD-R model, we have strengthened the model.
-
-
-
-
-
-
-
-https://munin.uit.no/handle/10037/15801
-
-The results also revealed that both workaholics and work-engaged employees put in more hours at work than was expected of them. We found that workaholism was negatively related to work-related health, whereas work engagement was positively related to work-related health. These findings support the notion of workaholism and work engagement as two different forms of working hard. 
 
 
 
@@ -429,143 +697,15 @@ wilcox.test(NSD3201$sfpros_uten_feriekorr_2023 ~ NSD3201$wkapinnt+NSD3201$aksje+
 
 
 
-Oppbygging
 
-# 1. Innledning / bakgrunn / problemdiskusjon
 
-## Redegjør for temaområde og oppgavens plass i dette. Presentere problemstilling og hvorfor denne er interessant å finne ut av.
 
-# 2. Teoretisk grunnlag
 
-## Gjør rede for relevant teori på temaområdet med særlig fokus på den teorien dere har valgt å benytte for å svare på problemstillingen.
 
-# 3. Metode og datagrunnlaget
 
-## Forklar og begrunn metodevalg i henhold til problemstillingen. Beskriv hvordan data til oppgaven er fremskaffet. Gi en innledende oversikt over data (deskriptiv statistikk).
 
-# 4. Empiri/resultater
 
-## Her presenteres den empiriske analysen og dens resultater. Vanligvis vil en empirisk analyse bestå av en regresjonsanalyse med flere variabler. Andre muligheter kan diskuteres med veilederen.
 
-# 5. Diskusjon/konklusjon
-
-## Dette kapitlet drøfter resultatene i forhold til problemstillingen. Hva er funnet ut av, hva gjenstår, hvilke styrker og svakheter har analysen?
-
-# 6. Referanseliste
-
-## Her føres opp kilder og litteratur som er benyttet i oppgaven.
-
-# 7. Vedlegg
-
-## Vedlegg skal nummereres og ha underoverskrift.
-
-
-
-
-
-
-
-
-
-
-
-
-# 1 Innledning
-## a) Hva omhandler oppgaven – Beskriv temaet i én eller to setninger. Dette kan være hele problemstillingen.
-
-## b) Motiver hvorfor temaet er viktig å studere fra et samfunns(økonomisk) perspektiv
-
-
-## c) Evt. Gi en kort bakgrunn til temaet i Norge 
-
-Kommentar: Rekkefølgen på b og c kan endres.
-
-
-# 2. Problemstilling (dersom denne ikke allerede har blitt definert)
-
-
-# 3. Tidligere forskning
-
-
-## 3.1 (Relevant til temaet)
-• Definisjon/forklaring av hva begrepene betyr
-• Forklaring av hvorfor dette er viktig for samfunnet
-
-## 3.2 (Relevant til problemstillingen)
-
-### a) Definere begrepene kortfattet
-
-### b) Forklar kortfattet hva tidligere forskning har funnet generelt om problemstillingen (hvorfor det er viktig å studere fra et sammfunsperspektiv)
-
-### c) Forklar teori og empiriske funn knyttet til koblingen som du vil undersøke. Være nøye med å gjøre rede for mekanismer!
-
-
-# 4. Hypoteser
-
-# 5. Metode
-
-## 5.1 Datamaterial
-
-## 5.1..1 Datakilde og utvalg
-
-## 5.1..2 Variabler
-
-### a) Avhengig variabel
-
-### b) Variabler knyttet til hypotese
-
-### c) Kontrollvariabler
-
-Kommentar: Deskriptiv statistikk kan evt legges til som avsnitt 5.1.3
-
-
-## 5.2 Økonometrisk modell
-
-### a) Ligning til modellen
-
-### b) Forklaring av alle deler i modellen
-
-### c) Beskrivning av økonometrisk metode
-
-Kommentar: C kan tas først eller sist.
-
-
-# 6. Resultat
-
-## 6.1 Deskriptiv statistikk
-
-### a) Tabell med alle variabler som er tatt med i analysen
-
-### b) Eventuelt figurer over «problematiske» variabler
-
-### c) Kommentarer til datamaterialet
-
-Kommentar: avsnitt 6.1 kan flyttes til et avsnitt 5.1.3
-
-## 6.2 Økonometrisk analyse
-
-### a) Tabell med resultat fra regresjonsanalysen(e)
-
-### b) Redegjørelse for resultat knyttet til hypoteser
-
-### c) Redegjørelse for effekt av kontrollvariabler
-
-### d) Redegjørelse for svakheter i modellen/data
-
-
-# 7. Diskusjon
-
-## a) Oppsummering av hva formålet med oppgaven var, og hva analysen viste
-
-## b) Diskusjon av hvilke konklusjoner som kan trekkes fra dette og om resultatene er forenlig med tidligere funn/teori
-
-
-## c) Diskusjon av svakheter i analysen
-
-## d) Diskusjon av implikasjoner for policy gitt svakheter
-
-
-## e) Eventuelt: diskusjon av hva framtidig forskning kan forske videre på (basert påderes funn og svakheter i analysen)
 
 
 
@@ -1045,6 +1185,48 @@ tryCatch({df_12439 <- read_csv(file.path("Data", "df_12439.csv"), show_col_types
 
 
 
+
+
+# notater
+
+er det avvik mellom fastsatt arbeidstid og hvor mye folk arbeider?
+
+Er folk overarbeidet?
+
+
+Hvordan har antall legebesøk endret seg samtidig som legemeldt sykefravær har endret seg. er leger overarbeidet og skriver ut for mye sykefravær? 
+
+Er sykefraværet et problem? Hvordan har sysselsettingsrate endret seg med sykefravær? er det spesiell korrelasjon mellom egenmeldt og legemeldt der?
+
+
+Dårlig ledelse og lite engasjerte arbeidere?
+
+
+
+
+https://www.dagensperspektiv.no/synspunkt/benedicte-langseth-eide-svarer-hr-norge-om-sykefravaer-og-ledelse/1262876
+
+
+https://www.nord24.no/nar-bedriftene-sliter-med-hoyt-sykefravar-ringer-de-benedicte-disse-tiltakene-nytter/s/5-32-197683
+
+
+
+
+
+https://www.mdpi.com/1660-4601/18/8/4327
+
+
+The results provide longitudinal evidence that two well-established job resources (i.e., social support and feedback) predicted work engagement, that work engagement was negatively related to sick leave and that this relation was mediated by subjective health. By showing that health-related indicators could also be outcomes of the motivational process in the JD-R model, we have strengthened the model.
+
+
+
+
+
+
+
+https://munin.uit.no/handle/10037/15801
+
+The results also revealed that both workaholics and work-engaged employees put in more hours at work than was expected of them. We found that workaholism was negatively related to work-related health, whereas work engagement was positively related to work-related health. These findings support the notion of workaholism and work engagement as two different forms of working hard. 
 
 
 
