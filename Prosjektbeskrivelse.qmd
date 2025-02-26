@@ -127,10 +127,10 @@ Sp47a - Selv bestemme når ta pauser fra arbeidet
 
 
 $$
-\begin{align}
+\begin{aligned}
 SF &= \beta_0 + \beta_1JK + \beta_2M + \beta_3FU + \beta_4HA + \epsilon_1 \\
 M &= \alpha_0 + \alpha_1JR + \alpha_2FU + \alpha_3HA + \epsilon_2 
-\end{align}
+\end{aligned}
 $$
 
 SF er sykefravær, JK er jobbkrav, M er motivasjon, FU er Formue ulikhet, HA er Housing Affordability, JR er jobb ressurser.
