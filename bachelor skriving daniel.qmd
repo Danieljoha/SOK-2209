@@ -7,7 +7,7 @@ format:
       - top=20mm
       - left=20mm
       - heightrounded
-    fontsize: 12pt
+    fontsize: 11pt
     documentclass: scrartcl
     papersize: a4
     toc-title: "Innholdsfortegnelse"
@@ -76,19 +76,17 @@ nocite: |
 
 # 1 Innledning
 
-Redegjør for temaområde og oppgavens plass i dette. Presentere problemstilling og hvorfor denne er interessant å finne ut av.
+Denne bacheloroppgaven undersøker sammenhengen mellom sosioøkonomiske forhold og sykefravær, med et spesielt fokus på hvordan endringer i formuefordeling kan påvirke arbeidstakeres helse og fravær fra jobben. Vi benytter en Job Demands-Resources (JDR) modell som teoretisk rammeverk, og analyserer data fra Levekårsundersøkelsen om arbeidsmiljø.
 
+I årene etter finanskrisen har vi observert en økende formueulikhet i mange vestlige land, inkludert Norge. Denne trenden har blitt forsterket etter pandemien, spesielt i boligmarkedet. Lønnsveksten har ikke holdt tritt med prisøkningen på eiendeler, særlig boliger. Dette har gjort det relativt vanskeligere for unge og de med lavere inntekter å opparbeide seg formue, for eksempel gjennom boligkjøp. Vi antar dermed at formuenivået til arbeidstakere har en effekt på spesielt motivasjon og helse, at denne utviklingen kan ha negative konsekvenser for arbeidstakeres motivasjon og helse, og dermed påvirke sykefraværet. Når det blir stadig vanskeligere å oppnå økonomisk trygghet og en akseptabel levestandard, kan det føre til økt stress, redusert jobbmotivasjon, og i verste fall dårligere helse og økt fravær.
 
-## a) Hva omhandler oppgaven – Beskriv temaet i én eller to setninger. Dette kan være hele problemstillingen.
+Å forstå hvordan disse endringene påvirker arbeidstakeres helse og fravær er viktig for å kunne iverksette tiltak som kan motvirke negative konsekvenser av økende formueulikhet. Dette kan være spesielt viktig i en tid hvor vi ser en økende polarisering i samfunnet, og hvor det er viktig å sikre at alle har like muligheter til å oppnå økonomisk trygghet og god helse, uavhengig av formue og inntekt. Problemstillingen for oppgaven er dermed: *Forklarer nivået på formue sykefraværet i Norge?*. Vi vil undersøke om forskjellige formuegrupper har ulikt sykefravær, og om det er en sammenheng mellom formue og sykefravær. Vi vil også se på om det er andre faktorer som påvirker sykefraværet, og om disse faktorene kan forklare eventuelle sammenhenger mellom formue og sykefravær. Vi vil danne oss tre hypoteser basert på teori og tidligere forskning, og teste disse ved hjelp av en multippel regresjonsanalyse, hvor vi kontrollerer for andre relevante faktorer, som for eksempel alder, kjønn, utdanning og yrke.
 
+Tidligere forskning har funnet at sosioøkonomiske forhold, som inntekt og utdanning, har en effekt på helse og sykefravær. @jaeggi2021wealth testet dette på et lite samfunn av innfødte i Tsimane i Bolivia, hvor de fant at økt formue hadde en positiv effekt på helse, mens større ulikhet ledet til respirasjonssykdom som førte til dødelighet. Før vi går gjennom teori og emperi vil vi gå gjennom begrepsavklaringer, hvor vi vil definere formue, sykefravær og andre relevante begreper. Etter teorien vil vi gå dypere inn i tidligere forskning på temaet, og se på hva som er funnet tidligere, og hvilke mekanismer som kan forklare sammenhengen mellom formue og sykefravær.
 
-## b) Motiver hvorfor temaet er viktig å studere fra et samfunns(økonomisk) perspektiv
+Oppgaven er delt inn i følgende kapitler: I kapittel 2 vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. I kapittel 3 vil vi presentere hypotesene for oppgaven. I kapittel 4 vil vi forklare metode og datagrunnlag, og i kapittel 5 vil vi presentere resultatene fra analysen. I kapittel 6 vil vi diskutere resultatene, og i kapittel 7 vil vi konkludere og gi anbefalinger for videre forskning.
 
-## c) Evt. Gi en kort bakgrunn til temaet i Norge 
-
-Kommentar: Rekkefølgen på b og c kan endres.
-
-# 2. Tidligere forskning
+\clearpage
 
 
 ## 2.1 (Relevant til temaet)
@@ -111,8 +109,41 @@ Kommentar: Rekkefølgen på b og c kan endres.
 
 
 
-# 4. Hypoteser
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 2. Tidligere forskning
+
+
+# 4. Hypoteser
 
 
 # 5. Metode og datagrunnlag
