@@ -84,26 +84,36 @@ nocite: |
 
 
 
-
+```{r}
 # 1 Innledning
 
-Redegjør for temaområde og oppgavens plass i dette. Presentere problemstilling og hvorfor denne er interessant å finne ut av.
+# Redegjør for temaområde og oppgavens plass i dette. Presentere problemstilling og hvorfor denne er interessant å finne ut av.
+# 
+# Må inneholde
+# 
+# a) Hva omhandler oppgaven – Beskriv temaet i én eller to setninger. Dette kan være hele problemstillingen.
+# 
+# 
+# b) Motiver hvorfor temaet er viktig å studere fra et samfunns(økonomisk) perspektiv
+# 
+# 
+# c) Evt. Gi en kort bakgrunn til temaet i Norge 
+# 
+# Kommentar: Rekkefølgen på b og c kan endres.
+```
 
 
-## a) Hva omhandler oppgaven – Beskriv temaet i én eller to setninger. Dette kan være hele problemstillingen.
 
-
+## 1.1 Problemstilling
 
 
 Forklarer nivået på formue sykefraværet i Norge? 
 
 
-Denne bacheloroppgaven undersøker sammenhengen mellom sosioøkonomiske forhold og sykefravær. Vi ser på effekten formuenivået påvirker arbeidstakeres helse og fravær fra jobben. 
-
-Vi benytter en Job Demands-Resources (JDR) modell som teoretisk rammeverk, og analyserer data fra Levekårsundersøkelsen om arbeidsmiljø.
 
 
 
+Denne bacheloroppgaven undersøker sammenhengen mellom sosioøkonomiske forhold og sykefravær, med et spesielt fokus på hvordan endringer i formuefordeling kan påvirke arbeidstakeres helse og fravær fra jobben. Vi benytter en Job Demands-Resources (JDR) modell som teoretisk rammeverk, og analyserer data fra Levekårsundersøkelsen om arbeidsmiljø.
 
 
 
@@ -114,30 +124,26 @@ Vi benytter en Job Demands-Resources (JDR) modell som teoretisk rammeverk, og an
 
 
 
-## b) Motiver hvorfor temaet er viktig å studere fra et samfunns(økonomisk) perspektiv
-
+## 1.2 Bakrunn
 
 De siste årene i Norge har sykefraværet hatt en økende trend. Det har vært debatt i media om hvordan man kan redusere sykefraværet. 
 
-
-
-I årene etter finanskrisen har vi observert en økende formueulikhet i mange vestlige land, inkludert Norge. Denne trenden har blitt forsterket etter pandemien, spesielt i boligmarkedet. Lønnsveksten har ikke holdt tritt med prisøkningen på eiendeler, særlig boliger. Dette har gjort det relativt vanskeligere for unge og de med lavere inntekter å opparbeide seg formue, for eksempel gjennom boligkjøp.
-
-Vi antar dermed at formuenivået til arbeidstakere har en effekt på spesielt motivasjon og helse, og dermed påvirker sykefraværet. Når det blir stadig vanskeligere å oppnå økonomisk trygghet og en akseptabel levestandard, kan det føre til økt stress, redusert jobbmotivasjon, og i verste fall dårligere helse og økt fravær. 
-
-
-
-Å forstå disse mekanismene er viktig for å utvikle treffsikre tiltak for å redusere sykefravær og fremme et inkluderende arbeidsliv.
+I årene etter finanskrisen har vi observert en økende formueulikhet i mange vestlige land, inkludert Norge. Denne trenden har blitt forsterket etter pandemien, spesielt i boligmarkedet. Lønnsveksten har ikke holdt tritt med prisøkningen på eiendeler, særlig boliger. Dette har gjort det relativt vanskeligere for unge og de med lavere inntekter å opparbeide seg formue, for eksempel gjennom boligkjøp. Vi antar dermed at formuenivået til arbeidstakere har en effekt på spesielt motivasjon og helse, at denne utviklingen kan ha negative konsekvenser for arbeidstakeres motivasjon og helse, og dermed påvirke sykefraværet. Når det blir stadig vanskeligere å oppnå økonomisk trygghet og en akseptabel levestandard, kan det føre til økt stress, redusert jobbmotivasjon, og i verste fall dårligere helse og økt fravær.
 
 
 
 
-## c) Evt. Gi en kort bakgrunn til temaet i Norge 
-
-Kommentar: Rekkefølgen på b og c kan endres.
 
 
+## 1.3 Arbeidstakers helse og fravær
 
+
+
+
+
+Å forstå hvordan disse endringene påvirker arbeidstakeres helse og fravær er viktig for å kunne iverksette tiltak som kan motvirke negative konsekvenser av økende formueulikhet. Dette kan være spesielt viktig i en tid hvor vi ser en økende polarisering i samfunnet, og hvor det er viktig å sikre at alle har like muligheter til å oppnå økonomisk trygghet og god helse, uavhengig av formue og inntekt. Problemstillingen for oppgaven er dermed: *Forklarer nivået på formue sykefraværet i Norge?*. Vi vil undersøke om forskjellige formuegrupper har ulikt sykefravær, og om det er en sammenheng mellom formue og sykefravær. Vi vil også se på om det er andre faktorer som påvirker sykefraværet, og om disse faktorene kan forklare eventuelle sammenhenger mellom formue og sykefravær. Vi vil danne oss tre hypoteser basert på teori og tidligere forskning, og teste disse ved hjelp av en multippel regresjonsanalyse, hvor vi kontrollerer for andre relevante faktorer, som for eksempel alder, kjønn, utdanning og yrke.
+
+Tidligere forskning har funnet at sosioøkonomiske forhold, som inntekt og utdanning, har en effekt på helse og sykefravær. @jaeggi2021wealth testet dette på et lite samfunn av innfødte i Tsimane i Bolivia, hvor de fant at økt formue hadde en positiv effekt på helse, mens større ulikhet ledet til respirasjonssykdom som førte til dødelighet. Før vi går gjennom teori og emperi vil vi gå gjennom begrepsavklaringer, hvor vi vil definere formue, sykefravær og andre relevante begreper. Etter teorien vil vi gå dypere inn i tidligere forskning på temaet, og se på hva som er funnet tidligere, og hvilke mekanismer som kan forklare sammenhengen mellom formue og sykefravær.
 
 
 
@@ -151,9 +157,10 @@ Kommentar: Rekkefølgen på b og c kan endres.
 
 
 
+## 1.4 Oppsett av oppgaven
 
 
-
+Oppgaven er delt inn i følgende kapitler: I kapittel 2 vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. I kapittel 3 vil vi presentere hypotesene for oppgaven. I kapittel 4 vil vi forklare metode og datagrunnlag, og i kapittel 5 vil vi presentere resultatene fra analysen. I kapittel 6 vil vi diskutere resultatene, og i kapittel 7 vil vi konkludere og gi anbefalinger for videre forskning.
 
 
 
@@ -189,7 +196,7 @@ Kommentar: Rekkefølgen på b og c kan endres.
 
 # 2. Teoretisk grunnlag
 
-
+I dette kapittelet vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. Vi vil først definere begrepene kortfattet, og deretter presentere teori og empiri som er relevant for oppgaven. Vi vil spesielt fokusere på Job Demands-Resources (JDR) modellen, som er et mye brukt rammeverk for å forstå sammenhengen mellom arbeidsmiljø og helse. Vi vil også se på tidligere forskning på temaet, og se på hva som er funnet tidligere, og hvilke mekanismer som kan forklare sammenhengen mellom formue og sykefravær.
 
 
 ## 2.1 Definere begrepene kortfattet
@@ -208,10 +215,35 @@ Kommentar: Rekkefølgen på b og c kan endres.
 ### c) Job Demands-Resources (JDR) modell
 
 
+JD-R Modellen et rammeverk for å beskrive hvordan arbeidsmiljøet påvirker helse og trivsel. Modellen skiller mellom to typer faktorer: job demands (arbeidskrav) og job resources (arbeidsressurser). Grunnantagelsen i modellen er at enhver jobb har jobbkrav og jobbressurser som kan påvirke trivsel og helse. 
+
+
+
+https://www.wilmarschaufeli.nl/publications/Schaufeli/476.pdf
+
+
+Grunnen til at vi velger JD-R modellen er fordi vi forventer at formuenivå kan forandre jobbkrav og jobbressurser. Vi tenker også at formuenivået har mye å si til også hvor mye jobbkrav og jobbressurser påvirker personer. 
+
+
+
+
 #### Jobbkrav
+
+Jobbkrav er de fysiske, psykiske, sosiale eller organisasjonelle aspektene ved jobben som krever en vedvarende innsats og som kan føre til stress og utmattelse. Denne typen krav er forbundet med negative helseutfall, som for eksempel utbrenthet og sykefravær. 
+
+De mest vanlige jobbkravene er arbeidsmengde og tidspress. Det kan være positive og negative jobbkrav. Positive jobbkrav kan være utfordrende og motiverende, mens negative jobbkrav kan være overveldende og føre til stress og utmattelse. Når dette da skjer over tid kan det føre til sykefravær og dårligere helse.
+
+#### Må legge til sources
+
 
 
 #### Jobbressurser
+
+
+Jobbressurser er på den motsatte siden aspektene ved jobben som kan bidra til å oppnå arbeidsmål, redusere jobbkrav, forbedre trivsel og helse, og fremme personlig vekst og utvikling. Jobbressurser kan være støtte fra kolleger og ledelse, muligheter for utvikling og læring, og fleksibilitet i arbeidsoppgaver.
+
+
+
 
 
 
@@ -220,6 +252,17 @@ Kommentar: Rekkefølgen på b og c kan endres.
 
 
 ## Gjør rede for relevant teori på temaområdet med særlig fokus på den teorien dere har valgt å benytte for å svare på problemstillingen.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -513,16 +556,16 @@ Dette kapitlet drøfter resultatene i forhold til problemstillingen. Hva er funn
 
 
 ```{r}
-rm(list = ls())
-library(tidyverse)
-library(zoo)
-library(scales)
-library(ggrepel)
-library(readxl)
-library(httr)
-library(jsonlite)
-library(rjstat)
-library(readr)
+# rm(list = ls())
+# library(tidyverse)
+# library(zoo)
+# library(scales)
+# library(ggrepel)
+# library(readxl)
+# library(httr)
+# library(jsonlite)
+# library(rjstat)
+# library(readr)
 ```
 
 
@@ -1080,11 +1123,11 @@ I løpet av koden så kan det ses mange \# kommentarer der det er skrevet for ek
 
 
 
-## 13760 Arbeidsstyrken, sysselsatte, arbeidsledige og utførte ukeverk for personer 15-74 år, etter kjønn, alder, type justering, måned og statistikkvariabel
+
 
 
 ```{r}
-
+## 13760 Arbeidsstyrken, sysselsatte, arbeidsledige og utførte ukeverk for personer 15-74 år, etter kjønn, alder, type justering, måned og statistikkvariabel
 
 
 
@@ -1169,11 +1212,11 @@ I løpet av koden så kan det ses mange \# kommentarer der det er skrevet for ek
 
 
 
-## 12439: Sykefravær for lønnstakere(prosent), etter kjønn, type sykefravær, kvartal og statistikkvariabel
-
 
 
 ```{r}
+
+## 12439: Sykefravær for lønnstakere(prosent), etter kjønn, type sykefravær, kvartal og statistikkvariabel
 
 
 # 
@@ -1591,7 +1634,16 @@ Kapitalinntekter som rente/aksje osv i forhold til bruttofinanskapital i alt. ka
 
 
 
+### Formueeffekt på konsum
+
+https://fnce.wharton.upenn.edu/wp-content/uploads/2019/08/chodorowreich-crns_stock_wealth_effects.pdf
+
+for hver dollar i formue du har så har du 0.028usd mer i konsum eller noe
 
 
+https://usa.visa.com/partner-with-us/visa-consulting-analytics/economic-insights/the-sudden-increase-in-the-wealth-effect-and-its-impact-on-spending.html
 
+så vi kan vise til hvordan de med lav formue da kan være tvungen til å ta mer tima selv med lav motivasjon
+for samme konsumnivå
+fant det tilfeldigvis her https://www.economist.com/finance-and-economics/2025/03/19/the-trump-administration-is-playing-a-dangerous-stockmarket-game
 
