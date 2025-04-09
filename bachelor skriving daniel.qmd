@@ -7,7 +7,8 @@ format:
       - top=20mm
       - left=20mm
       - heightrounded
-    fontsize: 11pt
+    fontsize: 12pt
+    mainfont: Times New Roman
     documentclass: scrartcl
     papersize: a4
     toc-title: "Innholdsfortegnelse"
@@ -29,6 +30,8 @@ header-includes:
   - \usepackage{cancel}
   - \usepackage{hyperref}
   - \usepackage{tikz}
+  - \usepackage{setspace}
+  - \setstretch{1.5}
   - \usetikzlibrary{shapes.geometric, arrows, arrows.meta, positioning, calc}
   - \usepackage{tabularx}
   - \renewcommand{\maketitle}{}
@@ -58,7 +61,7 @@ nocite: |
 
 
 
-
+Vi vil takke vår veileder Espen Sirnes for strålende veiledning og flotte samtaler på kontoret og Derek J. Clark for ekstra tilbakemeldinger under skriving.
 
 
 \newpage
@@ -73,10 +76,15 @@ nocite: |
 \newpage
 ```
 
+# Sammendrag
+
+Sammendrag her
+
+\newpage
 
 # 1 Innledning
 
-Denne bacheloroppgaven undersøker sammenhengen mellom sosioøkonomiske forhold og sykefravær, med et spesielt fokus på hvordan endringer i formuefordeling kan påvirke arbeidstakeres helse og fravær fra jobben. Vi benytter en Job Demands-Resources (JDR) modell som teoretisk rammeverk, og analyserer data fra Levekårsundersøkelsen om arbeidsmiljø.
+Denne bacheloroppgaven undersøker sammenhengen mellom sosioøkonomiske forhold og sykefravær, med et spesielt fokus på hvordan endringer i formuefordeling kan påvirke arbeidstakeres helse og fravær fra jobben. Vi benytter en Job Demands-Resources (JD-R) modell som teoretisk rammeverk, og analyserer data fra Levekårsundersøkelsen om arbeidsmiljø.
 
 I årene etter finanskrisen har vi observert en økende formueulikhet i mange vestlige land, inkludert Norge. Denne trenden har blitt forsterket etter pandemien, spesielt i boligmarkedet. Lønnsveksten har ikke holdt tritt med prisøkningen på eiendeler, særlig boliger. Dette har gjort det relativt vanskeligere for unge og de med lavere inntekter å opparbeide seg formue, for eksempel gjennom boligkjøp. Vi antar dermed at formuenivået til arbeidstakere har en effekt på spesielt motivasjon og helse, at denne utviklingen kan ha negative konsekvenser for arbeidstakeres motivasjon og helse, og dermed påvirke sykefraværet. Når det blir stadig vanskeligere å oppnå økonomisk trygghet og en akseptabel levestandard, kan det føre til økt stress, redusert jobbmotivasjon, og i verste fall dårligere helse og økt fravær.
 
@@ -86,7 +94,10 @@ Tidligere forskning har funnet at sosioøkonomiske forhold, som inntekt og utdan
 
 Oppgaven er delt inn i følgende kapitler: I kapittel 2 vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. I kapittel 3 vil vi presentere hypotesene for oppgaven. I kapittel 4 vil vi forklare metode og datagrunnlag, og i kapittel 5 vil vi presentere resultatene fra analysen. I kapittel 6 vil vi diskutere resultatene, og i kapittel 7 vil vi konkludere og gi anbefalinger for videre forskning.
 
-\clearpage
+\newpage
+
+# 2. Teori
+
 
 
 ## 2.1 (Relevant til temaet)
@@ -103,44 +114,11 @@ Oppgaven er delt inn i følgende kapitler: I kapittel 2 vil vi gi en teoretisk b
 
 
 
-# 3. Teoretisk grunnlag
+# 3. Teori
 
 ## Gjør rede for relevant teori på temaområdet med særlig fokus på den teorien dere har valgt å benytte for å svare på problemstillingen.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 2. Tidligere forskning
 
 
 # 4. Hypoteser
