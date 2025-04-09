@@ -105,9 +105,7 @@ I dette kapittelet vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede 
 
 ## 2.1 JD-R modellen
 
-JD-R Modellen et rammeverk for å beskrive hvordan arbeidsmiljøet påvirker helse og trivsel. Modellen skiller mellom to typer faktorer: job demands (arbeidskrav) og job resources (arbeidsressurser). Grunnantagelsen i modellen er at enhver jobb har jobbkrav og jobbressurser som kan påvirke trivsel og helse. 
-
-
+Job Demands-Resources (JDR) modellen er et rammeverk for å forstå hvordan arbeidsmiljøet påvirker helse og trivsel. Modellen skiller mellom to typer faktorer: job demands (arbeidskrav) og job resources (arbeidsressurser). Job demands refererer til kravene og utfordringene som ansatte møter i jobben, mens job resources refererer til de ressursene og støtten som ansatte har tilgjengelig for å håndtere disse kravene. Modellen antyder at en balanse mellom jobbkrav og jobbressurser er viktig for å opprettholde helse og trivsel på arbeidsplassen. Høyere jobbkrav kan føre til stress og utbrenthet, mens høyere jobbressurser kan føre til økt motivasjon og trivsel.
 
 https://www.wilmarschaufeli.nl/publications/Schaufeli/476.pdf
 
@@ -124,11 +122,28 @@ Eventuelle testhypoteser
 
 Nevnt i innledningen studerte @jaeggi2021wealth effekten av ulikhet i formue i et småskala samfunn av innfødte i Tsimane i Bolivia hvor det var 871 observasjoner med i studien, $n = 871$. I studiet testet de hvorvidt relativ husholdningrikdom og ulikhet i formue mot forskjellige psykologiske variabler og helseutfall som depresjon, BMI, blodtrykk og sykelighet. Dette ble testet mot kontrollvariabler, og resulterende fant de en kobling mellom formueulikhet hvor de med lavere formue hadde større sannsynlighet for å få høyere blodtrykk og luftveissykdommer som kunne lede til dødsfall. De fant også at de med høyere formue hadde lavere sannsynlighet for å få depresjon og høyere BMI. Dette kan tyde på at ulikhet i formue kan ha en negativ effekt på helse og livskvalitet, og vi vil videre bygge på dette i vår oppgave, for å se om det er en sammenheng mellom formue og sykefravær i Norge, og om det er andre faktorer som kan påvirke sykefraværet.
 
+
 ### Makro
 
 Forklar kortfattet hva tidligere forskning har funnet generelt om problemstillingen (hvorfor det er viktig å studere fra et samfunnsperspektiv)
 
-## 2.4 Definere begrepene kortfattet
+## 2.4 Begrepsdefinisjoner
+
+### a) Formue
+
+Formue er et begrep som refererer til den totale verdien av eiendeler og investeringer som en person eller husholdning eier. Dette inkluderer kontanter, eiendom, aksjer, obligasjoner og andre finansielle eiendeler. Formue kan også referere til nettoformue, som er forskjellen mellom eiendeler og gjeld. Formue kan påvirke livskvalitet, helse og muligheter for økonomisk trygghet.
+
+### b) Sykefravær
+
+Sykefravær refererer til perioden en ansatt er borte fra jobb på grunn av sykdom eller skade. Det kan være kortvarig eller langvarig, og kan påvirkes av en rekke faktorer, inkludert helse, arbeidsmiljø og sosioøkonomiske forhold. Sykefravær kan ha betydelige konsekvenser for både arbeidstakere og arbeidsgivere, inkludert tap av inntekt, redusert produktivitet og økte kostnader for helsevesenet.
+
+### c) Ulikhet
+
+Ulikhet refererer til forskjeller i ressurser, muligheter og livsvilkår mellom individer eller grupper i samfunnet. Dette kan inkludere ulikhet i inntekt, formue, utdanning og helse. Ulikhet kan påvirke livskvalitet, helse og muligheter for økonomisk trygghet, og kan også ha negative konsekvenser for samfunnet som helhet, inkludert økt kriminalitet, politisk ustabilitet og redusert sosial sammenhengskraft.
+
+### d) Andre relevante begreper
+
+
 
 ## 2.5 Forklar teori og empiriske funn knyttet til koblingen som du vil undersøke. Være nøye med å gjøre rede for mekanismer!
 
