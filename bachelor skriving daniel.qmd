@@ -94,46 +94,60 @@ Tidligere forskning har funnet at sosioøkonomiske forhold, som inntekt og utdan
 
 Oppgaven er delt inn i følgende kapitler: I kapittel 2 vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. I kapittel 3 vil vi presentere hypotesene for oppgaven. I kapittel 4 vil vi forklare metode og datagrunnlag, og i kapittel 5 vil vi presentere resultatene fra analysen. I kapittel 6 vil vi diskutere resultatene, og i kapittel 7 vil vi konkludere og gi anbefalinger for videre forskning.
 
+Avslutningsvis i appendiks har vi med relevant kode som er brukt for å analysere dataene og en oversikt over testene som er gjort i analysen, og til slutt en oversikt rundt bruk av kunstig intelligens i oppgaven.
 \newpage
 
-# 2. Teori
+# 2 Teori
+
+I dette kapittelet vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. Vi vil først definere begrepene kortfattet, og deretter presentere teori og empiri som er relevant for oppgaven. Vi vil spesielt fokusere på Job Demands-Resources (JDR) modellen, som er et mye brukt rammeverk for å forstå sammenhengen mellom arbeidsmiljø og helse. Vi vil også se på tidligere forskning på temaet, og se på hva som er funnet tidligere, og hvilke mekanismer som kan forklare sammenhengen mellom formue og sykefravær.
 
 
 
-## 2.1 (Relevant til temaet)
-• Definisjon/forklaring av hva begrepene betyr
-• Forklaring av hvorfor dette er viktig for samfunnet
+## 2.1 JD-R modellen
 
-## 2.2 (Relevant til problemstillingen)
-
-### a) Definere begrepene kortfattet
-
-### b) Forklar kortfattet hva tidligere forskning har funnet generelt om problemstillingen (hvorfor det er viktig å studere fra et sammfunsperspektiv)
-
-### c) Forklar teori og empiriske funn knyttet til koblingen som du vil undersøke. Være nøye med å gjøre rede for mekanismer!
+JD-R Modellen et rammeverk for å beskrive hvordan arbeidsmiljøet påvirker helse og trivsel. Modellen skiller mellom to typer faktorer: job demands (arbeidskrav) og job resources (arbeidsressurser). Grunnantagelsen i modellen er at enhver jobb har jobbkrav og jobbressurser som kan påvirke trivsel og helse. 
 
 
 
-# 3. Teori
-
-## Gjør rede for relevant teori på temaområdet med særlig fokus på den teorien dere har valgt å benytte for å svare på problemstillingen.
+https://www.wilmarschaufeli.nl/publications/Schaufeli/476.pdf
 
 
+Grunnen til at vi velger JD-R modellen er fordi vi forventer at formuenivå kan forandre jobbkrav og jobbressurser. Vi tenker også at formuenivået har mye å si til også hvor mye jobbkrav og jobbressurser påvirker personer. 
+
+## 2.2 Hypoteser
+
+Eventuelle testhypoteser
+
+## 2.3 Tidligere empirisk forskning
+
+### Mikro
+
+Nevnt i innledningen studerte @jaeggi2021wealth effekten av ulikhet i formue i et småskala samfunn av innfødte i Tsimane i Bolivia hvor det var 871 observasjoner med i studien, $n = 871$. I studiet testet de hvorvidt relativ husholdningrikdom og ulikhet i formue mot forskjellige psykologiske variabler og helseutfall som depresjon, BMI, blodtrykk og sykelighet. Dette ble testet mot kontrollvariabler, og resulterende fant de en kobling mellom formueulikhet hvor de med lavere formue hadde større sannsynlighet for å få høyere blodtrykk og luftveissykdommer som kunne lede til dødsfall. De fant også at de med høyere formue hadde lavere sannsynlighet for å få depresjon og høyere BMI. Dette kan tyde på at ulikhet i formue kan ha en negativ effekt på helse og livskvalitet, og vi vil videre bygge på dette i vår oppgave, for å se om det er en sammenheng mellom formue og sykefravær i Norge, og om det er andre faktorer som kan påvirke sykefraværet.
+
+### Makro
+
+Forklar kortfattet hva tidligere forskning har funnet generelt om problemstillingen (hvorfor det er viktig å studere fra et samfunnsperspektiv)
+
+## 2.4 Definere begrepene kortfattet
+
+## 2.5 Forklar teori og empiriske funn knyttet til koblingen som du vil undersøke. Være nøye med å gjøre rede for mekanismer!
 
 
-# 4. Hypoteser
 
+\newpage
 
-# 5. Metode og datagrunnlag
+# 3 Metode og data
 
 Forklar og begrunn metodevalg i henhold til problemstillingen. Beskriv hvordan data til oppgaven er fremskaffet. Gi en innledende oversikt over data (deskriptiv statistikk).
 
+## 3.1 Metode
 
-## 5.1 Datamaterial
 
-## 5.1..1 Datakilde og utvalg
+## 3.2 Data
 
-## 5.1..2 Variabler
+## 3.3 Datakilde og utvalg
+
+## 3.4 Variabler
 
 ### a) Avhengig variabel
 
@@ -141,10 +155,15 @@ Forklar og begrunn metodevalg i henhold til problemstillingen. Beskriv hvordan d
 
 ### c) Kontrollvariabler
 
+## 3.4 Deskriptiv statistikk
+
 Kommentar: Deskriptiv statistikk kan evt legges til som avsnitt 5.1.3
 
+\newpage
 
-## 5.2 Økonometrisk modell
+# 4 Empiri 
+
+## 4.1 Økonometrisk modell
 
 ### a) Ligning til modellen
 
@@ -154,26 +173,7 @@ Kommentar: Deskriptiv statistikk kan evt legges til som avsnitt 5.1.3
 
 Kommentar: C kan tas først eller sist.
 
-
-
-# 6. Resultat
-
-Her presenteres den empiriske analysen og dens resultater. Vanligvis vil en empirisk analyse bestå av en regresjonsanalyse med flere variabler. Andre muligheter kan diskuteres med veilederen.
-
-
-
-## 6.1 Deskriptiv statistikk
-
-### a) Tabell med alle variabler som er tatt med i analysen
-
-### b) Eventuelt figurer over «problematiske» variabler
-
-### c) Kommentarer til datamaterialet
-
-Kommentar: avsnitt 6.1 kan flyttes til et avsnitt 5.1.3
-
-
-## 6.2 Økonometrisk analyse
+## 4.2 Økonometrisk analyse
 
 ### a) Tabell med resultat fra regresjonsanalysen(e)
 
@@ -184,8 +184,25 @@ Kommentar: avsnitt 6.1 kan flyttes til et avsnitt 5.1.3
 ### d) Redegjørelse for svakheter i modellen/data
 
 
+\newpage
 
-# 7. Diskusjon
+# 5 Resultat
+
+Her presenteres den empiriske analysen og dens resultater. Vanligvis vil en empirisk analyse bestå av en regresjonsanalyse med flere variabler. Andre muligheter kan diskuteres med veilederen.
+
+
+## 5.1 Tabeller
+
+## 5.2 Figurer
+
+## 5.3 Forklaring av tabeller og figurer
+
+
+
+
+\newpage
+
+# 6 Diskusjon
 
 Dette kapitlet drøfter resultatene i forhold til problemstillingen. Hva er funnet ut av, hva gjenstår, hvilke styrker og svakheter har analysen?
 
@@ -203,154 +220,25 @@ Dette kapitlet drøfter resultatene i forhold til problemstillingen. Hva er funn
 ## e) Eventuelt: diskusjon av hva framtidig forskning kan forske videre på (basert påderes funn og svakheter i analysen)
 
 
+\newpage
 
+# 7 Vedlegg
 
-# notater
+Her legger vi til vår QMD fil.
 
-er det avvik mellom fastsatt arbeidstid og hvor mye folk arbeider?
 
-Er folk overarbeidet?
 
+# Appendiks
 
-Hvordan har antall legebesøk endret seg samtidig som legemeldt sykefravær har endret seg. er leger overarbeidet og skriver ut for mye sykefravær? 
+## Kode
 
-Er sykefraværet et problem? Hvordan har sysselsettingsrate endret seg med sykefravær? er det spesiell korrelasjon mellom egenmeldt og legemeldt der?
+## Tester
 
+## Kunstig intelligens
 
-Dårlig ledelse og lite engasjerte arbeidere?
+\newpage
 
-https://www.dagensperspektiv.no/synspunkt/benedicte-langseth-eide-svarer-hr-norge-om-sykefravaer-og-ledelse/1262876
-
-
-https://www.nord24.no/nar-bedriftene-sliter-med-hoyt-sykefravar-ringer-de-benedicte-disse-tiltakene-nytter/s/5-32-197683
-
-
-https://www.mdpi.com/1660-4601/18/8/4327
-
-
-The results provide longitudinal evidence that two well-established job resources (i.e., social support and feedback) predicted work engagement, that work engagement was negatively related to sick leave and that this relation was mediated by subjective health. By showing that health-related indicators could also be outcomes of the motivational process in the JD-R model, we have strengthened the model.
-
-
-
-
-https://munin.uit.no/handle/10037/15801
-
-The results also revealed that both workaholics and work-engaged employees put in more hours at work than was expected of them. We found that workaholism was negatively related to work-related health, whereas work engagement was positively related to work-related health. These findings support the notion of workaholism and work engagement as two different forms of working hard. 
-
-
-
-
-Kanskje en form for "intensitet" i hvor sensitiv du er. 
-
-
-
-Jeg tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt.
-
-
-
-trur vi blir å få noe bue på den effekten. fattige, vanlige, rike, megarike vil ha ulik effekt av motivasjon og sånt. e du megarik så har det jo ingenting og si, e du syk eller vil ta fri så blir du hjemme, men samtidig så vil du kanskje være spesielt sensitiv om du e fattig og at om du da e syk eller vil ta fri så vil du både ha dårligere utgangspunkt i jobbtype og sånt, og også kunne rett å slett være mer syk
-
-mens de i midten rundt "vanlige" mot bare rike kan ha 0 effekt, men kommer vel an på kor mye man ska mene formue har å si til hvor sensitiv du er til endringer eller potentielle endringer i inntekt
-derfor æ tenkte å bare ha det til å være en funksjon av formue kunne være enklere
-motivasjon og sånt altså
-både på bunn og på topp så vil du også ha økt den stygge m'en ved at du får statlige overføringe som fattig
-men mye kapitalfortjeneste som rik
-
-
-så formue har effekt på hvor mye utdanning du har. formue har effekt på hvilken motivasjon du har. formue har effekt på m som er annen inntekt utenom jobb. 
-
-
-g = formue, j = alder, k = utdanning, l = motivasjon
-
-* v = dummyvariabel
-
-$$
-t^a = h^* - \alpha w - \beta(m(g) + h^*w) - (k\cdot v+j\cdot v)
-$$
-
-Dummy variabler for ulike aldersgrupper. beholde en ligning for alle men da bruke de dummyvariablene. dermed kunne tolke bare en variabel. 
-
-
-forskjellige typer inntekt påvirke forskjellig i m variabelen. 
-
-
-Grunn til cb er at den er enkel og at vi nesten alltid tar log av dataen. om vi har 0 variabler så blir det bare tull.
-
-
-### Inntektsfattigdom og levekårsfattigdom
-
-https://www.ssb.no/sosiale-forhold-og-kriminalitet/artikler-og-publikasjoner/inntektsfattig-eller-levekaarsfattig 
-
-
-Hva så med en mer absolutt tilnærming i form av et forbruksbudsjett inkludert faktiske bokostnader? Det enkleste målet som ikke tar hensyn til verken studenter eller formuende, har omtrent like sterk sammenheng med levekårsfattigdom som den vi finner ved EU60, og dermed noe sterkere enn ved OECD50. Ved å holde studenter og/eller formuende utenfor definisjonen med budsjettilnærming, får vi de samme virkningene som vi har sett tidligere. Det å holde formuende utenfor bidrar til sterkere sammenheng med levekårsfattigdom, mens det å holde studenter utenfor ikke gjør det.
-
-Våre funn viser dermed at det ikke er avgjørende om vi definerer inntektsfattigdom absolutt (ved bruk av husholdningsbudsjett) eller relativt (ved bruk av ekvivalensskala og inntektsfordeling) når vi ser på sammenhengen med levekårsfattigdom. Den viktigste faktoren synes å være at vi tar hensyn til formue, som er en buffer mot mange av levekårsproblemene. Det har imidlertid ikke særlig betydning å ta hensyn til studenter i denne sammenhengen, selv om det bidrar til å redusere andelen inntektsfattige
-
-
-
-
-
-### Helse og formue
-
-https://pmc.ncbi.nlm.nih.gov/articles/PMC8225390/
-
-controlling for community-average wealth, age, sex, household size, community size, and distance to markets. Wealthier people largely had better outcomes while inequality associated with more respiratory disease, a leading cause of mortality. Greater inequality and lower wealth were associated with higher blood pressure. Psychosocial factors did not mediate wealth-health associations. Thus, relative socio-economic position and inequality may affect health across diverse societies, though this is likely exacerbated in high-income countries.
-
-### Gatsby curve
-
-
-"great gatsby curve" med vedvarende inntekt på tvers av generasjoner. og siden fattige ikke blir spesielt mye fattigere enn middelklassen, men at det heller er rikere som flyr fremover. -> kanskje større forskjell på median og gjennomsnittlig inntekt/formue altså flere som er ikke rike som jobber i mer sånn lav inntekt yrker og barnehager å sånt me mye sykdom
-
-
-
-
-
-### karriærevalg, utdanning osv.
-
-fattigere har dårligere tilgang på "career role models" som gjør at de kanskje ikke vet om de bedre yrkene og sånt og dermed igjen blir mindre utdanna og sånt
-https://www.gallup.com/analytics/506696/amazon-research-hub.aspx
-
-
-
-### Stress? glemte studie her
-
-inntektsusikkerhet -> økt stress
-
-
-
-
-
-### Motivasjonseffekt av ulikhet
-
-
-"The motivational cost of inequality: Opportunity gaps reduce the willingness to work"
-https://pmc.ncbi.nlm.nih.gov/articles/PMC7473543/
-
-
-https://www.brookings.edu/articles/income-inequality-social-mobility-and-the-decision-to-drop-out-of-high-school/
-
-
-ulikhet gjør at fattige blir mindre motivert siden dem føler det å bli rik er "umulig" og dermed investerer mindre i seg -> lavere motivasjon og lavere utdanning. 
-kanskje mer fysisk arbeid. 
-
-
-## Notater
-
-
-
-
-Har høy/lav formue effekt på motivasjonen fra lønnen til arbeid. 
-lav formue + høy lønn = høy motivasjon? 
-høy formue + høy lønn = "bryr meg ikke" =  høy formue+ lav lønn, 
-lav formue + lav lønn = lav motivajon
-
-
-
-Kapitalinntekter som rente/aksje osv i forhold til bruttofinanskapital i alt. kan det være at de med høy formue utenom bolig da har mer andre inntekter, eller at høy formue bare er lik bolig for mange. 
-
-
-
-
+# Referanser
 
 
 
