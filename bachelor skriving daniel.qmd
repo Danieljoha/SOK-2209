@@ -186,9 +186,11 @@ Forklar og begrunn metodevalg i henhold til problemstillingen. Beskriv hvordan d
 
 I dette kapitlet går vi gjenom metode og datagrunnlag for oppgaven. Vi vil først forklare metodevalget, og deretter beskrive datagrunnlaget og hvordan dataene er fremskaffet. Vi vil også gi en innledende oversikt over dataene, inkludert deskriptiv statistikk for alle variablene i analysen. 
 
-## 3.1 Structural Equation Model (SEM)
+## 3.1 Metode
 
 I oppgaven vil vi bruke en kvantitativ metode for å analysere sammenhengen mellom formue og sykefravær. Vi vil bruke en Structural Equation Model (SEM) for å teste hypotesene våre, og vi vil kontrollere for andre relevante faktorer som kan påvirke sykefraværet. SEM er en statistisk metode som gjør det mulig å teste komplekse modeller med flere variabler, og som kan håndtere både direkte og indirekte sammenhenger mellom variablene. Vi vil bruke R for å gjennomføre analysen, og vi vil bruke pakker som x og x for å implementere SEM-modellen.
+
+## 3.2 Structural Equation Model (SEM)
 
 ### a) Ligning til modellen
 
