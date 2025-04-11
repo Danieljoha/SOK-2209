@@ -215,7 +215,7 @@ I dette kapittelet vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede 
 ### c) Job Demands-Resources (JDR) modell
 
 
-JD-R Modellen et rammeverk for å beskrive hvordan arbeidsmiljøet påvirker helse og trivsel. Modellen skiller mellom to typer faktorer: job demands (arbeidskrav) og job resources (arbeidsressurser). Grunnantagelsen i modellen er at enhver jobb har jobbkrav og jobbressurser som kan påvirke trivsel og helse. 
+JD-R Modellen et rammeverk for å beskrive hvordan arbeidsmiljøet påvirker helse og trivsel. Modellen skiller mellom to typer faktorer: jobbkrav (job demands) og jobbressurser (job resources). Grunnantagelsen i modellen er at enhver jobb har jobbkrav og jobbressurser som kan påvirke trivsel og helse. 
 
 
 
@@ -249,6 +249,80 @@ Jobbressurser er på den motsatte siden aspektene ved jobben som kan bidra til �
 
 
 ## 2.2 Modelloppsett
+
+
+trur kanskje formue effekt er veldig kraftig på ung alder
+
+
+
+### Hovedmodell for sykefravær (SF)
+
+**chatgpt**
+Vi antar at sykefraværet (SF) i hovedsak påvirkes av:
+
+Jobbkrav (JK) (effekten av arbeidsbelastning),
+
+Motivasjon (M) (som en mekanisme/medierende faktor),
+
+Formuenivå (FU) (som hovedprediktor og også direkte påvirker SF),
+
+I tillegg kan vi inkludere en mengde kontrollvariabler (samlet betegnet som XX) som for eksempel avtalte dager, demografi, arbeidsrelaterte forhold osv.
+**chatgpt**
+
+
+$$
+SF_i = \beta_0 + \beta_1 JK_i + \beta_2 M_i + \beta_3 FN_i + \Sigma_j \beta_{4j}X_{ij} + \epsilon_{1i}
+$$
+
+Der 
+$i$ er individet,
+$\beta_0$ er konstanten,
+$\beta_1$, $\beta_2$, $\beta_3$ er koeffisientene for henholdsvis jobbkrav, motivasjon og formuenivå,
+$\Sigma_j \beta_{4j}X_{ij}$ fanger opp effekter av eventuelle kontrollvariabler,
+$\epsilon_{1i}$ er feilleddet.
+
+**chatgpt**
+Denne likningen innebærer at formuenivået ikke bare antas å ha en direkte effekt på sykefravær, men via motivasjon så kan effekten også gå via en indirekte kanal.
+**chatgpt**
+
+
+
+
+### Modell for motivasjon (M)
+**chatgpt**
+Motivasjonen antas å bli påvirket av:
+
+Jobbressurser (JR) (dvs. støtte og autonomi i arbeidet),
+
+Formuenivå (FN) (som antas å påvirke hvor sensitiv man er for endringer i inntekt – dvs. hvordan man prioriterer fritid/arbeid),
+
+En ytterligere faktor, her betegnet som HAHA (dette kan for eksempel representere annen inntekt eller en relaterbar variabel som fanger opp ekstra individuelle forskjeller),
+
+I tillegg kan vi inkludere et sett med kontrollvariabler (samlet kalt ZZ), som f.eks. utdanning eller andre relevante demografiske/yrkesmessige mål.
+**chatgpt**
+
+
+
+$$
+M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \alpha_3 HAHA_i(wtf) + \Sigma_k \alpha_{4k}Z_{ik} + \epsilon_{2i}
+$$
+
+Der
+$\alpha_0$ er konstanten,
+$\alpha_1$, $\alpha_2$, $\alpha_3$ er koeffisientene for henholdsvis jobbressurser, formuenivå og den ekstra faktoren $HA$,
+$\Sigma_k \alpha_{4k}Z_{ik}$ fanger opp effekter av eventuelle kontrollvariabler,
+$\epsilon_{2i}$ er feilleddet.
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Gjør rede for relevant teori på temaområdet med særlig fokus på den teorien dere har valgt å benytte for å svare på problemstillingen.
