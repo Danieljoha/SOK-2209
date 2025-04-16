@@ -102,7 +102,7 @@ Avslutningsvis i appendiks har vi med relevant kode som er brukt for å analyser
 I dette kapittelet vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. Vi vil først definere begrepene kortfattet, og deretter presentere teori og empiri som er relevant for oppgaven. Vi vil spesielt fokusere på Job Demands-Resources (JDR) modellen, som er et mye brukt rammeverk for å forstå sammenhengen mellom arbeidsmiljø og helse. Vi vil også se på tidligere forskning på temaet, og se på hva som er funnet tidligere, og hvilke mekanismer som kan forklare sammenhengen mellom formue og sykefravær.
 
 
-## 2.1 JD-R modellen
+## 2.1 Job Demands-Resources (JDR) modellen
 
 Job Demands-Resources (JDR) modellen er et rammeverk for å forstå hvordan arbeidsmiljøet påvirker helse og trivsel. Modellen skiller mellom to typer faktorer: jobbkrav (job demands) og jobbressurser (job resources). Jobbkrav refererer til kravene og utfordringene som ansatte møter i jobben, mens jobbressurser refererer til de ressursene og støtten som ansatte har tilgjengelig for å håndtere disse kravene. Modellen antyder at en balanse mellom jobbkrav og jobbressurser er viktig for å opprettholde helse og trivsel på arbeidsplassen. Høyere jobbkrav kan føre til stress og utbrenthet, mens høyere jobbressurser kan føre til økt motivasjon og trivsel.
 
@@ -157,9 +157,22 @@ I Norge i dag så dekkes sykemelding av folketrygden, og arbeidsgiver betaler sy
 
 Jobbkrav refererer til de kravene og utfordringene som ansatte møter i jobben. Dette kan inkludere arbeidsmengde, tidsfrister, emosjonelle krav og fysiske krav. Jobbkrav kan påvirke helse og trivsel, og kan føre til stress og utbrenthet hvis de er for høye eller ikke håndteres på en god måte.
 
+
+De mest vanlige jobbkravene er arbeidsmengde og tidspress. Det kan være positive og negative jobbkrav. Positive jobbkrav kan være utfordrende og motiverende, mens negative jobbkrav kan være overveldende og føre til stress og utmattelse. Når dette da skjer over tid kan det føre til sykefravær og dårligere helse.
+
+#### Må legge til sources
+
+
+
+
+
+
+
 ### d) Jobbressurser
 
 Jobbressurser refererer til de ressursene og støtten som ansatte har tilgjengelig for å håndtere jobbkravene. Dette kan inkludere støtte fra kolleger og ledelse, muligheter for utvikling og læring, og fleksibilitet i arbeidsoppgaver. Jobbressurser kan bidra til å redusere stress og utbrenthet, og kan øke jobbengasjement og trivsel.
+
+Jobbressurser kan være støtte fra kolleger og ledelse, muligheter for utvikling og læring, og fleksibilitet i arbeidsoppgaver.
 
 ### e) Jobbengasjement
 
@@ -175,7 +188,6 @@ Utbrenthet refererer til en tilstand av fysisk og emosjonell utmattelse som kan 
 
 
 ## 2.5 Forklar teori og empiriske funn knyttet til koblingen som du vil undersøke. Være nøye med å gjøre rede for mekanismer!
-
 
 
 \newpage
@@ -283,7 +295,10 @@ Her legger vi til vår QMD fil.
 
 # Referanser
 
+::: {#refs}
+:::
 
+\clearpage
 
 
 
