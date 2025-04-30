@@ -303,21 +303,39 @@ $\epsilon_{2i}$ er feilleddet.
 
 # 3 Metode og data
 
-Forklar og begrunn metodevalg i henhold til problemstillingen. Beskriv hvordan data til oppgaven er fremskaffet. Gi en innledende oversikt over data (deskriptiv statistikk).
+I dette kapitlet går vi gjennom datagrunnlag og metode for oppgaven. Vi vil først forklare hvordan dataene er fremskaffet, så forklare variablene, og til slutt forklare metoden. Vi vil også gi en innledende oversikt over dataene, inkludert deskriptiv statistikk for alle variablene i analysen.
 
-I dette kapitlet går vi gjennom datagrunnlag og metode for oppgaven. Vi vil først forklare hvordan dataene er fremskaffet, så beskrive datagrunnlaget, og til slutt forklare metoden. Vi vil også gi en innledende oversikt over dataene, inkludert deskriptiv statistikk for alle variablene i analysen. 
+I problemstillingen *forklarer nivået på formue sykefraværet i Norge?* så velger vi å bruke en Structural Equation Model fordi denne kan bedre vise oss på hvilken måte formue påvirker sykefraværet og om det finnes noen indirekte sammenhenger mellom variablene vi velger å bruke, dette gjør analysen mer kompleks, men vi kan bedre peke direkte på hvilke effekter som er positive eller negative på selve sykefraværet. 
 
 ## 3.1 Data
 
+Dataen vi bruker er hentet fra Statistisk sentralbyrå (SSB) sin [levekårsundersøkelse om arbeidsmiljø](https://www.ssb.no/arbeid-og-lonn/arbeidsmiljo-sykefravaer-og-arbeidskonflikter/artikler/levekarsundersokelsen-om-arbeidsmiljo-2022), som ble gjennomført i 2022. Vedlagt følger et bilde av kodeboken:
+
+![](dokumentobjekter/bilder/codebook.png)
+
+Statistisk sentralbyrå har gjennomført levekårsundersøkelser siden 1973. Levekårsundersøkelsen kartlegger arbeidsmiljøforhold blant sysselsatte i Norge, og tar opp temaer som forhold på arbeidsplassen, fysisk, ergonomisk og psykososialt arbeidsmiljø, yrkesrelaterte helseplager og sykefravær og krav og muligheter for selvbestemmelse på jobb.
+
 ## 3.2 Datakilde og utvalg
+
+Undersøkelsen er basert på et landsrepresentativt utvalg på 35 345 sysselsatte personer i alderen 18-66 til undersøkelsen i 2022. Utvalget er tilfeldig trukket fra folkeregisteret, og dataene er samlet inn gjennom telefonintervjuer og selvadministrert webskjema fra august 2022 til april 2023. 
+
+Den totale svarprosenten for undersøkelsen var på 51 prosent, og dataene er vektet for å være representativt for den norske befolkningen i alderen 18-66 for å korrigere for noen av skjevhetene i forbindelse med frafall.
 
 ## 3.3 Variabler
 
+
+
 #### Avhengig variabel
 
-#### Variabler knyttet til hypotese
+
+
+#### Hoveduavhengige variabler
+
+
 
 #### Kontrollvariabler
+
+
 
 ## 3.4 Deskriptiv statistikk
 
