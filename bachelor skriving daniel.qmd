@@ -323,19 +323,34 @@ Den totale svarprosenten for undersøkelsen var på 51 prosent, og dataene er ve
 
 ## 3.3 Variabler
 
-
+I denne oppgaven vil vi bruke flere variabler fra levekårsundersøkelsen for å analysere sammenhengen mellom formue og sykefravær. Vi vil bruke både avhengige og uavhengige variabler, samt kontrollvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet.
 
 #### Avhengig variabel
 
+Sykefraværsprosent uten feriekorrigering (SF) vil være vår avhengige variabel, og vi vil bruke sykefraværet i 2022 som mål på sykefravær. Denne variabelen inneholder sykemeldingsraten selvrapportert av respondenten i løpet av de siste 12 månedene, og er målt i prosent. 
 
+Vi vil også muligens bruke sykefraværsprosent uten feriekorrigering i 2023 som en kontrollvariabel for å se om det er noen endringer i sykefraværet over tid.
 
-#### Hoveduavhengige variabler
+#### Hoveduavhengige variabel
 
+Bruttofinanskapital i alt (BF) vil være vår hoveduavhengige variabel, og vi vil bruke bruttofinanskapital i alt som mål på formue. Denne variabelen inneholder verdien av alle finansielle eiendeler som respondenten eier, inkludert kontanter, aksjer, obligasjoner og andre investeringer.
 
+Vi tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt, og dermed kan du være mer villig til å ta deg fri fra jobb. Og motsatt om du har lite formue så vil du være mer sensitiv til endringer i inntekt, og dermed vil du være mer villig til å jobbe mer for å opprettholde inntekten din. Dette kan føre til at de med høyere formue har høyere sykefravær, mens de med lavere formue har lavere sykefravær, men også kan være mer utsatt for å bli sykemeldt på grunn av sykdom eller skade.
 
 #### Kontrollvariabler
 
+Vi vil bruke flere kontrollvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet. Dette inkluderer:
 
+- Alder (Alder ved utgangen av 2022) 
+- Kjønn (Kjønn til respondenten)
+- Utdanning (Utdanningsnivå til respondenten)
+- Tilfredshet med arbeid (Selvrapportert tilfredshet med arbeid)
+- Motivasjon (Selvrapportert motivasjon på jobb)
+- Barn (Antall barn under 18 år i husholdningen)
+
+Alder, utdanning, tilfredshet med arbeid og motivasjon er ordinale variabler, som vil si verdiene er ordnet i en bestemt rekkefølge. Kjønn er på nominalnivå, med verdiene mann og kvinne. Mens variabelen barn er en kontinuerlig variabel, som vil si at verdiene kan ta på seg alle reelle tall.
+
+Vi vil også mulig bruke dummyvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet, som for eksempel yrke, bransje og arbeidsforhold.
 
 ## 3.4 Deskriptiv statistikk
 
