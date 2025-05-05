@@ -285,6 +285,8 @@ Denne likningen innebærer at formuenivået ikke bare antas å ha en direkte eff
 
 
 
+
+
 ### Ligning for motivasjon (M)
 
 Motivasjonen antas å bli påvirket av:
@@ -317,6 +319,15 @@ $\epsilon_{2i}$ er feilleddet.
 
 
 
+putter inn utdanning og alder i z.
+
+
+
+
+Er nokk forskjell på sykefravær på alder ung/gammel.
+hvor stor forskjell mellom de på ung og gammel basert på formue
+
+
 
 
 
@@ -339,9 +350,112 @@ I oppgaven vil vi bruke en kvantitativ metode for å analysere sammenhengen mell
 
 ### a) Ligning til modellen
 
+
+$$
+SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_iFN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
+$$
+
+
+$$
+M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### b) Forklaring av alle deler i modellen
 
+
+
+```{=tex}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Symbol & Forklaring \\ 
+\hline
+$SF_i$ & Prosentandel av avtalte arbeidsdager arbeidstaker i er fraværende (sykefravær) \\
+\hline
+$JD_i$ & Latent jobbkrav score (høyere = mer krav) \\
+\hline
+$JR_i$ & Latent jobbressurser score (høyere = mer støtte/autonomi) \\
+\hline
+$FN_i$ & Logaritmen eller prosentil rangeringen av individets (eller husholdningens) formue \\
+\hline
+$M_i$ & Latent motivasjons-/engasjements score \\
+\hline
+$X_{ij}$ & Kontrollvariabler (alder, kjønn, utdanning …), alle gjennomsnittssentrert \\
+\hline
+$\epsilon_{1i}, \epsilon_{2i}$ & Forstyrrelser (null-gjennomsnitt, ukorrelerte med prediktorer) \\  
+\hline
+$\alpha_{3j} $ & Koeffisienter for kontrollvariablene på Motivasjon i motivasjonsmodellen \\
+\hline
+$\gamma_{j} $ & Koeffisienter for kontrollvariablene i på sykefravær i sykefraværmodellen \\
+\hline
+\end{tabular}
+\caption{Oversikt over variabler i modellen}
+\label{tab:variabler}
+\end{table}
+```
+
+
 ### c) Beskrivning av metode
+
+
+
+
+
+Fra ligningen til vår medierende variabel Motivasjon, forventer vi at $\alpha_1 > 0$ og $\alpha_2 > 0$, som betyr at høyere jobbressurser og formuenivå vil føre til høyere motivasjon. 
+
+
+
+### d) Hypoteser
+
+
+Fra 
+$$
+SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_i FN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
+$$
+Forventer vi at:
+H1: $\beta_1 > 0$ (høyere jobbkrav gir høyere sykefravær)
+
+H2: $\beta_2 < 0$ (høyere jobbressurser gir lavere sykefravær)
+
+H3: $\beta_3 < 0$ (høyere formuenivå gir lavere sykefravær)
+
+
+
+
+
+
+Av de modererende variablene forventer vi at
+H4: $\beta_4 < 0$ Høyere formuenivå demper de negative effektene til høyere jobbkrav. 
+$$
+\frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i
+$$
+
+H5: $\beta_5 < 0$ Høyere formuenivå forsterker de positive effektene til høyere jobbressurser.
+$$
+\frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i
+$$
+
+Vi forventer og at det er en indirekte effekt fra formue igjennom motivasjon $\alpha_2 \beta_6$ hvor vi forventer at $\alpha_2 > 0$ og $\beta_6 < 0$ som betyr at høyere formuenivå gir høyere motivasjon, som igjen gir lavere sykefravær.
+
+
+
+
+
+
 
 ## 3.2 Data
 
