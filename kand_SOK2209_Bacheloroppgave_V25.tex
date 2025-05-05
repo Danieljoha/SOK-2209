@@ -305,10 +305,10 @@ rammeverk, og analyserer data fra Levekårsundersøkelsen om arbeidsmiljø.
 
 \paragraph{Bakgrunn}\label{bakgrunn}
 
-I årene etter finanskrisen har vi observert en økende formueulikhet i
-mange vestlige land, inkludert Norge. Denne trenden har blitt forsterket
-etter pandemien, spesielt i boligmarkedet. Lønnsveksten har ikke holdt
-tritt med prisøkningen på eiendeler, særlig boliger. Dette har gjort det
+I årene etter finanskrisen har det vært en økende formueulikhet i mange
+vestlige land, inkludert Norge. Denne trenden har blitt forsterket etter
+pandemien, spesielt i boligmarkedet. Lønnsveksten har ikke holdt tritt
+med prisøkningen på eiendeler, særlig boliger. Dette har gjort det
 relativt vanskeligere for unge og de med lavere inntekter å opparbeide
 seg formue, for eksempel gjennom boligkjøp. Vi antar dermed at
 formuenivået til arbeidstakere har en effekt på spesielt motivasjon og
@@ -391,11 +391,36 @@ formuenivå kan forandre jobbkrav og jobbressurser. Vi tenker også at
 formuenivået har mye å si til også hvor mye jobbkrav og jobbressurser
 påvirker personer.
 
-\subsection{2.2 Hypoteser}\label{hypoteser}
+\subsubsection{2.1.1 Formue i JD-R}\label{formue-i-jd-r}
 
-Eventuelle testhypoteser
+Vi mener at økonomiske ressurser som formue, kan hjelpe med å forklare
+sykefraværet enda mer og vil bruke den som en ekstern modererende
+faktor.
 
-\subsection{2.3 Tidligere empirisk
+Formue gir en økonomisk buffer som kan redusere sårbarheten for
+jobbrelatert stress. Personer med høy formue kan ha større valgfrihet i
+arbeidslivet, og tåler lettere perioder med høy belastning uten at det
+går like hardt utover helse eller jobbmotivasjon. Men personer med lav
+eller negativ formue vil ofte være mer økonomisk avhengige av inntekten
+fra arbeid, og kan derfor være mer sårbare for jobbrelatert stress
+
+Formue kan også ha betydning for fremtidsperspektiv og indre motivasjon.
+Personer med lav formue kan oppleve mindre kontroll over egen
+livssituasjon og lavere forventninger til fremtidig økonomisk trygghet,
+noe som potensielt svekker arbeidsglede og motivasjon.
+
+Vi antar da at formue påvirker hvordan individet opplever og håndterer
+jobbkrav og jobbressurser, og at det har indirekte effekter via
+motivasjon som påvirker sykefravær.
+
+Ved å inkludere formue som en ekstern faktor i JD-R modellen, forsøker
+vi å fange både den direkte effekten av økonomisk trygghet og hvordan
+denne tryggheten forsterker eller demper effektene av jobbrelaterte
+faktorer. I et samfunn med økende økonomisk ulikheter hvor forskjellen
+mellom dem som har og dem som ikke har, blir større og større, er det
+viktig å forstå hvordan dette påvirker arbeidstakere og deres helse.
+
+\subsection{2.2 Tidligere empirisk
 forskning}\label{tidligere-empirisk-forskning}
 
 Forklar kortfattet hva tidligere forskning har funnet generelt om
@@ -464,7 +489,7 @@ bare i Norge, men i mange vestlige land.
 
 \subsubsection{Makro}\label{makro}
 
-\subsection{2.4 Begrepsdefinisjoner}\label{begrepsdefinisjoner}
+\subsection{2.3 Begrepsdefinisjoner}\label{begrepsdefinisjoner}
 
 \paragraph{Formue}\label{formue}
 
@@ -555,11 +580,11 @@ Det kan føre til redusert motivasjon, engasjement og produktivitet, samt
 økt sykefravær. Utbrenthet kan påvirkes av en rekke faktorer, inkludert
 arbeidsmiljø, jobbkrav og jobbressurser.
 
-\subsection{2.5 Forklar teori og empiriske funn knyttet til koblingen
+\subsection{2.4 Forklar teori og empiriske funn knyttet til koblingen
 som du vil undersøke. Være nøye med å gjøre rede for
 mekanismer!}\label{forklar-teori-og-empiriske-funn-knyttet-til-koblingen-som-du-vil-undersuxf8ke.-vuxe6re-nuxf8ye-med-uxe5-gjuxf8re-rede-for-mekanismer}
 
-\subsection{2.6 Modelloppsett}\label{modelloppsett}
+\subsection{2.5 Modelloppsett}\label{modelloppsett}
 
 trur kanskje formue effekt er veldig kraftig på ung alder
 
@@ -627,6 +652,32 @@ putter inn utdanning og alder i z.
 Er nokk forskjell på sykefravær på alder ung/gammel. hvor stor forskjell
 mellom de på ung og gammel basert på formue
 
+\subsection{2.6 Hypoteser}\label{hypoteser}
+
+Fra \[
+SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_i FN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
+\] Forventer vi at: H1: \(\beta_1 > 0\) (høyere jobbkrav gir høyere
+sykefravær)
+
+H2: \(\beta_2 < 0\) (høyere jobbressurser gir lavere sykefravær)
+
+H3: \(\beta_3 < 0\) (høyere formuenivå gir lavere sykefravær)
+
+Av de modererende variablene forventer vi at H4: \(\beta_4 < 0\) Høyere
+formuenivå demper de negative effektene til høyere jobbkrav. \[
+\frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i
+\]
+
+H5: \(\beta_5 < 0\) Høyere formuenivå forsterker de positive effektene
+til høyere jobbressurser. \[
+\frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i
+\]
+
+Vi forventer og at det er en indirekte effekt fra formue igjennom
+motivasjon \(\alpha_2 \beta_6\) hvor vi forventer at \(\alpha_2 > 0\) og
+\(\beta_6 < 0\) som betyr at høyere formuenivå gir høyere motivasjon,
+som igjen gir lavere sykefravær.
+
 \newpage
 
 \section{3 Metode og data}\label{metode-og-data}
@@ -656,6 +707,29 @@ SEM-modellen.
 \subsection{3.2 Structural Equation Model
 (SEM)}\label{structural-equation-model-sem}
 
+Formue inngår i modellen på tre måter: som en direkte
+forklaringsvariabel for sykefravær, som en indirekte påvirkning via
+motivasjon, og som en modererende variabel som endrer effekten av
+jobbkrav og jobbressurser.
+
+Vi antar at formue fungerer som et mål på økonomisk trygghet og
+handlingsrom. Personer med høyere formue har trolig mer fleksibilitet
+til å håndtere belastninger på jobb, og vil kunne tåle høye jobbkrav
+uten samme negative effekt på helse og fravær. Samtidig antar vi at
+høyere formue gir høyere jobbmotivasjon fordi økonomisk trygghet gjør
+det lettere å finne mening, utvikling og balanse i arbeidet.
+
+På bakgrunn av dette har vi inkludert interaksjonsledd mellom formue og
+jobbkrav (\(JD_i FN_i\)), samt mellom formue og jobbressurser
+(\(JR_i FN_i\)), for å fange opp slike modererende effekter. Vi har også
+modellert motivasjon som en medierende variabel, hvor formue kan påvirke
+motivasjonen, som igjen kan påvirke sykefravær.
+
+Dette modellvalget bygger videre på JD-R-rammeverket, men inkluderer
+økonomisk kontekst som en faktor som kan endre hvordan individer
+påvirkes av jobbsituasjonen. Ved å bruke en SEM-modell kan vi teste både
+de direkte og indirekte sammenhengene mellom formue og sykefravær.
+
 \subsubsection{a) Ligning til modellen}\label{a-ligning-til-modellen}
 
 \[
@@ -683,7 +757,7 @@ $JR_i$ & Latent jobbressurser score (høyere = mer støtte/autonomi) \\
 \hline
 $FN_i$ & Logaritmen eller prosentil rangeringen av individets (eller husholdningens) formue \\
 \hline
-$M_i$ & Latent motivasjons-/engasjements score \\
+$M_i$ & Motivasjons-/engasjements score \\
 \hline
 $X_{ij}$ & Kontrollvariabler (alder, kjønn, utdanning …), alle gjennomsnittssentrert \\
 \hline
@@ -703,33 +777,6 @@ $\gamma_{j} $ & Koeffisienter for kontrollvariablene i på sykefravær i sykefra
 Fra ligningen til vår medierende variabel Motivasjon, forventer vi at
 \(\alpha_1 > 0\) og \(\alpha_2 > 0\), som betyr at høyere jobbressurser
 og formuenivå vil føre til høyere motivasjon.
-
-\subsubsection{d) Hypoteser}\label{d-hypoteser}
-
-Fra \[
-SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_i FN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
-\] Forventer vi at:
-
-\begin{itemize}
-    \item $\beta_1 > 0$ (høyere jobbkrav gir høyere sykefravær)
-    \item $\beta_2 < 0$ (høyere jobbressurser gir lavere sykefravær)
-    \item $\beta_3 < 0$ (høyere formuenivå gir lavere sykefravær)
-\end{itemize}
-
-Av de modererende variablene forventer vi at H4: \(\beta_4 < 0\) Høyere
-formuenivå demper de negative effektene til høyere jobbkrav. \[
-\frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i
-\]
-
-H5: \(\beta_5 < 0\) Høyere formuenivå forsterker de positive effektene
-til høyere jobbressurser. \[
-\frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i
-\]
-
-Vi forventer og at det er en indirekte effekt fra formue igjennom
-motivasjon \(\alpha_2 \beta_6\) hvor vi forventer at \(\alpha_2 > 0\) og
-\(\beta_6 < 0\) som betyr at høyere formuenivå gir høyere motivasjon,
-som igjen gir lavere sykefravær.
 
 \subsection{3.2 Data}\label{data}
 
