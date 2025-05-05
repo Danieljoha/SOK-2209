@@ -164,11 +164,7 @@ https://www.wilmarschaufeli.nl/publications/Schaufeli/476.pdf
 
 Grunnen til at vi velger JD-R modellen er fordi vi forventer at formuenivå kan forandre jobbkrav og jobbressurser. Vi tenker også at formuenivået har mye å si til også hvor mye jobbkrav og jobbressurser påvirker personer. 
 
-## 2.2 Hypoteser
-
-Eventuelle testhypoteser
-
-## 2.3 Tidligere empirisk forskning
+## 2.2 Tidligere empirisk forskning
 
 Forklar kortfattet hva tidligere forskning har funnet generelt om problemstillingen (hvorfor det er viktig å studere fra et samfunnsperspektiv)
 
@@ -299,6 +295,14 @@ $\alpha_1$ og $\alpha_2$ er koeffisientene for henholdsvis jobbressurser og form
 $\Sigma_k \alpha_{3k}Z_{ik}$ fanger opp effekter av eventuelle kontrollvariabler,
 $\epsilon_{2i}$ er feilleddet.
 
+putter inn utdanning og alder i z.
+
+
+
+
+Er nokk forskjell på sykefravær på alder ung/gammel.
+hvor stor forskjell mellom de på ung og gammel basert på formue
+
 \newpage
 
 # 3 Metode og data
@@ -327,30 +331,51 @@ I denne oppgaven vil vi bruke flere variabler fra levekårsundersøkelsen for å
 
 #### Avhengig variabel
 
-Sykefraværsprosent uten feriekorrigering (SF) vil være vår avhengige variabel, og vi vil bruke sykefraværet i 2022 som mål på sykefravær. Denne variabelen inneholder sykemeldingsraten selvrapportert av respondenten i løpet av de siste 12 månedene, og er målt i prosent. 
+Sykefravær:
+
+Sykefraværssprosent uten feriekorrigering (SF) vil være vår avhengige variabel, og vi vil bruke sykefraværet i 2022 som mål på sykefravær. Denne variabelen inneholder sykemeldingsraten selvrapportert av respondenten i løpet av de siste 12 månedene, og er målt i prosent. 
 
 Vi vil også muligens bruke sykefraværsprosent uten feriekorrigering i 2023 som en kontrollvariabel for å se om det er noen endringer i sykefraværet over tid.
 
 #### Hoveduavhengige variabel
 
+Bruttofinanskapital:
+
 Bruttofinanskapital i alt (BF) vil være vår hoveduavhengige variabel, og vi vil bruke bruttofinanskapital i alt som mål på formue. Denne variabelen inneholder verdien av alle finansielle eiendeler som respondenten eier, inkludert kontanter, aksjer, obligasjoner og andre investeringer.
 
-Vi tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt, og dermed kan du være mer villig til å ta deg fri fra jobb. Og motsatt om du har lite formue så vil du være mer sensitiv til endringer i inntekt, og dermed vil du være mer villig til å jobbe mer for å opprettholde inntekten din. Dette kan føre til at de med høyere formue har høyere sykefravær, mens de med lavere formue har lavere sykefravær, men også kan være mer utsatt for å bli sykemeldt på grunn av sykdom eller skade.
+Vi tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt, og dermed kan du være mer villig til å ta deg fri fra jobb. Og motsatt om du har lite formue så vil du være mer sensitiv til endringer i inntekt, og dermed vil du være mer villig til å jobbe mer for å opprettholde inntekten din. Dette kan føre til at de med høyere formue har lavere sykefravær, mens de med lavere formue har høyere sykefravær.
 
 #### Kontrollvariabler
 
-Vi vil bruke flere kontrollvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet. Dette inkluderer:
+Vi vil bruke flere kontrollvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet.
 
-- Alder (Alder ved utgangen av 2022) 
-- Kjønn (Kjønn til respondenten)
-- Utdanning (Utdanningsnivå til respondenten)
-- Tilfredshet med arbeid (Selvrapportert tilfredshet med arbeid)
-- Motivasjon (Selvrapportert motivasjon på jobb)
-- Barn (Antall barn under 18 år i husholdningen)
+Alder:
+
+Alder ved utgangen av 2022
+
+Kjønn: 
+
+(Kjønn til respondenten)
+
+Utdanning: 
+
+(Utdanningsnivå til respondenten)
+Tilfredshet med arbeid: 
+
+(Selvrapportert tilfredshet med arbeid)
+
+Motivasjon: 
+
+(Selvrapportert motivasjon på jobb)
+Barn: 
+
+(Antall barn under 18 år i husholdningen)
 
 Alder, utdanning, tilfredshet med arbeid og motivasjon er ordinale variabler, som vil si verdiene er ordnet i en bestemt rekkefølge. Kjønn er på nominalnivå, med verdiene mann og kvinne. Mens variabelen barn er en kontinuerlig variabel, som vil si at verdiene kan ta på seg alle reelle tall.
 
 Vi vil også mulig bruke dummyvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet, som for eksempel yrke, bransje og arbeidsforhold.
+
+Eventuelt ta med andre variabler her, og også ta å definere de bedre utifra hvilke variabler som går inn i hvilken del til jobbressurser, jobbkrav og motivasjon.
 
 ## 3.4 Deskriptiv statistikk
 
@@ -369,10 +394,80 @@ I oppgaven vil vi bruke en kvantitativ metode for å analysere sammenhengen mell
 
 #### Ligning til modellen
 
+$$
+SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_iFN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
+$$
+
+
+$$
+M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i}
+$$
+
 #### Forklaring av alle deler i modellen
+
+```{=tex}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Symbol & Forklaring \\ 
+\hline
+$SF_i$ & Prosentandel av avtalte arbeidsdager arbeidstaker i er fraværende (sykefravær) \\
+\hline
+$JD_i$ & Latent jobbkrav score (høyere = mer krav) \\
+\hline
+$JR_i$ & Latent jobbressurser score (høyere = mer støtte/autonomi) \\
+\hline
+$FN_i$ & Logaritmen eller prosentil rangeringen av individets (eller husholdningens) formue \\
+\hline
+$M_i$ & Latent motivasjons-/engasjements score \\
+\hline
+$X_{ij}$ & Kontrollvariabler (alder, kjønn, utdanning …), alle gjennomsnittssentrert \\
+\hline
+$\epsilon_{1i}, \epsilon_{2i}$ & Forstyrrelser (null-gjennomsnitt, ukorrelerte med prediktorer) \\  
+\hline
+$\alpha_{3j} $ & Koeffisienter for kontrollvariablene på Motivasjon i motivasjonsmodellen \\
+\hline
+$\gamma_{j} $ & Koeffisienter for kontrollvariablene i på sykefravær i sykefraværmodellen \\
+\hline
+\end{tabular}
+\caption{Oversikt over variabler i modellen}
+\label{tab:variabler}
+\end{table}
+```
 
 #### Beskrivning av metode
 
+Fra ligningen til vår medierende variabel Motivasjon, forventer vi at $\alpha_1 > 0$ og $\alpha_2 > 0$, som betyr at høyere jobbressurser og formuenivå vil føre til høyere motivasjon. 
+
+#### Hypoteser
+
+Fra 
+$$
+SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_i FN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
+$$
+
+Forventer vi at:
+
+H1: $\beta_1 > 0$ (høyere jobbkrav gir høyere sykefravær)
+
+H2: $\beta_2 < 0$ (høyere jobbressurser gir lavere sykefravær)
+
+H3: $\beta_3 < 0$ (høyere formuenivå gir lavere sykefravær)
+
+
+Av de modererende variablene forventer vi at
+H4: $\beta_4 < 0$ Høyere formuenivå demper de negative effektene til høyere jobbkrav. 
+$$
+\frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i
+$$
+
+H5: $\beta_5 < 0$ Høyere formuenivå forsterker de positive effektene til høyere jobbressurser.
+$$
+\frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i
+$$
+
+Vi forventer og at det er en indirekte effekt fra formue igjennom motivasjon $\alpha_2 \beta_6$ hvor vi forventer at $\alpha_2 > 0$ og $\beta_6 < 0$ som betyr at høyere formuenivå gir høyere motivasjon, som igjen gir lavere sykefravær.
 
 
 \newpage
