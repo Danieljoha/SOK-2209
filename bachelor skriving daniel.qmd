@@ -147,8 +147,7 @@ Tidligere forskning har funnet at sosioøkonomiske forhold, som inntekt og utdan
 
 Oppgaven er delt inn i følgende kapitler: I kapittel 2 vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. I kapittel 3 vil vi forklare metode og datagrunnlag, i kapitell 4 gjennomføres analysen og i kapittel 5 vil vi presentere resultatene fra analysen. I kapittel 6 vil vi diskutere resultatene, og i kapittel 7 vil vi konkludere og gi anbefalinger for videre forskning.
 
-Avslutningsvis i appendiks har vi med relevant kode som er brukt for å analysere dataene og en oversikt over testene som er gjort i analysen, og til slutt en oversikt rundt bruk av kunstig intelligens i oppgaven.
-\newpage
+Avslutningsvis i appendiks har vi med relevant kode som er brukt for å analysere dataene og en oversikt over testene som er gjort i analysen, og til slutt en oversikt rundt bruk av kunstig intelligens i oppgaven.S
 
 # 2 Teori
 
@@ -303,8 +302,6 @@ putter inn utdanning og alder i z.
 Er nokk forskjell på sykefravær på alder ung/gammel.
 hvor stor forskjell mellom de på ung og gammel basert på formue
 
-\newpage
-
 # 3 Metode og data
 
 I dette kapitlet går vi gjennom datagrunnlag og metode for oppgaven. Vi vil først forklare hvordan dataene er fremskaffet, så forklare variablene, og til slutt forklare metoden. Vi vil også gi en innledende oversikt over dataene, inkludert deskriptiv statistikk for alle variablene i analysen.
@@ -329,7 +326,7 @@ Den totale svarprosenten for undersøkelsen var på 51 prosent, og dataene er ve
 
 I denne oppgaven vil vi bruke flere variabler fra levekårsundersøkelsen for å analysere sammenhengen mellom formue og sykefravær. Vi vil bruke både avhengige og uavhengige variabler, samt kontrollvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet.
 
-#### Avhengig variabel
+#### Avhengige og uavhengig hovedvariabel
 
 Sykefravær:
 
@@ -337,9 +334,7 @@ Sykefraværssprosent uten feriekorrigering (SF) vil være vår avhengige variabe
 
 Vi vil også muligens bruke sykefraværsprosent uten feriekorrigering i 2023 som en kontrollvariabel for å se om det er noen endringer i sykefraværet over tid.
 
-#### Hoveduavhengige variabel
-
-Bruttofinanskapital:
+Formue:
 
 Bruttofinanskapital i alt (BF) vil være vår hoveduavhengige variabel, og vi vil bruke bruttofinanskapital i alt som mål på formue. Denne variabelen inneholder verdien av alle finansielle eiendeler som respondenten eier, inkludert kontanter, aksjer, obligasjoner og andre investeringer.
 
@@ -347,41 +342,37 @@ Vi tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Alts
 
 #### Kontrollvariabler
 
-Vi vil bruke flere kontrollvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet.
-
 Alder:
 
-Alder ved utgangen av 2022
+Alder til respondenten ved utgangen av 2022. Denne kontrollvariabelen gjør vi ordinal ettersom vi fordeler alderen til respondenten i aldersgrupper. Vi vil bruke aldersgruppene 18-29, 30-39, 40-49, 50-59 og 60-66 år. Da kan vi påpeke hvis det er forskjeller i sykefravær mellom de forskjellige aldersgruppene.
 
 Kjønn: 
 
-(Kjønn til respondenten)
+Kjønn til respondenten. Denne kontrollvariabelen er en dummyvariabel, hvor 1 er mann og 0 er kvinne. Vi vil bruke denne variabelen for å kontrollere for eventuelle kjønnsforskjeller i sykefraværet.
 
 Utdanning: 
 
-(Utdanningsnivå til respondenten)
+Utdanningsnivået til respondenten er en ordinal variabel, og vi vil bruke utdanningsgruppene grunnskole, videregående skole, høyere utdanning og doktorgrad. Vi vil bruke denne variabelen for å kontrollere for eventuelle utdanningsforskjeller i sykefraværet.
+
 Tilfredshet med arbeid: 
 
-(Selvrapportert tilfredshet med arbeid)
+Selvrapportert tilfredshet med arbeid (TS) er en ordinal variabel, og vi vil bruke denne variabelen for å kontrollere for eventuelle forskjeller i sykefraværet basert på hvor tilfreds respondenten er med jobben sin. Denne variabelen er målt på en skala fra 1 til 10, hvor 1 er svært misfornøyd og 10 er svært fornøyd.
 
 Motivasjon: 
 
-(Selvrapportert motivasjon på jobb)
+For variabelen motivasjon bruker vi selvrapportert motivasjon på jobb (M) som en ordinal variabel, og vi vil bruke denne variabelen for å kontrollere for eventuelle forskjeller i sykefraværet basert på hvor motivert respondenten er på jobben sin. Denne variabelen er målt på en skala fra 1 til 10, hvor 1 er svært lite motivert og 10 er svært motivert.
+
 Barn: 
 
-(Antall barn under 18 år i husholdningen)
+Antall barn under 18 år i husholdningen som er en kontinuerlig variabel. Vi vil bruke denne variabelen for å kontrollere for eventuelle forskjeller i sykefraværet basert på hvor mange barn respondenten har.
 
-Alder, utdanning, tilfredshet med arbeid og motivasjon er ordinale variabler, som vil si verdiene er ordnet i en bestemt rekkefølge. Kjønn er på nominalnivå, med verdiene mann og kvinne. Mens variabelen barn er en kontinuerlig variabel, som vil si at verdiene kan ta på seg alle reelle tall.
 
 Vi vil også mulig bruke dummyvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet, som for eksempel yrke, bransje og arbeidsforhold.
 
-Eventuelt ta med andre variabler her, og også ta å definere de bedre utifra hvilke variabler som går inn i hvilken del til jobbressurser, jobbkrav og motivasjon.
 
 ## 3.4 Deskriptiv statistikk
 
-
-
-
+I dette avsnittet vil vi gi en oversikt over deskriptiv statistikk for alle variablene i analysen. Vi vil presentere gjennomsnitt, standardavvik og minimums- og maksimumsverdier for alle variablene, samt korrelasjonsmatrisen for de uavhengige variablene.
 
 
 
@@ -457,20 +448,20 @@ H3: $\beta_3 < 0$ (høyere formuenivå gir lavere sykefravær)
 
 
 Av de modererende variablene forventer vi at
+
 H4: $\beta_4 < 0$ Høyere formuenivå demper de negative effektene til høyere jobbkrav. 
+
 $$
 \frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i
 $$
-
 H5: $\beta_5 < 0$ Høyere formuenivå forsterker de positive effektene til høyere jobbressurser.
+
 $$
 \frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i
 $$
 
 Vi forventer og at det er en indirekte effekt fra formue igjennom motivasjon $\alpha_2 \beta_6$ hvor vi forventer at $\alpha_2 > 0$ og $\beta_6 < 0$ som betyr at høyere formuenivå gir høyere motivasjon, som igjen gir lavere sykefravær.
 
-
-\newpage
 
 # 4 Analyse
 
