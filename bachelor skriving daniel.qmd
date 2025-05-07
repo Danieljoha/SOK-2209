@@ -146,49 +146,11 @@ Tidligere forskning har funnet at sosioøkonomiske forhold, som inntekt og utdan
 
 Oppgaven er delt inn i følgende kapitler: I kapittel 2 vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. I kapittel 3 vil vi forklare metode og datagrunnlag, i kapitell 4 gjennomføres analysen og i kapittel 5 vil vi presentere resultatene fra analysen. I kapittel 6 vil vi diskutere resultatene, og i kapittel 7 vil vi konkludere og gi anbefalinger for videre forskning.
 
-Avslutningsvis i appendiks har vi med relevant kode som er brukt for å analysere dataene og en oversikt over testene som er gjort i analysen, og til slutt en oversikt rundt bruk av kunstig intelligens i oppgaven.S
+Avslutningsvis i appendiks har vi med relevant kode som er brukt for å analysere dataene og en oversikt over testene som er gjort i analysen, og til slutt en oversikt rundt bruk av kunstig intelligens i oppgaven.
 
 # Teori
 
 I dette kapittelet vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. Vi vil først definere begrepene kortfattet, og deretter presentere teori og empiri som er relevant for oppgaven. Vi vil spesielt fokusere på Job Demands-Resources (JDR) modellen, som er et mye brukt rammeverk for å forstå sammenhengen mellom arbeidsmiljø og helse. Vi vil også se på tidligere forskning på temaet, og se på hva som er funnet tidligere, og hvilke mekanismer som kan forklare sammenhengen mellom formue og sykefravær.
-
-## Job Demands-Resources (JDR) modellen
-
-Job Demands-Resources-modellen [@schaufeli2004job] er et rammeverk for å forstå hvordan arbeidsmiljøet påvirker helse og trivsel. Modellen skiller mellom to typer faktorer: jobbkrav (job demands) og jobbressurser (job resources). Jobbkrav refererer til kravene og utfordringene som ansatte møter i jobben, mens jobbressurser refererer til de ressursene og støtten som ansatte har tilgjengelig for å håndtere disse kravene. Modellen antyder at en balanse mellom jobbkrav og jobbressurser er viktig for å opprettholde helse og trivsel på arbeidsplassen. Høyere jobbkrav kan føre til stress og utbrenthet, mens høyere jobbressurser kan føre til økt motivasjon og trivsel.
-
-Grunnen til at vi velger JD-R modellen er fordi vi forventer at formuenivå kan forandre jobbkrav og jobbressurser. Vi tenker også at formuenivået har mye å si til også hvor mye jobbkrav og jobbressurser påvirker personer.
-
-### Formue i JD-R
-
-Vi mener at økonomiske ressurser som formue, kan hjelpe med å forklare sykefraværet enda mer og vil bruke den som en ekstern modererende faktor.
-
-Formue gir en økonomisk buffer som kan redusere sårbarheten for jobbrelatert stress. Personer med høy formue kan ha større valgfrihet i arbeidslivet, og tåler lettere perioder med høy belastning uten at det går like hardt utover helse eller jobbmotivasjon. Men personer med lav eller negativ formue vil ofte være mer økonomisk avhengige av inntekten fra arbeid, og kan derfor være mer sårbare for jobbrelatert stress
-
-Formue kan også ha betydning for fremtidsperspektiv og indre motivasjon. Personer med lav formue kan oppleve mindre kontroll over egen livssituasjon og lavere forventninger til fremtidig økonomisk trygghet, noe som potensielt svekker arbeidsglede og motivasjon.
-
-Vi antar da at formue påvirker hvordan individet opplever og håndterer jobbkrav og jobbressurser, og at det har indirekte effekter via motivasjon som påvirker sykefravær.
-
-Ved å inkludere formue som en ekstern faktor i JD-R modellen, forsøker vi å fange både den direkte effekten av økonomisk trygghet og hvordan denne tryggheten forsterker eller demper effektene av jobbrelaterte faktorer. I et samfunn med økende økonomisk ulikheter hvor forskjellen mellom dem som har og dem som ikke har, blir større og større, er det viktig å forstå hvordan dette påvirker arbeidstakere og deres helse.
-
-## Tidligere empirisk forskning
-
-Forklar kortfattet hva tidligere forskning har funnet generelt om problemstillingen (hvorfor det er viktig å studere fra et samfunnsperspektiv)
-
-Tidligere empirisk forskning har over tid vist positive forhold mellom forskjellige Job Demands-Resources-faktorer og årsaker som kan føre til sykefravær.
-
-Utbrenthet og arbeidsengasjement kan betraktes som to distinkte psykologiske tilstander. I en empirisk studie av @schaufeli2004job ble det testet en modell hvor disse to variablene fungerte som avhengige variabler, mens ulike Job Demands-Resources-faktorer ble inkludert som uavhengige variabler i en Structural Equation Model (SEM). Studien viste at utbrenthet og jobbengasjement var negativt korrelert, og at jobbkravene hadde en positiv effekt på utbrenthet, mens jobbressursene hadde en positiv effekt på jobbengasjement. Dette kan tyde på at høyere jobbkrav kan føre til høyere utbrenthet, mens høyere jobbressurser kan føre til høyere jobbengasjement.
-
-### Mikro
-
-I en annen studie av @vander2016job utført på Belgisk hjemmepleiepersonell, ble det testet en Job Demands-Resources-modell hvor utbrenthet og jobbengasjement var utfallsvariabler. Jobbkrav og jobbressurser ble modellert som prediktorer. Studien viste at jobbkravene var positivt assosiert med utbrenthet, mens jobbressursene hadde var positivt assosiert med jobbengasjement. Denne studien viser også at høyere jobbkrav kan føre til høyere utbrenthet, mens høyere jobbressurser kan føre til høyere jobbengasjement.
-
-Nevnt i innledningen studerte @jaeggi2021wealth effekten av ulikhet i formue i et småskala samfunn av innfødte i Tsimane i Bolivia hvor det var 871 observasjoner med i studien, $n = 871$. I studiet testet de hvorvidt relativ husholdningrikdom og ulikhet i formue mot forskjellige psykologiske variabler og helseutfall som depresjon, BMI, blodtrykk og sykelighet. Dette ble testet mot kontrollvariabler, og studien viste til en kobling mellom formueulikhet hvor de med lavere formue hadde større sannsynlighet for å få høyere blodtrykk og luftveissykdommer som kunne lede til dødsfall. De fant også at de med høyere formue hadde lavere sannsynlighet for å få depresjon og høyere BMI. Dette kan tyde på at ulikhet i formue kan ha en negativ effekt på helse og livskvalitet, og vi vil videre bygge på dette i vår oppgave, for å se om det er en sammenheng mellom formue og sykefravær i Norge, og om det er andre faktorer som kan påvirke sykefraværet.
-
-@langseth2021ticket bygger videre på tidligere forskning og adresserer limitasjonene ved Job Demands-Resources-modellen. De argumenterer for at Job Demands-Resources-modellen ved tidligere forskning har hatt fokus på organisasjonsnivået, og at det er viktig å se på hvordan Job Demands-Resources-modellen kan brukes bedre på jobbressurser, jobbengasjement og helserelaterte utfall. De gjorde en paneldata studie på fast ansatte i Norge med to års tidsforsinkelse med 1533 ansatte første tidsperiode, $n =1533$ og 1503 ansatte, $n = 1503$ neste tidsperiode. Over lengre tid fant de at jobbressurser hadde en positiv effekt på jobbengasjement, og at jobbengasjement var negativt assosiert med sykefravær. Dette kan tyde på at høyere jobbressurser kan føre til høyere jobbengasjement, som igjen kan føre til lavere sykefravær.
-
-I dagens samfunn er det viktig å forstå hvordan formue og ulikhet kan påvirke helse, sykefravær og livskvalitet. Dette er spesielt relevant i lys av den økende formueulikheten som vi har sett de siste årene, ikke bare i Norge, men i mange vestlige land.
-
-### Makro
 
 ## Begrepsdefinisjoner
 
@@ -233,6 +195,44 @@ Ulikhet refererer til forskjeller i ressurser, muligheter og livsvilkår mellom 
 ### Utbrenthet
 
 Utbrenthet refererer til en tilstand av fysisk og emosjonell utmattelse som kan oppstå som følge av langvarig stress og belastning på jobben. Det kan føre til redusert motivasjon, engasjement og produktivitet, samt økt sykefravær. Utbrenthet kan påvirkes av en rekke faktorer, inkludert arbeidsmiljø, jobbkrav og jobbressurser.
+
+## Job Demands-Resources (JDR) modellen
+
+Job Demands-Resources-modellen [@schaufeli2004job] er et rammeverk for å forstå hvordan arbeidsmiljøet påvirker helse og trivsel. Modellen skiller mellom to typer faktorer: jobbkrav (job demands) og jobbressurser (job resources). Jobbkrav refererer til kravene og utfordringene som ansatte møter i jobben, mens jobbressurser refererer til de ressursene og støtten som ansatte har tilgjengelig for å håndtere disse kravene. Modellen antyder at en balanse mellom jobbkrav og jobbressurser er viktig for å opprettholde helse og trivsel på arbeidsplassen. Høyere jobbkrav kan føre til stress og utbrenthet, mens høyere jobbressurser kan føre til økt motivasjon og trivsel.
+
+Grunnen til at vi velger JD-R modellen er fordi vi forventer at formuenivå kan forandre jobbkrav og jobbressurser. Vi tenker også at formuenivået har mye å si til også hvor mye jobbkrav og jobbressurser påvirker personer.
+
+### Formue i JD-R
+
+Vi mener at økonomiske ressurser som formue, kan hjelpe med å forklare sykefraværet enda mer og vil bruke den som en ekstern modererende faktor.
+
+Formue gir en økonomisk buffer som kan redusere sårbarheten for jobbrelatert stress. Personer med høy formue kan ha større valgfrihet i arbeidslivet, og tåler lettere perioder med høy belastning uten at det går like hardt utover helse eller jobbmotivasjon. Men personer med lav eller negativ formue vil ofte være mer økonomisk avhengige av inntekten fra arbeid, og kan derfor være mer sårbare for jobbrelatert stress
+
+Formue kan også ha betydning for fremtidsperspektiv og indre motivasjon. Personer med lav formue kan oppleve mindre kontroll over egen livssituasjon og lavere forventninger til fremtidig økonomisk trygghet, noe som potensielt svekker arbeidsglede og motivasjon.
+
+Vi antar da at formue påvirker hvordan individet opplever og håndterer jobbkrav og jobbressurser, og at det har indirekte effekter via motivasjon som påvirker sykefravær.
+
+Ved å inkludere formue som en ekstern faktor i JD-R modellen, forsøker vi å fange både den direkte effekten av økonomisk trygghet og hvordan denne tryggheten forsterker eller demper effektene av jobbrelaterte faktorer. I et samfunn med økende økonomisk ulikheter hvor forskjellen mellom dem som har og dem som ikke har, blir større og større, er det viktig å forstå hvordan dette påvirker arbeidstakere og deres helse.
+
+## Tidligere empirisk forskning
+
+Forklar kortfattet hva tidligere forskning har funnet generelt om problemstillingen (hvorfor det er viktig å studere fra et samfunnsperspektiv)
+
+Tidligere empirisk forskning har over tid vist positive forhold mellom forskjellige Job Demands-Resources-faktorer og årsaker som kan føre til sykefravær.
+
+Utbrenthet og arbeidsengasjement kan betraktes som to distinkte psykologiske tilstander. I en empirisk studie av @schaufeli2004job ble det testet en modell hvor disse to variablene fungerte som avhengige variabler, mens ulike Job Demands-Resources-faktorer ble inkludert som uavhengige variabler i en Structural Equation Model (SEM). Studien viste at utbrenthet og jobbengasjement var negativt korrelert, og at jobbkravene hadde en positiv effekt på utbrenthet, mens jobbressursene hadde en positiv effekt på jobbengasjement. Dette kan tyde på at høyere jobbkrav kan føre til høyere utbrenthet, mens høyere jobbressurser kan føre til høyere jobbengasjement.
+
+### Mikro
+
+I en annen studie av @vander2016job utført på Belgisk hjemmepleiepersonell, ble det testet en Job Demands-Resources-modell hvor utbrenthet og jobbengasjement var utfallsvariabler. Jobbkrav og jobbressurser ble modellert som prediktorer. Studien viste at jobbkravene var positivt assosiert med utbrenthet, mens jobbressursene hadde var positivt assosiert med jobbengasjement. Denne studien viser også at høyere jobbkrav kan føre til høyere utbrenthet, mens høyere jobbressurser kan føre til høyere jobbengasjement.
+
+Nevnt i innledningen studerte @jaeggi2021wealth effekten av ulikhet i formue i et småskala samfunn av innfødte i Tsimane i Bolivia hvor det var 871 observasjoner med i studien, $n = 871$. I studiet testet de hvorvidt relativ husholdningrikdom og ulikhet i formue mot forskjellige psykologiske variabler og helseutfall som depresjon, BMI, blodtrykk og sykelighet. Dette ble testet mot kontrollvariabler, og studien viste til en kobling mellom formueulikhet hvor de med lavere formue hadde større sannsynlighet for å få høyere blodtrykk og luftveissykdommer som kunne lede til dødsfall. De fant også at de med høyere formue hadde lavere sannsynlighet for å få depresjon og høyere BMI. Dette kan tyde på at ulikhet i formue kan ha en negativ effekt på helse og livskvalitet, og vi vil videre bygge på dette i vår oppgave, for å se om det er en sammenheng mellom formue og sykefravær i Norge, og om det er andre faktorer som kan påvirke sykefraværet.
+
+@langseth2021ticket bygger videre på tidligere forskning og adresserer limitasjonene ved Job Demands-Resources-modellen. De argumenterer for at Job Demands-Resources-modellen ved tidligere forskning har hatt fokus på organisasjonsnivået, og at det er viktig å se på hvordan Job Demands-Resources-modellen kan brukes bedre på jobbressurser, jobbengasjement og helserelaterte utfall. De gjorde en paneldata studie på fast ansatte i Norge med to års tidsforsinkelse med 1533 ansatte første tidsperiode, $n =1533$ og 1503 ansatte, $n = 1503$ neste tidsperiode. Over lengre tid fant de at jobbressurser hadde en positiv effekt på jobbengasjement, og at jobbengasjement var negativt assosiert med sykefravær. Dette kan tyde på at høyere jobbressurser kan føre til høyere jobbengasjement, som igjen kan føre til lavere sykefravær.
+
+I dagens samfunn er det viktig å forstå hvordan formue og ulikhet kan påvirke helse, sykefravær og livskvalitet. Dette er spesielt relevant i lys av den økende formueulikheten som vi har sett de siste årene, ikke bare i Norge, men i mange vestlige land.
+
+### Makro
 
 ## Forklar teori og empiriske funn knyttet til koblingen som du vil undersøke. Være nøye med å gjøre rede for mekanismer!
 
@@ -397,7 +397,9 @@ Den totale svarprosenten for undersøkelsen var på 51 prosent, og dataene er ve
 
 ## Variabler
 
-Vi kommer til å bruke flere variabler fra levekårsundersøkelsen for å analysere sammenhengen mellom formue og sykefravær. Vi vil bruke både avhengige og uavhengige variabler, samt kontrollvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet. Når man gjennomfører en Structural Equation Model så vil
+Vi kommer til å bruke flere variabler fra levekårsundersøkelsen for å analysere sammenhengen mellom formue og sykefravær. Vi vil bruke både avhengige og uavhengige variabler, latente[^1] variabler, samt kontrollvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet.
+
+[^1]: En latent varibel er et underliggende, uobserverbart konstrukt som ikke kan måles direkte, men som modelleres gjennom flere målbare indikatorer. I SEM tolkes for eksempel «motivasjon», «jobbkrav» og «jobbressurser» som latente variabler: vi antar at variasjonen i et sett av attestspørsmål (indikatorer) reflekterer den samme underliggende faktoren.
 
 ### Avhengig og uavhengig hovedvariabel
 
@@ -411,9 +413,9 @@ Formue:
 
 Bruttofinanskapital i alt (BF) vil være vår hoveduavhengige variabel, og vi vil bruke bruttofinanskapital i alt som mål på formue. Denne variabelen inneholder verdien av alle finansielle eiendeler som respondenten eier, inkludert kontanter, aksjer, obligasjoner og andre investeringer og har en maks verdi på 2 500 000.
 
-Vi vil dele denne inn i tre forskjellige tertiler [^1] for formuegrupper: 0 - 43 333.33, 43 333.33 - 200 000 og 200 000 - 2 500 000. Dette vil gi oss mulighet til å se om det er forskjeller i sykefravær mellom de forskjellige tertilene. Vi definerer de som lav, middels og høy formue. Vi vil også bruke log-transformasjon av formue for å se om det er noen forskjeller i sykefravær mellom de forskjellige tertilene. Dette kan være nyttig for å se om det er noen ikke-lineære sammenhenger mellom formue og sykefravær, og for å håndtere høy skjevhet i dataene, ettersom de fleste har lav formue og få har høy formue.
+Vi vil dele denne inn i tre forskjellige tertiler [^2] for formuegrupper: 0 - 43 333.33, 43 333.33 - 200 000 og 200 000 - 2 500 000. Dette vil gi oss mulighet til å se om det er forskjeller i sykefravær mellom de forskjellige tertilene. Vi definerer de som lav, middels og høy formue. Vi vil også bruke log-transformasjon av formue for å se om det er noen forskjeller i sykefravær mellom de forskjellige tertilene. Dette kan være nyttig for å se om det er noen ikke-lineære sammenhenger mellom formue og sykefravær, og for å håndtere høy skjevhet i dataene, ettersom de fleste har lav formue og få har høy formue.
 
-[^1]: Tertiler er en statistisk metode for å dele opp et datasett i tre like store deler, slik at hver del inneholder en tredjedel av observasjonene.
+[^2]: Tertiler er en statistisk metode for å dele opp et datasett i tre like store deler, slik at hver del inneholder en tredjedel av observasjonene.
 
 Vi tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt, og dermed kan du være mer villig til å ta deg fri fra jobb. Og motsatt om du har lite formue så vil du være mer sensitiv til endringer i inntekt, og dermed vil du være mer villig til å jobbe mer for å opprettholde inntekten din. Dette kan føre til at de med høyere formue har lavere sykefravær, mens de med lavere formue har høyere sykefravær.
 
