@@ -62,10 +62,7 @@ nocite: |
     \textbf{Forord}
 \end{center}
 
-
-
 Vi vil takke vår veileder Espen Sirnes for strålende veiledning og flotte samtaler på kontoret og Derek J. Clark for ekstra tilbakemeldinger under skriving.
-
 
 \newpage
 \hypersetup{linkcolor=black}
@@ -367,13 +364,13 @@ NSD3201 <- NSD3201 %>%
 NSD3201 <- NSD3201 %>%
   filter(Utdanning != 9) %>%  # dropp uoppgitt helt
   mutate(
-    utd_cat = case_when(
+    Utdanning_grupper = case_when(
       Utdanning %in% 2                     ~ "Grunnskole eller mindre",
       Utdanning %in% c(3, 4, 5)            ~ "Videregående",
       Utdanning %in% c(6, 7)               ~ "Universitet/Høgskole",
       Utdanning == 8                       ~ "Forskernivå"
     ),
-    utd_cat = factor(
+    Utdanning_grupper = factor(
       Utdanning_grupper,
       levels = c(
         "Grunnskole eller mindre",
@@ -383,19 +380,14 @@ NSD3201 <- NSD3201 %>%
       )
     )
   )
+
+
+
 # print(grenseverdier)
 
 
-
 ```
 
-
-```{r}
-ggplot(NSD3201, aes(Alder)) + geom_histogram(bins = 30, fill = "blue", color = "black") +
-  labs(title = "", x = "", y = "Antall observasjoner") +
-  theme_minimal()
-
-```
 
 ## Datakilde og utvalg
 
@@ -417,13 +409,13 @@ Vi vil også muligens bruke sykefraværsprosent uten feriekorrigering i 2023 som
 
 Formue:
 
-Bruttofinanskapital i alt (BF) vil være vår hoveduavhengige variabel, og vi vil bruke bruttofinanskapital i alt som mål på formue. Denne variabelen inneholder verdien av alle finansielle eiendeler som respondenten eier, inkludert kontanter, aksjer, obligasjoner og andre investeringer og har en maks verdi på 2 500 000. 
+Bruttofinanskapital i alt (BF) vil være vår hoveduavhengige variabel, og vi vil bruke bruttofinanskapital i alt som mål på formue. Denne variabelen inneholder verdien av alle finansielle eiendeler som respondenten eier, inkludert kontanter, aksjer, obligasjoner og andre investeringer og har en maks verdi på 2 500 000.
 
 Vi vil dele denne inn i tre forskjellige tertiler [^1] for formuegrupper: 0 - 43 333.33, 43 333.33 - 200 000 og 200 000 - 2 500 000. Dette vil gi oss mulighet til å se om det er forskjeller i sykefravær mellom de forskjellige tertilene. Vi definerer de som lav, middels og høy formue. Vi vil også bruke log-transformasjon av formue for å se om det er noen forskjeller i sykefravær mellom de forskjellige tertilene. Dette kan være nyttig for å se om det er noen ikke-lineære sammenhenger mellom formue og sykefravær, og for å håndtere høy skjevhet i dataene, ettersom de fleste har lav formue og få har høy formue.
 
-Vi tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt, og dermed kan du være mer villig til å ta deg fri fra jobb. Og motsatt om du har lite formue så vil du være mer sensitiv til endringer i inntekt, og dermed vil du være mer villig til å jobbe mer for å opprettholde inntekten din. Dette kan føre til at de med høyere formue har lavere sykefravær, mens de med lavere formue har høyere sykefravær.
+[^1]: Tertiler er en statistisk metode for å dele opp et datasett i tre like store deler, slik at hver del inneholder en tredjedel av observasjonene.
 
-[^1]: Tertiler er en statistisk metode for å dele opp et datasett i tre like store deler, slik at hver del inneholder en tredjedel av observasjonene. Dette kan være nyttig for å se på forskjeller mellom grupper i datasettet.
+Vi tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt, og dermed kan du være mer villig til å ta deg fri fra jobb. Og motsatt om du har lite formue så vil du være mer sensitiv til endringer i inntekt, og dermed vil du være mer villig til å jobbe mer for å opprettholde inntekten din. Dette kan føre til at de med høyere formue har lavere sykefravær, mens de med lavere formue har høyere sykefravær.
 
 ### Kontrollvariabler
 
@@ -457,6 +449,185 @@ Vi vil også mulig bruke dummyvariabler for å kontrollere for andre faktorer so
 
 I dette avsnittet vil vi gi en oversikt over deskriptiv statistikk for alle variablene i analysen. Vi vil presentere gjennomsnitt, standardavvik og minimums- og maksimumsverdier for alle variablene, samt korrelasjonsmatrisen for de uavhengige variablene.
 
+
+```{r}
+# Deskriptiv statistikk
+
+# NSD3201 %>%
+#   select(Sykefravær_2022, Alder, Utdanning, Kjønn, Tilfredshet, Motivasjon, Barn,
+#          Støtte_sjef, Støtte_kollega, Tilbakemelding_sjef, Arbeidsresultater,
+#          Grad_selvbestemming_oppgaver, Grad_selvbestemming_arbeid_som_skal_gjøres,
+#          Grad_arbeidstempo, Grad_påvirke_beslutning_arbeid,
+#          For_mye_arbeid, Høyt_arbeidstempo, Ekstra_arbeid) %>%
+#   summary()
+```
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrrrrr}
+\toprule
+Variabel & Min & 1.\,Q & Median & Mean & 3.\,Q & Max & N \\
+\midrule
+Sykefravær 2022                 &   0 &   3 &   7 & 12.27 &  16 &  92 & 2080 \\
+Alder                            &  18 &  32 &  43 & 42.80 &  53 &  66 & 2080 \\
+Utdanning                        &   2 &   4 &   4 &  4.38 &   6 &   8 & 2080 \\
+Kjønn (1=Mann, 2=Kvinne)         &   1 &   1 &   2 &  1.63 &   2 &   2 & 2080 \\
+Tilfredshet                      &   1 &   1 &   2 &  2.05 &   3 &   8 & 2080 \\
+Motivasjon                       &   1 &   1 &   2 &  2.16 &   3 &   9 & 2080 \\
+Barn                             &   0 &   0 &   0 &  0.15 &   0 &   1 & 2080 \\
+Støtte fra sjef                  &   1 &   1 &   2 &  2.25 &   3 &   9 & 2080 \\
+Støtte fra kollega               &   1 &   1 &   2 &  1.81 &   2 &   9 & 2080 \\
+Tilbakemelding fra sjef          &   1 &   2 &   3 &  3.05 &   4 &   9 & 2080 \\
+Arbeidsresultater                &   1 &   2 &   2 &  2.59 &   3 &   9 & 2080 \\
+Selvbestemmelse (oppgaver)       &   1 &   3 &   3 &  3.25 &   4 &   9 & 2080 \\
+Selvbestemmelse (arbeidsinnhold) &   1 &   2 &   2 &  2.48 &   3 &   9 & 2080 \\
+Grad arbeidstempo                &   1 &   2 &   3 &  2.87 &   4 &   8 & 2080 \\
+Påvirkningsgrad                  &   1 &   2 &   3 &  2.75 &   3 &   9 & 2080 \\
+For mye arbeid                   &   1 &   1 &   2 &  1.94 &   2 &   8 & 2080 \\
+Høyt arbeidstempo                &   1 &   1 &   2 &  1.78 &   2 &   9 & 2080 \\
+Ekstra arbeid                    &   1 &   2 &   4 &  3.43 &   5 &   9 & 2080 \\
+\bottomrule
+\end{tabular}
+\caption{Deskriptiv statistikk for hovedvariabler (N = 2080)}
+\label{tab:deskriptiv}
+\end{table}
+
+I \autoref{tab:deskriptiv} presenteres deskriptiv statistikk for alle variablene i analysen. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.27 prosent, med et standardavvik på 13.49 prosent. Alder har et gjennomsnitt på 42.80 år, med et standardavvik på 12.28 år. Utdanningsnivået har et gjennomsnitt på 4.38, som tilsvarer videregående skole, med et standardavvik på 1.23.
+
+Av de opprinnelig 17971 inviterte respondentene i datasettet så fullførte kun 2 080 svarene til alle de relevante variablene. Hvor eksakt responsrate da blir $\frac{2080}{17971} = 11.6\%$. Dette kan føre til skjevheter i dataene, og kan bli en svakhet ved analysen når vi tolker resultatene. Siden det er vanskelig for oss å vite om det er systematiske forskjeller mellom de som svarte og de som ikke svarte, så kan vi ikke si noe sikkert om hvor representativt utvalget er for den norske befolkningen. Vi blir å sammenlikne alder og kjønn i datasettet med SSB sine tall for å se om det er noen forskjeller, samt teste gjennomsnittsalder, og gjennomsnittlig sykefravær for de som svarte og de som ikke svarte. Hvis det er store forskjeller blir vi å måtte bruke vektjustering for å korrigere for skjevhetene i dataene.
+
+```{r}
+# library(kableExtra)
+# 
+# # 1) Først sørg for at du har formue_gruppe som faktor med labels c("Lav","Middels","Høy")
+# #    (antatt allerede laget tidligere)
+# 
+# # 2) Velg hvilke variabler du vil beskrive
+# vars <- c("Sykefravær_2022", "Alder", "Tilfredshet", "Motivasjon")
+# 
+# # 3) Lag deskriptiv per formuegruppe
+# df_formue_deskr <- NSD3201 %>%
+#   group_by(Formue_grupper) %>%
+#   summarise(across(all_of(vars),
+#                    list(N    = ~n(),
+#                         Mean = ~round(mean(.x, na.rm = TRUE), 2),
+#                         SD   = ~round(sd(.x,   na.rm = TRUE), 2)),
+#                    .names = "{.col}_{.fn}")) %>%
+#   ungroup()
+# 
+# # 4) Snu data slik at grupper blir kolonner
+# df_formue_wide <- df_formue_deskr %>%
+#   pivot_longer(-Formue_grupper,
+#                names_to = c("Variable", "Stat"),
+#                names_sep = "_") %>%
+#   pivot_wider(names_from = Formue_grupper, values_from = value)
+# 
+# # 5) Skriv ut som LaTeX-tabell
+# df_formue_wide %>%
+#   arrange(Variable, Stat) %>%
+#   kable("latex", booktabs = TRUE,
+#         caption = "Deskriptiv statistikk etter formuegruppe",
+#         label   = "tab:deskr_formue") %>%
+#   kable_styling(latex_options = c("hold_position","repeat_header"))
+```
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{2}{c}{Lav formue (n=705)} 
+ & \multicolumn{2}{c}{Middels formue (n=704)} 
+ & \multicolumn{2}{c}{Høy formue (n=719)} \\
+\cmidrule(r){2-3}\cmidrule(lr){4-5}\cmidrule(l){6-7}
+Variabel            & M     & SD    & M     & SD    & M     & SD    \\
+\midrule
+Alder               & 40.72 & 12.28 & 41.67 & 11.81 & 45.94 & 12.07 \\
+Motivasjon          &  2.18 &  1.03 &  2.23 &  1.03 &  2.08 &  0.95 \\
+Sykefravær 2022     & 12.72 & 13.49 & 12.00 & 14.83 & 12.09 & 14.26 \\
+Tilfredshet         &  2.11 &  0.97 &  2.08 &  0.90 &  1.98 &  0.90 \\
+\bottomrule
+\end{tabular}
+\caption{Deskriptiv statistikk etter formuegruppe}
+\label{tab:deskr_formue}
+\end{table}
+
+I \autoref{tab:deskr_formue} presenteres deskriptiv statistikk for sykefravær, alder, motivasjon og tilfredshet etter formuegruppe. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.72 prosent for de med lav formue, 12.00 prosent for de med middels formue og 12.09 prosent for de med høy formue. Dette tyder på at det ikke er noen store forskjeller i sykefraværet mellom de forskjellige formuegruppene. Vi ser også at det er små forskjeller i alder mellom de forskjellige formuegruppene, der de med høy formue er eldre enn de med lav og middels formue. Dette kan tyde på at det er en sammenheng mellom alder og formue, der eldre personer har høyere formue enn yngre personer. 
+
+Motivasjonen er også høyere for de med lav formue enn de med høy formue, noe som kan tyde på at de med lav formue er mer motivert enn de med høy formue. Dette kan være fordi de med lav formue har mer å kjempe for, og derfor er mer motivert til å jobbe hardt. Tilfredsheten er også høyere for de med lav formue enn de med høy formue, men det er generelt små forskjeller i tilfredsheten mellom de forskjellige formuegruppene.
+
+
+```{r}
+# tabell<-NSD3201 %>%
+#   # 1) Lag om kjonn til faktor med labels
+#   mutate(
+#     kjønn_f = factor(Kjønn,
+#                      levels = c(1, 2),
+#                      labels = c("Mann", "Kvinne"))
+#   ) %>%
+#   # 2) Gruppér og summer opp
+#   group_by(kjønn_f) %>%
+#   summarise(
+#     N       = n(),
+#     pct     = round(N / nrow(NSD3201) * 100, 1),
+#     mean_sf = round(mean(Sykefravær_2022, na.rm = TRUE), 2),
+#     sd_sf   = round(sd(Sykefravær_2022, na.rm = TRUE), 2)
+#   )
+
+```
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+Kjønn   & N   & \%   & Gj.snitt sykefravær & SD    \\
+\midrule
+Mann    & 785 & 36.9 & 10.92               & 13.04 \\
+Kvinne  & 1343 & 63.1 & 13.06               & 14.79 \\
+\bottomrule
+\end{tabular}
+\caption{Deskriptiv statistikk for sykefravær etter kjønn (N = 2 128)}
+\label{tab:deskr_kjonn}
+\end{table}
+
+I \autoref{tab:deskr_kjonn} presenteres deskriptiv statistikk for sykefravær etter kjønn. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 10.92 prosent for menn og 13.06 prosent for kvinner. Dette tyder på at kvinner har høyere sykefravær enn menn. Dette kan skyldes at kvinner i større grad enn menn jobber i yrker med høyere sykefravær, eller at kvinner er mer tilbøyelige til å rapportere sykefravær enn menn. Det kan også være andre faktorer som påvirker sykefraværet, som for eksempel alder, utdanning og arbeidsforhold. Vi ser også at vi har en overvekt av kvinner i utvalget, der 63.1 prosent av respondentene er kvinner og 36.9 prosent er menn. Dette kan tyde på at det er en skjevhet i utvalget, der kvinner er overrepresentert i forhold til menn.
+
+
+```{r}
+# utd_summ <- NSD3201 %>%
+#   group_by(Utdanning_grupper) %>%
+#   summarise(
+#     N       = n(),
+#     pct     = round(N / nrow(NSD3201) * 100, 1),
+#     mean_sf = round(mean(Sykefravær_2022, na.rm = TRUE), 2),
+#     sd_sf   = round(sd(Sykefravær_2022, na.rm = TRUE), 2)
+#   )
+# 
+# print(utd_summ)
+
+
+```
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+Utdanningsnivå                & N   & \%   & Gj.snitt sykefravær & SD    \\
+\midrule
+Grunnskole eller mindre       & 369 & 17.3 & 12.82               & 15.56 \\
+Videregående                   &1074 & 50.5 & 12.46               & 14.26 \\
+Universitet/Høgskole           & 675 & 31.7 & 11.71               & 13.34 \\
+Forskernivå                    &  10 &  0.5 &  8.70               & 11.29 \\
+\bottomrule
+\end{tabular}
+\caption{Deskriptiv statistikk for sykefravær i 2022 etter utdanningsnivå (N = 2 128).}
+\label{tab:deskr_utdanning}
+\end{table}
+
+I \autoref{tab:deskr_utdanning} presenteres deskriptiv statistikk for sykefravær etter utdanningsnivå. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.82 prosent for de med grunnskole eller mindre, 12.46 prosent for de med videregående skole, 11.71 prosent for de med universitet/høgskole og 8.70 prosent for de med forskernivå. Dette tyder på at sykefraværet er høyere for de med lavere utdanning, og at det er en sammenheng mellom utdanningsnivå og sykefravær. Dette kan skyldes at personer med høyere utdanning har bedre arbeidsforhold og mer støtte fra arbeidsgiver, noe som kan føre til lavere sykefravær.
+
+
+
+
+
 ## Metode
 
 I oppgaven vil vi bruke en kvantitativ metode for å analysere sammenhengen mellom formue og sykefravær. Vi vil bruke en Structural Equation Model (SEM) for å teste hypotesene våre, og vi vil kontrollere for andre relevante faktorer som kan påvirke sykefraværet. SEM er en statistisk metode som gjør det mulig å teste komplekse modeller med flere variabler, og som kan håndtere både direkte og indirekte sammenhenger mellom variablene. Vi vil bruke R for å gjennomføre analysen, og vi vil bruke pakker som x og x for å implementere SEM-modellen.
@@ -477,26 +648,18 @@ $$
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|c|}
-\hline
+\begin{tabular}{lr}
+\toprule
 Symbol & Forklaring \\ 
-\hline
+\midrule
 $SF_i$ & Prosentandel av avtalte arbeidsdager arbeidstaker i er fraværende (sykefravær) \\
-\hline
 $JD_i$ & Latent jobbkrav score (høyere = mer krav) \\
-\hline
 $JR_i$ & Latent jobbressurser score (høyere = mer støtte/autonomi) \\
-\hline
 $FN_i$ & Logaritmen eller prosentil rangeringen av individets (eller husholdningens) formue \\
-\hline
 $M_i$ & Latent motivasjons-/engasjements score \\
-\hline
 $X_{ij}$ & Kontrollvariabler (alder, kjønn, utdanning …), alle gjennomsnittssentrert \\
-\hline
 $\epsilon_{1i}, \epsilon_{2i}$ & Forstyrrelser (null-gjennomsnitt, ukorrelerte med prediktorer) \\  
-\hline
 $\alpha_{3j} $ & Koeffisienter for kontrollvariablene på Motivasjon i motivasjonsmodellen \\
-\hline
 $\gamma_{j} $ & Koeffisienter for kontrollvariablene i på sykefravær i sykefraværmodellen \\
 \hline
 \end{tabular}
