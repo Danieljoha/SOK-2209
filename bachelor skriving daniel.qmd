@@ -381,6 +381,13 @@ NSD3201 <- NSD3201 %>%
     )
   )
 
+NSD3201 <- NSD3201 %>%
+  mutate(
+    kjønn_f = factor(Kjønn,
+                     levels = c(1, 2),
+                     labels = c("Menn", "Kvinner"))
+    )
+
 
 
 # print(grenseverdier)
@@ -451,6 +458,9 @@ Vi vil også mulig bruke dummyvariabler for å kontrollere for andre faktorer so
 
 I dette avsnittet vil vi gi en oversikt over deskriptiv statistikk for alle variablene i analysen. Vi vil presentere gjennomsnitt, standardavvik og minimums- og maksimumsverdier for alle variablene, samt korrelasjonsmatrisen for de uavhengige variablene.
 
+I \autoref{tab:deskriptiv} presenteres deskriptiv statistikk for alle variablene i analysen. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.27 prosent, med et standardavvik på 13.49 prosent. Alder har et gjennomsnitt på 42.80 år, med et standardavvik på 12.28 år. Utdanningsnivået har et gjennomsnitt på 4.38, som tilsvarer videregående skole, med et standardavvik på 1.23.
+
+Av de opprinnelig 17971 inviterte respondentene i datasettet så fullførte kun 2 080 svarene til alle de relevante variablene. Hvor eksakt responsrate da blir $\frac{2080}{17971} = 11.6\%$. Dette kan føre til skjevheter i dataene, og kan bli en svakhet ved analysen når vi tolker resultatene. Siden det er vanskelig for oss å vite om det er systematiske forskjeller mellom de som svarte og de som ikke svarte, så kan vi ikke si noe sikkert om hvor representativt utvalget er for den norske befolkningen. Vi blir å sammenlikne alder og kjønn i datasettet med SSB sine tall for å se om det er noen forskjeller, samt teste gjennomsnittsalder, og gjennomsnittlig sykefravær for de som svarte og de som ikke svarte. Hvis det er store forskjeller blir vi å måtte bruke vektjustering for å korrigere for skjevhetene i dataene.
 
 ```{r}
 # Deskriptiv statistikk
@@ -494,9 +504,9 @@ Ekstra arbeid                    &   1 &   2 &   4 &  3.43 &   5 &   9 & 2080 \\
 \label{tab:deskriptiv}
 \end{table}
 
-I \autoref{tab:deskriptiv} presenteres deskriptiv statistikk for alle variablene i analysen. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.27 prosent, med et standardavvik på 13.49 prosent. Alder har et gjennomsnitt på 42.80 år, med et standardavvik på 12.28 år. Utdanningsnivået har et gjennomsnitt på 4.38, som tilsvarer videregående skole, med et standardavvik på 1.23.
+I \autoref{tab:deskr_formue} presenteres deskriptiv statistikk for sykefravær, alder, motivasjon og tilfredshet etter formuegruppe. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.72 prosent for de med lav formue, 12.00 prosent for de med middels formue og 12.09 prosent for de med høy formue. Dette tyder på at det ikke er noen store forskjeller i sykefraværet mellom de forskjellige formuegruppene. Vi ser også at det er små forskjeller i alder mellom de forskjellige formuegruppene, der de med høy formue er eldre enn de med lav og middels formue. Dette kan vise oss at det er en sammenheng mellom alder og formue, der eldre personer har høyere formue enn yngre personer. 
 
-Av de opprinnelig 17971 inviterte respondentene i datasettet så fullførte kun 2 080 svarene til alle de relevante variablene. Hvor eksakt responsrate da blir $\frac{2080}{17971} = 11.6\%$. Dette kan føre til skjevheter i dataene, og kan bli en svakhet ved analysen når vi tolker resultatene. Siden det er vanskelig for oss å vite om det er systematiske forskjeller mellom de som svarte og de som ikke svarte, så kan vi ikke si noe sikkert om hvor representativt utvalget er for den norske befolkningen. Vi blir å sammenlikne alder og kjønn i datasettet med SSB sine tall for å se om det er noen forskjeller, samt teste gjennomsnittsalder, og gjennomsnittlig sykefravær for de som svarte og de som ikke svarte. Hvis det er store forskjeller blir vi å måtte bruke vektjustering for å korrigere for skjevhetene i dataene.
+Motivasjonen er også høyere for de med lav formue enn de med høy formue, noe som kan si at de med lav formue er mer motivert enn de med høy formue. Dette kan være fordi de med lav formue har mer å jobbe for, og derfor er mer motivert til å jobbe hardt. Tilfredsheten er også høyere for de med lav formue enn de med høy formue, men det er generelt små forskjeller i tilfredsheten mellom de forskjellige formuegruppene.
 
 ```{r}
 # library(kableExtra)
@@ -553,27 +563,25 @@ Tilfredshet         &  2.11 &  0.97 &  2.08 &  0.90 &  1.98 &  0.90 \\
 \label{tab:deskr_formue}
 \end{table}
 
-I \autoref{tab:deskr_formue} presenteres deskriptiv statistikk for sykefravær, alder, motivasjon og tilfredshet etter formuegruppe. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.72 prosent for de med lav formue, 12.00 prosent for de med middels formue og 12.09 prosent for de med høy formue. Dette tyder på at det ikke er noen store forskjeller i sykefraværet mellom de forskjellige formuegruppene. Vi ser også at det er små forskjeller i alder mellom de forskjellige formuegruppene, der de med høy formue er eldre enn de med lav og middels formue. Dette kan tyde på at det er en sammenheng mellom alder og formue, der eldre personer har høyere formue enn yngre personer. 
-
-Motivasjonen er også høyere for de med lav formue enn de med høy formue, noe som kan tyde på at de med lav formue er mer motivert enn de med høy formue. Dette kan være fordi de med lav formue har mer å kjempe for, og derfor er mer motivert til å jobbe hardt. Tilfredsheten er også høyere for de med lav formue enn de med høy formue, men det er generelt små forskjeller i tilfredsheten mellom de forskjellige formuegruppene.
+I \autoref{tab:deskr_kjonn} presenteres deskriptiv statistikk for sykefravær etter kjønn. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 10.92 prosent for menn og 13.06 prosent for kvinner, kvinner har også høyere sykefravær enn menn. Dette kan skyldes at kvinner i større grad enn menn jobber i yrker med høyere sykefravær, eller at kvinner er mer tilbøyelige til å rapportere sykefravær enn menn. Det kan også være andre faktorer som påvirker sykefraværet, som for eksempel alder, utdanning og arbeidsforhold. Vi ser også at vi har en overvekt av kvinner i utvalget, der 63.1 prosent av respondentene er kvinner og 36.9 prosent er menn. Dette viser oss at det er en skjevhet i utvalget, der kvinner er overrepresentert i forhold til menn.
 
 
 ```{r}
-# tabell<-NSD3201 %>%
-#   # 1) Lag om kjonn til faktor med labels
-#   mutate(
-#     kjønn_f = factor(Kjønn,
-#                      levels = c(1, 2),
-#                      labels = c("Mann", "Kvinne"))
-#   ) %>%
-#   # 2) Gruppér og summer opp
-#   group_by(kjønn_f) %>%
-#   summarise(
-#     N       = n(),
-#     pct     = round(N / nrow(NSD3201) * 100, 1),
-#     mean_sf = round(mean(Sykefravær_2022, na.rm = TRUE), 2),
-#     sd_sf   = round(sd(Sykefravær_2022, na.rm = TRUE), 2)
-#   )
+tabell<-NSD3201 %>%
+  # 1) Lag om kjonn til faktor med labels
+  mutate(
+    kjønn_f = factor(Kjønn,
+                     levels = c(1, 2),
+                     labels = c("Mann", "Kvinne"))
+  ) %>%
+  # 2) Gruppér og summer opp
+  group_by(kjønn_f) %>%
+  summarise(
+    N       = n(),
+    pct     = round(N / nrow(NSD3201) * 100, 1),
+    mean_sf = round(mean(Sykefravær_2022, na.rm = TRUE), 2),
+    sd_sf   = round(sd(Sykefravær_2022, na.rm = TRUE), 2)
+  )
 
 ```
 
@@ -591,8 +599,7 @@ Kvinne  & 1343 & 63.1 & 13.06               & 14.79 \\
 \label{tab:deskr_kjonn}
 \end{table}
 
-I \autoref{tab:deskr_kjonn} presenteres deskriptiv statistikk for sykefravær etter kjønn. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 10.92 prosent for menn og 13.06 prosent for kvinner. Dette tyder på at kvinner har høyere sykefravær enn menn. Dette kan skyldes at kvinner i større grad enn menn jobber i yrker med høyere sykefravær, eller at kvinner er mer tilbøyelige til å rapportere sykefravær enn menn. Det kan også være andre faktorer som påvirker sykefraværet, som for eksempel alder, utdanning og arbeidsforhold. Vi ser også at vi har en overvekt av kvinner i utvalget, der 63.1 prosent av respondentene er kvinner og 36.9 prosent er menn. Dette kan tyde på at det er en skjevhet i utvalget, der kvinner er overrepresentert i forhold til menn.
-
+I \autoref{tab:deskr_utdanning} presenteres deskriptiv statistikk for sykefravær etter utdanningsnivå. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.82 prosent for de med grunnskole eller mindre, 12.46 prosent for de med videregående skole, 11.71 prosent for de med universitet/høgskole og 8.70 prosent for de med forskernivå. Dette tyder på at sykefraværet er høyere for de med lavere utdanning, og at det er en sammenheng mellom utdanningsnivå og sykefravær. Dette kan skyldes at personer med høyere utdanning har bedre arbeidsforhold og mer støtte fra arbeidsgiver, noe som kan føre til lavere sykefravær.
 
 ```{r}
 # utd_summ <- NSD3201 %>%
@@ -608,6 +615,7 @@ I \autoref{tab:deskr_kjonn} presenteres deskriptiv statistikk for sykefravær et
 
 
 ```
+
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrrr}
@@ -624,9 +632,126 @@ Forskernivå                    &  10 &  0.5 &  8.70               & 11.29 \\
 \label{tab:deskr_utdanning}
 \end{table}
 
-I \autoref{tab:deskr_utdanning} presenteres deskriptiv statistikk for sykefravær etter utdanningsnivå. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.82 prosent for de med grunnskole eller mindre, 12.46 prosent for de med videregående skole, 11.71 prosent for de med universitet/høgskole og 8.70 prosent for de med forskernivå. Dette tyder på at sykefraværet er høyere for de med lavere utdanning, og at det er en sammenheng mellom utdanningsnivå og sykefravær. Dette kan skyldes at personer med høyere utdanning har bedre arbeidsforhold og mer støtte fra arbeidsgiver, noe som kan føre til lavere sykefravær.
+I \autoref{fig:histogram} presenteres histogram og tetthetskurve for sykefraværet i 2022. Vi ser at sykefraværet er høyreskjevt, med en høyere andel av respondentene som har lavt sykefravær enn de som har høyt sykefravær både på menn og kvinner. Vi vet fra \autoref{tab:deskr_kjonn} at gjennomsnittet for begge kjønn er på omtrent 11 prosent for menn mens det er på 13 prosent for kvinner, noe som gjenspeiles i grafen. Det er vanskelig å se, men det er også noen uteliggere hvor fire kvinner har rapportert mer enn 90 prosent sykefravær og 1 mann har rapportert det samme.
+
+```{r}
+# Histogram + tetthetskurve på sykefravær inkl små streker for individuelle observasjoner
+
+fig_1 <- NSD3201 %>% 
+  ggplot(aes(x = Sykefravær_2022)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", alpha=0.8, color = "black") +
+  geom_density(color = "red", size = 1) +
+  facet_wrap(~ kjønn_f, ncol = 1) +
+  labs(title = "",
+       x = "Sykefravær i prosent",
+       y = "Tetthet") +
+  theme_minimal()+
+  # endrer på y og x akse størrelse på skrift
+  theme(axis.text.x = element_text(size = 14),
+        axis.text.y = element_text(size = 14),
+        axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16),
+        strip.text = element_text(size = 16))+
+  scale_x_continuous(breaks = seq(0, 100, by = 10))
+
+ggsave("dokumentobjekter/figurer/fig_1.png", plot = fig_1, width = 8, height = 5)
+```
 
 
+
+
+```{=tex}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_1.png}
+\caption{Histogram og tetthetskurve for sykefravær i 2022}
+\label{fig:histogram}
+\end{figure}
+```
+
+```{r}
+# Histogram/densityplot av alder inkl median og kvartilmarkører
+
+median_alder <- NSD3201 %>%
+  group_by(kjønn_f) %>%
+  summarise(med = median(Alder, na.rm = TRUE))
+
+fig_2 <- NSD3201 %>% 
+  ggplot(aes(x = Alder)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", alpha=0.8, color = "black") +
+  geom_density(color = "red", size = 1) +
+  facet_wrap(~ kjønn_f, ncol = 1) +
+  labs(title = "",
+       x = "Alder",
+       y = "Tetthet") +
+  theme_minimal()+
+  # endrer på y og x akse størrelse på skrift
+  theme(axis.text.x = element_text(size = 14),
+        axis.text.y = element_text(size = 14),
+        axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16),
+        strip.text = element_text(size = 16))+
+  scale_x_continuous(breaks = seq(18, 66, by = 5))+
+  geom_segment(data = median_alder,
+             aes(x = med,
+                 xend = med,
+                 y = 0,
+                 yend = 0.031),
+             color = "blue",
+             linetype = "dashed",
+             size = 1) 
+
+ggsave("dokumentobjekter/figurer/fig_2.png", plot = fig_2, width = 8, height = 5)
+```
+
+
+Når vi ser på aldersfordelingen i \autoref{fig:histogram} så ser vi at den er jevn og symmetrisk fordelt blant respondentene. Som nevnt tidligere så er spennet på alderene til respondentene i undersøkelsen mellom 18 til 66 år. Medianalderen kan man se i den blå stiplede linjen og den er på 43 år for menn og 44 år for kvinner. 
+
+
+```{=tex}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_2.png}
+\caption{Histogram og tetthetskurve for alder}
+\label{fig:histogram}
+\end{figure}
+```
+
+For analysen så har vi fordelt alder inn i breddeintervaller på 10 år, og vi har valgt å bruke aldersgruppene 18-29, 30-39, 40-49, 50-59 og 60-66 år. I \autoref{fig:barplot} presenteres et barplot av aldersgruppene. Vi ser at det er flest respondenter i aldersgruppen 50-59 år med 27.4 prosent, og at det er færrest respondenter i aldersgruppen 60-66 år. Dette fordi det er aldersgruppen som er fordelt inn i det laveste breddeintervallet. Det er også en del respondenter i aldersgruppen 40-49 år, og at det er færrest respondenter i aldersgruppen 18-29 år.
+
+```{r}
+# Barplot av breddeintervallene på alder
+
+fig_3 <- NSD3201 %>% 
+ count(Alder_grupper) %>%
+  mutate(pct = n / sum(n) * 100) %>%
+  drop_na() %>% 
+  ggplot(aes(x = Alder_grupper, y = pct)) +
+  geom_col(fill = "steelblue", alpha=0.7) +
+  geom_text(aes(label = paste0(round(pct, 0.8), "%")),
+            vjust = -0.4, size = 4) +
+  labs(
+    x = "Aldersgruppe",
+    y = "Prosent",
+    title = ""
+  ) +
+  theme_minimal()+
+  theme(axis.text.x = element_text(size = 14),
+        axis.text.y = element_text(size = 14),
+        axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16))
+
+ggsave("dokumentobjekter/figurer/fig_3.png", plot = fig_3, width = 8, height = 5)
+```
+
+```{=tex}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_3.png}
+\caption{Barplot av aldersgrupper}
+\label{fig:barplot}
+\end{figure}
+```
 
 
 
