@@ -597,7 +597,7 @@ Kvinne  & 1343 & 63.1 & 13.06               & 14.79 \\
 \label{tab:deskr_kjonn}
 \end{table}
 
-I \autoref{tab:deskr_utdanning} presenteres deskriptiv statistikk for sykefravær etter utdanningsnivå. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.82 prosent for de med grunnskole eller mindre, 12.46 prosent for de med videregående skole, 11.71 prosent for de med universitet/høgskole og 8.70 prosent for de med forskernivå. Dette tyder på at sykefraværet er høyere for de med lavere utdanning, og at det er en sammenheng mellom utdanningsnivå og sykefravær. Dette kan skyldes at personer med høyere utdanning har bedre arbeidsforhold og mer støtte fra arbeidsgiver, noe som kan føre til lavere sykefravær.
+I \autoref{tab:deskr_utdanning} presenteres deskriptiv statistikk for sykefravær etter utdanningsnivå. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.82 prosent for de med grunnskole eller mindre, 12.46 prosent for de med videregående skole og 11.67 prosent for de med universitet/høgskole. Dette tyder på at sykefraværet er høyere for de med lavere utdanning, og at det kan være er en sammenheng mellom utdanningsnivå og sykefravær.
 
 ```{r}
 # utd_summ <- NSD3201 %>%
@@ -622,8 +622,7 @@ Utdanningsnivå                & N   & \%   & Gj.snitt sykefravær & SD    \\
 \midrule
 Grunnskole eller mindre       & 369 & 17.3 & 12.82               & 15.56 \\
 Videregående                   &1074 & 50.5 & 12.46               & 14.26 \\
-Universitet/Høgskole           & 675 & 31.7 & 11.71               & 13.34 \\
-Forskernivå                    &  10 &  0.5 &  8.70               & 11.29 \\
+Universitet/Høgskole           & 685 & 32.2 & 11.67               & 13.31 \\
 \bottomrule
 \end{tabular}
 \caption{Deskriptiv statistikk for sykefravær i 2022 etter utdanningsnivå (N = 2 128).}
@@ -753,6 +752,42 @@ ggsave("dokumentobjekter/figurer/fig_3.png", plot = fig_3, width = 8, height = 5
 ```
 
 ```{r}
+# Respondents rapportere formue
+
+fig_4 <- NSD3201 %>%
+  ggplot(aes(x = Log_formue)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", color = "black") +
+  geom_density(color = "red", linewidth = 1) +
+  facet_wrap(~ kjønn_f, ncol = 1) +
+  labs(title = "",
+       x = "Formue (Bruttofinanskapital)",
+       y = "Tetthet") +
+  theme_minimal()+
+  # endrer på y og x akse størrelse på skrift
+  theme(axis.text.x = element_text(size = 14),
+        axis.text.y = element_text(size = 14),
+        axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16),
+        strip.text = element_text(size = 16))
+
+ggsave("dokumentobjekter/figurer/fig_4.png", plot = fig_4, width = 8, height = 5)
+```
+I \autoref{fig:histogram_formue} presenteres histogram og tetthetskurve for bruttofinanskapitalen log-transformert $(1 + x)$ [^3]. Originalt er formuefordelingen høyreskjev, med en høyere andel av respondentene som har lav formue enn de som har høy formue noe som kan svekke analysen. Derfor må vi log-transformere formuefordelingen for å få en mer normalfordelt fordeling både for menn og kvinner. Når man log-transformerer $(1 + x)$ så tar vi logaritmen av formueverdiene og legger til 1 for å unngå problemer med nullverdier.
+
+[^3]: Log $(1 + x)$ er en vanlig transformasjon for å håndtere høyreskjevhet i data, og det kan bidra til å stabilisere variansen og gjøre dataene mer normale. Logaritmen gjør at de store verdiene blir mindre og de små verdiene blir større.
+
+```{=tex}
+\begin{figure}[H]
+\caption{Fordeling av log-transformert bruttofinanskapital}
+\label{fig:histogram_formue}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_4.png}
+\end{figure}
+```
+
+
+
+```{r}
 # Søylediagram for kategoriske variabler samlet for kjønn, utdanning og formuegrupper
 
 df_long <- NSD3201 %>%
@@ -769,11 +804,11 @@ df_long <- NSD3201 %>%
   ) %>%
   ungroup()
 
-fig_4 <- ggplot(df_long, aes(x = kategori, y = pct, fill = kjønn_f)) +
+fig_5 <- ggplot(df_long, aes(x = kategori, y = pct, fill = kjønn_f)) +
   geom_col(position = position_dodge(width = 0.9),color="black") +
   geom_text(aes(label = paste0(round(pct, 1), "%")),
             position = position_dodge(width = 0.8),
-            vjust = -0.5, size = 3) +
+            vjust = -0.5, size = 4) +
   facet_wrap(~ variabel,
              scales = "free_x",
              labeller = labeller(
@@ -786,27 +821,122 @@ fig_4 <- ggplot(df_long, aes(x = kategori, y = pct, fill = kjønn_f)) +
        title = "")+
   theme_minimal(base_size = 12) +
   theme(
-    strip.text       = element_text(size = 14),
-    axis.text.x      = element_text(angle = 30, hjust = 1),
+    strip.text       = element_text(size = 16),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x      = element_text(size = 14, angle = 30, hjust = 1),
+    legend.title     = element_text(size = 14),
+    legend.text      = element_text(size = 12),
+    legend.key.size  = unit(1.2, "lines"),
     legend.position  = "bottom")+
   scale_y_continuous(breaks = seq(0, 60, by = 10),
                      limits = c(0, 60))+
   scale_fill_manual(values = c("steelblue", "palevioletred"))
 
-ggsave("dokumentobjekter/figurer/fig_4.png", plot = fig_4, width = 8, height = 5)
+ggsave("dokumentobjekter/figurer/fig_5.png", plot = fig_5, width = 8, height = 5)
 
 ```
+
+Når vi ser på fordelingen av formue- og utdanningsgrupper fordelt på kjønn i \autoref{fig:barplot_2} så ser vi at det er flest kvinner i utdanningsgruppen videregående skole med 46.7 prosent, og det samme gjelder for menn med 56.9 prosent. Mer kvinner enn menn har universitetsutdannings eller høyere med 40.2 prosent mot kun 18.5 prosent for menn. Menn har også lavest utdanningsnivå med 24.6 prosent i utdanningsgruppen grunnskole eller mindre, mens kvinner har 13.1 prosent i den samme utdanningsgruppen. Dette viser oss at menn har lavere utdanningsnivå enn kvinner, og at kvinner er mer tilbøyelige til å ta høyere utdanning enn menn.
+
+Formuefordelingen er delt inn i tertiler, som gjør slik at fordelingen blir jevnt blant de forskjellige formuegruppene både for menn og kvinner.
 
 ```{=tex}
 \begin{figure}[H]
 \caption{Fordeling av formue- og utdanningsgrupper fordelt på kjønn}
 \label{fig:barplot_2}
 \centering
-\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_4.png}
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_5.png}
 \end{figure}
 ```
 
+```{r}
+# Boksplott av sykefravær etter formuegruppe
 
+fig_6 <- NSD3201 %>%
+  ggplot(aes(x = Formue_grupper, y = Sykefravær_2022)) +
+  geom_jitter(aes(color = Formue_grupper),
+              position = position_jitter(width = 0.2),
+              alpha = 0.5)+
+  geom_boxplot(aes(fill = Formue_grupper), color = "black") +
+  labs(title = "",
+       x = "Formuegruppe",
+       y = "Sykefravær i prosent",
+       color= "",
+       fill = "") +
+  theme_minimal()+
+  # endrer på y og x akse størrelse på skrift
+  theme(axis.text.x = element_text(size = 14),
+        axis.text.y = element_text(size = 14),
+        axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16),
+        strip.text = element_text(size = 16),
+        legend.position = "none")+
+  scale_x_discrete(labels=c("Lav", "Middels", "Høy"))+
+    scale_y_continuous(breaks = seq(0, 100, by = 10),
+                     limits = c(0, 100))+
+  scale_fill_manual(values = c("steelblue", "palevioletred", "lightgreen"))+
+  scale_color_manual(values = c("steelblue", "palevioletred", "lightgreen"))
+
+ggsave("dokumentobjekter/figurer/fig_6.png", plot = fig_6, width = 8, height = 5)
+```
+
+I \autoref{fig:boxplot} presenteres et boksplott av sykefravær etter formuegruppe. Vi kan se at det ikke er store forskjeller i sykefraværet mellom formuegruppene. Medianen vises i den sorte streken i midten av boksen, og den viser at sykefraværet med små marginer går ned fra lav formue, til middels formue og til høy formue. Bunnen og toppen til boksene viser oss henholdsvis første og tredje kvartil, og de stiplede linjene viser oss minimum og maksimum sykefravær. Det er også noen uteliggere som er vist med små prikker, og de viser at det er noen respondenter som har rapportert sykefravær på over 40 prosent. Dette kan være at de har vært sykemeldt i en lengre periode. I bakgrunnen av figuren man man se alle observasjonene spredt utover for en bedre oversikt siden det er mange observasjoner som går over hverandre i boksen. Dette er gjort med en funksjon som sprer ut observasjonene litt for å få en bedre oversikt over dem. 
+
+
+```{=tex}
+\begin{figure}[H]
+\caption{Boksplott av sykefravær etter formuegruppe}
+\label{fig:boxplot}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_6.png}
+\end{figure}
+```
+
+```{r}
+# Boksplott av sykefravær etter utdanningsnivå
+
+fig_7 <- NSD3201 %>%
+  ggplot(aes(x = Utdanning_grupper, y = Sykefravær_2022)) +
+  geom_jitter(aes(color = Utdanning_grupper),
+              position = position_jitter(width = 0.2),
+              alpha = 0.5)+
+  geom_boxplot(aes(fill = Utdanning_grupper), color = "black") +
+  labs(title = "",
+       x = "Utdanningsnivå",
+       y = "Sykefravær i prosent",
+       color= "",
+       fill = "") +
+  theme_minimal()+
+  # endrer på y og x akse størrelse på skrift
+  theme(axis.text.x = element_text(size = 14),
+        axis.text.y = element_text(size = 14),
+        axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16),
+        strip.text = element_text(size = 16),
+        legend.position = "none")+
+  scale_x_discrete(labels=c("Grunnskole eller mindre", "Videregående", "Universitet/Høgskole"))+
+    scale_y_continuous(breaks = seq(0, 100, by = 10),
+                     limits = c(0, 100))+
+  scale_fill_manual(values = c("steelblue", "palevioletred", "lightgreen"))+
+  scale_color_manual(values = c("steelblue", "palevioletred", "lightgreen"))
+
+ggsave("dokumentobjekter/figurer/fig_7.png", plot = fig_7, width = 8, height = 5)
+```
+
+I \autoref{fig:boxplot_2} presenteres et boksplott av sykefravær etter utdanningsnivå. Vi ser at sykefraværet er veldig jevnt mellom utdanningsnivåene. Medianen er litt over 10 prosent, og som tidligere vet vi at gjennomsnittlig sykefravær er lavere for høyt utdannede og litt lavere for de med lavere utdanning.
+
+```{=tex}
+\begin{figure}[H]
+\caption{Boksplott av sykefravær etter utdanningsnivå}
+\label{fig:boxplot_2}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_7.png}
+\end{figure}
+```
+
+Korrelationheatmap om vi får tid her til latente variabler.
 
 ## Metode
 
