@@ -362,21 +362,19 @@ NSD3201 <- NSD3201 %>%
 
 # Lager færre nivåer på utdanning for enklere tolkning
 NSD3201 <- NSD3201 %>%
-  filter(Utdanning != 9) %>%  # dropp uoppgitt helt
+  filter(Utdanning != 9) %>%  # dropp “uoppgitt”
   mutate(
     Utdanning_grupper = case_when(
-      Utdanning %in% 2                     ~ "Grunnskole eller mindre",
-      Utdanning %in% c(3, 4, 5)            ~ "Videregående",
-      Utdanning %in% c(6, 7)               ~ "Universitet/Høgskole",
-      Utdanning == 8                       ~ "Forskernivå"
+      Utdanning == 2                ~ "Grunnskole eller mindre",
+      Utdanning %in% c(3,4,5)       ~ "Videregående",
+      Utdanning %in% c(6,7,8)       ~ "Universitet/Høgskole"
     ),
     Utdanning_grupper = factor(
       Utdanning_grupper,
       levels = c(
         "Grunnskole eller mindre",
         "Videregående",
-        "Universitet/Høgskole",
-        "Forskernivå"
+        "Universitet/Høgskole"
       )
     )
   )
@@ -639,8 +637,8 @@ I \autoref{fig:histogram} presenteres histogram og tetthetskurve for sykefravær
 
 fig_1 <- NSD3201 %>% 
   ggplot(aes(x = Sykefravær_2022)) +
-  geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", alpha=0.8, color = "black") +
-  geom_density(color = "red", size = 1) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", alpha=0.8, color = "black") +
+  geom_density(color = "red", linewidth = 1) +
   facet_wrap(~ kjønn_f, ncol = 1) +
   labs(title = "",
        x = "Sykefravær i prosent",
@@ -662,10 +660,10 @@ ggsave("dokumentobjekter/figurer/fig_1.png", plot = fig_1, width = 8, height = 5
 
 ```{=tex}
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_1.png}
 \caption{Histogram og tetthetskurve for sykefravær i 2022}
 \label{fig:histogram}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_1.png}
 \end{figure}
 ```
 
@@ -678,8 +676,8 @@ median_alder <- NSD3201 %>%
 
 fig_2 <- NSD3201 %>% 
   ggplot(aes(x = Alder)) +
-  geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", alpha=0.8, color = "black") +
-  geom_density(color = "red", size = 1) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", alpha=0.8, color = "black") +
+  geom_density(color = "red", linewidth = 1) +
   facet_wrap(~ kjønn_f, ncol = 1) +
   labs(title = "",
        x = "Alder",
@@ -705,20 +703,19 @@ ggsave("dokumentobjekter/figurer/fig_2.png", plot = fig_2, width = 8, height = 5
 ```
 
 
-Når vi ser på aldersfordelingen i \autoref{fig:histogram} så ser vi at den er jevn og symmetrisk fordelt blant respondentene. Som nevnt tidligere så er spennet på alderene til respondentene i undersøkelsen mellom 18 til 66 år. Medianalderen kan man se i den blå stiplede linjen og den er på 43 år for menn og 44 år for kvinner. 
+Når vi ser på aldersfordelingen i \autoref{fig:histogram} så ser vi at den er jevn og symmetrisk fordelt blant respondentene. Som nevnt tidligere så er spennet på alderene til respondentene i undersøkelsen mellom 18 til 66 år. Medianalderen kan man se i den blå stiplede linjen som er på 43 år for menn og 44 år for kvinner. 
 
 
 ```{=tex}
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_2.png}
 \caption{Histogram og tetthetskurve for alder}
 \label{fig:histogram}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_2.png}
 \end{figure}
 ```
 
-For analysen så har vi fordelt alder inn i breddeintervaller på 10 år, og vi har valgt å bruke aldersgruppene 18-29, 30-39, 40-49, 50-59 og 60-66 år. I \autoref{fig:barplot} presenteres et barplot av aldersgruppene. Vi ser at det er flest respondenter i aldersgruppen 50-59 år med 27.4 prosent, og at det er færrest respondenter i aldersgruppen 60-66 år. Dette fordi det er aldersgruppen som er fordelt inn i det laveste breddeintervallet. Det er også en del respondenter i aldersgruppen 40-49 år, og at det er færrest respondenter i aldersgruppen 18-29 år.
-
+For analysen så har vi fordelt alder inn i breddeintervaller på omtrent 10 år, og aldersgruppene er delt inn i 18-29, 30-39, 40-49, 50-59 og 60-66 år. I \autoref{fig:barplot} presenteres et barplot av aldersgruppene. Vi ser at det er flest respondenter i aldersgruppen 50-59 år med 27.4 prosent, og at det er færrest respondenter i aldersgruppen 60-66 år med 8.3 prosent. Dette fordi det er aldersgruppen som er fordelt inn i det laveste breddeintervallet. Ellers er det jevnt fordelt mellom de andre aldersgruppene, der aldersgruppen 40-49 år har 22.7 prosent, aldersgruppen 30-39 år har 23.5 prosent og aldersgruppen 18-29 år har 17.9 prosent. 
 ```{r}
 # Barplot av breddeintervallene på alder
 
@@ -727,29 +724,85 @@ fig_3 <- NSD3201 %>%
   mutate(pct = n / sum(n) * 100) %>%
   drop_na() %>% 
   ggplot(aes(x = Alder_grupper, y = pct)) +
-  geom_col(fill = "steelblue", alpha=0.7) +
+  geom_col(fill = "steelblue", color= "black") +
   geom_text(aes(label = paste0(round(pct, 0.8), "%")),
             vjust = -0.4, size = 4) +
   labs(
     x = "Aldersgruppe",
-    y = "Prosent",
+    y = "",
     title = ""
   ) +
   theme_minimal()+
   theme(axis.text.x = element_text(size = 14),
         axis.text.y = element_text(size = 14),
         axis.title.x = element_text(size = 16),
-        axis.title.y = element_text(size = 16))
+        axis.title.y = element_text(size = 16))+
+  scale_y_continuous(breaks = seq(0, 30, by = 5),
+                     limits = c(0, 30))
 
 ggsave("dokumentobjekter/figurer/fig_3.png", plot = fig_3, width = 8, height = 5)
 ```
 
 ```{=tex}
 \begin{figure}[H]
+\caption{Aldersgruppefordeling}
+\label{fig:barplot}
 \centering
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_3.png}
-\caption{Barplot av aldersgrupper}
-\label{fig:barplot}
+\end{figure}
+```
+
+```{r}
+# Søylediagram for kategoriske variabler samlet for kjønn, utdanning og formuegrupper
+
+df_long <- NSD3201 %>%
+  select(Formue_grupper, Utdanning_grupper, kjønn_f) %>%
+  pivot_longer(
+    cols      = c(Formue_grupper, Utdanning_grupper),
+    names_to  = "variabel",
+    values_to = "kategori"
+  ) %>%
+  count(variabel, kjønn_f, kategori) %>%
+  group_by(variabel, kjønn_f) %>%
+  mutate(
+    pct = n / sum(n) * 100
+  ) %>%
+  ungroup()
+
+fig_4 <- ggplot(df_long, aes(x = kategori, y = pct, fill = kjønn_f)) +
+  geom_col(position = position_dodge(width = 0.9),color="black") +
+  geom_text(aes(label = paste0(round(pct, 1), "%")),
+            position = position_dodge(width = 0.8),
+            vjust = -0.5, size = 3) +
+  facet_wrap(~ variabel,
+             scales = "free_x",
+             labeller = labeller(
+               variabel = c(
+                 Formue_grupper       = "Formuefordeling",
+                 Utdanning_grupper   = "Utdanning"))) +
+  labs(x     = "",
+       y     = "",
+       fill  = "",
+       title = "")+
+  theme_minimal(base_size = 12) +
+  theme(
+    strip.text       = element_text(size = 14),
+    axis.text.x      = element_text(angle = 30, hjust = 1),
+    legend.position  = "bottom")+
+  scale_y_continuous(breaks = seq(0, 60, by = 10),
+                     limits = c(0, 60))+
+  scale_fill_manual(values = c("steelblue", "palevioletred"))
+
+ggsave("dokumentobjekter/figurer/fig_4.png", plot = fig_4, width = 8, height = 5)
+
+```
+
+```{=tex}
+\begin{figure}[H]
+\caption{Fordeling av formue- og utdanningsgrupper fordelt på kjønn}
+\label{fig:barplot_2}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_4.png}
 \end{figure}
 ```
 
