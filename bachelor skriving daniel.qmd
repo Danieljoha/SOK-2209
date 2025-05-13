@@ -156,45 +156,33 @@ I dette kapittelet vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede 
 
 ### Formue
 
-Formue er et begrep som refererer til den totale verdien av eiendeler og investeringer som en person eller husholdning eier. Dette inkluderer kontanter, eiendom, aksjer, obligasjoner og andre finansielle eiendeler. Formue kan også referere til nettoformue, som er forskjellen mellom eiendeler og gjeld. Formue kan påvirke livskvalitet, helse og muligheter for økonomisk trygghet.
+Formue er et begrep som refererer til den totale verdien av eiendeler og investeringer som en person eller husholdning eier. Dette inkluderer kontanter, eiendom, aksjer, obligasjoner og andre finansielle eiendeler. Formue kan også referere til nettoformue, som er forskjellen mellom eiendeler og gjeld. 
+
+I studien vår vil vi bruke variabelen bruttofinanskapital som en proxy for formue. Bruttofinanskapital omfatter bankinnskudd, andeler i aksje-,obligasjons- og pengefond, aksjer og obligasjons- og pengemarkedsfond, formue i aksjesparekonto, obligasjoner, aksjer og andre verdipapirer per definisjon fra [SSB](https://www.ssb.no/a/metadata/conceptvariable/vardok/3449/nb). [@ssb2024beregnet] Vi blir å bruke formue som en forventet moderator i vår analyse, og vil se hvordan formue påvirker sykefraværet.
 
 ### Sykefravær
 
-Sykefravær refererer til perioden en ansatt er borte fra jobb på grunn av sykdom eller skade. Det kan være kortvarig eller langvarig, og kan påvirkes av en rekke faktorer, inkludert helse, arbeidsmiljø og sosioøkonomiske forhold. Sykefravær kan ha betydelige konsekvenser for både arbeidstakere og arbeidsgivere, inkludert tap av inntekt, redusert produktivitet og økte kostnader for helsevesenet.
+Sykefravær refererer til perioden en ansatt er borte fra jobb på grunn av sykdom eller skade dokumentert med egenmelding eller legemelding, i henhold til norske lover og avtaler per definisjon fra [SSB](https://www.ssb.no/arbeid-og-lonn/arbeidsmiljo-sykefravaer-og-arbeidskonflikter/statistikk/sykefravaer). (SSB,2025)
 
-### Helse
+I vår analyse vil vi bruke sykefraværsprosenten som avhengig variabel. Sykefraværsprosenten er definert som antall sykefraværsdager i prosent av totalt antall arbeidsdager i en gitt periode:
 
-Helse refererer til en tilstand av fysisk, mentalt og sosialt velvære, og ikke bare fravær av sykdom eller skade. Helse kan påvirkes av en rekke faktorer, inkludert genetikk, livsstil, miljø og sosioøkonomiske forhold. God helse er viktig for livskvalitet og trivsel, og kan påvirke evnen til å jobbe og delta i samfunnet.
-
-### Sykemelding
-
-I Norge i dag så dekkes sykemelding av folketrygden, og arbeidsgiver betaler sykepenger i de første 16 dagene av sykefraværet. Etter dette tar folketrygden over ansvaret for å betale sykepenger, og dekningen er i dag på 100%. Arbeidstaker har rett til full lønn i minst 3 måneder i kalenderåret. Sykemelding kan være kortvarig eller langvarig, og kan påvirkes av en rekke faktorer, inkludert helse, arbeidsmiljø og sosioøkonomiske forhold.
+$$
+SF = \frac{ \text{Antall sykefraværsdager}}{\text{Antall avtalte dagsverk}}  \times 100
+$$
 
 ### Jobbkrav
 
-Jobbkrav refererer til de kravene og utfordringene som ansatte møter i jobben. Dette kan inkludere arbeidsmengde, tidsfrister, emosjonelle krav og fysiske krav. Jobbkrav kan påvirke helse og trivsel, og kan føre til stress og utbrenthet hvis de er for høye eller ikke håndteres på en god måte.
+Jobbkrav refererer til de kravene og utfordringene som ansatte må gjøre i jobben. Mer spesifikt, så refereres det til de fysiske, psykologiske, sosiale og organisatoriske kravene som stilles til ansatte i løpet av arbeidsdagen, og som derfor assosieres med fysiologiske eller psykologiske kostnader.[@schaufeli2004job]
 
-De mest vanlige jobbkravene er arbeidsmengde og tidspress. Det kan være positive og negative jobbkrav. Positive jobbkrav kan være utfordrende og motiverende, mens negative jobbkrav kan være overveldende og føre til stress og utmattelse. Når dette da skjer over tid kan det føre til sykefravær og dårligere helse.
+Jobbkrav kan være både fysiske og psykiske, og kan inkludere krav som arbeidsmengde, tidsfrister, ansvar, og emosjonelle krav. Jobbkrav kan føre til stress og utbrenthet, og kan påvirke jobbengasjement og trivsel negativt.
 
-### Må legge til sources
+I vår analyse vil vi gjøre jobbkrav om til en latent variabel som består av flere observerbare variabler. I denne variabelen vil vi inkludere variabler som måler arbeidsmengde, arbeidstempo og hvor mye ekstra arbeid som kreves i jobb.
 
 ### Jobbressurser
 
-Jobbressurser refererer til de ressursene og støtten som ansatte har tilgjengelig for å håndtere jobbkravene. Dette kan inkludere støtte fra kolleger og ledelse, muligheter for utvikling og læring, og fleksibilitet i arbeidsoppgaver. Jobbressurser kan bidra til å redusere stress og utbrenthet, og kan øke jobbengasjement og trivsel.
+Jobbressurser refererer til de fysiske og psykologiske, sosiale eller organisatoriske aspektene ved jobben som bidrar til å redusere jobbkrav og de assosierte psykologiske og fysiologiske kostnadene. Jobbressurser kan også bidra til å oppnå arbeidsmål, fremme personlig vekst og utvikling, og øke jobbengasjement og trivsel. Jobbressurser kan være både interne og eksterne, og kan inkludere faktorer som støtte fra kolleger og ledelse, muligheter for utvikling og læring, autonomi i arbeidet, og fleksibilitet i arbeidsoppgaver. [@schaufeli2004job]
 
-Jobbressurser kan være støtte fra kolleger og ledelse, muligheter for utvikling og læring, og fleksibilitet i arbeidsoppgaver.
-
-### Jobbengasjement
-
-Jobbengasjement refererer til en positiv, tilfredsstillende og energisk tilstand av arbeidstakeren i forhold til jobben. Det kan beskrives som en tilstand av å være fullt engasjert og involvert i arbeidet, og kan føre til økt produktivitet, trivsel og jobbtilfredshet. Jobbengasjement kan påvirkes av en rekke faktorer, inkludert jobbkrav, jobbressurser og sosioøkonomiske forhold.
-
-### Ulikhet
-
-Ulikhet refererer til forskjeller i ressurser, muligheter og livsvilkår mellom individer eller grupper i samfunnet. Dette kan inkludere ulikhet i inntekt, formue, utdanning og helse. Ulikhet kan påvirke livskvalitet, helse og muligheter for økonomisk trygghet, og kan også ha negative konsekvenser for samfunnet som helhet, inkludert økt kriminalitet, politisk ustabilitet og redusert sosial sammenhengskraft.
-
-### Utbrenthet
-
-Utbrenthet refererer til en tilstand av fysisk og emosjonell utmattelse som kan oppstå som følge av langvarig stress og belastning på jobben. Det kan føre til redusert motivasjon, engasjement og produktivitet, samt økt sykefravær. Utbrenthet kan påvirkes av en rekke faktorer, inkludert arbeidsmiljø, jobbkrav og jobbressurser.
+Vi blir å bruke jobbressurser som en latent variabel som består av følgende observerbare variabler: støtte fra sjef, støtte fra kolleger, tilbakemelding fra sjef, arbeidsresultater, grad av selvbestemmelse i oppgaver og arbeid som skal gjøres, grad av arbeidstempo og grad av påvirkning på beslutninger i arbeidet.
 
 ## Job Demands-Resources (JDR) modellen
 
@@ -233,6 +221,7 @@ Nevnt i innledningen studerte @jaeggi2021wealth effekten av ulikhet i formue i e
 I dagens samfunn er det viktig å forstå hvordan formue og ulikhet kan påvirke helse, sykefravær og livskvalitet. Dette er spesielt relevant i lys av den økende formueulikheten som vi har sett de siste årene, ikke bare i Norge, men i mange vestlige land.
 
 ### Makro
+
 
 ## Forklar teori og empiriske funn knyttet til koblingen som du vil undersøke. Være nøye med å gjøre rede for mekanismer!
 
