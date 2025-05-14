@@ -176,7 +176,7 @@ Jobbkrav refererer til de kravene og utfordringene som ansatte må gjøre i jobb
 
 Jobbkrav kan være både fysiske og psykiske, og kan inkludere krav som arbeidsmengde, tidsfrister, ansvar, og emosjonelle krav. Jobbkrav kan føre til stress og utbrenthet, og kan påvirke jobbengasjement og trivsel negativt.
 
-I vår analyse vil vi gjøre jobbkrav om til en latent[1^] variabel som består av flere observerbare variabler. I denne variabelen vil vi inkludere variabler som måler arbeidsmengde, arbeidstempo og hvor mye ekstra arbeid som kreves i jobb.
+I vår analyse vil vi gjøre jobbkrav om til en latent[^1] variabel som består av flere observerbare variabler. I denne variabelen vil vi inkludere variabler som måler arbeidsmengde, arbeidstempo og hvor mye ekstra arbeid som kreves i jobb.
 
 [^1]: En latent varibel er et underliggende, uobserverbart konstrukt som ikke kan måles direkte, men som modelleres gjennom flere målbare indikatorer. I SEM tolkes for eksempel «motivasjon», «jobbkrav» og «jobbressurser» som latente variabler: vi antar at variasjonen i et sett av attestspørsmål (indikatorer) reflekterer den samme underliggende faktoren.
 
@@ -208,23 +208,34 @@ Ved å inkludere formue som en ekstern faktor i JD-R modellen, forsøker vi å f
 
 Tidligere empirisk forskning har over tid vist positive forhold mellom forskjellige Job Demands-Resources-faktorer og årsaker som kan føre til sykefravær.
 
-Utbrenthet og arbeidsengasjement kan betraktes som to distinkte psykologiske tilstander. I en empirisk studie av @schaufeli2004job ble det testet en modell hvor disse to variablene fungerte som avhengige variabler, mens ulike Job Demands-Resources-faktorer ble inkludert som uavhengige variabler i en Structural Equation Model (SEM). Studien viste at utbrenthet og jobbengasjement var negativt korrelert, og at jobbkravene hadde en positiv effekt på utbrenthet, mens jobbressursene hadde en positiv effekt på jobbengasjement. Dette kan tyde på at høyere jobbkrav kan føre til høyere utbrenthet, mens høyere jobbressurser kan føre til høyere jobbengasjement.
-
 ### Mikronivå: Utbrenthet og engasjement
 
-I en annen studie av @vander2016job utført på Belgisk hjemmepleiepersonell, ble det testet en Job Demands-Resources-modell hvor utbrenthet og jobbengasjement var utfallsvariabler. Jobbkrav og jobbressurser ble modellert som prediktorer. Studien viste at jobbkravene var positivt assosiert med utbrenthet, mens jobbressursene hadde var positivt assosiert med jobbengasjement. Denne studien viser også at høyere jobbkrav kan føre til høyere utbrenthet, mens høyere jobbressurser kan føre til høyere jobbengasjement.
+@schaufeli2004job testet i en SEM-modell hvordan jobbkrav og jobbressurser forklarer utbrenthet og jobbengasjement. Studien viste at utbrenthet og jobbengasjement var negativt korrelert, og at jobbkravene hadde en positiv effekt på utbrenthet, mens jobbressursene hadde en signifikant **positiv** effekt på jobbengasjement. Dette kan understøtte at høye krav skaper stress og fravær, mens ressurser fremmer engasjement og opplevelse av mestring.
 
-Nevnt i innledningen studerte @jaeggi2021wealth effekten av ulikhet i formue i et småskala samfunn av innfødte i Tsimane i Bolivia hvor det var 871 observasjoner med i studien, $n = 871$. I studiet testet de hvorvidt relativ husholdningrikdom og ulikhet i formue mot forskjellige psykologiske variabler og helseutfall som depresjon, BMI, blodtrykk og sykelighet. Dette ble testet mot kontrollvariabler, og studien viste til en kobling mellom formueulikhet hvor de med lavere formue hadde større sannsynlighet for å få høyere blodtrykk og luftveissykdommer som kunne lede til dødsfall. De fant også at de med høyere formue hadde lavere sannsynlighet for å få depresjon og høyere BMI. Dette kan tyde på at ulikhet i formue kan ha en negativ effekt på helse og livskvalitet, og vi vil videre bygge på dette i vår oppgave, for å se om det er en sammenheng mellom formue og sykefravær i Norge, og om det er andre faktorer som kan påvirke sykefraværet.
+### Ulikhet og helse på mikronivå
+
+@vander2016job utførte også en JD-R og SEM-analyse på Belgisk hjemmepleiepersonell. Jobbkrav og jobbressurser ble modellert som prediktorer. Studien viste at jobbkravene her også var positivt assosiert med utbrenthet, mens jobbressursene var positivt assosiert med jobbengasjement. Denne studien viser også at JDR-mekanismer holder i andre sammenhenger hvor arbeidstakere er under emosjonelt press og skiftarbeid.
+
+@jaeggi2021wealth undersøkte effekten av ulikhet i formue i et småskala samfunn av innfødte i Tsimane i Bolivia hvor det var 871 observasjoner med i studien, $n = 871$. I studiet testet de hvorvidt relativ husholdningrikdom og ulikhet i formue mot forskjellige psykologiske variabler og helseutfall som depresjon, BMI, blodtrykk og sykelighet. Dette ble testet mot kontrollvariabler, og studien viste til en kobling mellom formueulikhet hvor de med lavere formue hadde større sannsynlighet for å få høyere blodtrykk og luftveissykdommer som kunne lede til dødsfall. De fant også at de med høyere formue hadde lavere sannsynlighet for å få depresjon og høyere BMI. Dette indikterer at ulikhet i formue kan moderere stress og helserisiko på individnivå.
 
 @langseth2021ticket bygger videre på tidligere forskning og adresserer limitasjonene ved Job Demands-Resources-modellen. De argumenterer for at Job Demands-Resources-modellen ved tidligere forskning har hatt fokus på organisasjonsnivået, og at det er viktig å se på hvordan Job Demands-Resources-modellen kan brukes bedre på jobbressurser, jobbengasjement og helserelaterte utfall. De gjorde en paneldata studie på fast ansatte i Norge med to års tidsforsinkelse med 1533 ansatte første tidsperiode, $n =1533$ og 1503 ansatte, $n = 1503$ neste tidsperiode. Over lengre tid fant de at jobbressurser hadde en positiv effekt på jobbengasjement, og at jobbengasjement var negativt assosiert med sykefravær. Dette kan tyde på at høyere jobbressurser kan føre til høyere jobbengasjement, som igjen kan føre til lavere sykefravær.
 
-I dagens samfunn er det viktig å forstå hvordan formue og ulikhet kan påvirke helse, sykefravær og livskvalitet. Dette er spesielt relevant i lys av den økende formueulikheten som vi har sett de siste årene, ikke bare i Norge, men i mange vestlige land.
-
 ### Makronivå: Ulikhet i samfunnet
 
+JDR-modellen operer primært på individnivå, men en makroøkonomisk studie om inntektsulikhet har vist at økonomisk ulikhet i en befolkning korrelerer med høyere sykefravær og dårligere helse. @pickett2015income undersøkte sammenhengen mellom inntektsulikhet og helse i 34 OECD-land, og fant at høyere inntektsulikhet var assosiert med høyere sykefravær og dårligere helseutfall. Studien viste også at inntektsulikhet hadde en negativ effekt på livskvalitet og trivsel, og at dette kunne føre til økt sykefravær.
 
+Mekanismene som følger  på mikronivå er da:
 
+$$
+\text{Høyere jobbkrav} \rightarrow \text{Økt utbrenthet} \rightarrow \text{Høyere sykefravær} \rightarrow \text{Økt jobbengasjement} \rightarrow \text{Lavere sykefravær}
+$$
+Hvor formue fungerer som en moderator ved å påvirke stress til individer før jobbkravene utløser negative effekter på helse.
 
+På makronivå vil samfunnsmessig ulikhet forme de jobbkrav og ressurser som virksomheter og arbeidstakere får, og dermed styrke JDR-mekanismer, også på tvers av sektorer og bransjer. Dermed får vi et teoretisk og empirisk grunnlag for vår undersøkelse av at:
+
+$$
+\text{Formue} \rightarrow \text{Jobbkrav og jobbressurser} \rightarrow \text{Sykefravær i Norge}
+$$
 
 ## Modelloppsett
 
