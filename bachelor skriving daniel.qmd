@@ -239,7 +239,63 @@ $$
 
 ## Modelloppsett
 
-trur kanskje formue effekt er veldig kraftig på ung alder
+Oppsettet blir da som følger:
+
+```{=tex}
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[
+      latent/.style={rectangle, draw, fill=blue!20, minimum width=3cm, minimum height=1cm},
+      item/.style  ={rectangle, draw, fill=blue!10, font=\small},
+      medi/.style  ={rectangle, draw, fill=green!20, minimum width=2.5cm, minimum height=1cm},
+      medi2/.style ={rectangle, draw, fill=red!20,   minimum width=2.5cm, minimum height=1cm},
+      moder/.style ={diamond,   draw, fill=yellow!20,aspect=2, minimum width=2.5cm, minimum height=1cm},
+      >=Stealth,
+      node distance=1cm and 2cm
+    ]
+
+    % Latente noder
+    \node[latent]              (JK)  {Jobbkrav};
+    \node[latent, below=of JK] (JR)  {Jobbressurser};
+
+    % Indikator-noder for Jobbkrav
+    \node[item, above left=of JK] (v1) {Variabel 1};
+    \node[item, left=of JK]       (v2) {Variabel 2};
+    \draw[-{Circle[length=2mm]}] (JK) -- (v1);
+    \draw[-{Circle[length=2mm]}] (JK) -- (v2);
+
+    % Indikator-noder for Jobbressurser
+    \node[item, left=of JR]        (v3) {Variabel 3};
+    \node[item, below left=of JR]  (v4) {Variabel 4};
+    \draw[-{Circle[length=2mm]}] (JR) -- (v3);
+    \draw[-{Circle[length=2mm]}] (JR) -- (v4);
+
+    % Moderator-node plassert midt over
+    \node[moder, right=1.4cm of $(JK)!0.5!(JR)$] (FN) {Formue};
+    \draw[->, dashed] (FN) -- (JK);
+    \draw[->, dashed] (FN) -- (JR);
+
+    % To separate motivasjons-noder
+    \node[medi2, right=of JK] (M1) {Motivasjon};
+    \node[medi,  right=of JR] (M2) {Motivasjon};
+
+    % Piler fra latente til motivasjon med tegn
+    \draw[->] (JK) -- node[midway, above] {$-$} (M1);
+    \draw[->] (JR) -- node[midway, below] {$+$} (M2);
+
+    % Sykefravær
+    \node[latent, right=3cm of $(M1)!0.5!(M2)$] (SF) {Sykefravær};
+
+    % Piler fra motivasjon til sykefravær med tegn
+    \draw[->] (M1) -- node[midway, above] {$-$} (SF);
+    \draw[->] (M2) -- node[midway, below] {$+$} (SF);
+
+  \end{tikzpicture}
+  \caption{Utvidet JD–R-modell med formue som moderator og separate motivasjonsløp.}
+  \label{fig:jdr_tikz}
+\end{figure}
+
+```
 
 ### Dette er veldig work in progress
 
@@ -284,6 +340,8 @@ Der $\alpha_0$ er konstanten, $\alpha_1$ og $\alpha_2$ er koeffisientene for hen
 putter inn utdanning og alder i z.
 
 Er nokk forskjell på sykefravær på alder ung/gammel. hvor stor forskjell mellom de på ung og gammel basert på formue
+
+
 
 # Metode og data
 
