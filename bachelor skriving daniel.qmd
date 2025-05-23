@@ -136,7 +136,15 @@ Denne bacheloroppgaven undersøker sammenhengen mellom sosioøkonomiske forhold 
 
 ### Bakgrunn
 
-I årene etter finanskrisen har vi observert en økende formueulikhet i mange vestlige land, inkludert Norge. Denne trenden har blitt forsterket etter pandemien, spesielt i boligmarkedet, hvor vi ser at lønnsveksten ikke har holdt tritt med prisøkningen på eiendeler. Dette har gjort det relativt vanskeligere for unge og de med lavere inntekter å opparbeide seg formue, for eksempel gjennom boligkjøp. Vi forventer dermed at formuenivået til arbeidstakere har en effekt på spesielt motivasjon og helse, og dermed påvirke sykefraværet. Når det blir stadig vanskeligere å oppnå økonomisk trygghet og en akseptabel levestandard, kan det føre til økt stress, redusert jobbmotivasjon, og i verste fall dårligere helse og økt fravær. Hypotesene våre er basert på Job Demands-Resources (JDR) modellen, som antyder at jobbkrav og jobbressurser påvirker sykefravær, og at formue kan moderere disse effektene. Hovedsakelig vil vi se på hvordan formue påvirker sykefravær, og der forventer vi at høyere formue gir lavere sykefravær og at høyere formue demper de negative effektene av jobbkrav og forsterker de positive effektene av jobbressurser. Se kapittel [-@sec-hypot] for full oversikt.
+I årene etter finanskrisen har vi observert en økende formueulikhet i mange vestlige land, inkludert Norge. Denne trenden kan være forsterkende av Gatsby-kurven[^1] og har blitt enda sterkere etter pandemien. Spesielt i boligmarkedet, hvor vi ser at lønnsveksten ikke har holdt tritt med prisøkningen på eiendeler. Dette har gjort det relativt vanskeligere for unge og de med lavere inntekter å opparbeide seg formue, for eksempel gjennom boligkjøp.
+
+[^1]: Gatsby-kurven viser en sammenheng mellom økonomisk ulikhet og redusert sosial mobilitet. @durlauf_2022_the
+
+Formue fungerer som en buffer mot levekårsproblemer og det å ta hensyn til formue gir et bedre syn på hvor økonomisk utsatt personer er enn kun inntektsmål. @hattrem_hvor
+
+Vi forventer dermed at formuenivået til arbeidstakere har en effekt på spesielt motivasjon og helse, og dermed påvirke sykefraværet. Når det blir stadig vanskeligere å oppnå økonomisk trygghet og en akseptabel levestandard, kan det føre til økt stress, redusert jobbmotivasjon, og i verste fall dårligere helse og økt fravær.
+
+Hypotesene våre er basert på Job Demands-Resources (JDR) modellen, som antyder at jobbkrav og jobbressurser påvirker sykefravær, og at formue kan moderere disse effektene. Hovedsakelig vil vi se på hvordan formue påvirker sykefravær, og der forventer vi at høyere formue gir lavere sykefravær og at høyere formue demper de negative effektene av jobbkrav og forsterker de positive effektene av jobbressurser. Se kapittel [-@sec-hypot] for full oversikt.
 
 Å forstå hvordan disse endringene påvirker arbeidstakeres helse og fravær er viktig for å kunne iverksette tiltak som kan motvirke negative konsekvenser av økende formueulikhet. Dette kan være spesielt viktig i en tid hvor vi ser en økende polarisering i samfunnet, og hvor det er viktig å sikre at alle har like muligheter til å oppnå økonomisk trygghet og god helse, uavhengig av formue og inntekt. Problemstillingen for oppgaven er dermed: *Forklarer nivået på formue sykefraværet i Norge?*. Vi vil undersøke om forskjellige formuegrupper har ulikt sykefravær, og om det er en sammenheng mellom formue og sykefravær. Vi vil også se på om det er andre faktorer som påvirker sykefraværet, og om disse faktorene kan forklare eventuelle sammenhenger mellom formue og sykefravær. Vi vil danne oss tre hypoteser basert på teori og tidligere forskning, og teste disse ved hjelp av en Structural Equation Model (SEM), hvor vi kontrollerer for andre relevante faktorer, som for eksempel alder, kjønn, utdanning og yrke.
 
@@ -176,9 +184,9 @@ Jobbkrav refererer til de kravene og utfordringene som ansatte må gjøre i jobb
 
 Jobbkrav kan være både fysiske og psykiske, og kan inkludere krav som arbeidsmengde, tidsfrister, ansvar, og emosjonelle krav. Jobbkrav kan føre til stress og utbrenthet, og kan påvirke jobbengasjement og trivsel negativt.
 
-I vår analyse vil vi gjøre jobbkrav om til en latent[^1] variabel som består av flere observerbare variabler. I denne variabelen vil vi inkludere variabler som måler arbeidsmengde, arbeidstempo og hvor mye ekstra arbeid som kreves i jobb.
+I vår analyse vil vi gjøre jobbkrav om til en latent[^2] variabel som består av flere observerbare variabler. I denne variabelen vil vi inkludere variabler som måler arbeidsmengde, arbeidstempo og hvor mye ekstra arbeid som kreves i jobb.
 
-[^1]: En latent varibel er et underliggende, uobserverbart konstrukt som ikke kan måles direkte, men som modelleres gjennom flere målbare indikatorer. I SEM tolkes for eksempel «motivasjon», «jobbkrav» og «jobbressurser» som latente variabler: vi antar at variasjonen i et sett av attestspørsmål (indikatorer) reflekterer den samme underliggende faktoren.
+[^2]: En latent varibel er et underliggende, uobserverbart konstrukt som ikke kan måles direkte, men som modelleres gjennom flere målbare indikatorer. I SEM tolkes for eksempel «motivasjon», «jobbkrav» og «jobbressurser» som latente variabler: vi antar at variasjonen i et sett av attestspørsmål (indikatorer) reflekterer den samme underliggende faktoren.
 
 ### Jobbressurser
 
@@ -196,11 +204,16 @@ Grunnen til at vi velger JD-R modellen er fordi vi forventer at formuenivå kan 
 
 Vi mener at økonomiske ressurser som formue, kan hjelpe med å forklare sykefraværet enda mer og vil bruke den som en ekstern modererende faktor.
 
-Formue gir en økonomisk buffer som kan redusere sårbarheten for jobbrelatert stress. Personer med høy formue kan ha større valgfrihet i arbeidslivet, og tåler lettere perioder med høy belastning uten at det går like hardt utover helse eller jobbmotivasjon. Men personer med lav eller negativ formue vil ofte være mer økonomisk avhengige av inntekten fra arbeid, og kan derfor være mer sårbare for jobbrelatert stress.
+Formue gir en økonomisk buffer som kan redusere sårbarheten for jobbrelatert stress. Personer med høy formue kan ha større valgfrihet i arbeidslivet, og tåler lettere perioder med høy belastning uten at det går like hardt utover helse eller jobbmotivasjon. Men personer med lav eller negativ formue vil ofte være mer økonomisk avhengige av inntekten fra arbeid, og kan derfor være mer sårbare for jobbrelatert stress
 
 Formue kan også ha betydning for fremtidsperspektiv og indre motivasjon. Personer med lav formue kan oppleve mindre kontroll over egen livssituasjon og lavere forventninger til fremtidig økonomisk trygghet, noe som potensielt svekker arbeidsglede og motivasjon.
 
-Vi antar da at formue påvirker hvordan individet opplever og håndterer jobbkrav og jobbressurser, og at det har indirekte effekter via motivasjon som påvirker sykefravær.
+Vi antar da at formue påvirker hvordan individet opplever og håndterer jobbkrav og jobbressurser. Vi postulerer at formue fungerer som en moderator for sensitiviteten til endringer i arbeidsforhold og inntekt. En person med lav formue kan være mer sensitiv for både negative og positive endringer i jobbkrav og jobbressurser siden den økonomiske marginen er mindre. Motsatt kan en person med høy formue være mindre sensitiv for endringer i jobbkrav og jobbressurser, og dermed oppleve mindre stress og utbrenthet. Dette kan føre til at personer med høy formue er mer motstandsdyktige mot negative effekter av jobbkrav og mer mottakelige for positive effekter av jobbressurser. Dette kan bety at effekten er ikke-lineær eller bue formet, hvor effekten er sterkest i de med lavest formue og avtar med økende formue. Hvis det er motivasjonsmessige effekter av formuenivå så kan det være at et lavt formuenivå vil gjøre en mindre motivert og indirekte påvirke sykefravær, men også fungere motsatt ved høy formue.
+
+Denne antagelsen støttes av @ngren_2021_the hvor de fant at økonomisk velvære[^3] fungerte som en moderator som reduserte den negative effekten av jobbusikkerhet på utbrenthet blandt hotellansatte.
+
+[^3]: Økonomisk velvære kan defineres som en tilstand der en person fullt ut kan møte nåværende og løpende økonomiske forpliktelser, kan føle seg trygg på sin økonomiske fremtid, og er i stand til å ta valg som gjør det mulig å nyte livet.
+@cfpbconsumerfinancialprotectionbureau_2015_financial
 
 Ved å inkludere formue som en ekstern faktor i JD-R modellen, forsøker vi å fange både den direkte effekten av økonomisk trygghet og hvordan denne tryggheten forsterker eller demper effektene av jobbrelaterte faktorer. I et samfunn med økende økonomisk ulikheter hvor forskjellen mellom dem som har og dem som ikke har, blir større og større, er det viktig å forstå hvordan dette påvirker arbeidstakere og deres helse.
 
@@ -475,9 +488,9 @@ Formue:
 
 Bruttofinanskapital i alt (BF) vil være vår hoveduavhengige variabel, og vi vil bruke bruttofinanskapital i alt som mål på formue. Denne variabelen inneholder verdien av alle finansielle eiendeler som respondenten eier, inkludert kontanter, aksjer, obligasjoner og andre investeringer og har en maks verdi på 2 500 000.
 
-Vi vil dele denne inn i tre forskjellige tertiler [^2] for formuegrupper: 0 - 43 333.33, 43 333.33 - 200 000 og 200 000 - 2 500 000. Dette vil gi oss mulighet til å se om det er forskjeller i sykefravær mellom de forskjellige tertilene. Vi definerer de som lav, middels og høy formue. Vi vil også bruke log-transformasjon av formue for å se om det er noen forskjeller i sykefravær mellom de forskjellige tertilene. Dette kan være nyttig for å se om det er noen ikke-lineære sammenhenger mellom formue og sykefravær, og for å håndtere høy skjevhet i dataene, ettersom de fleste har lav formue og få har høy formue.
+Vi vil dele denne inn i tre forskjellige tertiler [^3] for formuegrupper: 0 - 43 333.33, 43 333.33 - 200 000 og 200 000 - 2 500 000. Dette vil gi oss mulighet til å se om det er forskjeller i sykefravær mellom de forskjellige tertilene. Vi definerer de som lav, middels og høy formue. Vi vil også bruke log-transformasjon av formue for å se om det er noen forskjeller i sykefravær mellom de forskjellige tertilene. Dette kan være nyttig for å se om det er noen ikke-lineære sammenhenger mellom formue og sykefravær, og for å håndtere høy skjevhet i dataene, ettersom de fleste har lav formue og få har høy formue.
 
-[^2]: Tertiler er en statistisk metode for å dele opp et datasett i tre like store deler, slik at hver del inneholder en tredjedel av observasjonene.
+[^3]: Tertiler er en statistisk metode for å dele opp et datasett i tre like store deler, slik at hver del inneholder en tredjedel av observasjonene.
 
 Vi tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt, og dermed kan du være mer villig til å ta deg fri fra jobb. Og motsatt om du har lite formue så vil du være mer sensitiv til endringer i inntekt, og dermed vil du være mer villig til å jobbe mer for å opprettholde inntekten din. Dette kan føre til at de med høyere formue har lavere sykefravær, mens de med lavere formue har høyere sykefravær.
 
@@ -831,7 +844,7 @@ ggsave("dokumentobjekter/figurer/fig_4.png", plot = fig_4, width = 8, height = 5
 ```
 I \autoref{fig:histogram_formue} presenteres histogram og tetthetskurve for bruttofinanskapitalen log-transformert $(1 + x)$ [^3]. Originalt er formuefordelingen høyreskjev, med en høyere andel av respondentene som har lav formue enn de som har høy formue noe som kan svekke analysen. Derfor må vi log-transformere formuefordelingen for å få en mer normalfordelt fordeling både for menn og kvinner. Når man log-transformerer $(1 + x)$ så tar vi logaritmen av formueverdiene og legger til 1 for å unngå problemer med nullverdier.
 
-[^3]: Log $(1 + x)$ er en vanlig transformasjon for å håndtere høyreskjevhet i data, og det kan bidra til å stabilisere variansen og gjøre dataene mer normale. Logaritmen gjør at de store verdiene blir mindre og de små verdiene blir større.
+[^4]: Log $(1 + x)$ er en vanlig transformasjon for å håndtere høyreskjevhet i data, og det kan bidra til å stabilisere variansen og gjøre dataene mer normale. Logaritmen gjør at de store verdiene blir mindre og de små verdiene blir større.
 
 ```{=tex}
 \begin{figure}[H]
