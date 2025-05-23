@@ -53,14 +53,11 @@ nocite: |
   @*
 ---
 
-```{=tex}
-
 \thispagestyle{plain}
 \begin{center}
     \Large
     \textbf{Forord}
 \end{center}
-
 
 Vi vil takke vår veileder Espen Sirnes for strålende veiledning og flotte samtaler på kontoret og Derek J. Clark for ekstra tilbakemeldinger under skriving.
 
@@ -74,23 +71,15 @@ Vi vil takke vår veileder Espen Sirnes for strålende veiledning og flotte samt
 \listoftables
 \hypersetup{linkcolor=blue}
 \newpage
-
 \thispagestyle{plain}
 \begin{center}
     \Large
     \textbf{Sammendrag}
 \end{center}
 
-
 Sammendrag her
 
-
-
 \newpage
-```
-
-
-
 
 ```{r}
 rm(list = ls())
@@ -141,13 +130,21 @@ NSD3201 <- read_csv("Data/NSD3201.csv", show_col_types = FALSE)
 
 ```
 
-#  Innledning
+# Innledning
 
 Denne bacheloroppgaven undersøker sammenhengen mellom sosioøkonomiske forhold og sykefravær, med et spesielt fokus på hvordan endringer i formuefordeling kan påvirke arbeidstakeres helse og fravær fra jobben. Vi benytter en Job Demands-Resources (JD-R) modell som teoretisk rammeverk, og analyserer data fra Levekårsundersøkelsen om arbeidsmiljø.
 
 ### Bakgrunn
 
-I årene etter finanskrisen har vi observert en økende formueulikhet i mange vestlige land, inkludert Norge. Denne trenden har blitt forsterket etter pandemien, spesielt i boligmarkedet, hvor vi ser at lønnsveksten ikke har holdt tritt med prisøkningen på eiendeler. Dette har gjort det relativt vanskeligere for unge og de med lavere inntekter å opparbeide seg formue, for eksempel gjennom boligkjøp. Vi forventer dermed at formuenivået til arbeidstakere har en effekt på spesielt motivasjon og helse, og dermed påvirke sykefraværet. Når det blir stadig vanskeligere å oppnå økonomisk trygghet og en akseptabel levestandard, kan det føre til økt stress, redusert jobbmotivasjon, og i verste fall dårligere helse og økt fravær. Hypotesene våre er basert på Job Demands-Resources (JDR) modellen, som antyder at jobbkrav og jobbressurser påvirker sykefravær, og at formue kan moderere disse effektene. Hovedsakelig vil vi se på hvordan formue påvirker sykefravær, og der forventer vi at høyere formue gir lavere sykefravær og at høyere formue demper de negative effektene av jobbkrav og forsterker de positive effektene av jobbressurser. Se kapittel [-@sec-hypot] for full oversikt.
+I årene etter finanskrisen har vi observert en økende formueulikhet i mange vestlige land, inkludert Norge. Denne trenden kan være forsterkende av Gatsby-kurven[^1] og har blitt enda sterkere etter pandemien. Spesielt i boligmarkedet, hvor vi ser at lønnsveksten ikke har holdt tritt med prisøkningen på eiendeler. Dette har gjort det relativt vanskeligere for unge og de med lavere inntekter å opparbeide seg formue, for eksempel gjennom boligkjøp.
+
+[^1]: Gatsby-kurven viser en sammenheng mellom økonomisk ulikhet og redusert sosial mobilitet. @durlauf_2022_the
+
+Formue fungerer som en buffer mot levekårsproblemer og det å ta hensyn til formue gir et bedre syn på hvor økonomisk utsatt personer er enn kun inntektsmål. @hattrem_hvor
+
+Vi forventer dermed at formuenivået til arbeidstakere har en effekt på spesielt motivasjon og helse, og dermed påvirke sykefraværet. Når det blir stadig vanskeligere å oppnå økonomisk trygghet og en akseptabel levestandard, kan det føre til økt stress, redusert jobbmotivasjon, og i verste fall dårligere helse og økt fravær.
+
+Hypotesene våre er basert på Job Demands-Resources (JDR) modellen, som antyder at jobbkrav og jobbressurser påvirker sykefravær, og at formue kan moderere disse effektene. Hovedsakelig vil vi se på hvordan formue påvirker sykefravær, og der forventer vi at høyere formue gir lavere sykefravær og at høyere formue demper de negative effektene av jobbkrav og forsterker de positive effektene av jobbressurser. Se kapittel [-@sec-hypot] for full oversikt.
 
 Å forstå hvordan disse endringene påvirker arbeidstakeres helse og fravær er viktig for å kunne iverksette tiltak som kan motvirke negative konsekvenser av økende formueulikhet. Dette kan være spesielt viktig i en tid hvor vi ser en økende polarisering i samfunnet, og hvor det er viktig å sikre at alle har like muligheter til å oppnå økonomisk trygghet og god helse, uavhengig av formue og inntekt. Problemstillingen for oppgaven er dermed: *Forklarer nivået på formue sykefraværet i Norge?*. Vi vil undersøke om forskjellige formuegrupper har ulikt sykefravær, og om det er en sammenheng mellom formue og sykefravær. Vi vil også se på om det er andre faktorer som påvirker sykefraværet, og om disse faktorene kan forklare eventuelle sammenhenger mellom formue og sykefravær. Vi vil danne oss tre hypoteser basert på teori og tidligere forskning, og teste disse ved hjelp av en Structural Equation Model (SEM), hvor vi kontrollerer for andre relevante faktorer, som for eksempel alder, kjønn, utdanning og yrke.
 
@@ -159,9 +156,7 @@ Oppgaven er delt inn i følgende kapitler: I kapittel 2 vil vi gi en teoretisk b
 
 Avslutningsvis i appendiks har vi med relevant kode som er brukt for å analysere dataene og en oversikt over testene som er gjort i analysen, og til slutt en oversikt rundt bruk av kunstig intelligens i oppgaven.
 
-
 \newpage
-
 
 # Teori
 
@@ -171,10 +166,9 @@ I dette kapittelet vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede 
 
 ### Formue
 
-Formue er et begrep som refererer til den totale verdien av eiendeler og investeringer som en person eller husholdning eier. Dette inkluderer kontanter, eiendom, aksjer, obligasjoner og andre finansielle eiendeler. Formue kan også referere til nettoformue, som er forskjellen mellom eiendeler og gjeld. 
+Formue er et begrep som refererer til den totale verdien av eiendeler og investeringer som en person eller husholdning eier. Dette inkluderer kontanter, eiendom, aksjer, obligasjoner og andre finansielle eiendeler. Formue kan også referere til nettoformue, som er forskjellen mellom eiendeler og gjeld.
 
-I studien vår vil vi bruke variabelen bruttofinanskapital som en proxy for formue. Bruttofinanskapital omfatter bankinnskudd, andeler i aksje-,obligasjons- og pengefond, aksjer og obligasjons- og pengemarkedsfond, formue i aksjesparekonto, obligasjoner, aksjer og andre verdipapirer per definisjon fra [SSB](https://www.ssb.no/a/metadata/conceptvariable/vardok/3449/nb). [@ssb2024beregnet] Vi blir å bruke formue som en forventet moderator i vår analyse, og vil se hvordan formue påvirker sykefraværet.
-
+I studien vår vil vi bruke variabelen bruttofinanskapital som en proxy for formue. Bruttofinanskapital omfatter bankinnskudd, andeler i aksje-,obligasjons- og pengefond, aksjer og obligasjons- og pengemarkedsfond, formue i aksjesparekonto, obligasjoner, aksjer og andre verdipapirer per definisjon fra [SSB](https://www.ssb.no/a/metadata/conceptvariable/vardok/3449/nb). [@ssb2024beregnet] Som beskrevet i @normann_2009_inntektsfattig fungerer formue som en buffer mot levekårsproblemer, og det er denne bufferen vi antar er sentral for hvordan arbeidstakere håndterer jobbrelaterte utfordringer. Vi blir å bruke formue som en forventet moderator i vår analyse, og vil se hvordan formue påvirker sykefraværet.
 
 ### Sykefravær
 
@@ -192,9 +186,9 @@ Jobbkrav refererer til de kravene og utfordringene som ansatte må gjøre i jobb
 
 Jobbkrav kan være både fysiske og psykiske, og kan inkludere krav som arbeidsmengde, tidsfrister, ansvar, og emosjonelle krav. Jobbkrav kan føre til stress og utbrenthet, og kan påvirke jobbengasjement og trivsel negativt.
 
-I vår analyse vil vi gjøre jobbkrav om til en latent[^1^] variabel som består av flere observerbare variabler. I denne variabelen vil vi inkludere variabler som måler arbeidsmengde, arbeidstempo og hvor mye ekstra arbeid som kreves i jobb.
+I vår analyse vil vi gjøre jobbkrav om til en latent[^2] variabel som består av flere observerbare variabler. I denne variabelen vil vi inkludere variabler som måler arbeidsmengde, arbeidstempo og hvor mye ekstra arbeid som kreves i jobb.
 
-[^1]: En latent varibel er et underliggende, uobserverbart konstrukt som ikke kan måles direkte, men som modelleres gjennom flere målbare indikatorer. I SEM tolkes for eksempel «motivasjon», «jobbkrav» og «jobbressurser» som latente variabler: vi antar at variasjonen i et sett av attestspørsmål (indikatorer) reflekterer den samme underliggende faktoren.
+[^2]: En latent varibel er et underliggende, uobserverbart konstrukt som ikke kan måles direkte, men som modelleres gjennom flere målbare indikatorer. I SEM tolkes for eksempel «motivasjon», «jobbkrav» og «jobbressurser» som latente variabler: vi antar at variasjonen i et sett av attestspørsmål (indikatorer) reflekterer den samme underliggende faktoren.
 
 ### Jobbressurser
 
@@ -212,25 +206,22 @@ Grunnen til at vi velger JD-R modellen er fordi vi forventer at formuenivå kan 
 
 Vi mener at økonomiske ressurser som formue, kan hjelpe med å forklare sykefraværet enda mer og vil bruke den som en ekstern modererende faktor.
 
-
 Formue gir en økonomisk buffer som kan redusere sårbarheten for jobbrelatert stress. Personer med høy formue kan ha større valgfrihet i arbeidslivet, og tåler lettere perioder med høy belastning uten at det går like hardt utover helse eller jobbmotivasjon. Men personer med lav eller negativ formue vil ofte være mer økonomisk avhengige av inntekten fra arbeid, og kan derfor være mer sårbare for jobbrelatert stress
 
 Formue kan også ha betydning for fremtidsperspektiv og indre motivasjon. Personer med lav formue kan oppleve mindre kontroll over egen livssituasjon og lavere forventninger til fremtidig økonomisk trygghet, noe som potensielt svekker arbeidsglede og motivasjon.
 
+Vi antar da at formue påvirker hvordan individet opplever og håndterer jobbkrav og jobbressurser. Vi postulerer at formue fungerer som en moderator for sensitiviteten til endringer i arbeidsforhold og inntekt. En person med lav formue kan være mer sensitiv for både negative og positive endringer i jobbkrav og jobbressurser siden den økonomiske marginen er mindre. Motsatt kan en person med høy formue være mindre sensitiv for endringer i jobbkrav og jobbressurser, og dermed oppleve mindre stress og utbrenthet. Dette kan føre til at personer med høy formue er mer motstandsdyktige mot negative effekter av jobbkrav og mer mottakelige for positive effekter av jobbressurser. Dette kan bety at effekten er ikke-lineær eller bue formet, hvor effekten er sterkest i de med lavest formue og avtar med økende formue. Hvis det er motivasjonsmessige effekter av formuenivå så kan det være at et lavt formuenivå vil gjøre en mindre motivert og indirekte påvirke sykefravær, men også fungere motsatt ved høy formue.
 
+Denne antagelsen støttes av @ngren_2021_the hvor de fant at økonomisk velvære[^3] fungerte som en moderator som reduserte den negative effekten av jobbusikkerhet på utbrenthet blandt hotellansatte.
 
-
-Vi antar da at formue påvirker hvordan individet opplever og håndterer jobbkrav og jobbressurser, og at det har indirekte effekter via motivasjon som påvirker sykefravær. 
-
+[^3]: Økonomisk velvære kan defineres som en tilstand der en person fullt ut kan møte nåværende og løpende økonomiske forpliktelser, kan føle seg trygg på sin økonomiske fremtid, og er i stand til å ta valg som gjør det mulig å nyte livet.
+@cfpbconsumerfinancialprotectionbureau_2015_financial
 
 Ved å inkludere formue som en ekstern faktor i JD-R modellen, forsøker vi å fange både den direkte effekten av økonomisk trygghet og hvordan denne tryggheten forsterker eller demper effektene av jobbrelaterte faktorer. I et samfunn med økende økonomisk ulikheter hvor forskjellen mellom dem som har og dem som ikke har, blir større og større, er det viktig å forstå hvordan dette påvirker arbeidstakere og deres helse.
 
-
 ## Tidligere forskning
 
-
 Tidligere empirisk forskning har over tid vist positive forhold mellom forskjellige Job Demands-Resources-faktorer og årsaker som kan føre til sykefravær.
-
 
 ### Mikronivå: Utbrenthet og engasjement
 
@@ -244,16 +235,15 @@ Tidligere empirisk forskning har over tid vist positive forhold mellom forskjell
 
 @langseth2021ticket bygger videre på tidligere forskning og adresserer limitasjonene ved Job Demands-Resources-modellen. De argumenterer for at Job Demands-Resources-modellen ved tidligere forskning har hatt fokus på organisasjonsnivået, og at det er viktig å se på hvordan Job Demands-Resources-modellen kan brukes bedre på jobbressurser, jobbengasjement og helserelaterte utfall. De gjorde en paneldata studie på fast ansatte i Norge med to års tidsforsinkelse med 1533 ansatte første tidsperiode, $n =1533$ og 1503 ansatte, $n = 1503$ neste tidsperiode. Over lengre tid fant de at jobbressurser hadde en positiv effekt på jobbengasjement, og at jobbengasjement var negativt assosiert med sykefravær. Dette kan tyde på at høyere jobbressurser kan føre til høyere jobbengasjement, som igjen kan føre til lavere sykefravær.
 
-
 ### Makronivå: Ulikhet i samfunnet
+
 JDR-modellen operer primært på individnivå, men en makroøkonomisk studie om inntektsulikhet har vist at økonomisk ulikhet i en befolkning korrelerer med høyere sykefravær og dårligere helse. @pickett2015income undersøkte sammenhengen mellom inntektsulikhet og helse i 34 OECD-land, og fant at høyere inntektsulikhet var assosiert med høyere sykefravær og dårligere helseutfall. Studien viste også at inntektsulikhet hadde en negativ effekt på livskvalitet og trivsel, og at dette kunne føre til økt sykefravær.
 
-Mekanismene som følger  på mikronivå er da:
+Mekanismene som følger på mikronivå er da:
 
 $$
 \text{Høyere jobbkrav} \rightarrow \text{Økt utbrenthet} \rightarrow \text{Høyere sykefravær} \rightarrow \text{Økt jobbengasjement} \rightarrow \text{Lavere sykefravær}
-$$
-Hvor formue fungerer som en moderator ved å påvirke stress til individer før jobbkravene utløser negative effekter på helse.
+$$ Hvor formue fungerer som en moderator ved å påvirke stress til individer før jobbkravene utløser negative effekter på helse.
 
 På makronivå vil samfunnsmessig ulikhet forme de jobbkrav og ressurser som virksomheter og arbeidstakere får, og dermed styrke JDR-mekanismer, også på tvers av sektorer og bransjer. Dermed får vi et teoretisk og empirisk grunnlag for vår undersøkelse av at:
 
@@ -263,16 +253,64 @@ $$
 
 ## Modelloppsett
 
-trur kanskje formue effekt er veldig kraftig på ung alder
+Oppsettet blir da som følger:
 
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[
+      latent/.style={rectangle, draw, fill=blue!20, minimum width=3cm, minimum height=1cm},
+      item/.style  ={rectangle, draw, fill=blue!10, font=\small},
+      medi/.style  ={rectangle, draw, fill=green!20, minimum width=2.5cm, minimum height=1cm},
+      medi2/.style ={rectangle, draw, fill=red!20,   minimum width=2.5cm, minimum height=1cm},
+      moder/.style ={diamond,   draw, fill=yellow!20,aspect=2, minimum width=2.5cm, minimum height=1cm},
+      >=Stealth,
+      node distance=1cm and 2cm
+    ]
 
+    % Latente noder
+    \node[latent]              (JK)  {Jobbkrav};
+    \node[latent, below=of JK] (JR)  {Jobbressurser};
 
+    % Indikator-noder for Jobbkrav
+    \node[item, above left=of JK] (v1) {Variabel 1};
+    \node[item, left=of JK]       (v2) {Variabel 2};
+    \draw[-{Circle[length=2mm]}] (JK) -- (v1);
+    \draw[-{Circle[length=2mm]}] (JK) -- (v2);
 
-### Dette er veldig work in progress 
+    % Indikator-noder for Jobbressurser
+    \node[item, left=of JR]        (v3) {Variabel 3};
+    \node[item, below left=of JR]  (v4) {Variabel 4};
+    \draw[-{Circle[length=2mm]}] (JR) -- (v3);
+    \draw[-{Circle[length=2mm]}] (JR) -- (v4);
 
-Vi tenker vi også å ta å tegne opp en figur som viser hvordan modellen fungerer i tikz. Oppsettet er veldig work in progress, og mulig vi ender med 3 ligninger. Men planen er å lage løsninger for forskjellige nivå av formue, for å så sette dette inn som en faktor i en nyttefunksjon slik at vi kan tegne indifferensligninger og simplifisere. 
+    % Moderator-node plassert midt over
+    \node[moder, right=1.4cm of $(JK)!0.5!(JR)$] (FN) {Formue};
+    \draw[->, dashed] (FN) -- (JK);
+    \draw[->, dashed] (FN) -- (JR);
 
+    % To separate motivasjons-noder
+    \node[medi2, right=of JK] (M1) {Motivasjon};
+    \node[medi,  right=of JR] (M2) {Motivasjon};
 
+    % Piler fra latente til motivasjon med tegn
+    \draw[->] (JK) -- node[midway, above] {$-$} (M1);
+    \draw[->] (JR) -- node[midway, below] {$+$} (M2);
+
+    % Sykefravær
+    \node[latent, right=3cm of $(M1)!0.5!(M2)$] (SF) {Sykefravær};
+
+    % Piler fra motivasjon til sykefravær med tegn
+    \draw[->] (M1) -- node[midway, above] {$-$} (SF);
+    \draw[->] (M2) -- node[midway, below] {$+$} (SF);
+
+  \end{tikzpicture}
+  \caption{Utvidet JD–R-modell med formue som moderator og separate motivasjonsløp.}
+  \label{fig:jdr_tikz}
+\end{figure}
+
+### Dette er veldig work in progress
+
+Vi tenker vi også å ta å tegne opp en figur som viser hvordan modellen fungerer i tikz. Oppsettet er veldig work in progress, og mulig vi ender med 3 ligninger. Men planen er å lage løsninger for forskjellige nivå av formue, for å så sette dette inn som en faktor i en nyttefunksjon slik at vi kan tegne indifferensligninger og simplifisere.
 
 ### Hovedmodell for sykefravær (SF)
 
@@ -286,27 +324,13 @@ Formuenivå (FN) (som hovedprediktor og også direkte påvirker SF),
 
 Så kan vi ha en X som er en mengde kontrollvariabler som for eksempel avtalte dager, demografi, arbeidsrelaterte forhold osv.
 
-
-
 $$
 SF_i = \beta_0 + \beta_1 JK_i + \beta_2 M_i + \beta_3 FN_i + \Sigma_j \beta_{4j}X_{ij} + \epsilon_{1i}
 $$
 
-Der 
-$i$ er individet,
-$\beta_0$ er konstanten,
-$\beta_1$, $\beta_2$, $\beta_3$ er koeffisientene for henholdsvis jobbkrav, motivasjon og formuenivå,
-$\Sigma_j \beta_{4j}X_{ij}$ fanger opp effekter av eventuelle kontrollvariabler,
-$\epsilon_{1i}$ er feilleddet.
-
+Der $i$ er individet, $\beta_0$ er konstanten, $\beta_1$, $\beta_2$, $\beta_3$ er koeffisientene for henholdsvis jobbkrav, motivasjon og formuenivå, $\Sigma_j \beta_{4j}X_{ij}$ fanger opp effekter av eventuelle kontrollvariabler, $\epsilon_{1i}$ er feilleddet.
 
 Denne likningen innebærer at formuenivået ikke bare antas å ha en direkte effekt på sykefravær, men via motivasjon så kan effekten også gå via en indirekte kanal.
-
-
-
-
-
-
 
 ### Ligning for motivasjon (M)
 
@@ -316,38 +340,17 @@ Jobbressurser (JR) (dvs. støtte og autonomi i arbeidet),
 
 Formuenivå (FN) (som antas å påvirke hvor sensitiv man er for endringer i inntekt – dvs. hvordan man prioriterer fritid/arbeid),
 
-
 X er kontrollvariabler som f.eks. utdanning eller andre relevante demografiske/yrkesmessige mål.
-
-
-
 
 $$
 M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i}
 $$
 
-Der
-$\alpha_0$ er konstanten,
-$\alpha_1$ og $\alpha_2$ er koeffisientene for henholdsvis jobbressurser og formuenivå,
-$\Sigma_k \alpha_{3k}X_{ik}$ fanger opp effekter av eventuelle kontrollvariabler,
-$\epsilon_{2i}$ er feilleddet.
-
-
-
-
-
-
-
-
+Der $\alpha_0$ er konstanten, $\alpha_1$ og $\alpha_2$ er koeffisientene for henholdsvis jobbressurser og formuenivå, $\Sigma_k \alpha_{3k}X_{ik}$ fanger opp effekter av eventuelle kontrollvariabler, $\epsilon_{2i}$ er feilleddet.
 
 putter inn utdanning og alder i z.
 
-
-
-
-Er nokk forskjell på sykefravær på alder ung/gammel.
-hvor stor forskjell mellom de på ung og gammel basert på formue
-
+Er nokk forskjell på sykefravær på alder ung/gammel. hvor stor forskjell mellom de på ung og gammel basert på formue
 
 # Metode og data
 
@@ -458,7 +461,6 @@ NSD3201 <- NSD3201 %>%
 
 ```
 
-
 ## Datakilde og utvalg
 
 Undersøkelsen er basert på et landsrepresentativt utvalg på 35 345 sysselsatte personer i alderen 18-66 til undersøkelsen i 2022. Utvalget er tilfeldig trukket fra folkeregisteret, og dataene er samlet inn gjennom telefonintervjuer og selvadministrert webskjema fra august 2022 til april 2023.
@@ -467,7 +469,9 @@ Den totale svarprosenten for undersøkelsen var på 51 prosent, og dataene er ve
 
 ## Variabler
 
-Vi kommer til å bruke flere variabler fra levekårsundersøkelsen for å analysere sammenhengen mellom formue og sykefravær. Vi vil bruke både avhengige og uavhengige variabler, latente[^1] variabler, samt kontrollvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet.
+Vi kommer til å bruke flere variabler fra levekårsundersøkelsen for å analysere sammenhengen mellom formue og sykefravær. Vi vil bruke både avhengige og uavhengige variabler, latente[^4] variabler, samt kontrollvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet.
+
+[^4]: En latent varibel er et underliggende, uobserverbart konstrukt som ikke kan måles direkte, men som modelleres gjennom flere målbare indikatorer. I SEM tolkes for eksempel «motivasjon», «jobbkrav» og «jobbressurser» som latente variabler: vi antar at variasjonen i et sett av attestspørsmål (indikatorer) reflekterer den samme underliggende faktoren.
 
 ### Avhengig og uavhengig hovedvariabel
 
@@ -481,9 +485,9 @@ Formue:
 
 Bruttofinanskapital i alt (BF) vil være vår hoveduavhengige variabel, og vi vil bruke bruttofinanskapital i alt som mål på formue. Denne variabelen inneholder verdien av alle finansielle eiendeler som respondenten eier, inkludert kontanter, aksjer, obligasjoner og andre investeringer og har en maks verdi på 2 500 000.
 
-Vi vil dele denne inn i tre forskjellige tertiler [^2] for formuegrupper: 0 - 43 333.33, 43 333.33 - 200 000 og 200 000 - 2 500 000. Dette vil gi oss mulighet til å se om det er forskjeller i sykefravær mellom de forskjellige tertilene. Vi definerer de som lav, middels og høy formue. Vi vil også bruke log-transformasjon av formue for å se om det er noen forskjeller i sykefravær mellom de forskjellige tertilene. Dette kan være nyttig for å se om det er noen ikke-lineære sammenhenger mellom formue og sykefravær, og for å håndtere høy skjevhet i dataene, ettersom de fleste har lav formue og få har høy formue.
+Vi vil dele denne inn i tre forskjellige tertiler [^5] for formuegrupper: 0 - 43 333.33, 43 333.33 - 200 000 og 200 000 - 2 500 000. Dette vil gi oss mulighet til å se om det er forskjeller i sykefravær mellom de forskjellige tertilene. Vi definerer de som lav, middels og høy formue. Vi vil også bruke log-transformasjon av formue for å se om det er noen forskjeller i sykefravær mellom de forskjellige tertilene. Dette kan være nyttig for å se om det er noen ikke-lineære sammenhenger mellom formue og sykefravær, og for å håndtere høy skjevhet i dataene, ettersom de fleste har lav formue og få har høy formue.
 
-[^2]: Tertiler er en statistisk metode for å dele opp et datasett i tre like store deler, slik at hver del inneholder en tredjedel av observasjonene.
+[^5]: Tertiler er en statistisk metode for å dele opp et datasett i tre like store deler, slik at hver del inneholder en tredjedel av observasjonene.
 
 Vi tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt, og dermed kan du være mer villig til å ta deg fri fra jobb. Og motsatt om du har lite formue så vil du være mer sensitiv til endringer i inntekt, og dermed vil du være mer villig til å jobbe mer for å opprettholde inntekten din. Dette kan føre til at de med høyere formue har lavere sykefravær, mens de med lavere formue har høyere sykefravær.
 
@@ -565,7 +569,7 @@ Ekstra arbeid                    &   1 &   2 &   4 &  3.43 &   5 &   9 & 2080 \\
 \label{tab:deskriptiv}
 \end{table}
 
-I \autoref{tab:deskr_formue} presenteres deskriptiv statistikk for sykefravær, alder, motivasjon og tilfredshet etter formuegruppe. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.72 prosent for de med lav formue, 12.00 prosent for de med middels formue og 12.09 prosent for de med høy formue. Dette tyder på at det ikke er noen store forskjeller i sykefraværet mellom de forskjellige formuegruppene. Vi ser også at det er små forskjeller i alder mellom de forskjellige formuegruppene, der de med høy formue er eldre enn de med lav og middels formue. Dette kan vise oss at det er en sammenheng mellom alder og formue, der eldre personer har høyere formue enn yngre personer. 
+I \autoref{tab:deskr_formue} presenteres deskriptiv statistikk for sykefravær, alder, motivasjon og tilfredshet etter formuegruppe. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.72 prosent for de med lav formue, 12.00 prosent for de med middels formue og 12.09 prosent for de med høy formue. Dette tyder på at det ikke er noen store forskjeller i sykefraværet mellom de forskjellige formuegruppene. Vi ser også at det er små forskjeller i alder mellom de forskjellige formuegruppene, der de med høy formue er eldre enn de med lav og middels formue. Dette kan vise oss at det er en sammenheng mellom alder og formue, der eldre personer har høyere formue enn yngre personer.
 
 Motivasjonen er også høyere for de med lav formue enn de med høy formue, noe som kan si at de med lav formue er mer motivert enn de med høy formue. Dette kan være fordi de med lav formue har mer å jobbe for, og derfor er mer motivert til å jobbe hardt. Tilfredsheten er også høyere for de med lav formue enn de med høy formue, men det er generelt små forskjeller i tilfredsheten mellom de forskjellige formuegruppene.
 
@@ -626,7 +630,6 @@ Tilfredshet         &  2.11 &  0.97 &  2.08 &  0.90 &  1.98 &  0.90 \\
 
 I \autoref{tab:deskr_kjonn} presenteres deskriptiv statistikk for sykefravær etter kjønn. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 10.92 prosent for menn og 13.06 prosent for kvinner, kvinner har også høyere sykefravær enn menn. Dette kan skyldes at kvinner i større grad enn menn jobber i yrker med høyere sykefravær, eller at kvinner er mer tilbøyelige til å rapportere sykefravær enn menn. Det kan også være andre faktorer som påvirker sykefraværet, som for eksempel alder, utdanning og arbeidsforhold. Vi ser også at vi har en overvekt av kvinner i utvalget, der 63.1 prosent av respondentene er kvinner og 36.9 prosent er menn. Dette viser oss at det er en skjevhet i utvalget, der kvinner er overrepresentert i forhold til menn.
 
-
 ```{r}
 tabell<-NSD3201 %>%
   # 1) Lag om kjonn til faktor med labels
@@ -661,7 +664,6 @@ Kvinne  & 1343 & 63.1 & 13.06               & 14.79 \\
 \end{table}
 
 I \autoref{tab:deskr_utdanning} presenteres deskriptiv statistikk for sykefravær etter utdanningsnivå. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 12.82 prosent for de med grunnskole eller mindre, 12.46 prosent for de med videregående skole og 11.67 prosent for de med universitet/høgskole. Dette tyder på at sykefraværet er høyere for de med lavere utdanning, og at det kan være er en sammenheng mellom utdanningsnivå og sykefravær.
-
 
 ```{r}
 # utd_summ <- NSD3201 %>%
@@ -718,17 +720,12 @@ fig_1 <- NSD3201 %>%
 ggsave("dokumentobjekter/figurer/fig_1.png", plot = fig_1, width = 8, height = 5)
 ```
 
-
-
-
-```{=tex}
 \begin{figure}[H]
 \caption{Histogram og tetthetskurve for sykefravær i 2022}
 \label{fig:histogram}
 \centering
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_1.png}
 \end{figure}
-```
 
 ```{r}
 # Histogram/densityplot av alder inkl median og kvartilmarkører
@@ -765,20 +762,17 @@ fig_2 <- NSD3201 %>%
 ggsave("dokumentobjekter/figurer/fig_2.png", plot = fig_2, width = 8, height = 5)
 ```
 
+Når vi ser på aldersfordelingen i \autoref{fig:histogram} så ser vi at den er jevn og symmetrisk fordelt blant respondentene. Som nevnt tidligere så er spennet på alderene til respondentene i undersøkelsen mellom 18 til 66 år. Medianalderen kan man se i den blå stiplede linjen som er på 43 år for menn og 44 år for kvinner.
 
-Når vi ser på aldersfordelingen i \autoref{fig:histogram} så ser vi at den er jevn og symmetrisk fordelt blant respondentene. Som nevnt tidligere så er spennet på alderene til respondentene i undersøkelsen mellom 18 til 66 år. Medianalderen kan man se i den blå stiplede linjen som er på 43 år for menn og 44 år for kvinner. 
-
-
-```{=tex}
 \begin{figure}[H]
 \caption{Histogram og tetthetskurve for alder}
 \label{fig:histogram}
 \centering
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_2.png}
 \end{figure}
-```
 
-For analysen så har vi fordelt alder inn i breddeintervaller på omtrent 10 år, og aldersgruppene er delt inn i 18-29, 30-39, 40-49, 50-59 og 60-66 år. I \autoref{fig:barplot} presenteres et barplot av aldersgruppene. Vi ser at det er flest respondenter i aldersgruppen 50-59 år med 27.4 prosent, og at det er færrest respondenter i aldersgruppen 60-66 år med 8.3 prosent. Dette fordi det er aldersgruppen som er fordelt inn i det laveste breddeintervallet. Ellers er det jevnt fordelt mellom de andre aldersgruppene, der aldersgruppen 40-49 år har 22.7 prosent, aldersgruppen 30-39 år har 23.5 prosent og aldersgruppen 18-29 år har 17.9 prosent. 
+For analysen så har vi fordelt alder inn i breddeintervaller på omtrent 10 år, og aldersgruppene er delt inn i 18-29, 30-39, 40-49, 50-59 og 60-66 år. I \autoref{fig:barplot} presenteres et barplot av aldersgruppene. Vi ser at det er flest respondenter i aldersgruppen 50-59 år med 27.4 prosent, og at det er færrest respondenter i aldersgruppen 60-66 år med 8.3 prosent. Dette fordi det er aldersgruppen som er fordelt inn i det laveste breddeintervallet. Ellers er det jevnt fordelt mellom de andre aldersgruppene, der aldersgruppen 40-49 år har 22.7 prosent, aldersgruppen 30-39 år har 23.5 prosent og aldersgruppen 18-29 år har 17.9 prosent.
+
 ```{r}
 # Barplot av breddeintervallene på alder
 
@@ -806,14 +800,12 @@ fig_3 <- NSD3201 %>%
 ggsave("dokumentobjekter/figurer/fig_3.png", plot = fig_3, width = 8, height = 5)
 ```
 
-```{=tex}
 \begin{figure}[H]
 \caption{Aldersgruppefordeling}
 \label{fig:barplot}
 \centering
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_3.png}
 \end{figure}
-```
 
 ```{r}
 # Respondents rapportere formue
@@ -836,20 +828,17 @@ fig_4 <- NSD3201 %>%
 
 ggsave("dokumentobjekter/figurer/fig_4.png", plot = fig_4, width = 8, height = 5)
 ```
-I \autoref{fig:histogram_formue} presenteres histogram og tetthetskurve for bruttofinanskapitalen log-transformert $(1 + x)$ [^3]. Originalt er formuefordelingen høyreskjev, med en høyere andel av respondentene som har lav formue enn de som har høy formue noe som kan svekke analysen. Derfor må vi log-transformere formuefordelingen for å få en mer normalfordelt fordeling både for menn og kvinner. Når man log-transformerer $(1 + x)$ så tar vi logaritmen av formueverdiene og legger til 1 for å unngå problemer med nullverdier.
 
-[^3]: Log $(1 + x)$ er en vanlig transformasjon for å håndtere høyreskjevhet i data, og det kan bidra til å stabilisere variansen og gjøre dataene mer normale. Logaritmen gjør at de store verdiene blir mindre og de små verdiene blir større.
+I \autoref{fig:histogram_formue} presenteres histogram og tetthetskurve for bruttofinanskapitalen log-transformert $(1 + x)$ [^6]. Originalt er formuefordelingen høyreskjev, med en høyere andel av respondentene som har lav formue enn de som har høy formue noe som kan svekke analysen. Derfor må vi log-transformere formuefordelingen for å få en mer normalfordelt fordeling både for menn og kvinner. Når man log-transformerer $(1 + x)$ så tar vi logaritmen av formueverdiene og legger til 1 for å unngå problemer med nullverdier.
 
-```{=tex}
+[^6]: Log $(1 + x)$ er en vanlig transformasjon for å håndtere høyreskjevhet i data, og det kan bidra til å stabilisere variansen og gjøre dataene mer normale. Logaritmen gjør at de store verdiene blir mindre og de små verdiene blir større.
+
 \begin{figure}[H]
 \caption{Fordeling av log-transformert bruttofinanskapital}
 \label{fig:histogram_formue}
 \centering
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_4.png}
 \end{figure}
-```
-
-
 
 ```{r}
 # Søylediagram for kategoriske variabler samlet for kjønn, utdanning og formuegrupper
@@ -906,14 +895,12 @@ Når vi ser på fordelingen av formue- og utdanningsgrupper fordelt på kjønn i
 
 Formuefordelingen er delt inn i tertiler, som gjør slik at fordelingen blir jevnt blant de forskjellige formuegruppene både for menn og kvinner.
 
-```{=tex}
 \begin{figure}[H]
 \caption{Fordeling av formue- og utdanningsgrupper fordelt på kjønn}
 \label{fig:barplot_2}
 \centering
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_5.png}
 \end{figure}
-```
 
 ```{r}
 # Boksplott av sykefravær etter formuegruppe
@@ -946,17 +933,14 @@ fig_6 <- NSD3201 %>%
 ggsave("dokumentobjekter/figurer/fig_6.png", plot = fig_6, width = 8, height = 5)
 ```
 
-I \autoref{fig:boxplot} presenteres et boksplott av sykefravær etter formuegruppe. Vi kan se at det ikke er store forskjeller i sykefraværet mellom formuegruppene. Medianen vises i den sorte streken i midten av boksen, og den viser at sykefraværet med små marginer går ned fra lav formue, til middels formue og til høy formue. Bunnen og toppen til boksene viser oss henholdsvis første og tredje kvartil, og de stiplede linjene viser oss minimum og maksimum sykefravær. Det er også noen uteliggere som er vist med små prikker, og de viser at det er noen respondenter som har rapportert sykefravær på over 40 prosent. Dette kan være at de har vært sykemeldt i en lengre periode. I bakgrunnen av figuren man man se alle observasjonene spredt utover for en bedre oversikt siden det er mange observasjoner som går over hverandre i boksen. Dette er gjort med en funksjon som sprer ut observasjonene litt for å få en bedre oversikt over dem. 
+I \autoref{fig:boxplot} presenteres et boksplott av sykefravær etter formuegruppe. Vi kan se at det ikke er store forskjeller i sykefraværet mellom formuegruppene. Medianen vises i den sorte streken i midten av boksen, og den viser at sykefraværet med små marginer går ned fra lav formue, til middels formue og til høy formue. Bunnen og toppen til boksene viser oss henholdsvis første og tredje kvartil, og de stiplede linjene viser oss minimum og maksimum sykefravær. Det er også noen uteliggere som er vist med små prikker, og de viser at det er noen respondenter som har rapportert sykefravær på over 40 prosent. Dette kan være at de har vært sykemeldt i en lengre periode. I bakgrunnen av figuren man man se alle observasjonene spredt utover for en bedre oversikt siden det er mange observasjoner som går over hverandre i boksen. Dette er gjort med en funksjon som sprer ut observasjonene litt for å få en bedre oversikt over dem.
 
-
-```{=tex}
 \begin{figure}[H]
 \caption{Boksplott av sykefravær etter formuegruppe}
 \label{fig:boxplot}
 \centering
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_6.png}
 \end{figure}
-```
 
 ```{r}
 # Boksplott av sykefravær etter utdanningsnivå
@@ -991,14 +975,12 @@ ggsave("dokumentobjekter/figurer/fig_7.png", plot = fig_7, width = 8, height = 5
 
 I \autoref{fig:boxplot_2} presenteres et boksplott av sykefravær etter utdanningsnivå. Vi ser at sykefraværet er veldig jevnt mellom utdanningsnivåene. Medianen er litt over 10 prosent, og som tidligere vet vi at gjennomsnittlig sykefravær er lavere for høyt utdannede og litt lavere for de med lavere utdanning.
 
-```{=tex}
 \begin{figure}[H]
 \caption{Boksplott av sykefravær etter utdanningsnivå}
 \label{fig:boxplot_2}
 \centering
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_7.png}
 \end{figure}
-```
 
 Korrelationheatmap om vi får tid her til latente variabler.
 
@@ -1008,7 +990,6 @@ I oppgaven vil vi bruke en kvantitativ metode for å analysere sammenhengen mell
 
 ## Structural Equation Model (SEM)
 
-
 Formue inngår i modellen på tre måter: som en direkte forklaringsvariabel for sykefravær, som en indirekte påvirkning via motivasjon, og som en modererende variabel som endrer effekten av jobbkrav og jobbressurser.
 
 Vi antar at formue fungerer som et mål på økonomisk trygghet og handlingsrom. Personer med høyere formue har trolig mer fleksibilitet til å håndtere belastninger på jobb, og vil kunne tåle høye jobbkrav uten samme negative effekt på helse og fravær. Samtidig antar vi at høyere formue gir høyere jobbmotivasjon fordi økonomisk trygghet gjør det lettere å finne mening, utvikling og balanse i arbeidet.
@@ -1017,37 +998,18 @@ På bakgrunn av dette har vi inkludert interaksjonsledd mellom formue og jobbkra
 
 Dette modellvalget bygger videre på JD-R-rammeverket, men inkluderer økonomisk kontekst som en faktor som kan endre hvordan individer påvirkes av jobbsituasjonen. Ved å bruke en SEM-modell kan vi teste både de direkte og indirekte sammenhengene mellom formue og sykefravær.
 
-
 ### Ligning til modellen
-
 
 $$
 SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_iFN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
 $$
 
-
 $$
 M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i}
 $$
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Forklaring av alle deler i modellen
 
-
-
-```{=tex}
 \begin{table}[H]
 \centering
 \begin{tabular}{lr}
@@ -1068,51 +1030,30 @@ $\gamma_{j} $ & Koeffisienter for kontrollvariablene i på sykefravær i sykefra
 \caption{Oversikt over variabler i modellen}
 \label{tab:variabler}
 \end{table}
-```
-
 
 ### Beskrivning av metode
 
-
-
-
-
-Fra ligningen til vår medierende variabel Motivasjon, forventer vi at $\alpha_1 > 0$ og $\alpha_2 > 0$, som betyr at høyere jobbressurser og formuenivå vil føre til høyere motivasjon. 
-
-
+Fra ligningen til vår medierende variabel Motivasjon, forventer vi at $\alpha_1 > 0$ og $\alpha_2 > 0$, som betyr at høyere jobbressurser og formuenivå vil føre til høyere motivasjon.
 
 ### Hypoteser {#sec-hypot}
 
-
-Fra 
-$$
+Fra $$
 SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_i FN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
-$$
-Forventer vi at:
-H1: $\beta_1 > 0$ (høyere jobbkrav gir høyere sykefravær)
+$$ Forventer vi at: H1: $\beta_1 > 0$ (høyere jobbkrav gir høyere sykefravær)
 
 H2: $\beta_2 < 0$ (høyere jobbressurser gir lavere sykefravær)
 
 H3: $\beta_3 < 0$ (høyere formuenivå gir lavere sykefravær)
 
-
-
-
-
-
-Av de modererende variablene forventer vi at
-H4: $\beta_4 < 0$ Høyere formuenivå demper de negative effektene til høyere jobbkrav. 
-$$
+Av de modererende variablene forventer vi at H4: $\beta_4 < 0$ Høyere formuenivå demper de negative effektene til høyere jobbkrav. $$
 \frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i
 $$
 
-H5: $\beta_5 < 0$ Høyere formuenivå forsterker de positive effektene til høyere jobbressurser.
-$$
+H5: $\beta_5 < 0$ Høyere formuenivå forsterker de positive effektene til høyere jobbressurser. $$
 \frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i
 $$
 
 Vi forventer og at det er en indirekte effekt fra formue igjennom motivasjon $\alpha_2 \beta_6$ hvor vi forventer at $\alpha_2 > 0$ og $\beta_6 < 0$ som betyr at høyere formuenivå gir høyere motivasjon, som igjen gir lavere sykefravær.
-
 
 \newpage
 
@@ -1126,13 +1067,11 @@ Vi forventer og at det er en indirekte effekt fra formue igjennom motivasjon $\a
 
 ### Redegjørelse for svakheter i modellen/data
 
-
 \newpage
 
 # Resultat
 
 Her presenteres den empiriske analysen og dens resultater. Vanligvis vil en empirisk analyse bestå av en regresjonsanalyse med flere variabler. Andre muligheter kan diskuteres med veilederen.
-
 
 ## Tabeller
 
@@ -1140,37 +1079,27 @@ Her presenteres den empiriske analysen og dens resultater. Vanligvis vil en empi
 
 ## Forklaring av tabeller og figurer
 
-
-
-
 \newpage
 
 # Diskusjon
 
 Dette kapitlet drøfter resultatene i forhold til problemstillingen. Hva er funnet ut av, hva gjenstår, hvilke styrker og svakheter har analysen?
 
-
 ### Oppsummering av hva formålet med oppgaven var, og hva analysen viste
 
 ### Diskusjon av hvilke konklusjoner som kan trekkes fra dette og om resultatene er forenlig med tidligere funn/teori
-
 
 ### Diskusjon av svakheter i analysen
 
 ### Diskusjon av implikasjoner for policy gitt svakheter
 
-
 ### Eventuelt: diskusjon av hva framtidig forskning kan forske videre på (basert påderes funn og svakheter i analysen)
-
-
 
 \newpage
 
 # Vedlegg {.unnumbered .unlisted}
 
 Her legger vi til vår QMD fil.
-
-
 
 # Appendiks {.unnumbered .unlisted}
 
@@ -1184,973 +1113,55 @@ Her legger vi til vår QMD fil.
 
 # Referanser {.unnumbered .unlisted}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```{r}
-# rm(list = ls())
-# library(tidyverse)
-# library(zoo)
-# library(scales)
-# library(ggrepel)
-# library(readxl)
-# library(httr)
-# library(jsonlite)
-# library(rjstat)
-# library(readr)
-```
-
-
-
-
-
-```{r}
-
-# 
-# 
-# 
-# tryCatch({df_12440 <- read_csv(file.path("Data", "df_12440.csv"), show_col_types = FALSE)}, error = function(err) {
-#   df_12440 <- "https://data.ssb.no/api/v0/no/table/12440/"
-#   
-#   
-#   query <- '{
-#     "query": [
-#       {
-#         "code": "Kjonn",
-#         "selection": {
-#           "filter": "item",
-#           "values": [
-#             "0",
-#             "2",
-#             "1"
-#           ]
-#         }
-#       },
-#       {
-#         "code": "NACE2007",
-#         "selection": {
-#           "filter": "vs:NACE260sykefratot3",
-#           "values": [
-#             "A-U",
-#             "A",
-#             "B",
-#             "C",
-#             "D-E",
-#             "F",
-#             "G",
-#             "H",
-#             "I",
-#             "J",
-#             "K",
-#             "L-M",
-#             "N",
-#             "O",
-#             "P",
-#             "Q",
-#             "R-U",
-#             "00"
-#           ]
-#         }
-#       },
-#       {
-#         "code": "Sykefraver2",
-#         "selection": {
-#           "filter": "item",
-#           "values": [
-#             "Alt",
-#             "E",
-#             "L"
-#           ]
-#         }
-#       },
-#       {
-#         "code": "ContentsCode",
-#         "selection": {
-#           "filter": "item",
-#           "values": [
-#             "SykefravProsent"
-#           ]
-#         }
-#       }
-#     ],
-#     "response": {
-#       "format": "json-stat2"
-#     }
-#   }'
-# 
-# 
-#   
-#   df_12440 <- df_12440 %>%
-#     POST(body = query, encode = "json")
-# 
-#   df_12440 <-  df_12440 %>%
-#     content("text") %>%
-#     fromJSONstat() %>%
-#     as_tibble() 
-#   
-#   
-#   
-#   write_csv(df_12440, file.path("Data", "df_12440.csv"))
-#   
-#   
-#   df_12440 <<-  df_12440
-#   
-# 
-# })
-# 
-#   
-
-
-```
-
-
-
-
-
-
-
-
-
-
-```{r}
-# 
-# NSD3201 <- read_csv("Data/NSD3201.csv", show_col_types = FALSE)
-# problems(NSD3201)
-# 
-# 
-# 
-# 
-# count(NSD3201, wkapinnt+aksje+rentinnt > lonn)
-# 
-# 
-# NSD3201 %>%
-#   mutate(lonn = as.numeric(lonn),
-#          wkapinnt = as.numeric(wkapinnt),
-#          aksje = as.numeric(aksje),
-#          rentinnt = as.numeric(rentinnt)) %>%
-#   mutate(total = wkapinnt+aksje+rentinnt) %>%
-#   mutate(diff = lonn - total) %>%
-#   ggplot(aes(x = sfpros_uten_feriekorr_2022, y = diff)) +
-#   geom_point()
-# 
-# 
-# 
-# NSD3201 %>%
-#   mutate(sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
-#          sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
-#          kullaldr = as.numeric(kullaldr)) %>% 
-#   ggplot(aes(x = kullaldr)) +
-#   geom_point(aes(y=sfpros_uten_feriekorr_2023), color="red", alpha=0.4) +
-#   geom_point(aes(y=sfpros_uten_feriekorr_2022), color="blue", alpha=0.2)
-# 
-# 
-# 
-
-
-```
-
-
-
-```{r}
-# 
-# NSD3201 %>%
-#   mutate(sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
-#          sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
-#          kullaldr = as.numeric(kullaldr)) %>% 
-#   ggplot(aes(x = SpMotEng_ny)) +
-#   geom_point(aes(y=sfpros_uten_feriekorr_2023), color="red", alpha=0.4) +
-#   geom_point(aes(y=sfpros_uten_feriekorr_2022), color="blue", alpha=0.2)
-# 
-
-
-```
-
-
-```{r}
-# 
-# library(ggridges)
-# 
-# NSD3201 %>%
-#   mutate(sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
-#          sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
-#          kullaldr = as.numeric(kullaldr)) %>% 
-#   pivot_longer(cols = c(sfpros_uten_feriekorr_2022, sfpros_uten_feriekorr_2023),
-#                names_to = "Year",
-#                values_to = "sfpros_value") %>% 
-#   ggplot(aes(x = sfpros_value, y = factor(SpMotEng_ny), fill = Year)) +
-#   geom_density_ridges(alpha = 0.5) +
-#   labs(x = "Value", y = "SpMotEng_ny", fill = "Year") +
-#   theme_minimal()
-
-```
-
-```{r}
-
-# 
-# install.packages("vioplot")
-# library(vioplot)
-# data_2022 <- subset(NSD3201, select = c(SpMotEng_ny, sfpros_uten_feriekorr_2022))
-# data_2023 <- subset(NSD3201, select = c(SpMotEng_ny, sfpros_uten_feriekorr_2023))
-# 
-# vioplot(data_2022$sfpros_uten_feriekorr_2022 ~ data_2022$SpMotEng_ny, 
-#         col = "lightblue", side = "left", plotCentre = "line")
-# vioplot(data_2023$sfpros_uten_feriekorr_2023 ~ data_2023$SpMotEng_ny, 
-#         col = "lightpink", side = "right", plotCentre = "line", add = TRUE)
-# legend("topright", legend = c("2022", "2023"), fill = c("lightblue", "lightpink"))
-
-
-```
-
-
-```{r}
-# 
-# library(ggridges)
-# #Motivert/engasjert i jobben din
-# NSD3201 %>%
-#   mutate(
-#     sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
-#     sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
-#     kullaldr = as.numeric(kullaldr)
-#   ) %>% 
-#   filter(!is.na(kullaldr), !is.na(SpMotEng_ny)) %>% 
-#   ggplot(aes(x = SpMotEng_ny, y = factor(kullaldr), fill = factor(kullaldr))) +
-#   geom_density_ridges(scale = 1, alpha = 0.7) +
-#   labs(x = "SpMotEng_ny", y = "Age", fill = "Age", title = "Density of SpMotEng_ny across Ages") +
-#   theme_minimal()+
-#   scale_x_continuous(limits = c(0.5, 5), breaks = 1:5)
-
-```
-
-
-```{r}
-# 
-# library(ggridges)
-# #Tilhørighet til bedriften/virksomheten
-# NSD3201 %>%
-#   mutate(
-#     sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
-#     sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
-#     kullaldr = as.numeric(kullaldr)
-#   ) %>% 
-#   filter(!is.na(kullaldr), !is.na(SpTilhor)) %>% 
-#   ggplot(aes(x = SpTilhor, y = factor(kullaldr), fill = factor(kullaldr))) +
-#   geom_density_ridges(scale = 1, alpha = 0.7) +
-#   labs(x = "SpTilhor", y = "Age", fill = "Age", title = "Density of SpTilhor across Ages") +
-#   theme_minimal()
-
-```
-
-
-```{r}
-# 
-# library(ggridges)
-# # Alt i alt, hvor fornøyd er du med jobben din?
-# NSD3201 %>%
-#   mutate(
-#     sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
-#     sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
-#     kullaldr = as.numeric(kullaldr)
-#   ) %>% 
-#   filter(!is.na(kullaldr), !is.na(Sp59g)) %>% 
-#   ggplot(aes(x = Sp59g, y = factor(kullaldr), fill = factor(kullaldr))) +
-#   geom_density_ridges(scale = 1, alpha = 0.7) +
-#   labs(x = "Sp59g", y = "Age", fill = "Age", title = "Density of Sp59g across Ages") +
-#   theme_minimal()
-
-```
-
-
-
-
-
-
-```{r}
-
-# 
-# t.test(NSD3201$sfpros_uten_feriekorr_2022[NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt > NSD3201$lonn], NSD3201$sfpros_uten_feriekorr_2022[NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt < NSD3201$lonn])
-# 
-# 
-# wilcox.test(NSD3201$sfpros_uten_feriekorr_2022 ~ NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt > NSD3201$lonn, data = NSD3201)
-# 
-# 
-# 
-# # Split the data into two groups
-# group1 <- NSD3201$sfpros_uten_feriekorr_2022[NSD3201$wkapinnt + NSD3201$aksje + NSD3201$rentinnt > NSD3201$lonn]
-# group2 <- NSD3201$sfpros_uten_feriekorr_2022[NSD3201$wkapinnt + NSD3201$aksje + NSD3201$rentinnt <= NSD3201$lonn]
-# 
-# # Calculate medians
-# median_group1 <- median(group1, na.rm = TRUE)
-# median_group2 <- median(group2, na.rm = TRUE)
-# 
-# # Print medians
-# median_group1
-# median_group2
-# 
-# 
-# 
-# 
-# 
-# 
-# t.test(NSD3201$sfpros_uten_feriekorr_2023[NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt > NSD3201$lonn], NSD3201$sfpros_uten_feriekorr_2023[NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt < NSD3201$lonn])
-# 
-# 
-# wilcox.test(NSD3201$sfpros_uten_feriekorr_2023 ~ NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt > NSD3201$lonn, data = NSD3201)
-
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```{r}
-
-
-# 
-# test1 <- NSD3201 %>% 
-#   select(kullaldr, lonn, agg_f_08) %>% 
-#   na.omit()
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# test2 <- test1 %>%
-#   mutate(
-#     NETTO_FORMUE = as.numeric(agg_f_08),
-#     NETTO_INNTEKT = as.numeric(lonn),
-#     age = as.numeric(kullaldr),  
-#     age_group = case_when(
-#       age >= 18 & age <= 25 ~ "18-25",
-#       age > 25 & age <= 35 ~ "25-35",
-#       age > 35 & age <= 45 ~ "35-45",
-#       age > 45 & age <= 55 ~ "45-55",
-#       age > 55 & age <= 65 ~ "55-65",
-#       age > 65 ~ "65+",
-#       TRUE ~ "Under 18"
-#     )
-#   ) %>%
-#   group_by(age_group) %>%
-#   mutate(
-#     decile_formue = ntile(NETTO_FORMUE, 10)
-#   ) %>%
-#   group_by(age_group, decile_formue) %>%
-#   summarise(
-#     total_wealth = sum(NETTO_FORMUE, na.rm = TRUE),
-#     min_wealth = min(NETTO_FORMUE, na.rm = TRUE),
-#     max_wealth = max(NETTO_FORMUE, na.rm = TRUE),
-#     median_wealth = median(NETTO_FORMUE, na.rm = TRUE),
-#     mean_wealth = mean(NETTO_FORMUE, na.rm = TRUE),
-# 
-#     total_income = sum(NETTO_INNTEKT, na.rm = TRUE),
-#     min_income = min(NETTO_INNTEKT, na.rm = TRUE),
-#     max_income = max(NETTO_INNTEKT, na.rm = TRUE),
-#     median_income = median(NETTO_INNTEKT, na.rm = TRUE),
-#     mean_income = mean(NETTO_INNTEKT, na.rm = TRUE),
-# 
-#     count = n(),
-#     .groups = "drop"
-#   )
-# 
-# 
-# 
-# 
-# 
-# 
-# test1 %>%
-#   mutate(
-#     NETTO_FORMUE = as.numeric(agg_f_08),
-#     NETTO_INNTEKT = as.numeric(lonn),
-#     age = as.numeric(kullaldr)) %>% 
-#   summarise(sum_formue = sum(NETTO_FORMUE, na.rm = TRUE),
-#             sum_inntekt = sum(NETTO_INNTEKT, na.rm = TRUE)) %>%
-#   pivot_longer(cols = c(sum_formue, sum_inntekt), names_to = "type", values_to = "sum") 
-# #ggsave("inntektformue.png", width = 10, height = 7, units = "in", dpi = 2000)
-# 
-# 
-# 
-# 
-# test3 <- test1 %>%
-#   mutate(
-#     NETTO_FORMUE = as.numeric(agg_f_08),
-#     NETTO_INNTEKT = as.numeric(lonn),
-#     age = as.numeric(kullaldr)) %>% 
-#   mutate(
-#     decile_formue = ntile(NETTO_FORMUE, 10)
-#   ) %>%
-#   group_by(decile_formue) %>%
-#   summarise(
-#     total_wealth = sum(NETTO_FORMUE, na.rm = TRUE),
-#     min_wealth = min(NETTO_FORMUE, na.rm = TRUE),
-#     max_wealth = max(NETTO_FORMUE, na.rm = TRUE),
-#     median_wealth = median(NETTO_FORMUE, na.rm = TRUE),
-#     mean_wealth = mean(NETTO_FORMUE, na.rm = TRUE),
-# 
-#     total_income = sum(NETTO_INNTEKT, na.rm = TRUE),
-#     min_income = min(NETTO_INNTEKT, na.rm = TRUE),
-#     max_income = max(NETTO_INNTEKT, na.rm = TRUE),
-#     median_income = median(NETTO_INNTEKT, na.rm = TRUE),
-#     mean_income = mean(NETTO_INNTEKT, na.rm = TRUE),
-# 
-#     count = n(),
-#     .groups = "drop"
-#   ) %>% 
-#   mutate(
-#     wealth_share = total_wealth/7747733000
-#     
-#   )
-# 
-# 
-
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\clearpage
-
-
-::: {#refs}
-:::
-
-\clearpage
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\appendix
-
-\section {Appendix Generell KI bruk}
-
-I løpet av koden så kan det ses mange \# kommentarer der det er skrevet for eks "#fillbetween q1 and q2". Når vi skriver kode i Visual Studio Code og Rstudio så er det en plugin som heter Github Copilot. Når vi skriver slike kommentarer eller bare skriver kode så kan den foresøke å fullføre kodelinjene mens vi skriver de. Noen ganger klarer den det, men andre ikke. Det er vanskelig å dokumentere hvert bruk der den er brukt siden det "går veldig fort" men siden vi ikke har fått på plass en slik dokumentasjon så kan all kode der det er brukt kommentarer antas som at det er brukt Github Copilot. Nærmere info om dette KI verktøyet kan ses på <https://github.com/features/copilot>
-
-\clearpage
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```{r}
-## 13760 Arbeidsstyrken, sysselsatte, arbeidsledige og utførte ukeverk for personer 15-74 år, etter kjønn, alder, type justering, måned og statistikkvariabel
-
-
-
-
-# 
-# tryCatch({df_13760 <- read_csv(file.path("Data", "df_13760.csv"), show_col_types = FALSE)}, error = function(err) {
-#   df_13760 <- "https://data.ssb.no/api/v0/no/table/13760/"
-#   
-#   
-#   query <- '{
-#     "query": [
-#       {
-#         "code": "Kjonn",
-#         "selection": {
-#           "filter": "item",
-#           "values": [
-#             "0",
-#             "2",
-#             "1"
-#           ]
-#         }
-#       },
-#       {
-#         "code": "Alder",
-#         "selection": {
-#           "filter": "item",
-#           "values": [
-#             "15-74",
-#             "15-24",
-#             "25-74"
-#           ]
-#         }
-#       },
-#       {
-#         "code": "Justering",
-#         "selection": {
-#           "filter": "item",
-#           "values": [
-#             "S",
-#             "IS"
-#           ]
-#         }
-#       },
-#       {
-#         "code": "ContentsCode",
-#         "selection": {
-#           "filter": "item",
-#           "values": [
-#             "ArbStyrkProsBefolkn",
-#             "SysselProsBefolkn",
-#             "ArbledProsArbstyrk"
-#           ]
-#         }
-#       }
-#     ],
-#     "response": {
-#       "format": "json-stat2"
-#     }
-#   }'
-# 
-# 
-#   
-#   df_13760 <- df_13760 %>%
-#     POST(body = query, encode = "json")
-# 
-#   df_13760 <-  df_13760 %>%
-#     content("text") %>%
-#     fromJSONstat() %>%
-#     as_tibble() 
-#   
-#   
-#   
-#   write_csv(df_13760, file.path("Data", "df_13760.csv"))
-#   
-#   
-#   df_13760 <<-  df_13760
-#   
-# 
-# })
-
-```
-
-
-
-
-
-```{r}
-
-## 12439: Sykefravær for lønnstakere(prosent), etter kjønn, type sykefravær, kvartal og statistikkvariabel
-
-
-# 
-# tryCatch({df_12439 <- read_csv(file.path("Data", "df_12439.csv"), show_col_types = FALSE)}, error = function(err) {
-#   df_12439 <- "https://data.ssb.no/api/v0/no/table/12439/"
-#   
-#   
-#   query <- '{
-#     "query": [
-#       {
-#         "code": "Kjonn",
-#         "selection": {
-#           "filter": "item",
-#           "values": [
-#             "0"
-#           ]
-#         }
-#       },
-#       {
-#         "code": "Sykefraver2",
-#         "selection": {
-#           "filter": "item",
-#           "values": [
-#             "Alt",
-#             "E",
-#             "L"
-#           ]
-#         }
-#       },
-#       {
-#         "code": "ContentsCode",
-#         "selection": {
-#           "filter": "item",
-#           "values": [
-#             "SykefravProsent",
-#             "SykefravProsSesJust",
-#             "SykefravProsSesInflu"
-#           ]
-#         }
-#       },
-#       {
-#         "code": "Tid",
-#         "selection": {
-#           "filter": "item",
-#           "values": [
-#             "2010K1",
-#             "2010K2",
-#             "2010K3",
-#             "2010K4",
-#             "2011K1",
-#             "2011K2",
-#             "2011K3",
-#             "2011K4",
-#             "2012K1",
-#             "2012K2",
-#             "2012K3",
-#             "2012K4",
-#             "2013K1",
-#             "2013K2",
-#             "2013K3",
-#             "2013K4",
-#             "2014K1",
-#             "2014K2",
-#             "2014K3",
-#             "2014K4",
-#             "2015K1",
-#             "2015K2",
-#             "2015K3",
-#             "2015K4",
-#             "2016K1",
-#             "2016K2",
-#             "2016K3",
-#             "2016K4",
-#             "2017K1",
-#             "2017K2",
-#             "2017K3",
-#             "2017K4",
-#             "2018K1",
-#             "2018K2",
-#             "2018K3",
-#             "2018K4",
-#             "2019K1",
-#             "2019K2",
-#             "2019K3",
-#             "2019K4",
-#             "2020K1",
-#             "2020K2",
-#             "2020K3",
-#             "2020K4",
-#             "2021K1",
-#             "2021K2",
-#             "2021K3",
-#             "2021K4",
-#             "2022K1",
-#             "2022K2",
-#             "2022K3",
-#             "2022K4",
-#             "2023K1",
-#             "2023K2",
-#             "2023K3",
-#             "2023K4",
-#             "2024K1",
-#             "2024K2",
-#             "2024K3"
-#           ]
-#         }
-#       }
-#     ],
-#     "response": {
-#       "format": "json-stat2"
-#     }
-#   }'
-# 
-# 
-#   
-#   df_12439 <- df_12439 %>%
-#     POST(body = query, encode = "json")
-# 
-#   df_12439 <-  df_12439 %>%
-#     content("text") %>%
-#     fromJSONstat() %>%
-#     as_tibble() 
-#   
-#   
-#   
-#   write_csv(df_12439, file.path("Data", "df_12439.csv"))
-#   
-#   
-#   df_12439 <<-  df_12439
-#   
-# 
-# })
-
-
-```
-
-
-
-
-
-
-
-
 # notater
 
 er det avvik mellom fastsatt arbeidstid og hvor mye folk arbeider?
 
 Er folk overarbeidet?
 
-
-Hvordan har antall legebesøk endret seg samtidig som legemeldt sykefravær har endret seg. er leger overarbeidet og skriver ut for mye sykefravær? 
+Hvordan har antall legebesøk endret seg samtidig som legemeldt sykefravær har endret seg. er leger overarbeidet og skriver ut for mye sykefravær?
 
 Er sykefraværet et problem? Hvordan har sysselsettingsrate endret seg med sykefravær? er det spesiell korrelasjon mellom egenmeldt og legemeldt der?
 
-
 Dårlig ledelse og lite engasjerte arbeidere?
-
-
-
 
 https://www.dagensperspektiv.no/synspunkt/benedicte-langseth-eide-svarer-hr-norge-om-sykefravaer-og-ledelse/1262876
 
-
 https://www.nord24.no/nar-bedriftene-sliter-med-hoyt-sykefravar-ringer-de-benedicte-disse-tiltakene-nytter/s/5-32-197683
-
-
-
-
 
 https://www.mdpi.com/1660-4601/18/8/4327
 
-
 The results provide longitudinal evidence that two well-established job resources (i.e., social support and feedback) predicted work engagement, that work engagement was negatively related to sick leave and that this relation was mediated by subjective health. By showing that health-related indicators could also be outcomes of the motivational process in the JD-R model, we have strengthened the model.
-
-
-
-
-
-
 
 https://munin.uit.no/handle/10037/15801
 
-The results also revealed that both workaholics and work-engaged employees put in more hours at work than was expected of them. We found that workaholism was negatively related to work-related health, whereas work engagement was positively related to work-related health. These findings support the notion of workaholism and work engagement as two different forms of working hard. 
+The results also revealed that both workaholics and work-engaged employees put in more hours at work than was expected of them. We found that workaholism was negatively related to work-related health, whereas work engagement was positively related to work-related health. These findings support the notion of workaholism and work engagement as two different forms of working hard.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Kanskje en form for "intensitet" i hvor sensitiv du er. 
-
-
+Kanskje en form for "intensitet" i hvor sensitiv du er.
 
 Jeg tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt.
 
-
-
 trur vi blir å få noe bue på den effekten. fattige, vanlige, rike, megarike vil ha ulik effekt av motivasjon og sånt. e du megarik så har det jo ingenting og si, e du syk eller vil ta fri så blir du hjemme, men samtidig så vil du kanskje være spesielt sensitiv om du e fattig og at om du da e syk eller vil ta fri så vil du både ha dårligere utgangspunkt i jobbtype og sånt, og også kunne rett å slett være mer syk
 
-mens de i midten rundt "vanlige" mot bare rike kan ha 0 effekt, men kommer vel an på kor mye man ska mene formue har å si til hvor sensitiv du er til endringer eller potentielle endringer i inntekt
-derfor æ tenkte å bare ha det til å være en funksjon av formue kunne være enklere
-motivasjon og sånt altså
-både på bunn og på topp så vil du også ha økt den stygge m'en ved at du får statlige overføringe som fattig
-men mye kapitalfortjeneste som rik
+mens de i midten rundt "vanlige" mot bare rike kan ha 0 effekt, men kommer vel an på kor mye man ska mene formue har å si til hvor sensitiv du er til endringer eller potentielle endringer i inntekt derfor æ tenkte å bare ha det til å være en funksjon av formue kunne være enklere motivasjon og sånt altså både på bunn og på topp så vil du også ha økt den stygge m'en ved at du får statlige overføringe som fattig men mye kapitalfortjeneste som rik
 
-
-så formue har effekt på hvor mye utdanning du har. formue har effekt på hvilken motivasjon du har. formue har effekt på m som er annen inntekt utenom jobb. 
-
+så formue har effekt på hvor mye utdanning du har. formue har effekt på hvilken motivasjon du har. formue har effekt på m som er annen inntekt utenom jobb.
 
 g = formue, j = alder, k = utdanning, l = motivasjon
 
-* v = dummyvariabel
+-   v = dummyvariabel
 
 $$
 t^a = h^* - \alpha w - \beta(m(g) + h^*w) - (k\cdot v+j\cdot v)
 $$
 
-Dummy variabler for ulike aldersgrupper. beholde en ligning for alle men da bruke de dummyvariablene. dermed kunne tolke bare en variabel. 
+Dummy variabler for ulike aldersgrupper. beholde en ligning for alle men da bruke de dummyvariablene. dermed kunne tolke bare en variabel.
 
-
-forskjellige typer inntekt påvirke forskjellig i m variabelen. 
-
+forskjellige typer inntekt påvirke forskjellig i m variabelen.
 
 Grunn til cb er at den er enkel og at vi nesten alltid tar log av dataen. om vi har 0 variabler så blir det bare tull.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Notater
-
-
-
-
-### Inntektsfattigdom og levekårsfattigdom
-
-https://www.ssb.no/sosiale-forhold-og-kriminalitet/artikler-og-publikasjoner/inntektsfattig-eller-levekaarsfattig 
-
-
-Hva så med en mer absolutt tilnærming i form av et forbruksbudsjett inkludert faktiske bokostnader? Det enkleste målet som ikke tar hensyn til verken studenter eller formuende, har omtrent like sterk sammenheng med levekårsfattigdom som den vi finner ved EU60, og dermed noe sterkere enn ved OECD50. Ved å holde studenter og/eller formuende utenfor definisjonen med budsjettilnærming, får vi de samme virkningene som vi har sett tidligere. Det å holde formuende utenfor bidrar til sterkere sammenheng med levekårsfattigdom, mens det å holde studenter utenfor ikke gjør det.
-
-Våre funn viser dermed at det ikke er avgjørende om vi definerer inntektsfattigdom absolutt (ved bruk av husholdningsbudsjett) eller relativt (ved bruk av ekvivalensskala og inntektsfordeling) når vi ser på sammenhengen med levekårsfattigdom. Den viktigste faktoren synes å være at vi tar hensyn til formue, som er en buffer mot mange av levekårsproblemene. Det har imidlertid ikke særlig betydning å ta hensyn til studenter i denne sammenhengen, selv om det bidrar til å redusere andelen inntektsfattige
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### Helse og formue
 
@@ -2158,134 +1169,27 @@ https://pmc.ncbi.nlm.nih.gov/articles/PMC8225390/
 
 controlling for community-average wealth, age, sex, household size, community size, and distance to markets. Wealthier people largely had better outcomes while inequality associated with more respiratory disease, a leading cause of mortality. Greater inequality and lower wealth were associated with higher blood pressure. Psychosocial factors did not mediate wealth-health associations. Thus, relative socio-economic position and inequality may affect health across diverse societies, though this is likely exacerbated in high-income countries.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Gatsby curve
-
-
-"great gatsby curve" med vedvarende inntekt på tvers av generasjoner. og siden fattige ikke blir spesielt mye fattigere enn middelklassen, men at det heller er rikere som flyr fremover. -> kanskje større forskjell på median og gjennomsnittlig inntekt/formue altså flere som er ikke rike som jobber i mer sånn lav inntekt yrker og barnehager å sånt me mye sykdom
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### karriærevalg, utdanning osv.
 
-fattigere har dårligere tilgang på "career role models" som gjør at de kanskje ikke vet om de bedre yrkene og sånt og dermed igjen blir mindre utdanna og sånt
-https://www.gallup.com/analytics/506696/amazon-research-hub.aspx
-
-
-
-
-
-
-
-
-
-
+fattigere har dårligere tilgang på "career role models" som gjør at de kanskje ikke vet om de bedre yrkene og sånt og dermed igjen blir mindre utdanna og sånt https://www.gallup.com/analytics/506696/amazon-research-hub.aspx
 
 ### Stress? glemte studie her
 
-inntektsusikkerhet -> økt stress
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+inntektsusikkerhet -\> økt stress
 
 ### Motivasjonseffekt av ulikhet
 
-
-"The motivational cost of inequality: Opportunity gaps reduce the willingness to work"
-https://pmc.ncbi.nlm.nih.gov/articles/PMC7473543/
-
-
-
-
-
-
-
-
+"The motivational cost of inequality: Opportunity gaps reduce the willingness to work" https://pmc.ncbi.nlm.nih.gov/articles/PMC7473543/
 
 https://www.brookings.edu/articles/income-inequality-social-mobility-and-the-decision-to-drop-out-of-high-school/
 
-
-ulikhet gjør at fattige blir mindre motivert siden dem føler det å bli rik er "umulig" og dermed investerer mindre i seg -> lavere motivasjon og lavere utdanning. 
-kanskje mer fysisk arbeid. 
-
-
-
-
-
-
-
-
-
-
-
-
+ulikhet gjør at fattige blir mindre motivert siden dem føler det å bli rik er "umulig" og dermed investerer mindre i seg -\> lavere motivasjon og lavere utdanning. kanskje mer fysisk arbeid.
 
 ## Notater
 
+Har høy/lav formue effekt på motivasjonen fra lønnen til arbeid. lav formue + høy lønn = høy motivasjon? høy formue + høy lønn = "bryr meg ikke" = høy formue+ lav lønn, lav formue + lav lønn = lav motivajon
 
-
-
-Har høy/lav formue effekt på motivasjonen fra lønnen til arbeid. 
-lav formue + høy lønn = høy motivasjon? 
-høy formue + høy lønn = "bryr meg ikke" =  høy formue+ lav lønn, 
-lav formue + lav lønn = lav motivajon
-
-
-
-Kapitalinntekter som rente/aksje osv i forhold til bruttofinanskapital i alt. kan det være at de med høy formue utenom bolig da har mer andre inntekter, eller at høy formue bare er lik bolig for mange. 
-
-
-
-
-
-
-
-
-
-
-
+Kapitalinntekter som rente/aksje osv i forhold til bruttofinanskapital i alt. kan det være at de med høy formue utenom bolig da har mer andre inntekter, eller at høy formue bare er lik bolig for mange.
 
 ### Formueeffekt på konsum
 
@@ -2293,10 +1197,6 @@ https://fnce.wharton.upenn.edu/wp-content/uploads/2019/08/chodorowreich-crns_sto
 
 for hver dollar i formue du har så har du 0.028usd mer i konsum eller noe
 
-
 https://usa.visa.com/partner-with-us/visa-consulting-analytics/economic-insights/the-sudden-increase-in-the-wealth-effect-and-its-impact-on-spending.html
 
-så vi kan vise til hvordan de med lav formue da kan være tvungen til å ta mer tima selv med lav motivasjon
-for samme konsumnivå
-fant det tilfeldigvis her https://www.economist.com/finance-and-economics/2025/03/19/the-trump-administration-is-playing-a-dangerous-stockmarket-game
-
+så vi kan vise til hvordan de med lav formue da kan være tvungen til å ta mer tima selv med lav motivasjon for samme konsumnivå fant det tilfeldigvis her https://www.economist.com/finance-and-economics/2025/03/19/the-trump-administration-is-playing-a-dangerous-stockmarket-game

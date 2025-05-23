@@ -1,0 +1,807 @@
+---
+title: "fjernet kode"
+format: pdf
+---
+
+
+
+
+
+```{r}
+# rm(list = ls())
+# library(tidyverse)
+# library(zoo)
+# library(scales)
+# library(ggrepel)
+# library(readxl)
+# library(httr)
+# library(jsonlite)
+# library(rjstat)
+# library(readr)
+```
+
+
+
+
+
+```{r}
+
+# 
+# 
+# 
+# tryCatch({df_12440 <- read_csv(file.path("Data", "df_12440.csv"), show_col_types = FALSE)}, error = function(err) {
+#   df_12440 <- "https://data.ssb.no/api/v0/no/table/12440/"
+#   
+#   
+#   query <- '{
+#     "query": [
+#       {
+#         "code": "Kjonn",
+#         "selection": {
+#           "filter": "item",
+#           "values": [
+#             "0",
+#             "2",
+#             "1"
+#           ]
+#         }
+#       },
+#       {
+#         "code": "NACE2007",
+#         "selection": {
+#           "filter": "vs:NACE260sykefratot3",
+#           "values": [
+#             "A-U",
+#             "A",
+#             "B",
+#             "C",
+#             "D-E",
+#             "F",
+#             "G",
+#             "H",
+#             "I",
+#             "J",
+#             "K",
+#             "L-M",
+#             "N",
+#             "O",
+#             "P",
+#             "Q",
+#             "R-U",
+#             "00"
+#           ]
+#         }
+#       },
+#       {
+#         "code": "Sykefraver2",
+#         "selection": {
+#           "filter": "item",
+#           "values": [
+#             "Alt",
+#             "E",
+#             "L"
+#           ]
+#         }
+#       },
+#       {
+#         "code": "ContentsCode",
+#         "selection": {
+#           "filter": "item",
+#           "values": [
+#             "SykefravProsent"
+#           ]
+#         }
+#       }
+#     ],
+#     "response": {
+#       "format": "json-stat2"
+#     }
+#   }'
+# 
+# 
+#   
+#   df_12440 <- df_12440 %>%
+#     POST(body = query, encode = "json")
+# 
+#   df_12440 <-  df_12440 %>%
+#     content("text") %>%
+#     fromJSONstat() %>%
+#     as_tibble() 
+#   
+#   
+#   
+#   write_csv(df_12440, file.path("Data", "df_12440.csv"))
+#   
+#   
+#   df_12440 <<-  df_12440
+#   
+# 
+# })
+# 
+#   
+
+
+```
+
+
+
+
+
+
+
+
+
+
+```{r}
+# 
+# NSD3201 <- read_csv("Data/NSD3201.csv", show_col_types = FALSE)
+# problems(NSD3201)
+# 
+# 
+# 
+# 
+# count(NSD3201, wkapinnt+aksje+rentinnt > lonn)
+# 
+# 
+# NSD3201 %>%
+#   mutate(lonn = as.numeric(lonn),
+#          wkapinnt = as.numeric(wkapinnt),
+#          aksje = as.numeric(aksje),
+#          rentinnt = as.numeric(rentinnt)) %>%
+#   mutate(total = wkapinnt+aksje+rentinnt) %>%
+#   mutate(diff = lonn - total) %>%
+#   ggplot(aes(x = sfpros_uten_feriekorr_2022, y = diff)) +
+#   geom_point()
+# 
+# 
+# 
+# NSD3201 %>%
+#   mutate(sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
+#          sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
+#          kullaldr = as.numeric(kullaldr)) %>% 
+#   ggplot(aes(x = kullaldr)) +
+#   geom_point(aes(y=sfpros_uten_feriekorr_2023), color="red", alpha=0.4) +
+#   geom_point(aes(y=sfpros_uten_feriekorr_2022), color="blue", alpha=0.2)
+# 
+# 
+# 
+
+
+```
+
+
+
+```{r}
+# 
+# NSD3201 %>%
+#   mutate(sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
+#          sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
+#          kullaldr = as.numeric(kullaldr)) %>% 
+#   ggplot(aes(x = SpMotEng_ny)) +
+#   geom_point(aes(y=sfpros_uten_feriekorr_2023), color="red", alpha=0.4) +
+#   geom_point(aes(y=sfpros_uten_feriekorr_2022), color="blue", alpha=0.2)
+# 
+
+
+```
+
+
+```{r}
+# 
+# library(ggridges)
+# 
+# NSD3201 %>%
+#   mutate(sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
+#          sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
+#          kullaldr = as.numeric(kullaldr)) %>% 
+#   pivot_longer(cols = c(sfpros_uten_feriekorr_2022, sfpros_uten_feriekorr_2023),
+#                names_to = "Year",
+#                values_to = "sfpros_value") %>% 
+#   ggplot(aes(x = sfpros_value, y = factor(SpMotEng_ny), fill = Year)) +
+#   geom_density_ridges(alpha = 0.5) +
+#   labs(x = "Value", y = "SpMotEng_ny", fill = "Year") +
+#   theme_minimal()
+
+```
+
+```{r}
+
+# 
+# install.packages("vioplot")
+# library(vioplot)
+# data_2022 <- subset(NSD3201, select = c(SpMotEng_ny, sfpros_uten_feriekorr_2022))
+# data_2023 <- subset(NSD3201, select = c(SpMotEng_ny, sfpros_uten_feriekorr_2023))
+# 
+# vioplot(data_2022$sfpros_uten_feriekorr_2022 ~ data_2022$SpMotEng_ny, 
+#         col = "lightblue", side = "left", plotCentre = "line")
+# vioplot(data_2023$sfpros_uten_feriekorr_2023 ~ data_2023$SpMotEng_ny, 
+#         col = "lightpink", side = "right", plotCentre = "line", add = TRUE)
+# legend("topright", legend = c("2022", "2023"), fill = c("lightblue", "lightpink"))
+
+
+```
+
+
+```{r}
+# 
+# library(ggridges)
+# #Motivert/engasjert i jobben din
+# NSD3201 %>%
+#   mutate(
+#     sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
+#     sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
+#     kullaldr = as.numeric(kullaldr)
+#   ) %>% 
+#   filter(!is.na(kullaldr), !is.na(SpMotEng_ny)) %>% 
+#   ggplot(aes(x = SpMotEng_ny, y = factor(kullaldr), fill = factor(kullaldr))) +
+#   geom_density_ridges(scale = 1, alpha = 0.7) +
+#   labs(x = "SpMotEng_ny", y = "Age", fill = "Age", title = "Density of SpMotEng_ny across Ages") +
+#   theme_minimal()+
+#   scale_x_continuous(limits = c(0.5, 5), breaks = 1:5)
+
+```
+
+
+```{r}
+# 
+# library(ggridges)
+# #Tilhørighet til bedriften/virksomheten
+# NSD3201 %>%
+#   mutate(
+#     sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
+#     sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
+#     kullaldr = as.numeric(kullaldr)
+#   ) %>% 
+#   filter(!is.na(kullaldr), !is.na(SpTilhor)) %>% 
+#   ggplot(aes(x = SpTilhor, y = factor(kullaldr), fill = factor(kullaldr))) +
+#   geom_density_ridges(scale = 1, alpha = 0.7) +
+#   labs(x = "SpTilhor", y = "Age", fill = "Age", title = "Density of SpTilhor across Ages") +
+#   theme_minimal()
+
+```
+
+
+```{r}
+# 
+# library(ggridges)
+# # Alt i alt, hvor fornøyd er du med jobben din?
+# NSD3201 %>%
+#   mutate(
+#     sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
+#     sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
+#     kullaldr = as.numeric(kullaldr)
+#   ) %>% 
+#   filter(!is.na(kullaldr), !is.na(Sp59g)) %>% 
+#   ggplot(aes(x = Sp59g, y = factor(kullaldr), fill = factor(kullaldr))) +
+#   geom_density_ridges(scale = 1, alpha = 0.7) +
+#   labs(x = "Sp59g", y = "Age", fill = "Age", title = "Density of Sp59g across Ages") +
+#   theme_minimal()
+
+```
+
+
+
+
+
+
+```{r}
+
+# 
+# t.test(NSD3201$sfpros_uten_feriekorr_2022[NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt > NSD3201$lonn], NSD3201$sfpros_uten_feriekorr_2022[NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt < NSD3201$lonn])
+# 
+# 
+# wilcox.test(NSD3201$sfpros_uten_feriekorr_2022 ~ NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt > NSD3201$lonn, data = NSD3201)
+# 
+# 
+# 
+# # Split the data into two groups
+# group1 <- NSD3201$sfpros_uten_feriekorr_2022[NSD3201$wkapinnt + NSD3201$aksje + NSD3201$rentinnt > NSD3201$lonn]
+# group2 <- NSD3201$sfpros_uten_feriekorr_2022[NSD3201$wkapinnt + NSD3201$aksje + NSD3201$rentinnt <= NSD3201$lonn]
+# 
+# # Calculate medians
+# median_group1 <- median(group1, na.rm = TRUE)
+# median_group2 <- median(group2, na.rm = TRUE)
+# 
+# # Print medians
+# median_group1
+# median_group2
+# 
+# 
+# 
+# 
+# 
+# 
+# t.test(NSD3201$sfpros_uten_feriekorr_2023[NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt > NSD3201$lonn], NSD3201$sfpros_uten_feriekorr_2023[NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt < NSD3201$lonn])
+# 
+# 
+# wilcox.test(NSD3201$sfpros_uten_feriekorr_2023 ~ NSD3201$wkapinnt+NSD3201$aksje+NSD3201$rentinnt > NSD3201$lonn, data = NSD3201)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+
+
+# 
+# test1 <- NSD3201 %>% 
+#   select(kullaldr, lonn, agg_f_08) %>% 
+#   na.omit()
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# test2 <- test1 %>%
+#   mutate(
+#     NETTO_FORMUE = as.numeric(agg_f_08),
+#     NETTO_INNTEKT = as.numeric(lonn),
+#     age = as.numeric(kullaldr),  
+#     age_group = case_when(
+#       age >= 18 & age <= 25 ~ "18-25",
+#       age > 25 & age <= 35 ~ "25-35",
+#       age > 35 & age <= 45 ~ "35-45",
+#       age > 45 & age <= 55 ~ "45-55",
+#       age > 55 & age <= 65 ~ "55-65",
+#       age > 65 ~ "65+",
+#       TRUE ~ "Under 18"
+#     )
+#   ) %>%
+#   group_by(age_group) %>%
+#   mutate(
+#     decile_formue = ntile(NETTO_FORMUE, 10)
+#   ) %>%
+#   group_by(age_group, decile_formue) %>%
+#   summarise(
+#     total_wealth = sum(NETTO_FORMUE, na.rm = TRUE),
+#     min_wealth = min(NETTO_FORMUE, na.rm = TRUE),
+#     max_wealth = max(NETTO_FORMUE, na.rm = TRUE),
+#     median_wealth = median(NETTO_FORMUE, na.rm = TRUE),
+#     mean_wealth = mean(NETTO_FORMUE, na.rm = TRUE),
+# 
+#     total_income = sum(NETTO_INNTEKT, na.rm = TRUE),
+#     min_income = min(NETTO_INNTEKT, na.rm = TRUE),
+#     max_income = max(NETTO_INNTEKT, na.rm = TRUE),
+#     median_income = median(NETTO_INNTEKT, na.rm = TRUE),
+#     mean_income = mean(NETTO_INNTEKT, na.rm = TRUE),
+# 
+#     count = n(),
+#     .groups = "drop"
+#   )
+# 
+# 
+# 
+# 
+# 
+# 
+# test1 %>%
+#   mutate(
+#     NETTO_FORMUE = as.numeric(agg_f_08),
+#     NETTO_INNTEKT = as.numeric(lonn),
+#     age = as.numeric(kullaldr)) %>% 
+#   summarise(sum_formue = sum(NETTO_FORMUE, na.rm = TRUE),
+#             sum_inntekt = sum(NETTO_INNTEKT, na.rm = TRUE)) %>%
+#   pivot_longer(cols = c(sum_formue, sum_inntekt), names_to = "type", values_to = "sum") 
+# #ggsave("inntektformue.png", width = 10, height = 7, units = "in", dpi = 2000)
+# 
+# 
+# 
+# 
+# test3 <- test1 %>%
+#   mutate(
+#     NETTO_FORMUE = as.numeric(agg_f_08),
+#     NETTO_INNTEKT = as.numeric(lonn),
+#     age = as.numeric(kullaldr)) %>% 
+#   mutate(
+#     decile_formue = ntile(NETTO_FORMUE, 10)
+#   ) %>%
+#   group_by(decile_formue) %>%
+#   summarise(
+#     total_wealth = sum(NETTO_FORMUE, na.rm = TRUE),
+#     min_wealth = min(NETTO_FORMUE, na.rm = TRUE),
+#     max_wealth = max(NETTO_FORMUE, na.rm = TRUE),
+#     median_wealth = median(NETTO_FORMUE, na.rm = TRUE),
+#     mean_wealth = mean(NETTO_FORMUE, na.rm = TRUE),
+# 
+#     total_income = sum(NETTO_INNTEKT, na.rm = TRUE),
+#     min_income = min(NETTO_INNTEKT, na.rm = TRUE),
+#     max_income = max(NETTO_INNTEKT, na.rm = TRUE),
+#     median_income = median(NETTO_INNTEKT, na.rm = TRUE),
+#     mean_income = mean(NETTO_INNTEKT, na.rm = TRUE),
+# 
+#     count = n(),
+#     .groups = "drop"
+#   ) %>% 
+#   mutate(
+#     wealth_share = total_wealth/7747733000
+#     
+#   )
+# 
+# 
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\clearpage
+
+
+::: {#refs}
+:::
+
+\clearpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\appendix
+
+\section {Appendix Generell KI bruk}
+
+I løpet av koden så kan det ses mange \# kommentarer der det er skrevet for eks "#fillbetween q1 and q2". Når vi skriver kode i Visual Studio Code og Rstudio så er det en plugin som heter Github Copilot. Når vi skriver slike kommentarer eller bare skriver kode så kan den foresøke å fullføre kodelinjene mens vi skriver de. Noen ganger klarer den det, men andre ikke. Det er vanskelig å dokumentere hvert bruk der den er brukt siden det "går veldig fort" men siden vi ikke har fått på plass en slik dokumentasjon så kan all kode der det er brukt kommentarer antas som at det er brukt Github Copilot. Nærmere info om dette KI verktøyet kan ses på <https://github.com/features/copilot>
+
+\clearpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+## 13760 Arbeidsstyrken, sysselsatte, arbeidsledige og utførte ukeverk for personer 15-74 år, etter kjønn, alder, type justering, måned og statistikkvariabel
+
+
+
+
+# 
+# tryCatch({df_13760 <- read_csv(file.path("Data", "df_13760.csv"), show_col_types = FALSE)}, error = function(err) {
+#   df_13760 <- "https://data.ssb.no/api/v0/no/table/13760/"
+#   
+#   
+#   query <- '{
+#     "query": [
+#       {
+#         "code": "Kjonn",
+#         "selection": {
+#           "filter": "item",
+#           "values": [
+#             "0",
+#             "2",
+#             "1"
+#           ]
+#         }
+#       },
+#       {
+#         "code": "Alder",
+#         "selection": {
+#           "filter": "item",
+#           "values": [
+#             "15-74",
+#             "15-24",
+#             "25-74"
+#           ]
+#         }
+#       },
+#       {
+#         "code": "Justering",
+#         "selection": {
+#           "filter": "item",
+#           "values": [
+#             "S",
+#             "IS"
+#           ]
+#         }
+#       },
+#       {
+#         "code": "ContentsCode",
+#         "selection": {
+#           "filter": "item",
+#           "values": [
+#             "ArbStyrkProsBefolkn",
+#             "SysselProsBefolkn",
+#             "ArbledProsArbstyrk"
+#           ]
+#         }
+#       }
+#     ],
+#     "response": {
+#       "format": "json-stat2"
+#     }
+#   }'
+# 
+# 
+#   
+#   df_13760 <- df_13760 %>%
+#     POST(body = query, encode = "json")
+# 
+#   df_13760 <-  df_13760 %>%
+#     content("text") %>%
+#     fromJSONstat() %>%
+#     as_tibble() 
+#   
+#   
+#   
+#   write_csv(df_13760, file.path("Data", "df_13760.csv"))
+#   
+#   
+#   df_13760 <<-  df_13760
+#   
+# 
+# })
+
+```
+
+
+
+
+
+```{r}
+
+## 12439: Sykefravær for lønnstakere(prosent), etter kjønn, type sykefravær, kvartal og statistikkvariabel
+
+
+# 
+# tryCatch({df_12439 <- read_csv(file.path("Data", "df_12439.csv"), show_col_types = FALSE)}, error = function(err) {
+#   df_12439 <- "https://data.ssb.no/api/v0/no/table/12439/"
+#   
+#   
+#   query <- '{
+#     "query": [
+#       {
+#         "code": "Kjonn",
+#         "selection": {
+#           "filter": "item",
+#           "values": [
+#             "0"
+#           ]
+#         }
+#       },
+#       {
+#         "code": "Sykefraver2",
+#         "selection": {
+#           "filter": "item",
+#           "values": [
+#             "Alt",
+#             "E",
+#             "L"
+#           ]
+#         }
+#       },
+#       {
+#         "code": "ContentsCode",
+#         "selection": {
+#           "filter": "item",
+#           "values": [
+#             "SykefravProsent",
+#             "SykefravProsSesJust",
+#             "SykefravProsSesInflu"
+#           ]
+#         }
+#       },
+#       {
+#         "code": "Tid",
+#         "selection": {
+#           "filter": "item",
+#           "values": [
+#             "2010K1",
+#             "2010K2",
+#             "2010K3",
+#             "2010K4",
+#             "2011K1",
+#             "2011K2",
+#             "2011K3",
+#             "2011K4",
+#             "2012K1",
+#             "2012K2",
+#             "2012K3",
+#             "2012K4",
+#             "2013K1",
+#             "2013K2",
+#             "2013K3",
+#             "2013K4",
+#             "2014K1",
+#             "2014K2",
+#             "2014K3",
+#             "2014K4",
+#             "2015K1",
+#             "2015K2",
+#             "2015K3",
+#             "2015K4",
+#             "2016K1",
+#             "2016K2",
+#             "2016K3",
+#             "2016K4",
+#             "2017K1",
+#             "2017K2",
+#             "2017K3",
+#             "2017K4",
+#             "2018K1",
+#             "2018K2",
+#             "2018K3",
+#             "2018K4",
+#             "2019K1",
+#             "2019K2",
+#             "2019K3",
+#             "2019K4",
+#             "2020K1",
+#             "2020K2",
+#             "2020K3",
+#             "2020K4",
+#             "2021K1",
+#             "2021K2",
+#             "2021K3",
+#             "2021K4",
+#             "2022K1",
+#             "2022K2",
+#             "2022K3",
+#             "2022K4",
+#             "2023K1",
+#             "2023K2",
+#             "2023K3",
+#             "2023K4",
+#             "2024K1",
+#             "2024K2",
+#             "2024K3"
+#           ]
+#         }
+#       }
+#     ],
+#     "response": {
+#       "format": "json-stat2"
+#     }
+#   }'
+# 
+# 
+#   
+#   df_12439 <- df_12439 %>%
+#     POST(body = query, encode = "json")
+# 
+#   df_12439 <-  df_12439 %>%
+#     content("text") %>%
+#     fromJSONstat() %>%
+#     as_tibble() 
+#   
+#   
+#   
+#   write_csv(df_12439, file.path("Data", "df_12439.csv"))
+#   
+#   
+#   df_12439 <<-  df_12439
+#   
+# 
+# })
+
+
+```
+
+
