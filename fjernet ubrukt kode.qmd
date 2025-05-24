@@ -26,6 +26,44 @@ format: pdf
 
 ```{r}
 
+
+
+# count(NSD3201, wkapinnt+aksje+rentinnt > lonn)
+
+
+# NSD3201 %>%
+#   mutate(lonn = as.numeric(lonn),
+#          wkapinnt = as.numeric(wkapinnt),
+#          aksje = as.numeric(aksje),
+#          rentinnt = as.numeric(rentinnt)) %>%
+#   mutate(total = wkapinnt+aksje+rentinnt) %>%
+#   mutate(diff = lonn - total) %>%
+#   ggplot(aes(x = sfpros_uten_feriekorr_2022, y = diff)) +
+#   geom_point()
+
+
+
+# NSD3201 %>%
+#   mutate(sfpros_uten_feriekorr_2022 = as.numeric(sfpros_uten_feriekorr_2022),
+#          sfpros_uten_feriekorr_2023 = as.numeric(sfpros_uten_feriekorr_2023),
+#          kullaldr = as.numeric(kullaldr)) %>%
+#   ggplot(aes(x = kullaldr)) +
+#   geom_point(aes(y=sfpros_uten_feriekorr_2023), color="red", alpha=0.4) +
+#   geom_point(aes(y=sfpros_uten_feriekorr_2022), color="blue", alpha=0.2)
+
+
+```
+
+
+
+
+
+
+
+
+
+```{r}
+
 # 
 # 
 # 
