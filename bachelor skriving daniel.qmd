@@ -69,6 +69,7 @@ Vi vil takke vår veileder Espen Sirnes for strålende veiledning og flotte samt
 \renewcommand{\contentsname}{Innholdsfortegnelse}
 \renewcommand*{\figureautorefname}{Figur}
 \renewcommand*{\tableautorefname}{Tabell}
+\renewcommand*{\equationautorefname}{Ligning:}
 \tableofcontents
 \listoffigures
 \listoftables
@@ -208,7 +209,7 @@ Job Demands-Resources-modellen ble først beskrevet av @demerouti2001job som et 
 
 Grunnen til at vi velger JD-R modellen er fordi vi forventer at formuenivå kan forandre jobbkrav og jobbressurser. Vi tenker også at formuenivået har mye å si til hvordan jobbkrav og jobbressurser påvirker personer.
 
-I \autoref{fig:jdr_tikzz} ser vi en forenklet versjon av JD-R-modellen. Jobbkravene og jobbressursene påvirker sykefraværet gjennom motivasjon. Jobbkravene har en negativ effekt på motivasjon, mens jobbressursene har en positiv effekt på motivasjon. Sykefraværet påvirkes også av motivasjonen, hvor høyere motivasjon fører til lavere sykefravær.
+I \autoref{fig:jdr_tikzz} ser vi en standard versjon av JD-R-modellen. Jobbkravene og jobbressursene påvirker sykefraværet gjennom motivasjon. Jobbkravene har en negativ effekt på motivasjon, mens jobbressursene har en positiv effekt på motivasjon. Sykefraværet påvirkes også av motivasjonen, hvor høyere motivasjon fører til lavere sykefravær.
 
 ```{=tex}
 \begin{figure}
@@ -239,8 +240,8 @@ I \autoref{fig:jdr_tikzz} ser vi en forenklet versjon av JD-R-modellen. Jobbkrav
     \node[latent, right=3cm of $(M1)!0.5!(M2)$] (SF) {Sykefravær};
 
     % Piler fra motivasjon til sykefravær med tegn
-    \draw[->] (M1) -- node[midway, above] {$-$} (SF);
-    \draw[->] (M2) -- node[midway, below] {$+$} (SF);
+    \draw[->] (M1) -- node[midway, above] {$+$} (SF);
+    \draw[->] (M2) -- node[midway, below] {$-$} (SF);
 
   \end{tikzpicture}
   \caption{JD–R-modellen}
@@ -249,9 +250,14 @@ I \autoref{fig:jdr_tikzz} ser vi en forenklet versjon av JD-R-modellen. Jobbkrav
 
 ```
 
-### Formue i JD-R
+
+@schaufeli2004job testet i en SEM-modell hvordan jobbkrav og jobbressurser forklarer utbrenthet og jobbengasjement. Studien viste at utbrenthet og jobbengasjement var negativt korrelert, og at jobbkravene hadde en positiv effekt på utbrenthet, mens jobbressursene hadde en signifikant **positiv** effekt på jobbengasjement. Dette kan understøtte at høye krav skaper stress og fravær, mens ressurser fremmer engasjement og opplevelse av mestring. Mens denne studien fokuserer på hvordan utbrenthet har en medierende effekt på forholdet mellom jobbkrav og helseproblemer og engasjement medierer forholdet til jobbressurser og intensjon om å slutte i arbeid. Studien deres inkluderte kun respondenter fordelt på fire forskjellige arbeidsplasser og yrker, og vi vil da videre fokusere på hvordan jobbkrav og jobbressurser påvirker sykefravær gjennom motivasjon, og hvordan formue kan moderere disse effektene for arbeidstakere i hele Norge.
+
+### Formue som moderator
 
 Vi mener at økonomiske ressurser som formue, kan hjelpe med å forklare sykefraværet enda mer og vil bruke den som en ekstern modererende faktor.
+
+@hobfoll1989conservation definerer jobbressurser som ressurser som kan hjelpe individer med å håndtere jobbkrav og redusere stress. Formue kan ses på som en form for jobbressurs, da den gir økonomisk trygghet og muligheter for å håndtere jobbrelaterte utfordringer. Formue kan også bidra til å redusere stress og øke trivsel, noe som igjen kan føre til lavere sykefravær.
 
 Formue gir en økonomisk buffer som kan redusere sårbarheten for jobbrelatert stress. Personer med høy formue kan ha større valgfrihet i arbeidslivet, og tåler lettere perioder med høy belastning uten at det går like hardt utover helse eller jobbmotivasjon. Men personer med lav eller negativ formue vil ofte være mer økonomisk avhengige av inntekten fra arbeid, og kan derfor være mer sårbare for jobbrelatert stress
 
@@ -259,28 +265,32 @@ Formue kan også ha betydning for fremtidsperspektiv og indre motivasjon. Person
 
 Vi antar da at formue påvirker hvordan individet opplever og håndterer jobbkrav og jobbressurser. Vi postulerer at formue fungerer som en moderator for sensitiviteten til endringer i arbeidsforhold og inntekt. En person med lav formue kan være mer sensitiv for både negative og positive endringer i jobbkrav og jobbressurser siden den økonomiske marginen er mindre. Motsatt kan en person med høy formue være mindre sensitiv for endringer i jobbkrav og jobbressurser, og dermed oppleve mindre stress og utbrenthet. Dette kan føre til at personer med høy formue er mer motstandsdyktige mot negative effekter av jobbkrav og mer mottakelige for positive effekter av jobbressurser. Dette kan bety at effekten er ikke-lineær eller bue formet, hvor effekten er sterkest i de med lavest formue og avtar med økende formue. Hvis det er motivasjonsmessige effekter av formuenivå så kan det være at et lavt formuenivå vil gjøre en mindre motivert og indirekte påvirke sykefravær, men også fungere motsatt ved høy formue.
 
-Denne antagelsen støttes av @unguren2021moderator hvor de fant at økonomisk velvære[^4] fungerte som en moderator som reduserte den negative effekten av jobbusikkerhet på utbrenthet blandt hotellansatte.
+Denne antagelsen støttes av @unguren2021moderator hvor de fant at økonomisk velvære[^4] fungerte som en moderator som reduserte den negative effekten av jobbusikkerhet på utbrenthet blant hotellansatte.
 
 [^4]: Økonomisk velvære kan defineres som en tilstand der en person fullt ut kan møte nåværende og løpende økonomiske forpliktelser, kan føle seg trygg på sin økonomiske fremtid, og er i stand til å ta valg som gjør det mulig å nyte livet.
 @cfpbconsumerfinancialprotectionbureau_2015_financial
 
-Ved å inkludere formue som en ekstern faktor i JD-R modellen, forsøker vi å fange både den direkte effekten av økonomisk trygghet og hvordan denne tryggheten forsterker eller demper effektene av jobbrelaterte faktorer. I et samfunn med økende økonomisk ulikheter hvor forskjellen mellom dem som har og dem som ikke har, blir større og større, er det viktig å forstå hvordan dette påvirker arbeidstakere og deres helse.
+Ved å inkludere formue som en ekstern faktor i JD-R modellen, forsøker vi å fange både den direkte effekten av økonomisk trygghet og hvordan denne tryggheten forsterker eller demper effektene av jobbrelaterte faktorer. I et samfunn med økende økonomisk ulikheter hvor forskjellen mellom dem som har og dem som ikke har, blir større og større, er det viktig å forstå hvordan dette påvirker arbeidstakere og deres helse. Teoretisk i modellen vil formue da kunne forsterke effektene av jobbressurser og fungere som en buffer mot jobbkrav, og dermed påvirke sykefraværet.
 
 ## Tidligere forskning
 
 Tidligere empirisk forskning har over tid vist positive forhold mellom forskjellige Job Demands-Resources-faktorer og årsaker som kan føre til sykefravær.
 
-### Mikronivå: Utbrenthet og engasjement
+### Mikronivå: JD-R-studier i helse- og omsorgssektoren
 
-@schaufeli2004job testet i en SEM-modell hvordan jobbkrav og jobbressurser forklarer utbrenthet og jobbengasjement. Studien viste at utbrenthet og jobbengasjement var negativt korrelert, og at jobbkravene hadde en positiv effekt på utbrenthet, mens jobbressursene hadde en signifikant **positiv** effekt på jobbengasjement. Dette kan understøtte at høye krav skaper stress og fravær, mens ressurser fremmer engasjement og opplevelse av mestring.
+@vander2016job utførte en JD-R med SEM-analyse på Belgisk hjemmepleiepersonell. Jobbkrav og jobbressurser ble modellert som prediktorer. Studien viste at jobbkravene var positivt assosiert med utbrenthet, mens jobbressursene var positivt assosiert med jobbengasjement. Denne studien viser også at JDR-mekanismer holder i andre sammenhenger hvor arbeidstakere er under emosjonelt press og skiftarbeid.
 
-### Ulikhet og helse på mikronivå
+### Mikronivå: formue-helse-koblinger
 
-@vander2016job utførte også en JD-R og SEM-analyse på Belgisk hjemmepleiepersonell. Jobbkrav og jobbressurser ble modellert som prediktorer. Studien viste at jobbkravene her også var positivt assosiert med utbrenthet, mens jobbressursene var positivt assosiert med jobbengasjement. Denne studien viser også at JDR-mekanismer holder i andre sammenhenger hvor arbeidstakere er under emosjonelt press og skiftarbeid.
+@jaeggi2021wealth undersøkte effekten av ulikhet i formue i et småskala samfunn av innfødte i Tsimane i Bolivia med 871 observasjoner, $n = 871$. I studien testet de relativ husholdningrikdom og ulikhet i formue mot forskjellige psykologiske variabler og helseutfall som depresjon, BMI, blodtrykk og sykelighet.
 
-@jaeggi2021wealth undersøkte effekten av ulikhet i formue i et småskala samfunn av innfødte i Tsimane i Bolivia hvor det var 871 observasjoner med i studien, $n = 871$. I studiet testet de hvorvidt relativ husholdningrikdom og ulikhet i formue mot forskjellige psykologiske variabler og helseutfall som depresjon, BMI, blodtrykk og sykelighet. Dette ble testet mot kontrollvariabler, og studien viste til en kobling mellom formueulikhet hvor de med lavere formue hadde større sannsynlighet for å få høyere blodtrykk og luftveissykdommer som kunne lede til dødsfall. De fant også at de med høyere formue hadde lavere sannsynlighet for å få depresjon og høyere BMI. Dette indikterer at ulikhet i formue kan moderere stress og helserisiko på individnivå.
+Studien viste til en kobling mellom formueulikhet hvor de med lavere formue hadde større sannsynlighet for å få høyere blodtrykk og luftveissykdommer som kunne lede til dødsfall. De fant også at de med høyere formue hadde lavere sannsynlighet for å få depresjon og høyere BMI. Dette indikterer at ulikhet i formue kan moderere stress og helserisiko på individnivå.
 
-@langseth2021ticket bygger videre på tidligere forskning og adresserer limitasjonene ved Job Demands-Resources-modellen. De argumenterer for at Job Demands-Resources-modellen ved tidligere forskning har hatt fokus på organisasjonsnivået, og at det er viktig å se på hvordan Job Demands-Resources-modellen kan brukes bedre på jobbressurser, jobbengasjement og helserelaterte utfall. De gjorde en paneldata studie på fast ansatte i Norge med to års tidsforsinkelse med 1533 ansatte første tidsperiode, $n =1533$ og 1503 ansatte, $n = 1503$ neste tidsperiode. Over lengre tid fant de at jobbressurser hadde en positiv effekt på jobbengasjement, og at jobbengasjement var negativt assosiert med sykefravær. Dette kan tyde på at høyere jobbressurser kan føre til høyere jobbengasjement, som igjen kan føre til lavere sykefravær.
+### Mikronivå: JD-R-studier i Norge
+
+@langseth2021ticket bygger videre på tidligere forskning og adresserer limitasjonene ved Job Demands-Resources-modellen. De argumenterer for at Job Demands-Resources-modellen ved tidligere forskning har hatt fokus på organisasjonsnivået, og at det er viktig å se på hvordan Job Demands-Resources-modellen kan brukes bedre på jobbressurser, jobbengasjement og helserelaterte utfall. De gjorde en paneldata studie på fast ansatte i Norge med to års tidsforsinkelse med 1533 ansatte første tidsperiode, $n =1533$ og 1503 ansatte, $n = 1503$ neste tidsperiode. 
+
+Over lengre tid fant de at jobbressurser hadde en positiv effekt på jobbengasjement, og at jobbengasjement var negativt assosiert med sykefravær. Dette kan tyde på at høyere jobbressurser kan føre til høyere jobbengasjement, som igjen kan føre til lavere sykefravær.
 
 ### Makronivå: Ulikhet i samfunnet
 
@@ -301,7 +311,7 @@ $$
 
 ## Modelloppsett
 
-Oppsettet blir da som følger:
+Modellen vi blir å bruke blir da som følger:
 
 ```{=tex}
 \begin{figure}
@@ -349,8 +359,8 @@ Oppsettet blir da som følger:
     \node[latent, right=3cm of $(M1)!0.5!(M2)$] (SF) {Sykefravær};
 
     % Piler fra motivasjon til sykefravær med tegn
-    \draw[->] (M1) -- node[midway, above] {$-$} (SF);
-    \draw[->] (M2) -- node[midway, below] {$+$} (SF);
+    \draw[->] (M1) -- node[midway, above] {$+$} (SF);
+    \draw[->] (M2) -- node[midway, below] {$-$} (SF);
 
   \end{tikzpicture}
   \caption{Utvidet JD–R-modell med formue som moderator og separate motivasjonsløp.}
@@ -359,7 +369,7 @@ Oppsettet blir da som følger:
 
 ```
 
-Forklare figuren fortsettelse her.
+I modellen vår (\autoref{fig:jdr_tikz}) har vi inkludert formue som en moderator som påvirker både jobbkrav og jobbressurser. Dette betyr at formue kan endre hvordan jobbkrav og jobbressurser påvirker sykefraværet. Vi har også separate motivasjonsløp for jobbkrav og jobbressurser, som gjør at vi kan se hvordan motivasjon påvirkes av begge disse faktorene. Vi antar at formuen blir å fungere som en stress-avlastning eller buffer mot jobbkravene og forsterke effekten av jobbressurser, og fungere som en psykologisk trygghet. Dette kan føre til at personer med høyere formue opplever lavere sykefravær, mens de med lavere formue kan oppleve høyere sykefravær på grunn av økt stress og lavere tilgang til ressurser.
 
 ### Hovedmodell for sykefravær (SF)
 
@@ -397,11 +407,7 @@ $$
 
 Der $\alpha_0$ er konstanten, $\alpha_1$ og $\alpha_2$ er koeffisientene for henholdsvis jobbressurser og formuenivå, $\Sigma_k \alpha_{3k}Z_{ik}$ fanger opp effekter av eventuelle kontrollvariabler, $\epsilon_{2i}$ er feilleddet.
 
-putter inn utdanning og alder i z.
-
-Er nokk forskjell på sykefravær på alder ung/gammel. hvor stor forskjell mellom de på ung og gammel basert på formue
-
-
+For hypoteser gå til kapittel [-@sec-hypot].
 
 # Metode og data
 
@@ -1062,6 +1068,14 @@ I oppgaven vil vi bruke en kvantitativ metode for å analysere sammenhengen mell
 
 ## Structural Equation Model (SEM)
 
+Formue inngår i modellen på tre måter: som en direkte forklaringsvariabel for sykefravær, som en indirekte påvirkning via motivasjon, og som en modererende variabel som endrer effekten av jobbkrav og jobbressurser.
+
+Vi antar at formue fungerer som et mål på økonomisk trygghet og handlingsrom. Personer med høyere formue har trolig mer fleksibilitet til å håndtere belastninger på jobb, og vil kunne tåle høye jobbkrav uten samme negative effekt på helse og fravær. Samtidig antar vi at høyere formue gir høyere jobbmotivasjon fordi økonomisk trygghet gjør det lettere å finne mening, utvikling og balanse i arbeidet.
+
+På bakgrunn av dette har vi inkludert interaksjonsledd mellom formue og jobbkrav ($JD_i FN_i$), samt mellom formue og jobbressurser ($JR_i FN_i$), for å fange opp slike modererende effekter. Vi har også modellert motivasjon som en medierende variabel, hvor formue kan påvirke motivasjonen, som igjen kan påvirke sykefravær.
+
+Dette modellvalget bygger videre på JD-R-rammeverket, men inkluderer økonomisk kontekst som en faktor som kan endre hvordan individer påvirkes av jobbsituasjonen. Ved å bruke en SEM-modell kan vi teste både de direkte og indirekte sammenhengene mellom formue og sykefravær.
+
 ### Ligning til modellen
 
 $$
@@ -1069,8 +1083,9 @@ SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_iFN_i)
 $$
 
 $$
-M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i}
-$$
+M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i} \tag{Motivasjon}\label{eq:motivasjon}
+$$ 
+
 
 ### Forklaring av alle deler i modellen
 
@@ -1097,35 +1112,45 @@ $\gamma_{j} $ & Koeffisienter for kontrollvariablene i på sykefravær i sykefra
 
 ### Beskrivning av metode
 
-Fra ligningen til vår medierende variabel Motivasjon, forventer vi at $\alpha_1 > 0$ og $\alpha_2 > 0$, som betyr at høyere jobbressurser og formuenivå vil føre til høyere motivasjon.
+Vår medierende variabel Motivasjon ($M_i$) i  \autoref{eq:motivasjon} er modellert som en funksjon av jobbressurser ($JR_i$) og formue ($FN_i$), samt kontrollvariabler. Her forventer vi at $\alpha_1 > 0$ i tråd med JD-R modellen og @langseth2021ticket hvor jobbressurser bygger engasjement og motivasjon. Vi forventer også at $\alpha_2 > 0$ som betyr at høyere formue vil føre til høyere motivasjon. Dette bygger på antagelsen om at økonomisk trygghet reduserer stress og frigjør mental kapasitet. Det bygger også på at på at utsikter til økonomisk fremgang, eller fraværet av en følelse av at det ikke er mulig å bli økonomisk trygg som kan oppstå ved stor ulikhet  @gesiarz2020motivational, og at du dermed kan styrke den indre motivasjonen for arbeidet.
 
 ### Hypoteser {#sec-hypot}
 
-Fra $$
+Ut fra vår hovedmodell for sykefravær:
+
+$$
 SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_i FN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
-$$
+$$ 
+formulerer vi følgende hypoteser:
 
-Forventer vi at:
+#### Hypotese 1(H1): $\beta_1 > 0$ Høyere jobbkrav gir høyere sykefravær
 
-H1: $\beta_1 > 0$ (høyere jobbkrav gir høyere sykefravær)
+Dette er en grunnleggende antagelse i JD-R-modellen [@schaufeli2004job; @vander2016job]. Høye krav (fysiske, psykiske, emosjonelle) tærer på individets ressurser og kan føre til utbrenthet og helseplager, som igjen øker sannsynligheten for sykefravær.
 
-H2: $\beta_2 < 0$ (høyere jobbressurser gir lavere sykefravær)
+#### Hypotese 2(H2): $\beta_2 < 0$ Høyere jobbressurser gir lavere sykefravær
 
-H3: $\beta_3 < 0$ (høyere formuenivå gir lavere sykefravær)
+Jobbressurser (støtte, autonomi, tilbakemelding) fungerer som beskyttende faktorer. De hjelper ansatte med å håndtere krav, oppnå mål og fremmer personlig vekst, noe som fører til høyere engasjement og bedre helse, og dermed lavere fravær [@langseth2021ticket].
 
-Av de modererende variablene forventer vi at
+#### Hypotese 3(H3): $\beta_3 < 0$ Høyere formuenivå gir lavere sykefravær
 
-H4: $\beta_4 < 0$ Høyere formuenivå demper de negative effektene til høyere jobbkrav.
+Vi forventer en direkte, gunstig effekt av formue på sykefravær. Formue fungerer som en "buffer" mot levekårsproblemer [@normann_2009_inntektsfattig; @hattrem_hvor] og gir økonomisk trygghet. Dette kan redusere generelt stressnivå og forbedre helsen, slik funn fra @jaeggi2021wealth indikerer (høyere formue -> lavere blodtrykk, færre luftveissykdommer). Økonomisk trygghet kan også gi bedre tilgang til helsetjenester og en større evne til å håndtere helseutfordringer uten å måtte ty til langvarig fravær.
 
-$$
-\frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i
-$$ H5: $\beta_5 < 0$ Høyere formuenivå forsterker de positive effektene til høyere jobbressurser.
+#### Hypotese 4(H4): $\beta_4 < 0$ Høyere formuenivå demper de negative effektene til høyere jobbkrav 
 
-$$
-\frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i
-$$
 
-Vi forventer og at det er en indirekte effekt fra formue igjennom motivasjon $\alpha_2 \beta_6$ hvor vi forventer at $\alpha_2 > 0$ og $\beta_6 < 0$ som betyr at høyere formuenivå gir høyere motivasjon, som igjen gir lavere sykefravær.
+Dette er en modereringshypotese. Vi tror at formue reduserer sensitiviteten for jobbkrav. For en person med lav formue kan høye krav oppleves som svært truende, da konsekvensene av å ikke mestre (for eks, miste jobben) er store. For en person med høy formue, gir den økonomiske tryggheten en mental "pute" som gjør at de samme kravene ikke utløser like mye stress. Dette er i tråd med @unguren2021moderator, som fant at økonomisk velvære fungerte som en slik buffer. Den marginale effekten av jobbkrav er $\frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i$. En negativ $\beta_4$ betyr at effekten av JK på SF blir mindre etter hvert som FN øker.
+
+
+#### Hypotese 5(H5): $\beta_5 > 0$ Høyere formuenivå demper de positive effektene til høyere jobbressurser 
+
+Dette er vår andre modereringshypotese, basert på en antagelse om avtagende grensenytte. Vi antar at jobbressurser har størst relativ effekt for de med lav formue. For en person med lav formue og potensielt høy usikkerhet, vil en økning i jobbressurser ha en stor positiv effekt på deres tilstedeværelse og dermed en stor reduserende effekt på sykefravær. En person med høy formue, som allerede har høy trygghet og lavt stress, vil den samme økningen i jobbressurser ha en mindre tilleggseffekt. Effekten er altså sterkest for de med lav formue, og blir svakere jo høyere formuen blir. Den marginale effekten av jobbressurser er $\frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i$. Siden $\beta_2 < 0$ er negativ, vil en positiv $\beta_5$ gjøre den totale effekten mindre negativ etter hvert som $FN_i$ øker. 
+
+#### Hypotese 6(H6): Indirekte effekt via motivasjon $\alpha_2\beta_6 < 0$
+
+
+Vi forventer en indirekte vei der formue påvirker sykefravær gjennom motivasjon. Som nevnt AUTOREF, forventer vi at høyere formue øker motivasjonen $\alpha_2 > 0$ som ved å redusere finansiell usikkerhet, og gode fremtidsutsikter. Videre forventer vi at høyere motivasjon/engasjement reduserer sykefraværet ($\beta_6 <0$), slik @langseth2021ticket fant. Samlet sett gir dette en forventning om en negativ indirekte effekt $\alpha_2 \beta_6 <0$, som betyr at en del av formues positive effekt på helse/nærvær går via økt arbeidsglede og engasjement som igjen gir lavere sykefravær.
+
+\newpage
 
 # Analyse
 
