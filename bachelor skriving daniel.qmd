@@ -1122,6 +1122,9 @@ jr_indicators <- c("Stotte_sjef", "Stotte_kollega", "Tilbakemelding_sjef",
 
 ```
 
+
+
+
 ```{r}
 
 NSD3201 <- NSD3201 %>% 
@@ -1150,7 +1153,12 @@ var_JR8 <- "Grad_pavirke_beslutning_arbeid"
 
 ```
 
+
+
+
+
 #wtf ai hjelp for nu.
+
 
 ```{r}
 
@@ -1273,6 +1281,9 @@ summary(fit_prod, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
 
 ```
 
+
+
+
 ```{r}
 
 if (exists("fit_prod") && inherits(fit_prod, "lavaan")) {
@@ -1322,6 +1333,9 @@ if (exists("fit_prod") && inherits(fit_prod, "lavaan")) {
   print("Sørg for at du har kjørt sem()-funksjonen og lagret resultatet i 'fit_prod'.")
 }
 ```
+
+
+
 
 ### Tabell med resultat fra regresjonsanalysen(e)
 
