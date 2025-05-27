@@ -233,8 +233,7 @@
 \end{center}
 
 Vi vil takke vår veileder Espen Sirnes for strålende veiledning og
-flotte samtaler på kontoret og Derek J. Clark for ekstra
-tilbakemeldinger under skriving.
+flotte samtaler på kontoret.
 
 \newpage
 \hypersetup{linkcolor=black}
@@ -256,6 +255,10 @@ tilbakemeldinger under skriving.
 Sammendrag her
 
 \newpage
+
+\begin{verbatim}
+[1] "LC_COLLATE=no_NO;LC_CTYPE=no_NO;LC_MONETARY=no_NO;LC_NUMERIC=C;LC_TIME=no_NO"
+\end{verbatim}
 
 \section{Innledning}\label{innledning}
 
@@ -384,7 +387,7 @@ Sykefraværsprosenten er definert som antall sykefraværsdager i prosent
 av totalt antall arbeidsdager i en gitt periode:
 
 \[
-SF = \frac{ \text{Antall sykefraværsdager}}{\text{Antall avtalte dagsverk}}  \times 100
+SF_i = \frac{ \text{Antall sykefraværsdager}}{\text{Antall avtalte dagsverk}}  \times 100
 \]
 
 \subsubsection{Jobbkrav}\label{jobbkrav}
@@ -459,7 +462,7 @@ formuenivå kan forandre jobbkrav og jobbressurser. Vi tenker også at
 formuenivået har mye å si til hvordan jobbkrav og jobbressurser påvirker
 personer.
 
-I \autoref{fig:jdr_tikzz} ser vi en forenklet versjon av JD-R-modellen.
+I \autoref{fig:jdr_tikzz} ser vi en standard versjon av JD-R-modellen.
 Jobbkravene og jobbressursene påvirker sykefraværet gjennom motivasjon.
 Jobbkravene har en negativ effekt på motivasjon, mens jobbressursene har
 en positiv effekt på motivasjon. Sykefraværet påvirkes også av
@@ -493,19 +496,41 @@ motivasjonen, hvor høyere motivasjon fører til lavere sykefravær.
     \node[latent, right=3cm of $(M1)!0.5!(M2)$] (SF) {Sykefravær};
 
     % Piler fra motivasjon til sykefravær med tegn
-    \draw[->] (M1) -- node[midway, above] {$-$} (SF);
-    \draw[->] (M2) -- node[midway, below] {$+$} (SF);
+    \draw[->] (M1) -- node[midway, above] {$+$} (SF);
+    \draw[->] (M2) -- node[midway, below] {$-$} (SF);
 
   \end{tikzpicture}
   \caption{JD–R-modellen}
   \label{fig:jdr_tikzz}
 \end{figure}
 
-\subsubsection{Formue i JD-R}\label{formue-i-jd-r}
+Schaufeli \& Bakker (2004) testet i en SEM-modell hvordan jobbkrav og
+jobbressurser forklarer utbrenthet og jobbengasjement. Studien viste at
+utbrenthet og jobbengasjement var negativt korrelert, og at jobbkravene
+hadde en positiv effekt på utbrenthet, mens jobbressursene hadde en
+signifikant \textbf{positiv} effekt på jobbengasjement. Dette kan
+understøtte at høye krav skaper stress og fravær, mens ressurser fremmer
+engasjement og opplevelse av mestring. Mens denne studien fokuserer på
+hvordan utbrenthet har en medierende effekt på forholdet mellom jobbkrav
+og helseproblemer og engasjement medierer forholdet til jobbressurser og
+intensjon om å slutte i arbeid. Studien deres inkluderte kun
+respondenter fordelt på fire forskjellige arbeidsplasser og yrker, og vi
+vil da videre fokusere på hvordan jobbkrav og jobbressurser påvirker
+sykefravær gjennom motivasjon, og hvordan formue kan moderere disse
+effektene for arbeidstakere i hele Norge.
+
+\subsubsection{Formue som moderator}\label{sec-formue-jdr}
 
 Vi mener at økonomiske ressurser som formue, kan hjelpe med å forklare
 sykefraværet enda mer og vil bruke den som en ekstern modererende
 faktor.
+
+Hobfoll (1989) definerer jobbressurser som ressurser som kan hjelpe
+individer med å håndtere jobbkrav og redusere stress. Formue kan ses på
+som en form for jobbressurs, da den gir økonomisk trygghet og muligheter
+for å håndtere jobbrelaterte utfordringer. Formue kan også bidra til å
+redusere stress og øke trivsel, noe som igjen kan føre til lavere
+sykefravær.
 
 Formue gir en økonomisk buffer som kan redusere sårbarheten for
 jobbrelatert stress. Personer med høy formue kan ha større valgfrihet i
@@ -541,7 +566,7 @@ Denne antagelsen støttes av Üngüren et al. (2021) hvor de fant at
   økonomiske forpliktelser, kan føle seg trygg på sin økonomiske
   fremtid, og er i stand til å ta valg som gjør det mulig å nyte livet.
   Financial Protection Bureau) (2015)} fungerte som en moderator som
-reduserte den negative effekten av jobbusikkerhet på utbrenthet blandt
+reduserte den negative effekten av jobbusikkerhet på utbrenthet blant
 hotellansatte.
 
 Ved å inkludere formue som en ekstern faktor i JD-R modellen, forsøker
@@ -550,6 +575,9 @@ denne tryggheten forsterker eller demper effektene av jobbrelaterte
 faktorer. I et samfunn med økende økonomisk ulikheter hvor forskjellen
 mellom dem som har og dem som ikke har, blir større og større, er det
 viktig å forstå hvordan dette påvirker arbeidstakere og deres helse.
+Teoretisk i modellen vil formue da kunne forsterke effektene av
+jobbressurser og fungere som en buffer mot jobbkrav, og dermed påvirke
+sykefraværet.
 
 \subsection{Tidligere forskning}\label{tidligere-forskning}
 
@@ -557,39 +585,35 @@ Tidligere empirisk forskning har over tid vist positive forhold mellom
 forskjellige Job Demands-Resources-faktorer og årsaker som kan føre til
 sykefravær.
 
-\subsubsection{Mikronivå: Utbrenthet og
-engasjement}\label{mikronivuxe5-utbrenthet-og-engasjement}
+\subsubsection{Mikronivå: JD-R-studier i helse- og
+omsorgssektoren}\label{mikronivuxe5-jd-r-studier-i-helse--og-omsorgssektoren}
 
-Schaufeli \& Bakker (2004) testet i en SEM-modell hvordan jobbkrav og
-jobbressurser forklarer utbrenthet og jobbengasjement. Studien viste at
-utbrenthet og jobbengasjement var negativt korrelert, og at jobbkravene
-hadde en positiv effekt på utbrenthet, mens jobbressursene hadde en
-signifikant \textbf{positiv} effekt på jobbengasjement. Dette kan
-understøtte at høye krav skaper stress og fravær, mens ressurser fremmer
-engasjement og opplevelse av mestring.
-
-\subsubsection{Ulikhet og helse på
-mikronivå}\label{ulikhet-og-helse-puxe5-mikronivuxe5}
-
-Vander Elst et al. (2016) utførte også en JD-R og SEM-analyse på Belgisk
+Vander Elst et al. (2016) utførte en JD-R med SEM-analyse på Belgisk
 hjemmepleiepersonell. Jobbkrav og jobbressurser ble modellert som
-prediktorer. Studien viste at jobbkravene her også var positivt
-assosiert med utbrenthet, mens jobbressursene var positivt assosiert med
+prediktorer. Studien viste at jobbkravene var positivt assosiert med
+utbrenthet, mens jobbressursene var positivt assosiert med
 jobbengasjement. Denne studien viser også at JDR-mekanismer holder i
 andre sammenhenger hvor arbeidstakere er under emosjonelt press og
 skiftarbeid.
 
+\subsubsection{Mikronivå:
+formue-helse-koblinger}\label{mikronivuxe5-formue-helse-koblinger}
+
 Jaeggi et al. (2021) undersøkte effekten av ulikhet i formue i et
-småskala samfunn av innfødte i Tsimane i Bolivia hvor det var 871
-observasjoner med i studien, \(n = 871\). I studiet testet de hvorvidt
-relativ husholdningrikdom og ulikhet i formue mot forskjellige
-psykologiske variabler og helseutfall som depresjon, BMI, blodtrykk og
-sykelighet. Dette ble testet mot kontrollvariabler, og studien viste til
-en kobling mellom formueulikhet hvor de med lavere formue hadde større
-sannsynlighet for å få høyere blodtrykk og luftveissykdommer som kunne
-lede til dødsfall. De fant også at de med høyere formue hadde lavere
-sannsynlighet for å få depresjon og høyere BMI. Dette indikterer at
-ulikhet i formue kan moderere stress og helserisiko på individnivå.
+småskala samfunn av innfødte i Tsimane i Bolivia med 871 observasjoner,
+\(n = 871\). I studien testet de relativ husholdningrikdom og ulikhet i
+formue mot forskjellige psykologiske variabler og helseutfall som
+depresjon, BMI, blodtrykk og sykelighet.
+
+Studien viste til en kobling mellom formueulikhet hvor de med lavere
+formue hadde større sannsynlighet for å få høyere blodtrykk og
+luftveissykdommer som kunne lede til dødsfall. De fant også at de med
+høyere formue hadde lavere sannsynlighet for å få depresjon og høyere
+BMI. Dette indikterer at ulikhet i formue kan moderere stress og
+helserisiko på individnivå.
+
+\subsubsection{Mikronivå: JD-R-studier i
+Norge}\label{mikronivuxe5-jd-r-studier-i-norge}
 
 Langseth-Eide \& Vittersø (2021) bygger videre på tidligere forskning og
 adresserer limitasjonene ved Job Demands-Resources-modellen. De
@@ -599,11 +623,12 @@ se på hvordan Job Demands-Resources-modellen kan brukes bedre på
 jobbressurser, jobbengasjement og helserelaterte utfall. De gjorde en
 paneldata studie på fast ansatte i Norge med to års tidsforsinkelse med
 1533 ansatte første tidsperiode, \(n =1533\) og 1503 ansatte,
-\(n = 1503\) neste tidsperiode. Over lengre tid fant de at jobbressurser
-hadde en positiv effekt på jobbengasjement, og at jobbengasjement var
-negativt assosiert med sykefravær. Dette kan tyde på at høyere
-jobbressurser kan føre til høyere jobbengasjement, som igjen kan føre
-til lavere sykefravær.
+\(n = 1503\) neste tidsperiode.
+
+Over lengre tid fant de at jobbressurser hadde en positiv effekt på
+jobbengasjement, og at jobbengasjement var negativt assosiert med
+sykefravær. Dette kan tyde på at høyere jobbressurser kan føre til
+høyere jobbengasjement, som igjen kan føre til lavere sykefravær.
 
 \subsubsection{Makronivå: Ulikhet i
 samfunnet}\label{makronivuxe5-ulikhet-i-samfunnet}
@@ -621,8 +646,10 @@ Mekanismene som følger på mikronivå er da:
 
 \[
 \text{Høyere jobbkrav} \rightarrow \text{Økt utbrenthet} \rightarrow \text{Høyere sykefravær} \rightarrow \text{Økt jobbengasjement} \rightarrow \text{Lavere sykefravær}
-\] Hvor formue fungerer som en moderator ved å påvirke stress til
-individer før jobbkravene utløser negative effekter på helse.
+\]
+
+Hvor formue fungerer som en moderator ved å påvirke stress til individer
+før jobbkravene utløser negative effekter på helse.
 
 På makronivå vil samfunnsmessig ulikhet forme de jobbkrav og ressurser
 som virksomheter og arbeidstakere får, og dermed styrke JDR-mekanismer,
@@ -635,7 +662,7 @@ empirisk grunnlag for vår undersøkelse av at:
 
 \subsection{Modelloppsett}\label{modelloppsett}
 
-Oppsettet blir da som følger:
+Modellen vi blir å bruke blir da som følger:
 
 \begin{figure}
   \centering
@@ -682,15 +709,25 @@ Oppsettet blir da som følger:
     \node[latent, right=3cm of $(M1)!0.5!(M2)$] (SF) {Sykefravær};
 
     % Piler fra motivasjon til sykefravær med tegn
-    \draw[->] (M1) -- node[midway, above] {$-$} (SF);
-    \draw[->] (M2) -- node[midway, below] {$+$} (SF);
+    \draw[->] (M1) -- node[midway, above] {$+$} (SF);
+    \draw[->] (M2) -- node[midway, below] {$-$} (SF);
 
   \end{tikzpicture}
   \caption{Utvidet JD–R-modell med formue som moderator og separate motivasjonsløp.}
   \label{fig:jdr_tikz}
 \end{figure}
 
-Forklare figuren fortsettelse her.
+I modellen vår (\autoref{fig:jdr_tikz}) har vi inkludert formue som en
+moderator som påvirker både jobbkrav og jobbressurser. Dette betyr at
+formue kan endre hvordan jobbkrav og jobbressurser påvirker
+sykefraværet. Vi har også separate motivasjonsløp for jobbkrav og
+jobbressurser, som gjør at vi kan se hvordan motivasjon påvirkes av
+begge disse faktorene. Vi antar at formuen blir å fungere som en
+stress-avlastning eller buffer mot jobbkravene og forsterke effekten av
+jobbressurser, og fungere som en psykologisk trygghet. Dette kan føre
+til at personer med høyere formue opplever lavere sykefravær, mens de
+med lavere formue kan oppleve høyere sykefravær på grunn av økt stress
+og lavere tilgang til ressurser.
 
 \subsubsection{Hovedmodell for sykefravær
 (SF)}\label{hovedmodell-for-sykefravuxe6r-sf}
@@ -742,7 +779,7 @@ koeffisientene for henholdsvis jobbressurser og formuenivå,
 \(\Sigma_k \alpha_{3k}X_{ik}\) fanger opp effekter av eventuelle
 kontrollvariabler, \(\epsilon_{2i}\) er feilleddet.
 
-putter inn utdanning og alder i z.
+putter inn utdanning og alder i x.
 
 Er nokk forskjell på sykefravær på alder ung/gammel. hvor stor forskjell
 mellom de på ung og gammel basert på formue
@@ -808,14 +845,15 @@ hovedvariabel}\label{avhengig-og-uavhengig-hovedvariabel}
 
 Sykefravær:
 
-Sykefraværssprosent uten feriekorrigering (SF) vil være vår avhengige
-variabel, og vi vil bruke sykefraværet i 2022 som mål på sykefravær.
-Denne variabelen inneholder sykemeldingsraten selvrapportert av
-respondenten i løpet av de siste 12 månedene, og er målt i prosent.
+Datasettet inneholder en ferdig variabel for sykefraværsprosent
+(sfpros\_uten\_feriekorr\_2022, sfpros\_uten\_feriekorr\_2023), men vi
+velger å beregne denne selv for å ha med egenmeldings dager, også for å
+kunne ta høyde for avtalt arbeidstid.
 
-Vi vil også muligens bruke sykefraværsprosent uten feriekorrigering i
-2023 som en kontrollvariabel for å se om det er noen endringer i
-sykefraværet over tid.
+Vi benytter variablene sfdagsvj\_2022 (sykefraværsdagsverk) og
+mdagsv\_2022 (avtalte dagsverk) fra Levekårsundersøkelsen.
+Sykefraværsprosenten \((SF_i)\) for individ \(i\) er da
+sykefraværsdagsverk delt på avtalte dagsverk for hvert individ.
 
 Formue:
 
@@ -1310,16 +1348,16 @@ negativ \(\beta_4\) betyr at effekten av JK på SF blir mindre etter
 hvert som FN øker.
 
 \paragraph{\texorpdfstring{Hypotese 5(H5): \(\beta_5 > 0\) Høyere
-formuenivå demper de positive effektene til høyere
-jobbressurser}{Hypotese 5(H5): \textbackslash beta\_5 \textgreater{} 0 Høyere formuenivå demper de positive effektene til høyere jobbressurser}}\label{hypotese-5h5-beta_5-0-huxf8yere-formuenivuxe5-demper-de-positive-effektene-til-huxf8yere-jobbressurser}
+formuenivå demper den reduserende effekten av høyere jobbressurser på
+sykefravær}{Hypotese 5(H5): \textbackslash beta\_5 \textgreater{} 0 Høyere formuenivå demper den reduserende effekten av høyere jobbressurser på sykefravær}}\label{hypotese-5h5-beta_5-0-huxf8yere-formuenivuxe5-demper-den-reduserende-effekten-av-huxf8yere-jobbressurser-puxe5-sykefravuxe6r}
 
 Dette er vår andre modereringshypotese, basert på en antagelse om
 avtagende grensenytte. Vi antar at jobbressurser har størst relativ
 effekt for de med lav formue. For en person med lav formue og potensielt
-høy usikkerhet, vil en økning i jobbressurser ha en stor positiv effekt
-på deres tilstedeværelse og dermed en stor reduserende effekt på
-sykefravær. En person med høy formue, som allerede har høy trygghet og
-lavt stress, vil den samme økningen i jobbressurser ha en mindre
+høy økonomisk usikkerhet, vil en økning i jobbressurser som er en
+negativ effekt på sykefravær ha en stor reduserende effekt på
+sykefravær. En person med høy formue, som allerede har høy økonomisk
+trygghet, vil den samme økningen i jobbressurser ha en mindre
 tilleggseffekt. Effekten er altså sterkest for de med lav formue, og
 blir svakere jo høyere formuen blir. Den marginale effekten av
 jobbressurser er
@@ -1344,6 +1382,209 @@ arbeidsglede og engasjement som igjen gir lavere sykefravær.
 \newpage
 
 \section{Analyse}\label{analyse}
+
+\#wtf ai hjelp for nu.
+
+\begin{verbatim}
+lavaan 0.6-19 ended normally after 178 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                        70
+
+  Number of observations                          2128
+
+Model Test User Model:
+                                              Standard      Scaled
+  Test Statistic                              4730.631    2059.218
+  Degrees of freedom                               374         374
+  P-value (Chi-square)                           0.000       0.000
+  Scaling correction factor                                  2.297
+    Yuan-Bentler correction (Mplus variant)                       
+
+Model Test Baseline Model:
+
+  Test statistic                             12929.500    4705.697
+  Degrees of freedom                               420         420
+  P-value                                        0.000       0.000
+  Scaling correction factor                                  2.748
+
+User Model versus Baseline Model:
+
+  Comparative Fit Index (CFI)                    0.652       0.607
+  Tucker-Lewis Index (TLI)                       0.609       0.558
+                                                                  
+  Robust Comparative Fit Index (CFI)                         0.671
+  Robust Tucker-Lewis Index (TLI)                            0.631
+
+Loglikelihood and Information Criteria:
+
+  Loglikelihood user model (H0)             -94632.047  -94632.047
+  Scaling correction factor                                  6.994
+      for the MLR correction                                      
+  Loglikelihood unrestricted model (H1)     -92266.732  -92266.732
+  Scaling correction factor                                  3.038
+      for the MLR correction                                      
+                                                                  
+  Akaike (AIC)                              189404.094  189404.094
+  Bayesian (BIC)                            189800.499  189800.499
+  Sample-size adjusted Bayesian (SABIC)     189578.101  189578.101
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.074       0.046
+  90 Percent confidence interval - lower         0.072       0.045
+  90 Percent confidence interval - upper         0.076       0.047
+  P-value H_0: RMSEA <= 0.050                    0.000       1.000
+  P-value H_0: RMSEA >= 0.080                    0.000       0.000
+                                                                  
+  Robust RMSEA                                               0.070
+  90 Percent confidence interval - lower                     0.067
+  90 Percent confidence interval - upper                     0.073
+  P-value H_0: Robust RMSEA <= 0.050                         0.000
+  P-value H_0: Robust RMSEA >= 0.080                         0.000
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.056       0.056
+
+Parameter Estimates:
+
+  Standard errors                             Sandwich
+  Information bread                           Observed
+  Observed information based on                Hessian
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  JK =~                                                                 
+    For_mye_arbd_c    1.000                               0.548    0.605
+    Hoyt_rbdstmp_c    0.465    0.057    8.096    0.000    0.255    0.365
+    Ekstra_arbed_c    1.378    0.156    8.833    0.000    0.755    0.541
+  JR =~                                                                 
+    Stotte_sjef_c     1.000                               0.760    0.615
+    Stotte_kollg_c    0.510    0.034   14.799    0.000    0.388    0.411
+    Tlbkmldng_sjf_    1.037    0.046   22.351    0.000    0.789    0.626
+    Arbedsrslttr_c    1.240    0.054   22.879    0.000    0.943    0.682
+    Grd_slvbstmm__    0.750    0.080    9.358    0.000    0.570    0.517
+    Grd_slvbs_____    0.727    0.085    8.584    0.000    0.553    0.522
+    Grad_rbdstmp_c    0.694    0.078    8.875    0.000    0.527    0.497
+    Grd_pvrk_bsl__    0.808    0.077   10.476    0.000    0.615    0.591
+  JKxFN =~                                                              
+    Fr_my_rb___LFC    1.000                               0.896    0.486
+    Hyt_rbds___LFC    0.658    0.172    3.822    0.000    0.589    0.415
+    Ekstr_rb___LFC    1.945    0.582    3.342    0.001    1.743    0.599
+  JRxFN =~                                                              
+    Sttt_sjf___LFC    1.000                               1.626    0.651
+    Sttt_kll___LFC    0.435    0.114    3.803    0.000    0.707    0.358
+    Tlbkmld____LFC    0.913    0.241    3.783    0.000    1.485    0.578
+    Arbdsrsl___LFC    1.183    0.213    5.552    0.000    1.925    0.660
+    Grd_slv____LFC    0.654    0.221    2.961    0.003    1.064    0.457
+    Grd________LFC    0.743    0.353    2.108    0.035    1.208    0.564
+    Grd_rbds___LFC    0.761    0.319    2.386    0.017    1.237    0.561
+    Grd_pv_____LFC    0.882    0.324    2.719    0.007    1.434    0.636
+
+Regressions:
+                     Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  Motivasjon ~                                                            
+    JR      (alp1)      0.722    0.046   15.808    0.000    0.549    0.546
+    Lg__    (alp2)      0.004    0.009    0.471    0.637    0.004    0.009
+    Ald_    (cM_A)     -0.013    0.002   -7.960    0.000   -0.013   -0.156
+    Kvnn    (cM_K)     -0.138    0.041   -3.361    0.001   -0.138   -0.066
+    Ut_V  (cM_U_V)     -0.019    0.055   -0.346    0.730   -0.019   -0.009
+    U_UH  (cM_U_U)     -0.045    0.060   -0.755    0.450   -0.045   -0.021
+    Barn    (cM_B)     -0.115    0.056   -2.072    0.038   -0.115   -0.041
+  Sykefravaer_2022 ~                                                      
+    JK      (bet1)     -0.160    0.833   -0.192    0.847   -0.088   -0.006
+    JR      (bet2)      1.177    0.613    1.920    0.055    0.895    0.063
+    Lg__    (bet3)     -0.109    0.136   -0.799    0.424   -0.109   -0.016
+    Mtvs    (bet6)      0.589    0.383    1.539    0.124    0.589    0.042
+    JKFN    (bet4)      0.347    0.495    0.701    0.483    0.311    0.022
+    JRFN    (bet5)      0.292    0.209    1.396    0.163    0.475    0.033
+    Ald_   (cSF_A)      0.153    0.024    6.396    0.000    0.153    0.132
+    Kvnn   (cSF_K)      2.372    0.641    3.702    0.000    2.372    0.081
+    Ut_V (cSF_U_V)     -0.950    0.920   -1.032    0.302   -0.950   -0.033
+    U_UH (cSF_U_U)     -2.016    1.003   -2.010    0.044   -2.016   -0.066
+    Barn   (cSF_B)      0.346    0.842    0.411    0.681    0.346    0.009
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  JK ~~                                                                 
+    JR               -0.122    0.020   -6.158    0.000   -0.293   -0.293
+    JKxFN            -0.038    0.032   -1.185    0.236   -0.078   -0.078
+    JRxFN             0.048    0.033    1.431    0.152    0.053    0.053
+  JR ~~                                                                 
+    JKxFN             0.032    0.026    1.233    0.218    0.047    0.047
+    JRxFN            -0.007    0.064   -0.114    0.909   -0.006   -0.006
+  JKxFN ~~                                                              
+    JRxFN            -0.344    0.233   -1.476    0.140   -0.236   -0.236
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+   .For_mye_arbd_c    0.519    0.040   12.911    0.000    0.519    0.634
+   .Hoyt_rbdstmp_c    0.423    0.032   13.242    0.000    0.423    0.867
+   .Ekstra_arbed_c    1.381    0.083   16.623    0.000    1.381    0.708
+   .Stotte_sjef_c     0.949    0.070   13.528    0.000    0.949    0.621
+   .Stotte_kollg_c    0.739    0.042   17.602    0.000    0.739    0.831
+   .Tlbkmldng_sjf_    0.967    0.080   12.034    0.000    0.967    0.608
+   .Arbedsrslttr_c    1.023    0.119    8.567    0.000    1.023    0.535
+   .Grd_slvbstmm__    0.888    0.051   17.473    0.000    0.888    0.732
+   .Grd_slvbs_____    0.813    0.052   15.637    0.000    0.813    0.727
+   .Grad_rbdstmp_c    0.848    0.041   20.482    0.000    0.848    0.753
+   .Grd_pvrk_bsl__    0.703    0.048   14.668    0.000    0.703    0.651
+   .Fr_my_rb___LFC    2.591    0.410    6.316    0.000    2.591    0.763
+   .Hyt_rbds___LFC    1.670    0.259    6.461    0.000    1.670    0.828
+   .Ekstr_rb___LFC    5.425    1.505    3.605    0.000    5.425    0.641
+   .Sttt_sjf___LFC    3.601    0.881    4.088    0.000    3.601    0.576
+   .Sttt_kll___LFC    3.398    0.689    4.930    0.000    3.398    0.872
+   .Tlbkmld____LFC    4.395    1.478    2.973    0.003    4.395    0.666
+   .Arbdsrsl___LFC    4.787    1.962    2.440    0.015    4.787    0.564
+   .Grd_slv____LFC    4.295    0.798    5.384    0.000    4.295    0.791
+   .Grd________LFC    3.124    1.106    2.824    0.005    3.124    0.681
+   .Grd_rbds___LFC    3.334    1.016    3.283    0.001    3.334    0.685
+   .Grd_pv_____LFC    3.025    1.090    2.775    0.006    3.025    0.595
+   .Motivasjon        0.682    0.033   20.559    0.000    0.682    0.674
+   .Sykefravr_2022  194.969   11.711   16.648    0.000  194.969    0.968
+    JK                0.300    0.037    8.125    0.000    1.000    1.000
+    JR                0.578    0.059    9.819    0.000    1.000    1.000
+    JKxFN             0.803    0.244    3.289    0.001    1.000    1.000
+    JRxFN             2.645    0.887    2.983    0.003    1.000    1.000
+
+R-Square:
+                   Estimate
+    For_mye_arbd_c    0.366
+    Hoyt_rbdstmp_c    0.133
+    Ekstra_arbed_c    0.292
+    Stotte_sjef_c     0.379
+    Stotte_kollg_c    0.169
+    Tlbkmldng_sjf_    0.392
+    Arbedsrslttr_c    0.465
+    Grd_slvbstmm__    0.268
+    Grd_slvbs_____    0.273
+    Grad_rbdstmp_c    0.247
+    Grd_pvrk_bsl__    0.349
+    Fr_my_rb___LFC    0.237
+    Hyt_rbds___LFC    0.172
+    Ekstr_rb___LFC    0.359
+    Sttt_sjf___LFC    0.424
+    Sttt_kll___LFC    0.128
+    Tlbkmld____LFC    0.334
+    Arbdsrsl___LFC    0.436
+    Grd_slv____LFC    0.209
+    Grd________LFC    0.319
+    Grd_rbds___LFC    0.315
+    Grd_pv_____LFC    0.405
+    Motivasjon        0.326
+    Sykefravr_2022    0.032
+
+Defined Parameters:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+    JR_via_M_tl_SF    0.425    0.275    1.546    0.122    0.323    0.023
+    FN_via_M_tl_SF    0.003    0.006    0.449    0.654    0.003    0.000
+\end{verbatim}
+
+\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-18-1.pdf}
+
+\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-18-2.pdf}
 
 \subsubsection{Tabell med resultat fra
 regresjonsanalysen(e)}\label{tabell-med-resultat-fra-regresjonsanalysene}
@@ -1376,6 +1617,28 @@ figurer}\label{forklaring-av-tabeller-og-figurer}
 
 \section{Diskusjon}\label{diskusjon}
 
+Vi tror at formue potensielt har effekt på avtalte timer også, som da
+vil ha en effekt på sykefravær siden avtalte timer er endret. Men at
+dette er en mer kompleks sammenheng som vi ikke har undersøkt utenom
+inkludering som kontrollvariabel. Dette er en svakhet med modellen
+
+I \autoref{sec-formue-jdr} forteller vi at effekten av formue på
+sykefravær kan være ikke-lineær, og at det kan være en bueformet
+sammenheng. Dette er ikke fanget opp i H1-H6 hvor vi antar lineære
+interaksjoner som er en begrensning i modellen.
+
+\paragraph{får se om vi beholder
+dette}\label{fuxe5r-se-om-vi-beholder-dette}
+
+Karrierevalg og utdanning fra gallup som viste en fattigere har
+dårligere tilgang på ``career role models'' som gjør at de kanskje ikke
+vet om de bedre yrkene og sånt og dermed igjen blir mindre utdanna og
+sånt https://www.gallup.com/analytics/506696/amazon-research-hub.aspx så
+effekt på karriærevalg, utdanning osv. langsiktig effekt av
+formue/bakrunn er noe påvirker hvilken type jobb folk har og dermed
+jobbkrav og jobbresssurser. Dette er da en indirekte effekt som vi ikke
+får med.
+
 Dette kapitlet drøfter resultatene i forhold til problemstillingen. Hva
 er funnet ut av, hva gjenstår, hvilke styrker og svakheter har analysen?
 
@@ -1399,6 +1662,10 @@ analysen)}\label{eventuelt-diskusjon-av-hva-framtidig-forskning-kan-forske-vider
 
 \newpage
 
+\section*{Referanser}\label{referanser}
+
+\newpage
+
 \section*{Vedlegg}\label{vedlegg}
 
 Her legger vi til vår QMD fil.
@@ -1411,25 +1678,11 @@ Her legger vi til vår QMD fil.
 
 \subsection*{Kunstig intelligens}\label{kunstig-intelligens}
 
-\newpage
-
-\section*{Referanser}\label{referanser}
-
 \section{notater}\label{notater}
 
 er det avvik mellom fastsatt arbeidstid og hvor mye folk arbeider?
 
 Er folk overarbeidet?
-
-Hvordan har antall legebesøk endret seg samtidig som legemeldt
-sykefravær har endret seg. er leger overarbeidet og skriver ut for mye
-sykefravær?
-
-Er sykefraværet et problem? Hvordan har sysselsettingsrate endret seg
-med sykefravær? er det spesiell korrelasjon mellom egenmeldt og
-legemeldt der?
-
-Dårlig ledelse og lite engasjerte arbeidere?
 
 https://www.dagensperspektiv.no/synspunkt/benedicte-langseth-eide-svarer-hr-norge-om-sykefravaer-og-ledelse/1262876
 
@@ -1499,29 +1752,6 @@ forskjellige typer inntekt påvirke forskjellig i m variabelen.
 Grunn til cb er at den er enkel og at vi nesten alltid tar log av
 dataen. om vi har 0 variabler så blir det bare tull.
 
-\subsection{Notater}\label{notater-1}
-
-\subsubsection{Helse og formue}\label{helse-og-formue}
-
-https://pmc.ncbi.nlm.nih.gov/articles/PMC8225390/
-
-controlling for community-average wealth, age, sex, household size,
-community size, and distance to markets. Wealthier people largely had
-better outcomes while inequality associated with more respiratory
-disease, a leading cause of mortality. Greater inequality and lower
-wealth were associated with higher blood pressure. Psychosocial factors
-did not mediate wealth-health associations. Thus, relative
-socio-economic position and inequality may affect health across diverse
-societies, though this is likely exacerbated in high-income countries.
-
-\subsubsection{karriærevalg, utdanning
-osv.}\label{karriuxe6revalg-utdanning-osv.}
-
-fattigere har dårligere tilgang på ``career role models'' som gjør at de
-kanskje ikke vet om de bedre yrkene og sånt og dermed igjen blir mindre
-utdanna og sånt
-https://www.gallup.com/analytics/506696/amazon-research-hub.aspx
-
 \subsubsection{Motivasjonseffekt av
 ulikhet}\label{motivasjonseffekt-av-ulikhet}
 
@@ -1534,7 +1764,7 @@ ulikhet gjør at fattige blir mindre motivert siden dem føler det å bli
 rik er ``umulig'' og dermed investerer mindre i seg -\textgreater{}
 lavere motivasjon og lavere utdanning. kanskje mer fysisk arbeid.
 
-\subsection{Notater}\label{notater-2}
+\subsection{Notater}\label{notater-1}
 
 Har høy/lav formue effekt på motivasjonen fra lønnen til arbeid. lav
 formue + høy lønn = høy motivasjon? høy formue + høy lønn = ``bryr meg
@@ -1586,6 +1816,10 @@ Hattrem, A. (n.d.). \emph{Hvor mange er fattige i norge?} SSB. Retrieved
 May 23, 2025, from
 \url{https://www.ssb.no/inntekt-og-forbruk/inntekt-og-formue/artikler/hvor-mange-er-fattige-i-norge}
 
+\bibitem[\citeproctext]{ref-hobfoll1989conservation}
+Hobfoll, S. E. (1989). Conservation of resources: A new attempt at
+conceptualizing stress. \emph{American Psychologist}, \emph{44}(3), 513.
+
 \bibitem[\citeproctext]{ref-jaeggi2021wealth}
 Jaeggi, A. V., Blackwell, A. D., Von Rueden, C., Trumble, B. C.,
 Stieglitz, J., Garcia, A. R., Kraft, T. S., Beheim, B. A., Hooper, P.
@@ -1608,6 +1842,11 @@ ssb.no.
 Pickett, K. E. \& Wilkinson, R. G. (2015). Income inequality and health:
 A causal review. \emph{Social Science \& Medicine}, \emph{128},
 316--326.
+
+\bibitem[\citeproctext]{ref-JSSv048i02}
+Rosseel, Y. (2012). Lavaan: An r package for structural equation
+modeling. \emph{Journal of Statistical Software}, \emph{48}(2), 1--36.
+\url{https://doi.org/10.18637/jss.v048.i02}
 
 \bibitem[\citeproctext]{ref-schaufeli2004job}
 Schaufeli, W. B. \& Bakker, A. B. (2004). Job demands, job resources,
