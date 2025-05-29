@@ -1473,7 +1473,7 @@ positive effekten ved \(\beta_7 < 0\).
 
 \section{Analyse}\label{analyse}
 
-\#wtf ai hjelp for nu.
+\#wtf ai hjelp for nu. trur man starter denne på nytt altså
 
 \begin{verbatim}
 lavaan 0.6-19 ended normally after 178 iterations
@@ -1707,16 +1707,6 @@ figurer}\label{forklaring-av-tabeller-og-figurer}
 
 \section{Diskusjon}\label{diskusjon}
 
-Vi tror at formue potensielt har effekt på avtalte timer også, som da
-vil ha en effekt på sykefravær siden avtalte timer er endret. Men at
-dette er en mer kompleks sammenheng som vi ikke har undersøkt utenom
-inkludering som kontrollvariabel. Dette er en svakhet med modellen
-
-I \autoref{sec-formue-jdr} forteller vi at effekten av formue på
-sykefravær kan være ikke-lineær, og at det kan være en bueformet
-sammenheng. Dette er ikke fanget opp i H1-H6 hvor vi antar lineære
-interaksjoner som er en begrensning i modellen.
-
 \paragraph{får se om vi beholder
 dette}\label{fuxe5r-se-om-vi-beholder-dette}
 
@@ -1728,6 +1718,83 @@ effekt på karriærevalg, utdanning osv. langsiktig effekt av
 formue/bakrunn er noe påvirker hvilken type jobb folk har og dermed
 jobbkrav og jobbresssurser. Dette er da en indirekte effekt som vi ikke
 får med.
+
+\subsubsection{Formueeffekt på konsum}\label{formueeffekt-puxe5-konsum}
+
+https://fnce.wharton.upenn.edu/wp-content/uploads/2019/08/chodorowreich-crns\_stock\_wealth\_effects.pdf
+
+for hver dollar i formue du har så har du 0.028usd mer i konsum eller
+noe
+
+https://usa.visa.com/partner-with-us/visa-consulting-analytics/economic-insights/the-sudden-increase-in-the-wealth-effect-and-its-impact-on-spending.html
+
+så vi kan vise til hvordan de med lav formue da kan være tvungen til å
+ta mer tima selv med lav motivasjon for samme konsumnivå fant det
+tilfeldigvis her
+https://www.economist.com/finance-and-economics/2025/03/19/the-trump-administration-is-playing-a-dangerous-stockmarket-game
+
+\subsubsection{Motivasjonseffekt av
+ulikhet}\label{motivasjonseffekt-av-ulikhet}
+
+``The motivational cost of inequality: Opportunity gaps reduce the
+willingness to work'' https://pmc.ncbi.nlm.nih.gov/articles/PMC7473543/
+
+https://www.brookings.edu/articles/income-inequality-social-mobility-and-the-decision-to-drop-out-of-high-school/
+
+ulikhet gjør at fattige blir mindre motivert siden dem føler det å bli
+rik er ``umulig'' og dermed investerer mindre i seg -\textgreater{}
+lavere motivasjon og lavere utdanning. kanskje mer fysisk arbeid.
+
+så formue har effekt på hvor mye utdanning du har. formue har effekt på
+hvilken motivasjon du har. formue har effekt på m som er annen inntekt
+utenom jobb.
+
+Kapitalinntekter som rente/aksje osv i forhold til bruttofinanskapital i
+alt. kan det være at de med høy formue utenom bolig da har mer andre
+inntekter, eller at høy formue bare er lik bolig for mange.
+
+\subsubsection{Hvis vi har tid, liten potentiell forklaringsdel til valg
+av fritid ved høy formue og annen
+inntekt}\label{hvis-vi-har-tid-liten-potentiell-forklaringsdel-til-valg-av-fritid-ved-huxf8y-formue-og-annen-inntekt}
+
+g = formue, j = alder, k = utdanning, l = motivasjon
+
+\begin{itemize}
+\tightlist
+\item
+  v = dummyvariabel
+\end{itemize}
+
+\[
+t^a = h^* - \alpha w - \beta(m(g) + h^*w) - (k\cdot v+j\cdot v)
+\]
+
+Dummy variabler for ulike aldersgrupper. beholde en ligning for alle men
+da bruke de dummyvariablene. dermed kunne tolke bare en variabel.
+
+forskjellige typer inntekt påvirke forskjellig i m variabelen.
+
+Kanskje en form for ``intensitet'' i hvor sensitiv du er.
+
+Jeg tror formue spiller inn til hvor sensitiv du er til endringer i
+inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt
+basert på om du har mye formue eller ikke. Dette kan være fordi du har
+mer buffer til å tåle endringer i inntekt.
+
+trur vi blir å få noe bue på den effekten. fattige, vanlige, rike,
+megarike vil ha ulik effekt av motivasjon og sånt. e du megarik så har
+det jo ingenting og si, e du syk eller vil ta fri så blir du hjemme, men
+samtidig så vil du kanskje være spesielt sensitiv om du e fattig og at
+om du da e syk eller vil ta fri så vil du både ha dårligere utgangspunkt
+i jobbtype og sånt, og også kunne rett å slett være mer syk
+
+mens de i midten rundt ``vanlige'' mot bare rike kan ha 0 effekt, men
+kommer vel an på kor mye man ska mene formue har å si til hvor sensitiv
+du er til endringer eller potentielle endringer i inntekt derfor æ
+tenkte å bare ha det til å være en funksjon av formue kunne være enklere
+motivasjon og sånt altså både på bunn og på topp så vil du også ha økt
+den stygge m'en ved at du får statlige overføringe som fattig men mye
+kapitalfortjeneste som rik
 
 Dette kapitlet drøfter resultatene i forhold til problemstillingen. Hva
 er funnet ut av, hva gjenstår, hvilke styrker og svakheter har analysen?
@@ -1742,6 +1809,16 @@ funn/teori}\label{diskusjon-av-hvilke-konklusjoner-som-kan-trekkes-fra-dette-og-
 
 \subsubsection{Diskusjon av svakheter i
 analysen}\label{diskusjon-av-svakheter-i-analysen}
+
+Vi tror at formue potensielt har effekt på avtalte timer også, som da
+vil ha en effekt på sykefravær siden avtalte timer er endret. Men at
+dette er en mer kompleks sammenheng som vi ikke har undersøkt utenom
+inkludering som kontrollvariabel. Dette er en svakhet med modellen
+
+I \autoref{sec-formue-jdr} forteller vi at effekten av formue på
+sykefravær kan være ikke-lineær, og at det kan være en bueformet
+sammenheng. Dette er ikke fanget opp i H1-H6 hvor vi antar lineære
+interaksjoner som er en begrensning i modellen.
 
 \subsubsection{Diskusjon av implikasjoner for policy gitt
 svakheter}\label{diskusjon-av-implikasjoner-for-policy-gitt-svakheter}
@@ -1859,116 +1936,6 @@ Her legger vi til vår QMD fil.
 \subsection*{Tester}\label{tester}
 
 \subsection*{Kunstig intelligens}\label{kunstig-intelligens}
-
-\section{notater}\label{notater}
-
-er det avvik mellom fastsatt arbeidstid og hvor mye folk arbeider?
-
-Er folk overarbeidet?
-
-https://www.dagensperspektiv.no/synspunkt/benedicte-langseth-eide-svarer-hr-norge-om-sykefravaer-og-ledelse/1262876
-
-https://www.nord24.no/nar-bedriftene-sliter-med-hoyt-sykefravar-ringer-de-benedicte-disse-tiltakene-nytter/s/5-32-197683
-
-https://www.mdpi.com/1660-4601/18/8/4327
-
-The results provide longitudinal evidence that two well-established job
-resources (i.e., social support and feedback) predicted work engagement,
-that work engagement was negatively related to sick leave and that this
-relation was mediated by subjective health. By showing that
-health-related indicators could also be outcomes of the motivational
-process in the JD-R model, we have strengthened the model.
-
-https://munin.uit.no/handle/10037/15801
-
-The results also revealed that both workaholics and work-engaged
-employees put in more hours at work than was expected of them. We found
-that workaholism was negatively related to work-related health, whereas
-work engagement was positively related to work-related health. These
-findings support the notion of workaholism and work engagement as two
-different forms of working hard.
-
-Kanskje en form for ``intensitet'' i hvor sensitiv du er.
-
-Jeg tror formue spiller inn til hvor sensitiv du er til endringer i
-inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt
-basert på om du har mye formue eller ikke. Dette kan være fordi du har
-mer buffer til å tåle endringer i inntekt.
-
-trur vi blir å få noe bue på den effekten. fattige, vanlige, rike,
-megarike vil ha ulik effekt av motivasjon og sånt. e du megarik så har
-det jo ingenting og si, e du syk eller vil ta fri så blir du hjemme, men
-samtidig så vil du kanskje være spesielt sensitiv om du e fattig og at
-om du da e syk eller vil ta fri så vil du både ha dårligere utgangspunkt
-i jobbtype og sånt, og også kunne rett å slett være mer syk
-
-mens de i midten rundt ``vanlige'' mot bare rike kan ha 0 effekt, men
-kommer vel an på kor mye man ska mene formue har å si til hvor sensitiv
-du er til endringer eller potentielle endringer i inntekt derfor æ
-tenkte å bare ha det til å være en funksjon av formue kunne være enklere
-motivasjon og sånt altså både på bunn og på topp så vil du også ha økt
-den stygge m'en ved at du får statlige overføringe som fattig men mye
-kapitalfortjeneste som rik
-
-så formue har effekt på hvor mye utdanning du har. formue har effekt på
-hvilken motivasjon du har. formue har effekt på m som er annen inntekt
-utenom jobb.
-
-g = formue, j = alder, k = utdanning, l = motivasjon
-
-\begin{itemize}
-\tightlist
-\item
-  v = dummyvariabel
-\end{itemize}
-
-\[
-t^a = h^* - \alpha w - \beta(m(g) + h^*w) - (k\cdot v+j\cdot v)
-\]
-
-Dummy variabler for ulike aldersgrupper. beholde en ligning for alle men
-da bruke de dummyvariablene. dermed kunne tolke bare en variabel.
-
-forskjellige typer inntekt påvirke forskjellig i m variabelen.
-
-Grunn til cb er at den er enkel og at vi nesten alltid tar log av
-dataen. om vi har 0 variabler så blir det bare tull.
-
-\subsubsection{Motivasjonseffekt av
-ulikhet}\label{motivasjonseffekt-av-ulikhet}
-
-``The motivational cost of inequality: Opportunity gaps reduce the
-willingness to work'' https://pmc.ncbi.nlm.nih.gov/articles/PMC7473543/
-
-https://www.brookings.edu/articles/income-inequality-social-mobility-and-the-decision-to-drop-out-of-high-school/
-
-ulikhet gjør at fattige blir mindre motivert siden dem føler det å bli
-rik er ``umulig'' og dermed investerer mindre i seg -\textgreater{}
-lavere motivasjon og lavere utdanning. kanskje mer fysisk arbeid.
-
-\subsection{Notater}\label{notater-1}
-
-Har høy/lav formue effekt på motivasjonen fra lønnen til arbeid. lav
-formue + høy lønn = høy motivasjon? høy formue + høy lønn = ``bryr meg
-ikke'' = høy formue+ lav lønn, lav formue + lav lønn = lav motivajon
-
-Kapitalinntekter som rente/aksje osv i forhold til bruttofinanskapital i
-alt. kan det være at de med høy formue utenom bolig da har mer andre
-inntekter, eller at høy formue bare er lik bolig for mange.
-
-\subsubsection{Formueeffekt på konsum}\label{formueeffekt-puxe5-konsum}
-
-https://fnce.wharton.upenn.edu/wp-content/uploads/2019/08/chodorowreich-crns\_stock\_wealth\_effects.pdf
-
-for hver dollar i formue du har så har du 0.028usd mer i konsum eller
-noe
-
-https://usa.visa.com/partner-with-us/visa-consulting-analytics/economic-insights/the-sudden-increase-in-the-wealth-effect-and-its-impact-on-spending.html
-
-så vi kan vise til hvordan de med lav formue da kan være tvungen til å
-ta mer tima selv med lav motivasjon for samme konsumnivå fant det
-tilfeldigvis her
-https://www.economist.com/finance-and-economics/2025/03/19/the-trump-administration-is-playing-a-dangerous-stockmarket-game
 
 
 
