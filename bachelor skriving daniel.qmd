@@ -109,7 +109,7 @@ Denne bacheloroppgaven undersøker sammenhengen mellom sosioøkonomiske forhold 
 
 ### Bakgrunn
 
-I årene etter finanskrisen har vi observert en økende formueulikhet i mange vestlige land, inkludert Norge. Denne trenden kan være forsterkende av Gatsby-kurven[^1] og har blitt enda sterkere etter pandemien. Spesielt i boligmarkedet, hvor vi ser at lønnsveksten ikke har holdt tritt med prisøkningen på eiendeler. Dette har gjort det relativt vanskeligere for unge og de med lavere inntekter å opparbeide seg formue, for eksempel gjennom boligkjøp.
+I årene etter finanskrisen har vi observert en økende formueulikhet i mange vestlige land, inkludert Norge. [@zucman2019global] Denne trenden kan være forsterkende av Gatsby-kurven[^1] og har blitt enda sterkere etter pandemien. Spesielt i boligmarkedet, hvor vi ser at lønnsveksten ikke har holdt tritt med prisøkningen på eiendeler. Dette har gjort det relativt vanskeligere for unge og de med lavere inntekter å opparbeide seg formue, for eksempel gjennom boligkjøp.
 
 [^1]: Gatsby-kurven viser en sammenheng mellom økonomisk ulikhet og redusert sosial mobilitet. @durlauf_2022_the
 
