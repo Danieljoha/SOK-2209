@@ -151,11 +151,13 @@ I studien vår vil vi bruke variabelen bruttofinanskapital[^2] som en proxy for 
 
 Sykefravær[^3] refererer til perioden en ansatt er borte fra jobb på grunn av sykdom eller skade dokumentert med egenmelding eller legemelding, i henhold til norske lover og avtaler. (SSB,2025)
 
-I vår analyse vil vi bruke sykefraværsprosenten som avhengig variabel. Sykefraværsprosenten er definert som antall sykefraværsdager i prosent av totalt antall arbeidsdager i en gitt periode:
+I vår analyse vil vi bruke en selvberegnet sykefraværsprosent som avhengig variabel for 2022. Levekårsundersøkelsen inneholder ferdig aggregerte variabler for fravær, men for å ta med egenmeldinger og sikre at målingen vår reflekterer fravær i forhold til den enkeltes avtalte arbeidsmengde så velger vi å lage dette målet selv. Vi benytter variablene sfdagsvj_2022 (sykefraværsdagsverk i 2022) og mdagsv_2022 (avtalte dagsverk i 2022) fra datasettet. Sykefraværsprosenten ($SF_i$) for individ i defineres dermed som:
 
 $$
 SF_i = \frac{ \text{Antall sykefraværsdager}}{\text{Antall avtalte dagsverk}}  \times 100
 $$
+Dette gir oss et persontilpasset mål på sykefravær som tar høyde for individuelle arbeidsavtaler.
+
 
 [^3]: Definisjon for sykefravær fra [SSB](https://www.ssb.no/arbeid-og-lonn/arbeidsmiljo-sykefravaer-og-arbeidskonflikter/statistikk/sykefravaer).
 
@@ -578,6 +580,16 @@ Barn:
 Antall barn under 18 år i husholdningen som er en kontinuerlig variabel. Vi vil bruke denne variabelen for å kontrollere for eventuelle forskjeller i sykefraværet basert på hvor mange barn respondenten har.
 
 Vi vil også mulig bruke dummyvariabler for å kontrollere for andre faktorer som kan påvirke sykefraværet, som for eksempel yrke, bransje og arbeidsforhold.
+
+
+Stillingsprosent ($SP_i$): 
+
+
+Antall timer en person arbeider er en sentral faktor som kan påvirke både eksponering for jobbkrav og jobbressurser og forekomsten av sykefravær. Studien til @langseth2019s om "workaholism" og jobbengasjement innenfor JD-R-modellen, viser at et høyt timeantall på jobb ikke er et ensartet fenomen. Både ansatte som er "workaholics" (med potensielt negative helsekonsekvenser) og de som er høyt jobbengasjerte (ofte med positive helseeffekter) kan rapportere å jobbe mer enn forventet. Dette indikerer at årsakene til, og konsekvensene av, mange arbeidstimer kan variere betydelig.
+
+
+For å ta høyde for denne kompleksiteten og kontrollere for variasjon i arbeidsomfang, inkluderer vi respondentens avtalte stillingsprosent (arb_stillingspst) som en kontrollvariabel. Denne variabelen reflekterer den formelle arbeidsmengden. Ved å inkludere stillingsprosent ($SP_i$) i modellen, kan vi statistisk justere for ulik "eksponeringstid". Videre, ved å undersøke interaksjonen mellom stillingsprosent og formue ($FN_i$), søker vi å utforske om den økonomiske situasjonen til individet påvirker hvordan arbeidsmengden relaterer seg til motivasjon og sykefravær. I modellen vil vi benytte en sentrert versjon av stillingsprosenten.
+
 
 ## Deskriptiv statistikk
 
@@ -1060,13 +1072,32 @@ Dette modellvalget bygger videre på JD-R-rammeverket, men inkluderer økonomisk
 
 ### Ligning til modellen
 
-$$
-SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_iFN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
-$$ 
+#### Hovedmodell for sykefravær $SF_i$
+
+Vår hovedmodell for sykefravær ($SF_i$) tar utgangspunkt i JD-R rammeverket men utvides til å inkludere formue som en direkte predikator og moderator, og stillignsprosent ($SP_i$) som en viktig kontrollvariabel og i interaksjon med formue. Som påpekt av @langseth2019s kan et høyt antall arbeidstimer ha ulike drivere og utfall, og vi antar at formue kan påvirke denne dynamikken. Den utvidede modellen for sykefravær er:
+
+
 
 $$
-M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i} \tag{Motivasjon}\label{eq:motivasjon}
-$$ 
+SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JK_i FN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \beta_7 (SP_i FN_i) + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i} \label{eq:sf_utvidet}
+$$
+
+Her representerer $X_{ij}$ en vektor av kontrollvariabler som alder, stillingsprosent, kjønn og utdanning. Dette vil si at for eksempel koeffisienten $\gamma_{SP}$ som del av $\sum_j \gamma_{j}X_{ij}$ vil vise den direkte sammenhengen mellom stillingsprosent og sykefravær kontrollert for de andre variablene.
+
+$\beta$ koeffisientene representerer effektene av jobbkrav, jobbressurser, formue, interaksjonene med formue og motivasjon
+
+
+#### Ligning for motivasjon $M_i$
+
+Motivasjonen ($M_i$) antas å påvirkes av jobbressurser, formuenivå og kontrollvariablene $X_{ik}$. 
+
+
+
+
+$$
+M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \sum_k \alpha_{3k}X_{ik} + \epsilon_{2i} \tag{Motivasjon}\label{eq:motivasjon}
+$$
+
 
 ### Forklaring av alle deler i modellen
 
@@ -1076,7 +1107,8 @@ $$
 \toprule
 Symbol & Forklaring \\ 
 \midrule
-$SF_i$ & Prosentandel av avtalte arbeidsdager arbeidstaker i er fraværende (sykefravær) \\
+$SF_i$ & Sykefraværsprosent for individ $i$ \\
+$SP_i$ & Sentrert stillingsprosent for individ $i$ (0 = 100\% stilling) \\
 $JD_i$ & Latent jobbkrav score (høyere = mer krav) \\
 $JR_i$ & Latent jobbressurser score (høyere = mer støtte/autonomi) \\
 $FN_i$ & Logaritmen eller prosentil rangeringen av individets (eller husholdningens) formue \\
@@ -1098,12 +1130,6 @@ Vår medierende variabel Motivasjon ($M_i$) i \autoref{eq:motivasjon} er modelle
 
 ### Hypoteser {#sec-hypot}
 
-Ut fra vår hovedmodell for sykefravær:
-
-$$
-SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_i FN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
-$$ 
-formulerer vi følgende hypoteser:
 
 #### Hypotese 1(H1): $\beta_1 > 0$ Høyere jobbkrav gir høyere sykefravær
 
@@ -1136,6 +1162,14 @@ Dette er vår andre modereringshypotese, basert på en antagelse om avtagende gr
 
 
 Vi forventer en indirekte vei der formue påvirker sykefravær gjennom motivasjon. Som nevnt AUTOREF, forventer vi at høyere formue øker motivasjonen $\alpha_2 > 0$ som ved å redusere finansiell usikkerhet, og gode fremtidsutsikter. Videre forventer vi at høyere motivasjon/engasjement reduserer sykefraværet ($\beta_6 <0$), slik @langseth2021ticket fant. Samlet sett gir dette en forventning om en negativ indirekte effekt $\alpha_2 \beta_6 <0$, som betyr at en del av formues positive effekt på helse/nærvær går via økt arbeidsglede og engasjement som igjen gir lavere sykefravær.
+
+
+
+#### Hypotese 7(H7): Effekten av stillingsprosent på sykefravær modereres av formue $\beta_7 < 0$
+
+Vi antar at sammenhengen mellom arbeidstimer representert ved stillingsprosent, $SP_i$ og sykefravær, $SF_i$, ikke er lik for alle formuesnivåer. For eksempel kan en høy stillingsprosent ha en sterkere positiv effekt på sykefravær (mer slitasje) for de med lav formue, som kanskje har mindre mulighet til restitusjon eller opplever arbeidet som mer påtvunget. For de med høy formue kan en høy stillingsprosent enten ha en svakere effekt, eller så kan de i større grad velge jobber med mange timer som også gir andre kompenserende faktorer. Vi forventer derfor at $\beta_7$ vil være signifikant. Vi antar at hovedeffekten av stillingsprosent på sykefravær representert ved $\gamma_{SP}$ i $\Sigma_j \gamma_{j}X_{ij}$) er positiv og at høy formue demper denne positive effekten ved $\beta_7 < 0$.
+
+
 
 
 
