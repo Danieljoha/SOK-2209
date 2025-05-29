@@ -246,7 +246,7 @@ Tidligere empirisk forskning har over tid vist positive forhold mellom forskjell
 
 ### Mikronivå: JD-R-studier i helse- og omsorgssektoren
 
-@vander2016job brukte en JD-R-modell hvor de utførte en SEM-analyse på Belgisk hjemme-pleiepersonell. Jobbkrav og jobbressurser ble modellert som prediktorer. Studien viste at jobbkravene var positivt assosiert med utbrenthet, mens jobbressursene var positivt assosiert med jobbengasjement. Denne studien viser også at JDR-mekanismer holder i andre sammenhenger hvor arbeidstakere er under emosjonelt press og skiftarbeid noe som impliserer at JDR-modellen er robust på tvers av sektorer og bransjer.
+@vander2016job brukte en JD-R-modell hvor de utførte en SEM-analyse på Belgisk hjemme-pleiepersonell. Jobbkrav og jobbressurser ble modellert som prediktorer. Studien viste at jobbkravene var positivt assosiert med utbrenthet, mens jobbressursene var positivt assosiert med jobbengasjement. Denne studien viser også at JDR-mekanismer holder i andre sammenhenger hvor arbeidstakere er under emosjonelt press og skiftarbeid, noe som impliserer at JDR-modellen er robust på tvers av sektorer og bransjer.
 
 ### Mikronivå: formue-helse-koblinger
 
