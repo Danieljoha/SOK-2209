@@ -1043,12 +1043,30 @@ Dette modellvalget bygger videre på JD-R-rammeverket, men inkluderer økonomisk
 
 ### Ligning til modellen
 
-$$
-SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_iFN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
-$$
+#### Hovedmodell for sykefravær $SF_i$
+
+Vår hovedmodell for sykefravær ($SF_i$) tar utgangspunkt i JD-R rammeverket men utvides til å inkludere formue som en direkte predikator og moderator, og stillignsprosent ($SP_i$) som en viktig kontrollvariabel og i interaksjon med formue. Som påpekt av @langseth2019s kan et høyt antall arbeidstimer ha ulike drivere og utfall, og vi antar at formue kan påvirke denne dynamikken. Den utvidede modellen for sykefravær er:
+
+
 
 $$
-M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i} \tag{Motivasjon}\label{eq:motivasjon}
+SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JK_i FN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \beta_7 (SP_i FN_i) + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i} \label{eq:sf_utvidet}
+$$
+
+Her representerer $X_{ij}$ en vektor av kontrollvariabler som alder, stillingsprosent, kjønn og utdanning. Dette vil si at for eksempel koeffisienten $\gamma_{SP}$ som del av $\sum_j \gamma_{j}X_{ij}$ vil vise den direkte sammenhengen mellom stillingsprosent og sykefravær kontrollert for de andre variablene.
+
+$\beta$ koeffisientene representerer effektene av jobbkrav, jobbressurser, formue, interaksjonene med formue og motivasjon
+
+
+#### Ligning for motivasjon $M_i$
+
+Motivasjonen ($M_i$) antas å påvirkes av jobbressurser, formuenivå og kontrollvariablene $X_{ik}$. 
+
+
+
+
+$$
+M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \sum_k \alpha_{3k}X_{ik} + \epsilon_{2i} \tag{Motivasjon}\label{eq:motivasjon}
 $$
 
 ### Forklaring av alle deler i modellen
@@ -1080,12 +1098,6 @@ Vår medierende variabel Motivasjon ($M_i$) i \autoref{eq:motivasjon} er modelle
 
 ### Hypoteser {#sec-hypot}
 
-Ut fra vår hovedmodell for sykefravær:
-
-$$
-SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JD_i FN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i}
-$$ formulerer vi følgende hypoteser:
-
 #### Hypotese 1(H1): $\beta_1 > 0$ Høyere jobbkrav gir høyere sykefravær
 
 Dette er en grunnleggende antagelse i JD-R-modellen [@schaufeli2004job; @vander2016job]. Høye krav (fysiske, psykiske, emosjonelle) tærer på individets ressurser og kan føre til utbrenthet og helseplager, som igjen øker sannsynligheten for sykefravær.
@@ -1098,17 +1110,21 @@ Jobbressurser (støtte, autonomi, tilbakemelding) fungerer som beskyttende fakto
 
 Vi forventer en direkte, gunstig effekt av formue på sykefravær. Formue fungerer som en "buffer" mot levekårsproblemer [@normann_2009_inntektsfattig; @hattrem_hvor] og gir økonomisk trygghet. Dette kan redusere generelt stressnivå og forbedre helsen, slik funn fra @jaeggi2021wealth indikerer (høyere formue -\> lavere blodtrykk, færre luftveissykdommer). Økonomisk trygghet kan også gi bedre tilgang til helsetjenester og en større evne til å håndtere helseutfordringer uten å måtte ty til langvarig fravær.
 
-#### Hypotese 4(H4): $\beta_4 < 0$ Høyere formuenivå demper de negative effektene til høyere jobbkrav
+#### Hypotese 4(H4): $\beta_4 < 0$ Høyere formuenivå demper de negative effektene til høyere jobbkrav 
 
 Dette er en modereringshypotese. Vi tror at formue reduserer sensitiviteten for jobbkrav. For en person med lav formue kan høye krav oppleves som svært truende, da konsekvensene av å ikke mestre (for eks, miste jobben) er store. For en person med høy formue, gir den økonomiske tryggheten en mental "pute" som gjør at de samme kravene ikke utløser like mye stress. Dette er i tråd med @unguren2021moderator, som fant at økonomisk velvære fungerte som en slik buffer. Den marginale effekten av jobbkrav er $\frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i$. En negativ $\beta_4$ betyr at effekten av JK på SF blir mindre etter hvert som FN øker.
 
-#### Hypotese 5(H5): $\beta_5 > 0$ Høyere formuenivå demper de positive effektene til høyere jobbressurser
+#### Hypotese 5(H5): $\beta_5 > 0$ Høyere formuenivå demper den reduserende effekten av høyere jobbressurser på sykefravær 
 
-Dette er vår andre modereringshypotese, basert på en antagelse om avtagende grensenytte. Vi antar at jobbressurser har størst relativ effekt for de med lav formue. For en person med lav formue og potensielt høy usikkerhet, vil en økning i jobbressurser ha en stor positiv effekt på deres tilstedeværelse og dermed en stor reduserende effekt på sykefravær. En person med høy formue, som allerede har høy trygghet og lavt stress, vil den samme økningen i jobbressurser ha en mindre tilleggseffekt. Effekten er altså sterkest for de med lav formue, og blir svakere jo høyere formuen blir. Den marginale effekten av jobbressurser er $\frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i$. Siden $\beta_2 < 0$ er negativ, vil en positiv $\beta_5$ gjøre den totale effekten mindre negativ etter hvert som $FN_i$ øker.
+Dette er vår andre modereringshypotese, basert på en antagelse om avtagende grensenytte. Vi antar at jobbressurser har størst relativ effekt for de med lav formue. For en person med lav formue og potensielt høy økonomisk usikkerhet, vil en økning i jobbressurser som er en negativ effekt på sykefravær ha en stor reduserende effekt på sykefravær. En person med høy formue, som allerede har høy økonomisk trygghet, vil den samme økningen i jobbressurser ha en mindre tilleggseffekt. Effekten er altså sterkest for de med lav formue, og blir svakere jo høyere formuen blir. Den marginale effekten av jobbressurser er $\frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i$. Siden $\beta_2 < 0$ er negativ, vil en positiv $\beta_5$ gjøre den totale effekten mindre negativ etter hvert som $FN_i$ øker. 
 
 #### Hypotese 6(H6): Indirekte effekt via motivasjon $\alpha_2\beta_6 < 0$
 
 Vi forventer en indirekte vei der formue påvirker sykefravær gjennom motivasjon. Som nevnt AUTOREF, forventer vi at høyere formue øker motivasjonen $\alpha_2 > 0$ som ved å redusere finansiell usikkerhet, og gode fremtidsutsikter. Videre forventer vi at høyere motivasjon/engasjement reduserer sykefraværet ($\beta_6 <0$), slik @langseth2021ticket fant. Samlet sett gir dette en forventning om en negativ indirekte effekt $\alpha_2 \beta_6 <0$, som betyr at en del av formues positive effekt på helse/nærvær går via økt arbeidsglede og engasjement som igjen gir lavere sykefravær.
+
+#### Hypotese 7(H7): Effekten av stillingsprosent på sykefravær modereres av formue $\beta_7 < 0$
+
+Vi antar at sammenhengen mellom arbeidstimer representert ved stillingsprosent, $SP_i$ og sykefravær, $SF_i$, ikke er lik for alle formuesnivåer. For eksempel kan en høy stillingsprosent ha en sterkere positiv effekt på sykefravær (mer slitasje) for de med lav formue, som kanskje har mindre mulighet til restitusjon eller opplever arbeidet som mer påtvunget. For de med høy formue kan en høy stillingsprosent enten ha en svakere effekt, eller så kan de i større grad velge jobber med mange timer som også gir andre kompenserende faktorer. Vi forventer derfor at $\beta_7$ vil være signifikant. Vi antar at hovedeffekten av stillingsprosent på sykefravær representert ved $\gamma_{SP}$ i $\Sigma_j \gamma_{j}X_{ij}$) er positiv og at høy formue demper denne positive effekten ved $\beta_7 < 0$.
 
 \newpage
 
