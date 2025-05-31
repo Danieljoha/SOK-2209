@@ -374,15 +374,14 @@ norske lover og avtaler. (SSB,2025)
 
 I vår analyse vil vi bruke en selvberegnet sykefraværsprosent som
 avhengig variabel for 2022. Levekårsundersøkelsen inneholder ferdig
-aggregerte variabler for fravær, men for å ta med egenmeldinger og sikre
-at målingen vår reflekterer fravær i forhold til den enkeltes avtalte
-arbeidsmengde så velger vi å lage dette målet selv. Vi benytter
-variablene sfdagsvj\_2022 (sykefraværsdagsverk i 2022) og mdagsv\_2022
-(avtalte dagsverk i 2022) fra datasettet. Sykefraværsprosenten
-(\(SF_i\)) for individ i defineres dermed som:
+aggregerte variabler for fravær, men for å ta sikre at målingen vår
+reflekterer fravær i forhold til den enkeltes avtalte arbeidsmengde så
+velger vi å lage dette målet selv. Vi benytter sykefraværsdagsverk i
+2022 og avtalte dageverk, uten feriekorrigering fra datasettet.
+Sykefraværsprosenten (\(SF_i\)) for individ i defineres dermed som:
 
 \[
-SF_i = \frac{ \text{Antall sykefraværsdager}}{\text{Antall avtalte dagsverk}}  \times 100
+SF_i = \frac{ \text{Antall sykefraværsdager}}{\text{Antall avtalte dagsverk}} 
 \] Dette gir oss et persontilpasset mål på sykefravær som tar høyde for
 individuelle arbeidsavtaler.
 
@@ -400,10 +399,10 @@ føre til stress og utbrenthet, og kan påvirke jobbengasjement og trivsel
 negativt.
 
 I vår analyse vil vi gjøre jobbkrav om til en latent\footnote{En latent
-  varibel er et underliggende, uobserverbart konstrukt som ikke kan
+  variabel er et underliggende, uobserverbart konstrukt som ikke kan
   måles direkte, men som modelleres gjennom flere målbare indikatorer. I
   SEM tolkes for eksempel «motivasjon», «jobbkrav» og «jobbressurser»
-  som latente variabler: vi antar at variasjonen i et sett av
+  som latente variabler: Vi antar at variasjonen i et sett av
   attestspørsmål (indikatorer) reflekterer den samme underliggende
   faktoren.} variabel som består av flere observerbare variabler. I
 denne variabelen vil vi inkludere variabler som måler arbeidsmengde,
@@ -587,7 +586,7 @@ ble modellert som prediktorer. Studien viste at jobbkravene var positivt
 assosiert med utbrenthet, mens jobbressursene var positivt assosiert med
 jobbengasjement. Denne studien viser også at JDR-mekanismer holder i
 andre sammenhenger hvor arbeidstakere er under emosjonelt press og
-skiftarbeid noe som impliserer at JDR-modellen er robust på tvers av
+skiftarbeid, noe som impliserer at JDR-modellen er robust på tvers av
 sektorer og bransjer.
 
 \subsubsection{Mikronivå:
@@ -863,20 +862,24 @@ Sykefravær:
 
 Datasettet inneholder en ferdig variabel for sykefraværsprosent
 (sfpros\_uten\_feriekorr\_2022, sfpros\_uten\_feriekorr\_2023), men vi
-velger å beregne denne selv for å ha med egenmeldings dager, også for å
-kunne ta høyde for avtalt arbeidstid.
+velger å beregne denne selv siden de med 0 fravær står som NA, også for
+å kunne ta høyde for avtalt arbeidstid.
 
 Vi benytter variablene sfdagsvj\_2022 (sykefraværsdagsverk) og
 mdagsv\_2022 (avtalte dagsverk) fra Levekårsundersøkelsen.
-Sykefraværsprosenten (\(SF_i\)) for individ \(i\) blir da:
+Sykefraværsprosenten (\(SF_i\)) for individ \(i\) beregnes som:
 
 \[
-SF_i = \frac{ \mathrm{sfdagsvj\_2022}_i }{ \mathrm{mdagsv\_2022}_i } \times 100
+SF_i = 
+\begin{cases}
+0, & \text{hvis } \mathrm{mdagsv\_2022}_i > 0 \text{ og } \mathrm{sfdagsvj\_2022}_i = 0 \\
+\frac{ \mathrm{sfdagsvj\_2022}_i }{ \mathrm{mdagsv\_2022}_i }, & \text{ellers}
+\end{cases}
 \]
 
-Der vi setter \(SF_i\) til manglende (NA) dersom
-\(\mathrm{sfdagsvj\_2022}_i\) er null eller mangler, for å unngå
-meningsløse verdier.
+Dette gjør at individer med avtalte dagsverk, men uten legemeldt
+sykefraværsdager, får verdien 0 i stedet for NA slik det gjøres i den
+ferdigberegnede variabelen sfpros\_uten\_feriekorr\_2022.
 
 Formue:
 
@@ -900,15 +903,18 @@ være nyttig for å se om det er noen ikke-lineære sammenhenger mellom
 formue og sykefravær, og for å håndtere høy skjevhet i dataene, ettersom
 de fleste har lav formue og få har høy formue.
 
-Vi tror formue spiller inn til hvor sensitiv du er til endringer i
-inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt
-basert på om du har mye formue eller ikke. Dette kan være fordi du har
-mer buffer til å tåle endringer i inntekt, og dermed kan du være mer
-villig til å ta deg fri fra jobb. Og motsatt om du har lite formue så
-vil du være mer sensitiv til endringer i inntekt, og dermed vil du være
-mer villig til å jobbe mer for å opprettholde inntekten din. Dette kan
-føre til at de med høyere formue har lavere sykefravær, mens de med
-lavere formue har høyere sykefravær.
+En av våre hypoteser er at formue påvirker individets sensitivitet for
+inntektsendringer. Altså individets konsumnnivå eller etterspurt fritid
+endrer seg ulikt basert på om de har mye formue eller ikke. Dette kan
+være fordi individet har mer buffer til å tåle endringer i inntekt, og
+dermed kan individet være mer villig til å ta seg fri fra jobb. Motsatt
+vil individer med lav formue være mer sårbare for inntektsendringer, og
+kan derfor være mindre tilbøyelige til å være borte fra jobb, selv ved
+sykdom, for å opprettholde sin inntekt. Dette kan bety at de med høyere
+formue har bedre forutsetninger for å opprettholde god helse som ved en
+mindre belastende jobbsituasjon, noe som kan føre til lavere sykefravær,
+mens de med lavere formue opplever mer stress knyttet til økonomi, som
+kan gi høyere sykefravær.
 
 \subsubsection{Kontrollvariabler}\label{kontrollvariabler}
 
@@ -930,25 +936,25 @@ Utdanning:
 
 Utdanningsnivået til respondenten er en ordinal variabel, og vi vil
 bruke utdanningsgruppene grunnskole eller mindre, videregående skole,
-Universitet/Høgskole og forskernivå. Vi vil bruke denne variabelen for å
-kontrollere for eventuelle utdanningsforskjeller i sykefraværet.
+Universitet/Høgskole og forskernivå. Denne variabelen inkluderes for å
+justere for mulige utdanningsrelaterte forskjeller i sykefravær.
 
 Tilfredshet med arbeid:
 
 Selvrapportert tilfredshet med arbeid (TS) er en ordinal variabel, og vi
 vil bruke denne variabelen for å kontrollere for eventuelle forskjeller
 i sykefraværet basert på hvor tilfreds respondenten er med jobben sin.
-Denne variabelen er målt på en skala fra 1 til 10, hvor 1 er svært
-misfornøyd og 10 er svært fornøyd.
+Denne variabelen er basert på en skala med 5 nivåer (1=svært misfornøyd
+til 5=svært fornøyd).
 
 Motivasjon:
 
 For variabelen motivasjon bruker vi selvrapportert motivasjon på jobb
 (M) som en ordinal variabel, og vi vil bruke denne variabelen for å
 kontrollere for eventuelle forskjeller i sykefraværet basert på hvor
-motivert respondenten er på jobben sin. Denne variabelen er målt på en
-skala fra 1 til 10, hvor 1 er svært lite motivert og 10 er svært
-motivert.
+motivert respondenten er på jobben sin. Variabelen er basert på en skala
+med 5 nivåer (1=svært sjelden/aldri motivert til 5=veldig ofte
+motivert).
 
 Barn:
 
@@ -976,9 +982,9 @@ For å ta høyde for denne kompleksiteten og kontrollere for variasjon i
 arbeidsomfang, inkluderer vi respondentens avtalte stillingsprosent
 (arb\_stillingspst) som en kontrollvariabel. Denne variabelen
 reflekterer den formelle arbeidsmengden. Ved å inkludere
-stillingsprosent (\(SP_i\)) i modellen, kan vi statistisk justere for
-ulik ``eksponeringstid''. Videre, ved å undersøke interaksjonen mellom
-stillingsprosent og formue (\(FN_i\)), søker vi å utforske om den
+stillingsprosent (\(SP_i\)) i modellen, kan vi forsøke å se effekten for
+en ulik ``eksponeringstid''. Videre, ved å undersøke interaksjonen
+mellom stillingsprosent og formue (\(FN_i\)), søker vi å utforske om den
 økonomiske situasjonen til individet påvirker hvordan arbeidsmengden
 relaterer seg til motivasjon og sykefravær. I modellen vil vi benytte en
 sentrert versjon av stillingsprosenten.
@@ -1470,207 +1476,6 @@ positive effekten ved \(\beta_7 < 0\).
 \section{Analyse}\label{analyse}
 
 \#wtf ai hjelp for nu. trur man starter denne på nytt altså
-
-\begin{verbatim}
-lavaan 0.6-19 ended normally after 178 iterations
-
-  Estimator                                         ML
-  Optimization method                           NLMINB
-  Number of model parameters                        70
-
-  Number of observations                          2128
-
-Model Test User Model:
-                                              Standard      Scaled
-  Test Statistic                              4730.631    2059.218
-  Degrees of freedom                               374         374
-  P-value (Chi-square)                           0.000       0.000
-  Scaling correction factor                                  2.297
-    Yuan-Bentler correction (Mplus variant)                       
-
-Model Test Baseline Model:
-
-  Test statistic                             12929.500    4705.697
-  Degrees of freedom                               420         420
-  P-value                                        0.000       0.000
-  Scaling correction factor                                  2.748
-
-User Model versus Baseline Model:
-
-  Comparative Fit Index (CFI)                    0.652       0.607
-  Tucker-Lewis Index (TLI)                       0.609       0.558
-                                                                  
-  Robust Comparative Fit Index (CFI)                         0.671
-  Robust Tucker-Lewis Index (TLI)                            0.631
-
-Loglikelihood and Information Criteria:
-
-  Loglikelihood user model (H0)             -94632.047  -94632.047
-  Scaling correction factor                                  6.994
-      for the MLR correction                                      
-  Loglikelihood unrestricted model (H1)     -92266.732  -92266.732
-  Scaling correction factor                                  3.038
-      for the MLR correction                                      
-                                                                  
-  Akaike (AIC)                              189404.094  189404.094
-  Bayesian (BIC)                            189800.499  189800.499
-  Sample-size adjusted Bayesian (SABIC)     189578.101  189578.101
-
-Root Mean Square Error of Approximation:
-
-  RMSEA                                          0.074       0.046
-  90 Percent confidence interval - lower         0.072       0.045
-  90 Percent confidence interval - upper         0.076       0.047
-  P-value H_0: RMSEA <= 0.050                    0.000       1.000
-  P-value H_0: RMSEA >= 0.080                    0.000       0.000
-                                                                  
-  Robust RMSEA                                               0.070
-  90 Percent confidence interval - lower                     0.067
-  90 Percent confidence interval - upper                     0.073
-  P-value H_0: Robust RMSEA <= 0.050                         0.000
-  P-value H_0: Robust RMSEA >= 0.080                         0.000
-
-Standardized Root Mean Square Residual:
-
-  SRMR                                           0.056       0.056
-
-Parameter Estimates:
-
-  Standard errors                             Sandwich
-  Information bread                           Observed
-  Observed information based on                Hessian
-
-Latent Variables:
-                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-  JK =~                                                                 
-    For_mye_arbd_c    1.000                               0.548    0.605
-    Hoyt_rbdstmp_c    0.465    0.057    8.096    0.000    0.255    0.365
-    Ekstra_arbed_c    1.378    0.156    8.833    0.000    0.755    0.541
-  JR =~                                                                 
-    Stotte_sjef_c     1.000                               0.760    0.615
-    Stotte_kollg_c    0.510    0.034   14.799    0.000    0.388    0.411
-    Tlbkmldng_sjf_    1.037    0.046   22.351    0.000    0.789    0.626
-    Arbedsrslttr_c    1.240    0.054   22.879    0.000    0.943    0.682
-    Grd_slvbstmm__    0.750    0.080    9.358    0.000    0.570    0.517
-    Grd_slvbs_____    0.727    0.085    8.584    0.000    0.553    0.522
-    Grad_rbdstmp_c    0.694    0.078    8.875    0.000    0.527    0.497
-    Grd_pvrk_bsl__    0.808    0.077   10.476    0.000    0.615    0.591
-  JKxFN =~                                                              
-    Fr_my_rb___LFC    1.000                               0.896    0.486
-    Hyt_rbds___LFC    0.658    0.172    3.822    0.000    0.589    0.415
-    Ekstr_rb___LFC    1.945    0.582    3.342    0.001    1.743    0.599
-  JRxFN =~                                                              
-    Sttt_sjf___LFC    1.000                               1.626    0.651
-    Sttt_kll___LFC    0.435    0.114    3.803    0.000    0.707    0.358
-    Tlbkmld____LFC    0.913    0.241    3.783    0.000    1.485    0.578
-    Arbdsrsl___LFC    1.183    0.213    5.552    0.000    1.925    0.660
-    Grd_slv____LFC    0.654    0.221    2.961    0.003    1.064    0.457
-    Grd________LFC    0.743    0.353    2.108    0.035    1.208    0.564
-    Grd_rbds___LFC    0.761    0.319    2.386    0.017    1.237    0.561
-    Grd_pv_____LFC    0.882    0.324    2.719    0.007    1.434    0.636
-
-Regressions:
-                     Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-  Motivasjon ~                                                            
-    JR      (alp1)      0.722    0.046   15.808    0.000    0.549    0.546
-    Lg__    (alp2)      0.004    0.009    0.471    0.637    0.004    0.009
-    Ald_    (cM_A)     -0.013    0.002   -7.960    0.000   -0.013   -0.156
-    Kvnn    (cM_K)     -0.138    0.041   -3.361    0.001   -0.138   -0.066
-    Ut_V  (cM_U_V)     -0.019    0.055   -0.346    0.730   -0.019   -0.009
-    U_UH  (cM_U_U)     -0.045    0.060   -0.755    0.450   -0.045   -0.021
-    Barn    (cM_B)     -0.115    0.056   -2.072    0.038   -0.115   -0.041
-  Sykefravaer_2022 ~                                                      
-    JK      (bet1)     -0.160    0.833   -0.192    0.847   -0.088   -0.006
-    JR      (bet2)      1.177    0.613    1.920    0.055    0.895    0.063
-    Lg__    (bet3)     -0.109    0.136   -0.799    0.424   -0.109   -0.016
-    Mtvs    (bet6)      0.589    0.383    1.539    0.124    0.589    0.042
-    JKFN    (bet4)      0.347    0.495    0.701    0.483    0.311    0.022
-    JRFN    (bet5)      0.292    0.209    1.396    0.163    0.475    0.033
-    Ald_   (cSF_A)      0.153    0.024    6.396    0.000    0.153    0.132
-    Kvnn   (cSF_K)      2.372    0.641    3.702    0.000    2.372    0.081
-    Ut_V (cSF_U_V)     -0.950    0.920   -1.032    0.302   -0.950   -0.033
-    U_UH (cSF_U_U)     -2.016    1.003   -2.010    0.044   -2.016   -0.066
-    Barn   (cSF_B)      0.346    0.842    0.411    0.681    0.346    0.009
-
-Covariances:
-                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-  JK ~~                                                                 
-    JR               -0.122    0.020   -6.158    0.000   -0.293   -0.293
-    JKxFN            -0.038    0.032   -1.185    0.236   -0.078   -0.078
-    JRxFN             0.048    0.033    1.431    0.152    0.053    0.053
-  JR ~~                                                                 
-    JKxFN             0.032    0.026    1.233    0.218    0.047    0.047
-    JRxFN            -0.007    0.064   -0.114    0.909   -0.006   -0.006
-  JKxFN ~~                                                              
-    JRxFN            -0.344    0.233   -1.476    0.140   -0.236   -0.236
-
-Variances:
-                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-   .For_mye_arbd_c    0.519    0.040   12.911    0.000    0.519    0.634
-   .Hoyt_rbdstmp_c    0.423    0.032   13.242    0.000    0.423    0.867
-   .Ekstra_arbed_c    1.381    0.083   16.623    0.000    1.381    0.708
-   .Stotte_sjef_c     0.949    0.070   13.528    0.000    0.949    0.621
-   .Stotte_kollg_c    0.739    0.042   17.602    0.000    0.739    0.831
-   .Tlbkmldng_sjf_    0.967    0.080   12.034    0.000    0.967    0.608
-   .Arbedsrslttr_c    1.023    0.119    8.567    0.000    1.023    0.535
-   .Grd_slvbstmm__    0.888    0.051   17.473    0.000    0.888    0.732
-   .Grd_slvbs_____    0.813    0.052   15.637    0.000    0.813    0.727
-   .Grad_rbdstmp_c    0.848    0.041   20.482    0.000    0.848    0.753
-   .Grd_pvrk_bsl__    0.703    0.048   14.668    0.000    0.703    0.651
-   .Fr_my_rb___LFC    2.591    0.410    6.316    0.000    2.591    0.763
-   .Hyt_rbds___LFC    1.670    0.259    6.461    0.000    1.670    0.828
-   .Ekstr_rb___LFC    5.425    1.505    3.605    0.000    5.425    0.641
-   .Sttt_sjf___LFC    3.601    0.881    4.088    0.000    3.601    0.576
-   .Sttt_kll___LFC    3.398    0.689    4.930    0.000    3.398    0.872
-   .Tlbkmld____LFC    4.395    1.478    2.973    0.003    4.395    0.666
-   .Arbdsrsl___LFC    4.787    1.962    2.440    0.015    4.787    0.564
-   .Grd_slv____LFC    4.295    0.798    5.384    0.000    4.295    0.791
-   .Grd________LFC    3.124    1.106    2.824    0.005    3.124    0.681
-   .Grd_rbds___LFC    3.334    1.016    3.283    0.001    3.334    0.685
-   .Grd_pv_____LFC    3.025    1.090    2.775    0.006    3.025    0.595
-   .Motivasjon        0.682    0.033   20.559    0.000    0.682    0.674
-   .Sykefravr_2022  194.969   11.711   16.648    0.000  194.969    0.968
-    JK                0.300    0.037    8.125    0.000    1.000    1.000
-    JR                0.578    0.059    9.819    0.000    1.000    1.000
-    JKxFN             0.803    0.244    3.289    0.001    1.000    1.000
-    JRxFN             2.645    0.887    2.983    0.003    1.000    1.000
-
-R-Square:
-                   Estimate
-    For_mye_arbd_c    0.366
-    Hoyt_rbdstmp_c    0.133
-    Ekstra_arbed_c    0.292
-    Stotte_sjef_c     0.379
-    Stotte_kollg_c    0.169
-    Tlbkmldng_sjf_    0.392
-    Arbedsrslttr_c    0.465
-    Grd_slvbstmm__    0.268
-    Grd_slvbs_____    0.273
-    Grad_rbdstmp_c    0.247
-    Grd_pvrk_bsl__    0.349
-    Fr_my_rb___LFC    0.237
-    Hyt_rbds___LFC    0.172
-    Ekstr_rb___LFC    0.359
-    Sttt_sjf___LFC    0.424
-    Sttt_kll___LFC    0.128
-    Tlbkmld____LFC    0.334
-    Arbdsrsl___LFC    0.436
-    Grd_slv____LFC    0.209
-    Grd________LFC    0.319
-    Grd_rbds___LFC    0.315
-    Grd_pv_____LFC    0.405
-    Motivasjon        0.326
-    Sykefravr_2022    0.032
-
-Defined Parameters:
-                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-    JR_via_M_tl_SF    0.425    0.275    1.546    0.122    0.323    0.023
-    FN_via_M_tl_SF    0.003    0.006    0.449    0.654    0.003    0.000
-\end{verbatim}
-
-\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-18-1.pdf}
-
-\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-18-2.pdf}
 
 \subsubsection{Tabell med resultat fra
 regresjonsanalysen(e)}\label{tabell-med-resultat-fra-regresjonsanalysene}

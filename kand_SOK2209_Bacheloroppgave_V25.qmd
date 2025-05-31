@@ -151,10 +151,10 @@ I studien vår vil vi bruke variabelen bruttofinanskapital[^2] som en proxy for 
 
 Sykefravær[^3] refererer til perioden en ansatt er borte fra jobb på grunn av sykdom eller skade dokumentert med egenmelding eller legemelding, i henhold til norske lover og avtaler. (SSB,2025)
 
-I vår analyse vil vi bruke en selvberegnet sykefraværsprosent som avhengig variabel for 2022. Levekårsundersøkelsen inneholder ferdig aggregerte variabler for fravær, men for å ta med egenmeldinger og sikre at målingen vår reflekterer fravær i forhold til den enkeltes avtalte arbeidsmengde så velger vi å lage dette målet selv. Vi benytter variablene sfdagsvj_2022 (sykefraværsdagsverk i 2022) og mdagsv_2022 (avtalte dagsverk i 2022) fra datasettet. Sykefraværsprosenten ($SF_i$) for individ i defineres dermed som:
+I vår analyse vil vi bruke en selvberegnet sykefraværsprosent som avhengig variabel for 2022. Levekårsundersøkelsen inneholder ferdig aggregerte variabler for fravær, men for å ta sikre at målingen vår reflekterer fravær i forhold til den enkeltes avtalte arbeidsmengde så velger vi å lage dette målet selv. Vi benytter sykefraværsdagsverk i 2022 og avtalte dageverk, uten feriekorrigering fra datasettet. Sykefraværsprosenten ($SF_i$) for individ i defineres dermed som:
 
 $$
-SF_i = \frac{ \text{Antall sykefraværsdager}}{\text{Antall avtalte dagsverk}}  \times 100
+SF_i = \frac{ \text{Antall sykefraværsdager}}{\text{Antall avtalte dagsverk}} 
 $$
 Dette gir oss et persontilpasset mål på sykefravær som tar høyde for individuelle arbeidsavtaler.
 
@@ -169,7 +169,7 @@ Jobbkrav kan være både fysiske og psykiske, og kan inkludere krav som arbeidsm
 
 I vår analyse vil vi gjøre jobbkrav om til en latent[^4] variabel som består av flere observerbare variabler. I denne variabelen vil vi inkludere variabler som måler arbeidsmengde, arbeidstempo og hvor mye ekstra arbeid som kreves i jobb.
 
-[^4]: En latent varibel er et underliggende, uobserverbart konstrukt som ikke kan måles direkte, men som modelleres gjennom flere målbare indikatorer. I SEM tolkes for eksempel «motivasjon», «jobbkrav» og «jobbressurser» som latente variabler: vi antar at variasjonen i et sett av attestspørsmål (indikatorer) reflekterer den samme underliggende faktoren.
+[^4]: En latent variabel er et underliggende, uobserverbart konstrukt som ikke kan måles direkte, men som modelleres gjennom flere målbare indikatorer. I SEM tolkes for eksempel «motivasjon», «jobbkrav» og «jobbressurser» som latente variabler: Vi antar at variasjonen i et sett av attestspørsmål (indikatorer) reflekterer den samme underliggende faktoren.
 
 ### Jobbressurser
 
@@ -422,11 +422,19 @@ Dataen vi bruker er hentet fra Statistisk sentralbyrå (SSB) sin [levekårsunder
 Statistisk sentralbyrå har gjennomført levekårsundersøkelser siden 1973. Levekårsundersøkelsen kartlegger arbeidsmiljøforhold blant sysselsatte i Norge, og tar opp temaer som forhold på arbeidsplassen, fysisk, ergonomisk og psykososialt arbeidsmiljø, yrkesrelaterte helseplager og sykefravær og krav og muligheter for selvbestemmelse på jobb.
 
 ```{r}
+
+
 NSD3201 <- NSD3201 %>%
+    mutate(
+    sfdagsvj_2022 = if_else(!is.na(mdagsv_2022) & is.na(sfdagsvj_2022), 0, sfdagsvj_2022),
+    sykefravaer_2022 = sfdagsvj_2022 / mdagsv_2022,
+    sfdagsvj_2023 = if_else(!is.na(mdagsv_2023) & is.na(sfdagsvj_2023), 0, sfdagsvj_2023), 
+    sykefravaer_2023 = sfdagsvj_2023 / mdagsv_2023,
+    arb_stillingspst = if_else(is.na(arb_stillingspst), 0, arb_stillingspst)) %>%
   transmute(
     # Avhengig, hoveduavhengig og kontrollvariabler
-    Sykefravær_2022 = sfpros_uten_feriekorr_2022,
-    Sykefravær_2023 = sfpros_uten_feriekorr_2023,
+    Sykefravær_2022 = sykefravaer_2022,
+    Sykefravær_2023 = sykefravaer_2023,
     Formue = agg_f_08,
     Alder = kullaldr,
     Utdanning = utdnivaa,
@@ -446,7 +454,12 @@ NSD3201 <- NSD3201 %>%
     # Jobbkrav
     For_mye_arbeid = QPS15_ny,
     Høyt_arbeidstempo = QPS14_ny,
-    Ekstra_arbeid = Sp47f) %>%
+    Ekstra_arbeid = Sp47f,
+    arb_stillingspst = arb_stillingspst,
+    sfdagsvj_2022 = sfdagsvj_2022,
+    sfdagsvj_2023 = sfdagsvj_2023,
+    mdagsv_2022 = mdagsv_2022,
+    mdagsv_2023 = mdagsv_2023) %>%
   #fjerner NA verdier
   drop_na()
 
@@ -532,15 +545,27 @@ Vi kommer til å bruke flere variabler fra levekårsundersøkelsen for å analys
 
 Sykefravær:
 
-Datasettet inneholder en ferdig variabel for sykefraværsprosent (sfpros_uten_feriekorr_2022, sfpros_uten_feriekorr_2023), men vi velger å beregne denne selv for å ha med egenmeldings dager, også for å kunne ta høyde for avtalt arbeidstid.
+Datasettet inneholder en ferdig variabel for sykefraværsprosent (sfpros_uten_feriekorr_2022, sfpros_uten_feriekorr_2023), men vi velger å beregne denne selv siden de med 0 fravær står som NA, også for å kunne ta høyde for avtalt arbeidstid.
 
-Vi benytter variablene sfdagsvj_2022 (sykefraværsdagsverk) og mdagsv_2022 (avtalte dagsverk) fra Levekårsundersøkelsen. Sykefraværsprosenten ($SF_i$) for individ $i$ blir da:
+Vi benytter variablene sfdagsvj_2022 (sykefraværsdagsverk) og mdagsv_2022 (avtalte dagsverk) fra Levekårsundersøkelsen. Sykefraværsprosenten ($SF_i$) for individ $i$ beregnes som:
+
 
 $$
-SF_i = \frac{ \mathrm{sfdagsvj\_2022}_i }{ \mathrm{mdagsv\_2022}_i } \times 100
+SF_i = 
+\begin{cases}
+0, & \text{hvis } \mathrm{mdagsv\_2022}_i > 0 \text{ og } \mathrm{sfdagsvj\_2022}_i = 0 \\
+\frac{ \mathrm{sfdagsvj\_2022}_i }{ \mathrm{mdagsv\_2022}_i }, & \text{ellers}
+\end{cases}
 $$
 
-Der vi setter $SF_i$ til manglende (NA) dersom $\mathrm{sfdagsvj\_2022}_i$ er null eller mangler, for å unngå meningsløse verdier.
+Dette gjør at individer med avtalte dagsverk, men uten legemeldt sykefraværsdager, får verdien 0 i stedet for NA slik det gjøres i den ferdigberegnede variabelen sfpros_uten_feriekorr_2022.
+
+
+
+
+
+
+
 
 
 Formue:
@@ -551,7 +576,7 @@ Vi vil dele denne inn i tre forskjellige tertiler [^9] for formuegrupper: 0 - 43
 
 [^9]: Tertil er en statistisk metode for å dele et datasett inn i like store deler, slik at hver del inneholder en viss prosentandel av dataene. For eksempel, hvis vi deler et datasett inn i tre tertiler, vil hver tertil inneholde omtrent 33,3 % av dataene.
 
-Vi tror formue spiller inn til hvor sensitiv du er til endringer i inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om du har mye formue eller ikke. Dette kan være fordi du har mer buffer til å tåle endringer i inntekt, og dermed kan du være mer villig til å ta deg fri fra jobb. Og motsatt om du har lite formue så vil du være mer sensitiv til endringer i inntekt, og dermed vil du være mer villig til å jobbe mer for å opprettholde inntekten din. Dette kan føre til at de med høyere formue har lavere sykefravær, mens de med lavere formue har høyere sykefravær.
+En av våre hypoteser er at formue påvirker individets sensitivitet for inntektsendringer. Altså individets konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om de har mye formue eller ikke. Dette kan være fordi individet har mer buffer til å tåle endringer i inntekt, og dermed kan individet være mer villig til å ta seg fri fra jobb. Motsatt vil individer med lav formue være mer sårbare for inntektsendringer, og kan derfor være mindre tilbøyelige til å være borte fra jobb, selv ved sykdom, for å opprettholde sin inntekt. Dette kan bety at de med høyere formue har bedre forutsetninger for å opprettholde god helse som ved en mindre belastende jobbsituasjon, noe som kan føre til lavere sykefravær, mens de med lavere formue opplever mer stress knyttet til økonomi, som kan gi høyere sykefravær.
 
 ### Kontrollvariabler
 
@@ -565,15 +590,15 @@ Kjønn til respondenten. Denne kontrollvariabelen er en dummyvariabel, hvor 0 er
 
 Utdanning:
 
-Utdanningsnivået til respondenten er en ordinal variabel, og vi vil bruke utdanningsgruppene grunnskole eller mindre, videregående skole, Universitet/Høgskole og forskernivå. Vi vil bruke denne variabelen for å kontrollere for eventuelle utdanningsforskjeller i sykefraværet.
+Utdanningsnivået til respondenten er en ordinal variabel, og vi vil bruke utdanningsgruppene grunnskole eller mindre, videregående skole, Universitet/Høgskole og forskernivå. Denne variabelen inkluderes for å justere for mulige utdanningsrelaterte forskjeller i sykefravær. 
 
 Tilfredshet med arbeid:
 
-Selvrapportert tilfredshet med arbeid (TS) er en ordinal variabel, og vi vil bruke denne variabelen for å kontrollere for eventuelle forskjeller i sykefraværet basert på hvor tilfreds respondenten er med jobben sin. Denne variabelen er målt på en skala fra 1 til 10, hvor 1 er svært misfornøyd og 10 er svært fornøyd.
+Selvrapportert tilfredshet med arbeid (TS) er en ordinal variabel, og vi vil bruke denne variabelen for å kontrollere for eventuelle forskjeller i sykefraværet basert på hvor tilfreds respondenten er med jobben sin. Denne variabelen er basert på en skala med 5 nivåer (1=svært misfornøyd til 5=svært fornøyd).
 
 Motivasjon:
 
-For variabelen motivasjon bruker vi selvrapportert motivasjon på jobb (M) som en ordinal variabel, og vi vil bruke denne variabelen for å kontrollere for eventuelle forskjeller i sykefraværet basert på hvor motivert respondenten er på jobben sin. Denne variabelen er målt på en skala fra 1 til 10, hvor 1 er svært lite motivert og 10 er svært motivert.
+For variabelen motivasjon bruker vi selvrapportert motivasjon på jobb (M) som en ordinal variabel, og vi vil bruke denne variabelen for å kontrollere for eventuelle forskjeller i sykefraværet basert på hvor motivert respondenten er på jobben sin. Variabelen er basert på en skala med 5 nivåer (1=svært sjelden/aldri motivert til 5=veldig ofte motivert).
 
 Barn:
 
@@ -588,7 +613,7 @@ Stillingsprosent ($SP_i$):
 Antall timer en person arbeider er en sentral faktor som kan påvirke både eksponering for jobbkrav og jobbressurser og forekomsten av sykefravær. Studien til @langseth2019s om "workaholism" og jobbengasjement innenfor JD-R-modellen, viser at et høyt timeantall på jobb ikke er et ensartet fenomen. Både ansatte som er "workaholics" (med potensielt negative helsekonsekvenser) og de som er høyt jobbengasjerte (ofte med positive helseeffekter) kan rapportere å jobbe mer enn forventet. Dette indikerer at årsakene til, og konsekvensene av, mange arbeidstimer kan variere betydelig.
 
 
-For å ta høyde for denne kompleksiteten og kontrollere for variasjon i arbeidsomfang, inkluderer vi respondentens avtalte stillingsprosent (arb_stillingspst) som en kontrollvariabel. Denne variabelen reflekterer den formelle arbeidsmengden. Ved å inkludere stillingsprosent ($SP_i$) i modellen, kan vi statistisk justere for ulik "eksponeringstid". Videre, ved å undersøke interaksjonen mellom stillingsprosent og formue ($FN_i$), søker vi å utforske om den økonomiske situasjonen til individet påvirker hvordan arbeidsmengden relaterer seg til motivasjon og sykefravær. I modellen vil vi benytte en sentrert versjon av stillingsprosenten.
+For å ta høyde for denne kompleksiteten og kontrollere for variasjon i arbeidsomfang, inkluderer vi respondentens avtalte stillingsprosent (arb_stillingspst) som en kontrollvariabel. Denne variabelen reflekterer den formelle arbeidsmengden. Ved å inkludere stillingsprosent ($SP_i$) i modellen, kan vi forsøke å se effekten for en ulik "eksponeringstid". Videre, ved å undersøke interaksjonen mellom stillingsprosent og formue ($FN_i$), søker vi å utforske om den økonomiske situasjonen til individet påvirker hvordan arbeidsmengden relaterer seg til motivasjon og sykefravær. I modellen vil vi benytte en sentrert versjon av stillingsprosenten.
 
 
 ## Deskriptiv statistikk
@@ -1234,122 +1259,6 @@ var_JR8 <- "Grad_pavirke_beslutning_arbeid"
 
 ```{r}
 
-#    Du kan lage dem slik (velg en referansekategori, f.eks. "Grunnskole eller mindre"):
-NSD3201 <- NSD3201 %>%
-  mutate(
-    Utd_Videregaende = ifelse(Utdanning_grupper == "Videregående", 1, 0),
-    Utd_UniHogskole = ifelse(Utdanning_grupper == "Universitet/Høgskole", 1, 0)
-  )
-
-
-# Definer lister med originale indikatornavn
-jk_indicators_orig <- c("For_mye_arbeid", "Hoyt_arbeidstempo", "Ekstra_arbeid")
-jr_indicators_orig <- c("Stotte_sjef", "Stotte_kollega", "Tilbakemelding_sjef", 
-                        "Arbeidsresultater", "Grad_selvbestemming_oppgaver", 
-                        "Grad_selvbestemming_arbeid_som_skal_gjores", 
-                        "Grad_arbeidstempo", "Grad_pavirke_beslutning_arbeid")
-
-# Sørg for at alle indikatorer er numeriske
-NSD3201[c(jk_indicators_orig, jr_indicators_orig)] <- lapply(NSD3201[c(jk_indicators_orig, jr_indicators_orig)], as.numeric)
-NSD3201$Log_formue <- as.numeric(NSD3201$Log_formue)
-# ... gjør det samme for andre variabler som Motivasjon, Sykefravær_2022 etc.
-
-# Fjern rader med NA i de variablene som skal brukes (hvis du ikke bruker FIML)
-# Dette er viktig FØR sentrering og produktlaging for å unngå feil
-vars_for_model <- c("Sykefravaer_2022", "Motivasjon", "Log_formue", 
-                    jk_indicators_orig, jr_indicators_orig,
-                    "Alder", "Kvinne", "Utd_Videregaende", "Utd_UniHogskole", "Barn") # Legg til evt. andre kontrollvar
-NSD3201_complete <- NSD3201[complete.cases(NSD3201[, vars_for_model]), ]
-
-
-# 1. Sentrer moderatoren
-NSD3201_complete$Log_formue_c <- scale(NSD3201_complete$Log_formue, center = TRUE, scale = FALSE)[,1]
-
-# 2. Sentrer indikatorene for JK og lag produktindikatorer for JKxFN
-jk_indicators_c_names <- character() # For å lagre navn på sentrerte JK-indikatorer
-jk_fn_prod_indicator_names <- character() # For å lagre navn på produktindikatorer
-for (ind_orig in jk_indicators_orig) {
-  # Sentrer JK-indikator
-  ind_c_name <- paste0(ind_orig, "_c")
-  NSD3201_complete[[ind_c_name]] <- scale(NSD3201_complete[[ind_orig]], center = TRUE, scale = FALSE)[,1]
-  jk_indicators_c_names <- c(jk_indicators_c_names, ind_c_name)
-  
-  # Lag produktindikator JK_indikator_c * Log_formue_c
-  prod_ind_name <- paste0(ind_c_name, "_x_LFC") # LFC = Log Formue Centered
-  NSD3201_complete[[prod_ind_name]] <- NSD3201_complete[[ind_c_name]] * NSD3201_complete[["Log_formue_c"]]
-  jk_fn_prod_indicator_names <- c(jk_fn_prod_indicator_names, prod_ind_name)
-}
-
-# 3. Sentrer indikatorene for JR og lag produktindikatorer for JRxFN
-jr_indicators_c_names <- character() # For å lagre navn på sentrerte JR-indikatorer
-jr_fn_prod_indicator_names <- character() # For å lagre navn på produktindikatorer
-for (ind_orig in jr_indicators_orig) {
-  # Sentrer JR-indikator
-  ind_c_name <- paste0(ind_orig, "_c")
-  NSD3201_complete[[ind_c_name]] <- scale(NSD3201_complete[[ind_orig]], center = TRUE, scale = FALSE)[,1]
-  jr_indicators_c_names <- c(jr_indicators_c_names, ind_c_name)
-  
-  # Lag produktindikator JR_indikator_c * Log_formue_c
-  prod_ind_name <- paste0(ind_c_name, "_x_LFC")
-  NSD3201_complete[[prod_ind_name]] <- NSD3201_complete[[ind_c_name]] * NSD3201_complete[["Log_formue_c"]]
-  jr_fn_prod_indicator_names <- c(jr_fn_prod_indicator_names, prod_ind_name)
-}
-
-# Nå har du NSD3201_complete med:
-# - Log_formue_c (sentrert moderator)
-# - Sentrerte indikatorer for JK (f.eks. For_mye_arbeid_c)
-# - Sentrerte indikatorer for JR (f.eks. Støtte_sjef_c)
-# - Produktindikatorer for JKxFN (f.eks. For_mye_arbeid_c_x_LFC)
-# - Produktindikatorer for JRxFN (f.eks. Støtte_sjef_c_x_LFC)
-
-# Kontrollvariabler (sentrer kontinuerlige hvis de ikke er det)
-NSD3201_complete$Alder_c <- scale(NSD3201_complete$Alder, center = TRUE, scale = FALSE)[,1]
-# Anta at Kvinne, Utd_Videregaende, Utd_UniHogskole, Barn er klare
-
-# --- Steg 2: Definer lavaan Modellsyntaks med Produktindikatorer ---
-model_syntax_prod <- paste0("
-  # Målingsmodell (bruk de SENTRERTE førsteordensindikatorene)
-  JK =~ ", paste(jk_indicators_c_names, collapse=" + "), "
-  JR =~ ", paste(jr_indicators_c_names, collapse=" + "), "
-
-  # Latente interaksjonsvariabler (definert av produktindikatorene)
-  JKxFN =~ ", paste(jk_fn_prod_indicator_names, collapse=" + "), "
-  JRxFN =~ ", paste(jr_fn_prod_indicator_names, collapse=" + "), "
-
-  # Strukturell modell
-  # Ligning for Motivasjon (M)
-  Motivasjon ~ alpha1*JR + alpha2*Log_formue_c + ctrlM_Alder*Alder_c + ctrlM_Kvinne*Kvinne + ctrlM_Utd_V*Utd_Videregaende + ctrlM_Utd_UH*Utd_UniHogskole + ctrlM_Barn*Barn
-
-  # Ligning for Sykefravær (SF)
-  Sykefravaer_2022 ~ beta1*JK + beta2*JR + beta3*Log_formue_c + beta6*Motivasjon + beta4*JKxFN + beta5*JRxFN + ctrlSF_Alder*Alder_c + ctrlSF_Kvinne*Kvinne + ctrlSF_Utd_V*Utd_Videregaende + ctrlSF_Utd_UH*Utd_UniHogskole + ctrlSF_Barn*Barn
-  
-  # Definerte parametere for indirekte effekter (H6)
-  JR_via_M_til_SF := alpha1 * beta6
-  FN_via_M_til_SF := alpha2 * beta6
-  
-  # Valgfritt: Kovarianser mellom eksogene latente faktorer.
-  # lavaan vil ofte estimere disse som standard hvis de er rent eksogene.
-  # For interaksjonsmodeller kan det være nødvendig å spesifisere kovarianser
-  # mellom førsteordensfaktorer (JK, JR), moderatoren (Log_formue_c),
-  # og interaksjonsfaktorene (JKxFN, JRxFN).
-  # Start uten, og legg til ved behov hvis modellen sliter med konvergens eller fit.
-  # JK ~~ JR # Vanlig
-  # For å unngå problemer, kan man la lavaan estimere kovarianser mellom alle
-  # eksogene latente variabler og observerte eksogene prediktorer automatisk.
-")
-
-# --- Steg 3: Kjør Modellen i lavaan ---
-fit_prod <- sem(model_syntax_prod, 
-                data = NSD3201_complete, 
-                estimator = "MLR", # Robust for ikke-normalitet
-                # warn = FALSE # Skru på for feilsøking
-                # se = "robust" # Alternativ for robuste standardfeil
-               )
-
-# --- Steg 4: Inspiser Resultater ---
-summary(fit_prod, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
-# parameterEstimates(fit_prod, standardized = TRUE)
-# modindices(fit_prod, sort. = TRUE, minimum.value = 10)
 
 ```
 
@@ -1359,52 +1268,6 @@ summary(fit_prod, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
 ```{r}
 library(semPlot)
 
-if (exists("fit_prod") && inherits(fit_prod, "lavaan")) {
-
-  # 1. Grunnleggende plot med standardiserte estimater
-  #    Dette er ofte et godt utgangspunkt.
-  semPaths(fit_prod, 
-           what = "std",                # Vis standardiserte estimater på stiene
-           whatLabels = "std",          # Label stiene med standardiserte estimater
-           layout = "tree2",            # En vanlig hierarkisk layout
-           residuals = FALSE,           # Ikke vis restvarianser for endogene variabler (kan gjøre plottet renere)
-           intercepts = FALSE,          # Ikke vis intercept/gjennomsnitt
-           rotation = 2,                # Roterer plottet (prøv 1, 2, 3, eller 4)
-           edge.label.cex = 0.7,        # Størrelse på tallene på pilene
-           sizeMan = 7,                 # Størrelse på manifesterte (observerte) variabler (indikatorer)
-           sizeLat = 10,                # Størrelse på latente variabler
-           nCharNodes = 0,              # 0 for å vise hele variabelnavnet (kan bli trangt)
-           fade = TRUE,                 # "Fade ut" ikke-signifikante stier (p > 0.05 som default)
-           curve = 1.5,                 # Gir litt kurve på pilene, kan hjelpe layout
-           edge.color = "darkgrey",     # Farge på pilene
-           posCol = "darkgreen",        # Farge for signifikante positive stier
-           negCol = "darkred"           # Farge for signifikante negative stier
-           )
-  title("SEM Diagram - Standardiserte Estimat (tree2 layout)")
-
-  # 2. Et alternativt plot med "spring" layout (kan håndtere komplekse modeller bedre, men kan være uforutsigbart)
-  #    og litt andre justeringer.
-  semPaths(fit_prod, 
-           what = "std",
-           whatLabels = "est",          # Kan vise ustandardiserte for å se de faktiske koeffisientene
-           layout = "spring",           # Prøv "spring" for å se om det gir bedre oversikt
-           residuals = TRUE,            # Vis restvarianser
-           edge.label.cex = 0.65,
-           sizeMan = 5,
-           sizeLat = 8,
-           nCharNodes = 7,              # Forkort variabelnavn hvis de er lange
-           fade = TRUE, 
-           edge.color = "black",
-           # Man kan også gruppere og fargelegge noder, men det krever mer kode for å definere gruppene
-           # basert på dine spesifikke variabelnavn.
-           node.label.cex = 0.8         # Størrelse på tekst i noder
-           )
-  title("SEM Diagram - Ustandardiserte Estimat (spring layout)")
-
-} else {
-  print("Modellobjektet 'fit_prod' ble ikke funnet eller er ikke et gyldig lavaan-objekt.")
-  print("Sørg for at du har kjørt sem()-funksjonen og lagret resultatet i 'fit_prod'.")
-}
 ```
 
 
