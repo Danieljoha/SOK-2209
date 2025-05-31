@@ -82,8 +82,8 @@ Sammendrag her
 
 \newpage
 
-```{r, output=FALSE}
-Sys.setlocale(locale="no_NO")
+```{r, output=FALSE, message=FALSE}
+#Sys.setlocale(locale="no_NO")
 
 rm(list = ls())
 library(tidyverse)
@@ -1208,7 +1208,6 @@ Vi antar at sammenhengen mellom arbeidstimer representert ved stillingsprosent, 
 
 
 ```{r}
-library(lavaan)
 
 
 jk_indicators <- c("For_mye_arbeid", "Hoyt_arbeidstempo", "Ekstra_arbeid")
@@ -1266,7 +1265,7 @@ var_JR8 <- "Grad_pavirke_beslutning_arbeid"
 
 
 ```{r}
-library(semPlot)
+
 
 ```
 
