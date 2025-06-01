@@ -254,7 +254,11 @@ flotte samtaler på kontoret.
 
 Sammendrag her
 
-kl 12, droppe h7
+Husk å nevne at vi fjernet alle de som hadde over 14 dager
+sammenhengende sykefravær
+
+Nevne fjerning av støtte fra kollega og støtte fra sjef ETTER og ha
+testet.
 
 \newpage
 
@@ -421,9 +425,8 @@ arbeidet, og fleksibilitet i arbeidsoppgaver. (Schaufeli \& Bakker,
 
 Vi blir å bruke jobbressurser som en latent variabel som består av
 følgende observerbare variabler: støtte fra sjef, støtte fra kolleger,
-tilbakemelding fra sjef, arbeidsresultater, grad av selvbestemmelse i
-oppgaver og arbeid som skal gjøres, grad av arbeidstempo og grad av
-påvirkning på beslutninger i arbeidet.
+grad av selvbestemmelse i oppgaver og arbeid som skal gjøres, grad av
+arbeidstempo og grad av påvirkning på beslutninger i arbeidet.
 
 \subsubsection{Motivasjon}\label{motivasjon}
 
@@ -735,17 +738,6 @@ Med dette rammeverket formulerer vi følgende hypoteser:
 
 \textbf{H3:} Høyere formuenivå gir lavere sykefravær
 
-\textbf{H4:} Høyere formuenivå demper de negative effektene til høyere
-jobbkrav
-
-\textbf{H5:} Høyere formuenivå demper de positive effektene til høyere
-jobbressurser
-
-\textbf{H6:} Formuenivå påvirker sykefravær indirekte via motivasjon
-
-\textbf{H7:} Effekten av stillingsprosent på sykefravær modereres av
-formue
-
 For en grundig gjennomgang av hypotesene og hvordan de er relatert til
 JD-R-modellen, se kapittel \ref{sec-hypot}.
 
@@ -812,7 +804,7 @@ velger å beregne denne selv siden de med 0 fravær står som NA, også for
 
 Vi benytter variablene sfdagsvj\_2022 (sykefraværsdagsverk) og
 mdagsv\_2022 (avtalte dagsverk) fra Levekårsundersøkelsen.
-Sykefraværsprosenten (\(SF_i\)) for individ \(i\) beregnes som:
+Sykefraværsraten (\(SF_i\)) for individ \(i\) beregnes som:
 
 \[
 SF_i = 
@@ -825,6 +817,11 @@ SF_i =
 Dette gjør at individer med avtalte dagsverk, men uten legemeldt
 sykefraværsdager, får verdien 0 i stedet for NA slik det gjøres i den
 ferdigberegnede variabelen sfpros\_uten\_feriekorr\_2022.
+
+Vi har fjernet alle som har over 14 dager sammenhengende sykefravær, for
+å unngå å inkludere langtidssykemeldte som kan ha andre årsaker til
+fravær enn de vi ønsker å undersøke. Dette gjør at vi får et mer
+representativt bilde av korttidsfravær og dets sammenheng med formue.
 
 Formue:
 
@@ -883,9 +880,7 @@ indikasjon på hvor høye jobbkravene er for individet.
 
 Jobbressurser:
 
-Jobbressurser er en latent variabel som vi måler med syv indikatorer:
-Støtte fra sjef (QPS72\_ny), Støtte fra kollegaer (QPS73\_ny),
-Tilbakemelding fra sjef (Raad3a\_ny), Arbeidsresultater (QPS78\_ny),
+Jobbressurser er en latent variabel som vi måler med tre indikatorer:
 Grad av selvbestemmelse over oppgaver (Sp56a2), Grad av selvbestemmelse
 over arbeid som skal gjøres (Sp56b2) og Grad av påvirkning på
 beslutninger i arbeidet (QPS53). Disse indikatorene er basert på
@@ -916,14 +911,6 @@ Utdanningsnivået til respondenten er en ordinal variabel, og vi vil
 bruke utdanningsgruppene grunnskole eller mindre, videregående skole,
 Universitet/Høgskole og forskernivå. Denne variabelen inkluderes for å
 justere for mulige utdanningsrelaterte forskjeller i sykefravær.
-
-Tilfredshet med arbeid:
-
-Selvrapportert tilfredshet med arbeid (TS) er en ordinal variabel, og vi
-vil bruke denne variabelen for å kontrollere for eventuelle forskjeller
-i sykefraværet basert på hvor tilfreds respondenten er med jobben sin.
-Denne variabelen er basert på en skala med 5 nivåer (1=svært misfornøyd
-til 5=svært fornøyd).
 
 Motivasjon:
 
@@ -972,17 +959,18 @@ korrelasjonsmatrisen for de uavhengige variablene.
 
 I \autoref{tab:deskriptiv} presenteres deskriptiv statistikk for alle
 variablene i analysen. Vi ser at sykefraværet i 2022 har et gjennomsnitt
-på 4.67 prosent, med en minsteverdi på 0 prosent og maksimalverdi på
-92.6 prosent. Alder ligger på et gjennomsnitt på 43.59 år, med en
-minsteverdi på 18 år og maksimalverdi på 66, som stemmer overns med
+på 1.70 prosent (0.00170), med en minsteverdi på 0 prosent og
+maksimalverdi på 48.08 prosent. Alder ligger på et gjennomsnitt på 43.33
+år, med en minsteverdi på 18 år og maksimalverdi på 66, som stemmer med
 alderen til respondentene i datasettet. Utdanningsnivået har et
-gjennomsnitt på 4.59, som tilsvarer videregående skole, med en
+gjennomsnitt på 4.65, som tilsvarer videregående skole, med en
 minimumsverdi på 2 (grunnskole eller mindre) og en maksimumsverdi på 8
 (doktorgrad).
 
 Av de opprinnelig 17971 inviterte respondentene i datasettet så
-fullførte 7 498 svarene til alle de relevante variablene. Hvor eksakt
-responsrate da blir \(\frac{7498}{17971} = 41.7\%\). Dette kan føre til
+fullførte 6 103 svarene til alle de relevante variablene etter at vi
+fjernet de som var langtidssykemeldt over 2 uker. Hvor eksakt
+responsrate da blir \(\frac{6103}{17971} = 33.9\%\). Dette kan føre til
 skjevheter i dataene, og kan bli en svakhet ved analysen når vi tolker
 resultatene. Siden det er vanskelig for oss å vite om det er
 systematiske forskjeller mellom de som svarte og de som ikke svarte, så
@@ -993,91 +981,61 @@ norske befolkningen.
 \centering
 \begin{tabular}{lrrrrrrr}
 \toprule
-Variabel                               & Min   & 1.\,Q  & Median & Mean   & 3.\,Q  & Max  & N    \\
+Variabel                               & Min    & 1.\,Q  & Median & Mean   & 3.\,Q  & Max    & N    \\
 \midrule
-Sykefravær 2022                        & 0.0000 & 0.0000 & 0.0000 & 0.0467 & 0.0413 & 0.9206 & 7498 \\
-Alder                                  & 18     & 33     & 45     & 43.59  & 54     & 66     & 7498 \\
-Utdanning                              & 2      & 4      & 4      & 4.596  & 6      & 8      & 7498 \\
-Kjønn (1=Mann, 2=Kvinne)               & 1      & 1      & 2      & 1.507  & 2      & 2      & 7498 \\
-Tilfredshet                            & 1      & 4      & 4      & 4.14   & 5      & 5      & 7498 \\
-Motivasjon                             & 1      & 4      & 4      & 3.996  & 5      & 5      & 7498 \\
-Barn                                   & 0      & 0      & 0      & 0.14   & 0      & 1      & 7498 \\
-Støtte fra sjef                        & 1      & 3      & 4      & 3.923  & 5      & 5      & 7498 \\
-Støtte fra kollega                     & 1      & 4      & 5      & 4.293  & 5      & 5      & 7498 \\
-Tilbakemelding fra sjef                & 1      & 2      & 3      & 3.147  & 4      & 5      & 7498 \\
-Arbeidsresultater                      & 1      & 3      & 4      & 3.707  & 5      & 5      & 7498 \\
-Selvbestemmelse (oppgaver)             & 1      & 2      & 3      & 2.977  & 4      & 5      & 7498 \\
-Selvbestemmelse (arbeidsinnhold)       & 1      & 3      & 4      & 3.694  & 4      & 5      & 7498 \\
-Grad arbeidstempo                      & 1      & 3      & 4      & 3.322  & 4      & 5      & 7498 \\
-Påvirkningsgrad                        & 1      & 3      & 3      & 3.433  & 4      & 5      & 7498 \\
-For mye arbeid                         & 1      & 3      & 4      & 3.972  & 5      & 5      & 7498 \\
-Høyt arbeidstempo                      & 1      & 3      & 4      & 4.148  & 5      & 5      & 7498 \\
-Ekstra arbeid                          & 1      & 2      & 2      & 2.610  & 4      & 5      & 7498 \\
-Stillingsprosent                       & 0      & 100    & 100    & 90.30  & 100    & 120    & 7498 \\
+Sykefravær 2022                        & 0.0000 & 0.0000 & 0.0000 & 0.0170 & 0.0193 & 0.4808 & 6103 \\
+Alder                                  & 18     & 33     & 45     & 43.33  & 54     & 66     & 6103 \\
+Utdanning                              & 2      & 4      & 4      & 4.65   & 6      & 8      & 6103 \\
+Kjønn (0=Kvinne, 1=Mann)               & 1      & 1      & 2      & 1.48   & 2      & 2      & 6103 \\
+Tilfredshet                            & 1      & 4      & 4      & 4.19   & 5      & 5      & 6103 \\
+Motivasjon                             & 1      & 4      & 4      & 4.03   & 5      & 5      & 6103 \\
+Barn                                   & 0      & 0      & 0      & 0.14   & 0      & 1      & 6103 \\
+Selvbestemmelse (oppgaver)             & 1      & 2      & 3      & 3.03   & 4      & 5      & 6103 \\
+Selvbestemmelse (arbeidsinnhold)       & 1      & 3      & 4      & 3.73   & 4      & 5      & 6103 \\
+Grad arbeidstempo                      & 1      & 3      & 4      & 3.37   & 4      & 5      & 6103 \\
+Påvirkningsgrad                        & 1      & 3      & 3      & 3.47   & 4      & 5      & 6103 \\
+For mye arbeid                         & 1      & 3      & 4      & 3.95   & 5      & 5      & 6103 \\
+Høyt arbeidstempo                      & 1      & 4      & 4      & 4.13   & 5      & 5      & 6103 \\
+Ekstra arbeid                          & 1      & 1      & 2      & 2.63   & 4      & 5      & 6103 \\
+Stillingsprosent                       & 0      & 100    & 100    & 90.66  & 100    & 120    & 6103 \\
 \bottomrule
 \end{tabular}
-\caption{Deskriptiv statistikk for hovedvariabler (N = 7498)}
+\caption{Deskriptiv statistikk for hovedvariabler (N = 6103)}
 \label{tab:deskriptiv}
 \end{table}
 
 I \autoref{tab:deskr_formue} ser vi at sykefraværet i 2022 har et
-gjennomsnitt på 6 \% for de med lav formue, 5 \% for de med middels
-formue og 3 \% for de med høy formue. Dette antyder at de med høyere
-formue har litt lavere sykefravær, selv om forskjellene er relativt små.
+gjennomsnitt på 2 prosent (0.02) for de med lav formue, 2 prosent (0.02)
+for de med middels formue og 1 prosent (0.01) for de med høy formue.
+Dette antyder at de med høyere formue har litt lavere sykefravær, selv
+om forskjellene er relativt små.
 
-Alderen øker tydelig med formuegruppe: gjennomsnittsalderen er
+Alderen øker noe med formuegruppe: gjennomsnittsalderen er 40.44 år i
+lav formue, 42.43 år i middels formue og 49.96 år i høy formue. Når
+motivasjon måles på skalaen 1--5, er gjennomsnittsskårene 3.98 i lav
+formue, 4.02 i middels formue og 4.15 i høy formue.
 
-\begin{itemize}
-\tightlist
-\item
-  40,84 år i lav formue
-\item
-  42,76 år i middels formue
-\item
-  50,06 år i høy formue.
-\end{itemize}
+Forskjellene i motivasjon er små, men systematisk: personer med høy
+formue rapporterer noe høyere motivasjon enn de med lav formue,
+tilfredshet følger også omtrent samme mønster (4.14 mot 4.17 og
+4.29).Samtidig ser vi at de med høyest formue også har den høyeste
+gjennomsnittsalderen, noe som indikerer en kobling mellom alder og
+formue (eldre personer har gjerne opparbeidet mer formue).
 
-Når motivasjon måles på skalaen 1--5, er gjennomsnittsskårene
-
-\begin{itemize}
-\tightlist
-\item
-  3,96 i lav formue
-\item
-  3,98 i middels formue
-\item
-  4,11 i høy formue.
-\end{itemize}
-
-Tilfredshet (1--5) følger samme mønster:
-
-\begin{itemize}
-\tightlist
-\item
-  4,10 i lav formue
-\item
-  4,12 i middels formue
-\item
-  4,26 i høy formue.
-\end{itemize}
-
-Forskjellene i motivasjon og tilfredshet er små, men systematiske:
-personer med høy formue rapporterer noe høyere motivasjon og tilfredshet
-enn dem med lav formue. Samtidig ser vi at de med høyest formue også har
-den høyeste gjennomsnittsalderen, noe som indikerer en kobling mellom
-alder og formue (eldre personer har gjerne opparbeidet mer formue).
-
-\begin{table}[ht]
+\begin{table}[H]
 \centering
-\begin{tabular}{lrrrrrr}
+\begin{tabular}{lcccccc}
 \toprule
-Variabel             & \multicolumn{2}{c}{Lav formue} & \multicolumn{2}{c}{Middels formue} & \multicolumn{2}{c}{Høy formue} \\
-                     & M       & SD       & M         & SD        & M       & SD      \\
+                        & \multicolumn{2}{c}{Lav formue (n = 883)} 
+                        & \multicolumn{2}{c}{Middels formue (n = 4255)} 
+                        & \multicolumn{2}{c}{Høy formue (n = 965)}         \\
+\cmidrule(r){2-3}\cmidrule(lr){4-5}\cmidrule(l){6-7}
+Variabel                & M      & SD     & M       & SD     & M      & SD    \\
 \midrule
-Alder                & 40.84   & 12.47    & 42.76     & 12.33     & 50.06   & 10.31   \\
-Motivasjon           & 3.96    & 0.99     & 3.98      & 0.92      & 4.11    & 0.84    \\
-Tilfredshet          & 4.10    & 0.93     & 4.12      & 0.89      & 4.26    & 0.79    \\
-Sykefravær 2022      & 0.06    & 0.11     & 0.05      & 0.11      & 0.03    & 0.09    \\
+Alder                   & 40.44  & 12.61  & 42.43   & 12.41  & 49.96  & 10.24 \\
+Motivasjon              &  3.98  &  0.98  &  4.02   &  0.90  &  4.15  &  0.83 \\
+Tilfredshet             &  4.14  &  0.88  &  4.17   &  0.85  &  4.29  &  0.76 \\
+Sykefravær 2022         &  0.02  &  0.05  &  0.02   &  0.04  &  0.01  &  0.03 \\
 \bottomrule
 \end{tabular}
 \caption{Deskriptiv statistikk etter formuegruppe}
@@ -1086,14 +1044,14 @@ Sykefravær 2022      & 0.06    & 0.11     & 0.05      & 0.11      & 0.03    & 0
 
 I \autoref{tab:deskr_kjonn} presenteres deskriptiv statistikk for
 sykefravær etter kjønn. Vi ser at sykefraværet i 2022 har et
-gjennomsnitt på 3 prosent for menn og 6 prosent for kvinner, kvinner har
+gjennomsnitt på 1 prosent for menn og 2 prosent for kvinner, kvinner har
 da dobbelt så høyt sykefravær enn menn. Dette kan skyldes at kvinner i
 større grad enn menn jobber i yrker med høyere sykefravær, eller at
 kvinner er mer tilbøyelige til å rapportere sykefravær enn menn. Det kan
 også være andre faktorer som påvirker sykefraværet, som for eksempel
 alder, utdanning og arbeidsforhold. Vi ser også at vi har en bra
-fordeling av kvinner og menn i utvalget, der 50.7 prosent av
-respondentene er kvinner og 49.3 prosent er menn.
+fordeling av kvinner og menn i utvalget, der 47.9 prosent av
+respondentene er kvinner og 52.1 prosent er menn.
 
 \begin{table}[ht]
 \centering
@@ -1101,20 +1059,20 @@ respondentene er kvinner og 49.3 prosent er menn.
 \toprule
 Kjønn   & N   & \%   & Gj.snitt sykefravær & SD    \\
 \midrule
-Mann    & 3700 & 49.3 & 3               & 8 \\
-Kvinne  & 3798 & 50.7 & 6               & 12 \\
+Mann    & 3177 & 52.1 & 1\% (0.01)               & 4 (0.04) \\
+Kvinne  & 2926 & 47.9 & 2\% (0.02)               & 4 (0.04) \\
 \bottomrule
 \end{tabular}
-\caption{Deskriptiv statistikk for sykefravær etter kjønn (N = 7498)}
+\caption{Deskriptiv statistikk for sykefravær etter kjønn (N = 6103)}
 \label{tab:deskr_kjonn}
 \end{table}
 
 I \autoref{tab:deskr_utdanning} presenteres deskriptiv statistikk for
 sykefravær etter utdanningsnivå. Vi ser at sykefraværet i 2022 har et
-gjennomsnitt på 6 prosent for de med grunnskole eller mindre, 5 prosent
-for de med videregående skole og 4 prosent for de med
+gjennomsnitt på 2 prosent for de med grunnskole eller mindre, 2 prosent
+for de med videregående skole og 1 prosent for de med
 universitet/høgskole. Dette tyder på at sykefraværet er høyere for de
-med lavere utdanning, og at det kan være er en sammenheng mellom
+med lavere utdanning, og at det kan være en liten sammenheng mellom
 utdanningsnivå og sykefravær.
 
 \begin{table}[ht]
@@ -1123,58 +1081,59 @@ utdanningsnivå og sykefravær.
 \toprule
 Utdanningsnivå                & N    & \%   & Gj.snitt sykefravær & SD   \\
 \midrule
-Grunnskole eller mindre       & 1039 & 13.9 & 6                    & 12   \\
-Videregående                   & 3667 & 48.9 & 5                    & 11   \\
-Universitet/Høgskole           & 2792 & 37.2 & 4                    & 9    \\
+Grunnskole eller mindre       & 816 & 13.3 & 2\% (0.02)                    & 4 (0.04)   \\
+Videregående                   & 2941 & 48.2 & 2\% (0.02)                  & 4 (0.04)   \\
+Universitet/Høgskole           & 2346 & 38.5 & 1\% (0.01)                   & 4 (0.04)  \\
 \bottomrule
 \end{tabular}
-\caption{Deskriptiv statistikk for sykefravær i 2022 etter utdanningsnivå (N = 7498).}
+\caption{Deskriptiv statistikk for sykefravær i 2022 etter utdanningsnivå (N = 6103).}
 \label{tab:deskr_utdanning}
 \end{table}
 
-I \autoref{fig:histogram} presenteres histogram og tetthetskurve for
-sykefraværet i 2022. Vi ser at sykefraværet er høyreskjevt, med en
-høyere andel av respondentene som har lavt sykefravær enn de som har
-høyt sykefravær både på menn og kvinner. Vi vet fra
-\autoref{tab:deskr_kjonn} at gjennomsnittet for begge kjønn er på
-omtrent 11 prosent for menn mens det er på 13 prosent for kvinner, noe
-som gjenspeiles i grafen. Det er vanskelig å se, men det er også noen
-uteliggere hvor flere respondenter har mer enn 40 prosent sykefravær på
-både menn og kvinner.
+\clearpage
 
-\paragraph{KODE for sykefraværprosent logtransform med og uten 0
-sykefravær}\label{kode-for-sykefravuxe6rprosent-logtransform-med-og-uten-0-sykefravuxe6r}
+\subsubsection{Figurer}\label{figurer}
 
-I 2022 var det \(n=et tall\) som hadde 0\% sykefravær, dette gjør at vår
-fordeling er tydelig høyreskjev. Når vi gjennomfører vår SEM analyse så
-vil gi gjøre dette for når vi tar med og uten 0\% sykefravær. Når vi
-logtransformerer sykefraværet uten 0 verdiene så får vi en tilnærmet
-normalfordelt fordeling, mens når vi tar med 0 verdiene så får vi en
-høyreskjev fordeling. Dette er viktig å være oppmerksom på når vi
-gjennomfører vår SEM analyse, da det kan påvirke resultatene våre.
-
-\includegraphics{BACHELOR-SKRIVING-DANIEL-V2_files/figure-pdf/unnamed-chunk-9-1.pdf}
-
-med de med 0, logtransformert med +0.01
-
-\includegraphics{BACHELOR-SKRIVING-DANIEL-V2_files/figure-pdf/unnamed-chunk-10-1.pdf}
-
-Uten de med 0 sykefravær, logtransformert.
-
-\includegraphics{BACHELOR-SKRIVING-DANIEL-V2_files/figure-pdf/unnamed-chunk-11-1.pdf}
+I \autoref{fig:histogram_sykefravar} presenteres histogram og
+tetthetskurve for sykefraværet i 2022. Vi ser at sykefraværet er veldig
+høyreskjevt, med en høyere andel av respondentene som har lavt
+sykefravær enn de som har høyt sykefravær både på menn og kvinner. Vi
+vet fra \autoref{tab:deskr_kjonn} at gjennomsnittet er på 3 prosent for
+menn mens det er på 6 prosent for kvinner, noe som gjenspeiles i grafen.
+Det er vanskelig å se, men det er også noen uteliggere hvor flere
+respondenter har mer enn 40 prosent sykefravær på både menn og kvinner,
+noe som fører til halen som strekker seg mot høyre i histogrammet.
 
 \begin{figure}[H]
-\caption{Histogram og tetthetskurve for sykefravær i 2022}
-\label{fig:histogram}
+\caption{Sykefravær i 2022}
+\label{fig:histogram_sykefravar}
 \centering
-\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_1.png}
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_sykefrav.png}
+\end{figure}
+
+I 2022 var det \(n=4081\) som hadde 0\% sykefravær, dette gjør at vår
+fordeling er tydelig høyreskjev. I
+\autoref{fig:histogram_sykefravar_log} er sykefraværet logtransformert
+med +0.01, noe som fører til å glatte ut fordelingen og gjøre den mer
+normalfordelt. Dette er en vanlig teknikk for å håndtere høyreskjeve
+fordelinger, og det gjør at vi kan gjøre analysen vår mer robust mot
+skjevheter. Men selv om vi har logtransformert sykefraværet, så er det
+fortsatt mange som har lavt sykefravær, noe som kan påvirke resultatene
+våre.
+
+\vspace{-0.5cm}
+\begin{figure}[H]
+\caption{Sykefravær i 2022 logtransformert med +0.01}
+\label{fig:histogram_sykefravar_log}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_sykefrav_log.png}
 \end{figure}
 
 Når vi ser på aldersfordelingen i \autoref{fig:histogram} så ser vi at
 den er jevn og symmetrisk fordelt blant respondentene. Som nevnt
 tidligere så er spennet på alderene til respondentene i undersøkelsen
 mellom 18 til 66 år. Medianalderen kan man se i den blå stiplede linjen
-som er på 43 år for menn og 44 år for kvinner.
+som er på 44 år for menn og 45 år for kvinner.
 
 \begin{figure}[H]
 \caption{Histogram og tetthetskurve for alder}
@@ -1183,10 +1142,12 @@ som er på 43 år for menn og 44 år for kvinner.
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_2.png}
 \end{figure}
 
+\newpage
+
 For analysen så har vi fordelt alder inn i tre breddeintervaller på
 18-29, 30-55 og 55-66 år. I \autoref{fig:barplot} presenteres et barplot
 av aldersgruppene. Vi har flest respondenter i aldersgruppen 30-54 år
-med 60.1 prosent som vi bruker som referansegruppe.
+med totalt 59.6 prosent som vi bruker som referansegruppe.
 
 \begin{figure}[H]
 \caption{Aldersgruppefordeling}
@@ -1195,73 +1156,82 @@ med 60.1 prosent som vi bruker som referansegruppe.
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_3.png}
 \end{figure}
 
-\clearpage
+I \autoref{fig:histogram_formue} presenteres histogram og tetthetskurve
+for bruttofinanskapitalen. Som man kan se er formuefordelingen
+høyreskjev både for menn og kvinner, med en høyere andel av
+respondentene som har lav formue enn de som har høy formue noe som kan
+svekke analysen.
 
-\begin{wrapfigure}{r}{0.5\textwidth} 
-    \centering
-    \includegraphics[width=0.5\textwidth]{dokumentobjekter/figurer/fig_4_1.png}
-    \caption{Fordeling av bruttofinanskapital}
-    \label{fig:histogram_formue}
-    \smallskip\par
-    \includegraphics[width=0.5\textwidth]{dokumentobjekter/figurer/fig_4_2.png}
-    \caption{Invertert kumulativ fordeling av bruttofinanskapital}
-    \label{fig:histogram_formue_fordeling}
-\end{wrapfigure}
-
-\#måfiks I \autoref{fig:histogram_formue} presenteres histogram og
-tetthetskurve for bruttofinanskapitalen log-transformert \((1 + x)\)
-{[}\^{}8{]}. Originalt er formuefordelingen høyreskjev, med en høyere
-andel av respondentene som har lav formue enn de som har høy formue noe
-som kan svekke analysen. Derfor må vi log-transformere formuefordelingen
-for å få en mer normalfordelt fordeling både for menn og kvinner. Når
-man log-transformerer \((1 + x)\) så tar vi logaritmen av formueverdiene
-og legger til 1 for å unngå problemer med nullverdier.
-
-Vi har da \(n_{lav} = 1160\), \(n_{middels} = 5172\) og
-\(n_{høy} = 1166\). Den laveste gruppen har formue fra \(0 - 30000\),
-den middels gruppen har formue fra \(30000 - 850000\) og den høyeste
-gruppen har formue fra \(850000 - 2500000\). Dette gir oss en god
-fordeling av formuegruppene, og vi kan se om det er forskjeller i
-sykefravær mellom de forskjellige gruppene.
-
-\newpage
-
-Når vi ser på fordelingen av formue- og utdanningsgrupper fordelt på
-kjønn i \autoref{fig:barplot_2} så ser vi at det er flest kvinner i
-utdanningsgruppen videregående skole med 46.7 prosent, og det samme
-gjelder for menn med 56.9 prosent. Mer kvinner enn menn har
-universitetsutdannings eller høyere med 40.2 prosent mot kun 18.5
-prosent for menn. Menn har også lavest utdanningsnivå med 24.6 prosent i
-utdanningsgruppen grunnskole eller mindre, mens kvinner har 13.1 prosent
-i den samme utdanningsgruppen. Dette viser oss at menn har lavere
-utdanningsnivå enn kvinner, og at kvinner er mer tilbøyelige til å ta
-høyere utdanning enn menn.
-
-\#MÅfiks Formuefordelingen er delt inn i tertiler, som gjør slik at
-fordelingen blir jevnt blant de forskjellige formuegruppene både for
-menn og kvinner.
-
+\vspace{-0.5cm}
 \begin{figure}[H]
-\caption{Fordeling av formue- og utdanningsgrupper fordelt på kjønn}
-\label{fig:barplot_2}
+\caption{Fordeling av bruttofinanskapital}
+\label{fig:histogram_formue}
 \centering
-\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_5.png}
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_4_1.png}
 \end{figure}
 
+For å korrigere for denne skjevheten i formuefordelingen må vi gjøre en
+invertering av den kumulative fordelingen av bruttofinanskapitalen. Som
+man kan se i \autoref{fig:histogram_formue_fordeling} så er den
+inverterte kumulative fordelingen av bruttofinanskapitalen mer
+normalfordelt, noe som gjør at vi kan bruke den i analysen vår.
+
+\vspace{-0.75cm}
+\begin{figure}[H]
+\caption{Invertert kumulativ fordeling av bruttofinanskapital}
+\label{fig:histogram_formue_fordeling}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_4_2.png}
+\end{figure}
+\vspace{-0.75cm}
+
+Når vi ser på fordelingen av utdanningsgrupper fordelt på kjønn i
+\autoref{fig:barplot_2} så ser vi at det er flest menn i
+utdanningsgruppen videregående skole med 53.7 prosent, mens kvinner har
+noe lavere med 42.3 prosent. Mer kvinner enn menn har
+universitetsutdannings eller høyskole med 46.7 prosent mot 30.8 prosent
+for menn. Menn har også lavest utdanningsnivå med 15.5 prosent i
+utdanningsgruppen grunnskole eller mindre, mens kvinner har 11 prosent i
+den samme utdanningsgruppen. Menn har lavere utdanningsnivå enn kvinner,
+og kvinner er mer tilbøyelige til å ta høyere utdanning.
+
+\vspace{-0.5cm}
+\begin{figure}[H]
+\caption{Fordeling av utdanningsgrupper fordelt på kjønn}
+\label{fig:barplot_2}
+\centering
+\includegraphics[width=0.75\textwidth]{dokumentobjekter/figurer/fig_5.png}
+\end{figure}
+\vspace{-1cm}
+
 I \autoref{fig:boxplot} presenteres et boksplott av sykefravær etter
-formuegruppe. Vi kan se at det ikke er store forskjeller i sykefraværet
-mellom formuegruppene. Medianen vises i den sorte streken i midten av
-boksen, og den viser at sykefraværet med små marginer går ned fra lav
-formue, til middels formue og til høy formue. Bunnen og toppen til
-boksene viser oss henholdsvis første og tredje kvartil, og de stiplede
-linjene viser oss minimum og maksimum sykefravær. Det er også noen
-uteliggere som er vist med små prikker, og de viser at det er noen
-respondenter som har rapportert sykefravær på over 40 prosent. Dette kan
-være at de har vært sykemeldt i en lengre periode. I bakgrunnen av
-figuren man man se alle observasjonene spredt utover for en bedre
-oversikt siden det er mange observasjoner som går over hverandre i
-boksen. Dette er gjort med en funksjon som sprer ut observasjonene litt
-for å få en bedre oversikt over dem.
+formuegrupper som er definert etter standardavvik fra gjennomsnittet. Vi
+har tre formuegrupper: lav formue (under 1 standardavvik under
+gjennomsnittet), middels formue (mellom 1 standardavvik under og over
+gjennomsnittet) og høy formue (over 1 standardavvik over
+gjennomsnittet).
+
+Vi kan se at det er en liten trend i sykefraværet etter formuegruppe,
+der de med høy formue har lavest sykefravær, mens de med lav formue har
+høyest sykefravær. Dette er i tråd med hypotesen vår om at formue kan
+påvirke sykefraværet.
+
+Medianen vises i den sorte streken i midten av boksen, og den viser at
+sykefraværet med små marginer går ned fra lav formue, til middels formue
+og til høy formue. Bunnen og toppen til boksene viser oss henholdsvis
+første og tredje kvartil, og de stiplede linjene viser oss minimum og
+maksimum sykefravær. Det er også noen uteliggere som er vist med små
+prikker, og de viser at det er noen respondenter som har rapportert
+sykefravær på over 40 prosent. Dette kan være at de har vært sykemeldt i
+en lengre periode. I bakgrunnen av figuren man man se alle
+observasjonene spredt utover for en bedre oversikt siden det er mange
+observasjoner som går over hverandre i boksen. Dette er gjort med en
+funksjon som sprer ut observasjonene litt for å få en bedre oversikt
+over dem.
+
+I analysen bruker vi ikke formuegruppene, men figuren inkluderes for å
+få en bedre oversikt over hvordan sykefraværet fordeler seg etter
+formue.
 
 \begin{figure}[H]
 \caption{Boksplott av sykefravær etter formuegruppe}
@@ -1270,20 +1240,42 @@ for å få en bedre oversikt over dem.
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_6.png}
 \end{figure}
 
+\newpage
+
 I \autoref{fig:boxplot_2} presenteres et boksplott av sykefravær etter
-utdanningsnivå. Vi ser at sykefraværet er veldig jevnt mellom
+utdanningsnivå. Vi ser at sykefraværet er relativt jevnt mellom
 utdanningsnivåene. Medianen er litt over 10 prosent, og som tidligere
 vet vi at gjennomsnittlig sykefravær er lavere for høyt utdannede og
 litt lavere for de med lavere utdanning.
 
+\vspace{-0.5cm}
 \begin{figure}[H]
 \caption{Boksplott av sykefravær etter utdanningsnivå}
 \label{fig:boxplot_2}
 \centering
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_7.png}
 \end{figure}
+\vspace{-1cm}
 
-Korrelationheatmap om vi får tid her til latente variabler.
+I \autoref{fig:kontrollvariabler} presenteres fordelingen av de
+arbeidsrelaterte variablene som inngår i de latente variablene jobbkrav
+og jobbressurser samt motivasjon. Vi ser at det er en høy andel som
+rapporterer at de har for mye arbeid, og at de jobber i et høyt tempo.
+Det er også en høy andel som rapporterer at de jobber ekstra, og
+selvbestemmelse i oppgaver og grad av arbeidstempo er ganske
+normalfordelt. Motivasjon har de fleste respondenter selvrapportert at
+de har høyt av i arbeidet.
+
+\vspace{-0.5cm}
+\begin{figure}[H]
+\caption{Fordeling av arbeidsrelaterte variabler}
+\label{fig:kontrollvariabler}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_kontrollvariabler.png}
+\end{figure}
+\vspace{-1cm}
+
+\newpage
 
 \subsection{Metode}\label{metode}
 
@@ -1330,14 +1322,13 @@ de direkte og indirekte sammenhengene mellom formue og sykefravær.
 
 Vår hovedmodell for sykefravær (\(SF_i\)) tar utgangspunkt i JD-R
 rammeverket men utvides til å inkludere formue som en direkte predikator
-og moderator, og stillignsprosent (\(SP_i\)) som en viktig
-kontrollvariabel og i interaksjon med formue. Som påpekt av
-Langseth-Eide (2019) kan et høyt antall arbeidstimer ha ulike drivere og
-utfall, og vi antar at formue kan påvirke denne dynamikken. Den utvidede
-modellen for sykefravær er:
+og moderator. Som påpekt av Langseth-Eide (2019) kan et høyt antall
+arbeidstimer ha ulike drivere og utfall, og vi antar at formue kan
+påvirke denne dynamikken. Den utvidede modellen for sykefravær er:
 
 \[
-SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i + \beta_4 (JK_i FN_i) + \beta_5 (JR_i FN_i) + \beta_6 M_i + \beta_7 (SP_i FN_i) + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i} \label{eq:sf_utvidet}
+SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i
+        + \beta_4 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i} \label{eq:sf_utvidet}
 \]
 
 Her representerer \(X_{ij}\) en vektor av kontrollvariabler som alder,
@@ -1347,7 +1338,7 @@ vise den direkte sammenhengen mellom stillingsprosent og sykefravær
 kontrollert for de andre variablene.
 
 \(\beta\) koeffisientene representerer effektene av jobbkrav,
-jobbressurser, formue, interaksjonene med formue og motivasjon
+jobbressurser, formue og motivasjon.
 
 \paragraph{\texorpdfstring{Ligning for motivasjon
 \(M_i\)}{Ligning for motivasjon M\_i}}\label{ligning-for-motivasjon-m_i}
@@ -1356,7 +1347,7 @@ Motivasjonen (\(M_i\)) antas å påvirkes av jobbressurser, formuenivå og
 kontrollvariablene \(X_{ik}\).
 
 \[
-M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \sum_k \alpha_{3k}X_{ik} + \epsilon_{2i} \tag{Motivasjon}\label{eq:motivasjon}
+M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \sum_k \alpha_{3k}X_{ik} + \epsilon_{2i} \label{eq:motivasjon}
 \]
 
 \subsubsection{Forklaring av alle deler i
@@ -1372,7 +1363,7 @@ $SF_i$ & Sykefraværsprosent for individ $i$ \\
 $SP_i$ & Sentrert stillingsprosent for individ $i$ (0 = 100\% stilling) \\
 $JD_i$ & Latent jobbkrav score (høyere = mer krav) \\
 $JR_i$ & Latent jobbressurser score (høyere = mer støtte/autonomi) \\
-$FN_i$ & Logaritmen eller prosentil rangeringen av individets (eller husholdningens) formue \\
+$FN_i$ & må endres Logaritmen eller prosentil rangeringen av individets (eller husholdningens) formue \\
 $M_i$ & Motivasjons-/engasjements score som en observert, endogen variabel \\
 $X_{ij}$ & Kontrollvariabler (alder, kjønn, utdanning …), alle gjennomsnittssentrert \\
 $\epsilon_{1i}, \epsilon_{2i}$ & Forstyrrelser (null-gjennomsnitt, ukorrelerte med prediktorer) \\  
@@ -1445,76 +1436,15 @@ luftveissykdommer). Økonomisk trygghet kan også gi bedre tilgang til
 helsetjenester og en større evne til å håndtere helseutfordringer uten å
 måtte ty til langvarig fravær.
 
-\paragraph{\texorpdfstring{Hypotese 4(H4): \(\beta_4 < 0\) Høyere
-formuenivå demper de negative effektene til høyere
-jobbkrav}{Hypotese 4(H4): \textbackslash beta\_4 \textless{} 0 Høyere formuenivå demper de negative effektene til høyere jobbkrav}}\label{hypotese-4h4-beta_4-0-huxf8yere-formuenivuxe5-demper-de-negative-effektene-til-huxf8yere-jobbkrav}
-
-Dette er en modereringshypotese. Vi tror at formue reduserer
-sensitiviteten for jobbkrav. For en person med lav formue kan høye krav
-oppleves som svært truende, da konsekvensene av å ikke mestre (for eks,
-miste jobben) er store. For en person med høy formue, gir den økonomiske
-tryggheten en mental ``pute'' som gjør at de samme kravene ikke utløser
-like mye stress. Dette er i tråd med Üngüren et al. (2021), som fant at
-økonomisk velvære fungerte som en slik buffer. Den marginale effekten av
-jobbkrav er
-\(\frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i\). En
-negativ \(\beta_4\) betyr at effekten av JK på SF blir mindre etter
-hvert som FN øker.
-
-\paragraph{\texorpdfstring{Hypotese 5(H5): \(\beta_5 > 0\) Høyere
-formuenivå demper den reduserende effekten av høyere jobbressurser på
-sykefravær}{Hypotese 5(H5): \textbackslash beta\_5 \textgreater{} 0 Høyere formuenivå demper den reduserende effekten av høyere jobbressurser på sykefravær}}\label{hypotese-5h5-beta_5-0-huxf8yere-formuenivuxe5-demper-den-reduserende-effekten-av-huxf8yere-jobbressurser-puxe5-sykefravuxe6r}
-
-Dette er vår andre modereringshypotese, basert på en antagelse om
-avtagende grensenytte. Vi antar at jobbressurser har størst relativ
-effekt for de med lav formue. For en person med lav formue og potensielt
-høy økonomisk usikkerhet, vil en økning i jobbressurser som er en
-negativ effekt på sykefravær ha en stor reduserende effekt på
-sykefravær. En person med høy formue, som allerede har høy økonomisk
-trygghet, vil den samme økningen i jobbressurser ha en mindre
-tilleggseffekt. Effekten er altså sterkest for de med lav formue, og
-blir svakere jo høyere formuen blir. Den marginale effekten av
-jobbressurser er
-\(\frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i\). Siden
-\(\beta_2 < 0\) er negativ, vil en positiv \(\beta_5\) gjøre den totale
-effekten mindre negativ etter hvert som \(FN_i\) øker.
-
-\paragraph{\texorpdfstring{Hypotese 6(H6): Indirekte effekt via
-motivasjon
-\(\alpha_2\beta_6 < 0\)}{Hypotese 6(H6): Indirekte effekt via motivasjon \textbackslash alpha\_2\textbackslash beta\_6 \textless{} 0}}\label{hypotese-6h6-indirekte-effekt-via-motivasjon-alpha_2beta_6-0}
-
-Vi forventer en indirekte vei der formue påvirker sykefravær gjennom
-motivasjon. Som nevnt AUTOREF, forventer vi at høyere formue øker
-motivasjonen \(\alpha_2 > 0\) som ved å redusere finansiell usikkerhet,
-og gode fremtidsutsikter. Videre forventer vi at høyere
-motivasjon/engasjement reduserer sykefraværet (\(\beta_6 <0\)), slik
-Langseth-Eide \& Vittersø (2021) fant. Samlet sett gir dette en
-forventning om en negativ indirekte effekt \(\alpha_2 \beta_6 <0\), som
-betyr at en del av formues positive effekt på helse/nærvær går via økt
-arbeidsglede og engasjement som igjen gir lavere sykefravær.
-
-\paragraph{\texorpdfstring{Hypotese 7(H7): Effekten av stillingsprosent
-på sykefravær modereres av formue
-\(\beta_7 < 0\)}{Hypotese 7(H7): Effekten av stillingsprosent på sykefravær modereres av formue \textbackslash beta\_7 \textless{} 0}}\label{hypotese-7h7-effekten-av-stillingsprosent-puxe5-sykefravuxe6r-modereres-av-formue-beta_7-0}
-
-Vi antar at sammenhengen mellom arbeidstimer representert ved
-stillingsprosent, \(SP_i\) og sykefravær, \(SF_i\), ikke er lik for alle
-formuesnivåer. For eksempel kan en høy stillingsprosent ha en sterkere
-positiv effekt på sykefravær (mer slitasje) for de med lav formue, som
-kanskje har mindre mulighet til restitusjon eller opplever arbeidet som
-mer påtvunget. For de med høy formue kan en høy stillingsprosent enten
-ha en svakere effekt, eller så kan de i større grad velge jobber med
-mange timer som også gir andre kompenserende faktorer. Vi forventer
-derfor at \(\beta_7\) vil være signifikant. Vi antar at hovedeffekten av
-stillingsprosent på sykefravær representert ved \(\gamma_{SP}\) i
-\(\Sigma_j \gamma_{j}X_{ij}\)) er positiv og at høy formue demper denne
-positive effekten ved \(\beta_7 < 0\).
-
-\includegraphics{BACHELOR-SKRIVING-DANIEL-V2_files/figure-pdf/unnamed-chunk-19-1.pdf}
+\clearpage
 
 \newpage
 
 \section{Analyse}\label{analyse}
+
+forklare estimator = ``WLSMV'', parameterization = ``theta'',
+
+forklare hva tallene i tabellen betyr etter transformasjonene
 
 \subsubsection{Tabell med resultat fra
 regresjonsanalysen(e)}\label{tabell-med-resultat-fra-regresjonsanalysene}
@@ -1538,7 +1468,7 @@ Andre muligheter kan diskuteres med veilederen.
 
 \subsection{Tabeller}\label{tabeller}
 
-\subsection{Figurer}\label{figurer}
+\subsection{Figurer}\label{figurer-1}
 
 \subsection{Forklaring av tabeller og
 figurer}\label{forklaring-av-tabeller-og-figurer}
@@ -1589,53 +1519,6 @@ så formue har effekt på hvor mye utdanning du har. formue har effekt på
 hvilken motivasjon du har. formue har effekt på m som er annen inntekt
 utenom jobb.
 
-Kapitalinntekter som rente/aksje osv i forhold til bruttofinanskapital i
-alt. kan det være at de med høy formue utenom bolig da har mer andre
-inntekter, eller at høy formue bare er lik bolig for mange.
-
-\subsubsection{Hvis vi har tid, liten potentiell forklaringsdel til valg
-av fritid ved høy formue og annen
-inntekt}\label{hvis-vi-har-tid-liten-potentiell-forklaringsdel-til-valg-av-fritid-ved-huxf8y-formue-og-annen-inntekt}
-
-g = formue, j = alder, k = utdanning, l = motivasjon
-
-\begin{itemize}
-\tightlist
-\item
-  v = dummyvariabel
-\end{itemize}
-
-\[
-t^a = h^* - \alpha w - \beta(m(g) + h^*w) - (k\cdot v+j\cdot v)
-\]
-
-Dummy variabler for ulike aldersgrupper. beholde en ligning for alle men
-da bruke de dummyvariablene. dermed kunne tolke bare en variabel.
-
-forskjellige typer inntekt påvirke forskjellig i m variabelen.
-
-Kanskje en form for ``intensitet'' i hvor sensitiv du er.
-
-Jeg tror formue spiller inn til hvor sensitiv du er til endringer i
-inntekt. Altså ditt konsumnnivå eller etterspurt fritid endrer seg ulikt
-basert på om du har mye formue eller ikke. Dette kan være fordi du har
-mer buffer til å tåle endringer i inntekt.
-
-trur vi blir å få noe bue på den effekten. fattige, vanlige, rike,
-megarike vil ha ulik effekt av motivasjon og sånt. e du megarik så har
-det jo ingenting og si, e du syk eller vil ta fri så blir du hjemme, men
-samtidig så vil du kanskje være spesielt sensitiv om du e fattig og at
-om du da e syk eller vil ta fri så vil du både ha dårligere utgangspunkt
-i jobbtype og sånt, og også kunne rett å slett være mer syk
-
-mens de i midten rundt ``vanlige'' mot bare rike kan ha 0 effekt, men
-kommer vel an på kor mye man ska mene formue har å si til hvor sensitiv
-du er til endringer eller potentielle endringer i inntekt derfor æ
-tenkte å bare ha det til å være en funksjon av formue kunne være enklere
-motivasjon og sånt altså både på bunn og på topp så vil du også ha økt
-den stygge m'en ved at du får statlige overføringe som fattig men mye
-kapitalfortjeneste som rik
-
 Dette kapitlet drøfter resultatene i forhold til problemstillingen. Hva
 er funnet ut av, hva gjenstår, hvilke styrker og svakheter har analysen?
 
@@ -1650,6 +1533,16 @@ funn/teori}\label{diskusjon-av-hvilke-konklusjoner-som-kan-trekkes-fra-dette-og-
 \subsubsection{Diskusjon av svakheter i
 analysen}\label{diskusjon-av-svakheter-i-analysen}
 
+omskrive dette for å være i diskusjonskapittelet til hva som kan være
+for videre forskning. se på hvilken teori som er vært nevn tidligere i
+teksten. og skriv det med min skrivestil
+
+omskrive dette for å være i diskusjonskapittelet til hva som kan være
+for videre forskning. se på hvilken teori som er vært nevn tidligere i
+teksten. og skriv det med min skrivestil. Dette er ikke lengere hyptoser
+men har vært droppet fra vår bacheloroppgave. det står hypotese og beta
+fra før det ble droppet
+
 Vi tror at formue potensielt har effekt på avtalte timer også, som da
 vil ha en effekt på sykefravær siden avtalte timer er endret. Men at
 dette er en mer kompleks sammenheng som vi ikke har undersøkt utenom
@@ -1659,6 +1552,68 @@ I \autoref{sec-formue-jdr} forteller vi at effekten av formue på
 sykefravær kan være ikke-lineær, og at det kan være en bueformet
 sammenheng. Dette er ikke fanget opp i H1-H6 hvor vi antar lineære
 interaksjoner som er en begrensning i modellen.
+
+\paragraph{omskrivings}\label{omskrivings}
+
+Vi tror at effekten av stillingsprosent på sykefravær modereres av
+formue \(\beta_7 < 0\)
+
+Vi antar at sammenhengen mellom arbeidstimer representert ved
+stillingsprosent, \(SP_i\) og sykefravær, \(SF_i\), ikke er lik for alle
+formuesnivåer. For eksempel kan en høy stillingsprosent ha en sterkere
+positiv effekt på sykefravær (mer slitasje) for de med lav formue, som
+kanskje har mindre mulighet til restitusjon eller opplever arbeidet som
+mer påtvunget. For de med høy formue kan en høy stillingsprosent enten
+ha en svakere effekt, eller så kan de i større grad velge jobber med
+mange timer som også gir andre kompenserende faktorer. Vi forventer
+derfor at \(\beta_7\) vil være signifikant. Vi antar at hovedeffekten av
+stillingsprosent på sykefravær representert ved \(\gamma_{SP}\) i
+\(\Sigma_j \gamma_{j}X_{ij}\)) er positiv og at høy formue demper denne
+positive effekten ved \(\beta_7 < 0\).
+
+Hypotese 4(H4): Indirekte effekt via motivasjon \(\alpha_2\beta_6 < 0\)
+
+Vi forventer en indirekte vei der formue påvirker sykefravær gjennom
+motivasjon. Som nevnt AUTOREF, forventer vi at høyere formue øker
+motivasjonen \(\alpha_2 > 0\) som ved å redusere finansiell usikkerhet,
+og gode fremtidsutsikter. Videre forventer vi at høyere
+motivasjon/engasjement reduserer sykefraværet (\(\beta_6 <0\)), slik
+Langseth-Eide \& Vittersø (2021) fant. Samlet sett gir dette en
+forventning om en negativ indirekte effekt \(\alpha_2 \beta_6 <0\), som
+betyr at en del av formues positive effekt på helse/nærvær går via økt
+arbeidsglede og engasjement som igjen gir lavere sykefravær.
+
+Hypotese 4(H4): \(\beta_4 < 0\) Høyere formuenivå demper de negative
+effektene til høyere jobbkrav
+
+Dette er en modereringshypotese. Vi tror at formue reduserer
+sensitiviteten for jobbkrav. For en person med lav formue kan høye krav
+oppleves som svært truende, da konsekvensene av å ikke mestre (for eks,
+miste jobben) er store. For en person med høy formue, gir den økonomiske
+tryggheten en mental ``pute'' som gjør at de samme kravene ikke utløser
+like mye stress. Dette er i tråd med Üngüren et al. (2021), som fant at
+økonomisk velvære fungerte som en slik buffer. Den marginale effekten av
+jobbkrav er
+\(\frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i\). En
+negativ \(\beta_4\) betyr at effekten av JK på SF blir mindre etter
+hvert som FN øker.
+
+\(\beta_5 > 0\) Høyere formuenivå demper den reduserende effekten av
+høyere jobbressurser på sykefravær
+
+Dette er vår andre modereringshypotese, basert på en antagelse om
+avtagende grensenytte. Vi antar at jobbressurser har størst relativ
+effekt for de med lav formue. For en person med lav formue og potensielt
+høy økonomisk usikkerhet, vil en økning i jobbressurser som er en
+negativ effekt på sykefravær ha en stor reduserende effekt på
+sykefravær. En person med høy formue, som allerede har høy økonomisk
+trygghet, vil den samme økningen i jobbressurser ha en mindre
+tilleggseffekt. Effekten er altså sterkest for de med lav formue, og
+blir svakere jo høyere formuen blir. Den marginale effekten av
+jobbressurser er
+\(\frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i\). Siden
+\(\beta_2 < 0\) er negativ, vil en positiv \(\beta_5\) gjøre den totale
+effekten mindre negativ etter hvert som \(FN_i\) øker.
 
 \subsubsection{Diskusjon av implikasjoner for policy gitt
 svakheter}\label{diskusjon-av-implikasjoner-for-policy-gitt-svakheter}
