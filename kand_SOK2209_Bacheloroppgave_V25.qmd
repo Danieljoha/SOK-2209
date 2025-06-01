@@ -443,6 +443,20 @@ NSD3201 <- NSD3201 %>%
   QPS15_ny %in% entil5,
   QPS14_ny %in% entil5,
   Sp47f %in% entil5) %>% 
+  mutate(
+    SpMotEng_ny = 6 - SpMotEng_ny,
+    Sp59g = 6 - Sp59g,
+    QPS72_ny = 6 - QPS72_ny,
+    QPS73_ny = 6 - QPS73_ny,
+    Raad3a_ny = 6 - Raad3a_ny,
+    QPS78_ny = 6 - QPS78_ny,
+    Sp56a2 = 6 - Sp56a2,
+    Sp56b2 = 6 - Sp56b2,
+    QPS47 = 6 - QPS47,
+    QPS53 = 6 - QPS53,
+    QPS15_ny = 6 - QPS15_ny,
+    QPS14_ny = 6 - QPS14_ny,
+    Sp47f = 6 - Sp47f) %>% 
   transmute(
     # Avhengig, hoveduavhengig og kontrollvariabler
     sykefravaer_2022 = sykefravaer_2022,
@@ -450,22 +464,22 @@ NSD3201 <- NSD3201 %>%
     Formue = agg_f_08,
     Alder = kullaldr,
     Utdanning = utdnivaa,
-    Kjønn = Kjonn,
+    Kjonn = Kjonn,
     Tilfredshet = Sp59g,
     Motivasjon = SpMotEng_ny,
     Barn = barn05,
     # Jobbressurser
-    Støtte_sjef = QPS72_ny,
-    Støtte_kollega = QPS73_ny,
+    Stotte_sjef = QPS72_ny,
+    Stotte_kollega = QPS73_ny,
     Tilbakemelding_sjef = Raad3a_ny,
     Arbeidsresultater = QPS78_ny,
     Grad_selvbestemming_oppgaver = Sp56a2,
-    Grad_selvbestemming_arbeid_som_skal_gjøres = Sp56b2,
+    Grad_selvbestemming_arbeid_som_skal_gjores = Sp56b2,
     Grad_arbeidstempo = QPS47,
-    Grad_påvirke_beslutning_arbeid = QPS53,
+    Grad_pavirke_beslutning_arbeid = QPS53,
     # Jobbkrav
     For_mye_arbeid = QPS15_ny,
-    Høyt_arbeidstempo = QPS14_ny,
+    Hoyt_arbeidstempo = QPS14_ny,
     Ekstra_arbeid = Sp47f,
     arb_stillingspst = arb_stillingspst,
     sfdagsvj_2022 = sfdagsvj_2022,
@@ -524,7 +538,7 @@ NSD3201 <- NSD3201 %>%
 
 # Fikser Kjønn variabelen fra 1 og 2 til dummy
 NSD3201 <- NSD3201 %>%
-  mutate(Kvinne = if_else(Kjønn == 2, 1L, 0L))
+  mutate(Kvinne = if_else(Kjonn == 2, 1L, 0L))
 
 
 
@@ -549,7 +563,7 @@ NSD3201 <- NSD3201 %>%
 
 NSD3201 <- NSD3201 %>%
   mutate(
-    kjønn_f = factor(Kjønn,
+    kjonn_f = factor(Kjonn,
                      levels = c(1, 2),
                      labels = c("Menn", "Kvinner"))
     )
@@ -705,11 +719,11 @@ Av de opprinnelig 17971 inviterte respondentene i datasettet så fullførte kun 
 # Deskriptiv statistikk
 
 # NSD3201 %>%
-#   select(sykefravaer_2022, Alder, Utdanning, Kjønn, Tilfredshet, Motivasjon, Barn,
-#          Støtte_sjef, Støtte_kollega, Tilbakemelding_sjef, Arbeidsresultater,
-#          Grad_selvbestemming_oppgaver, Grad_selvbestemming_arbeid_som_skal_gjøres,
-#          Grad_arbeidstempo, Grad_påvirke_beslutning_arbeid,
-#          For_mye_arbeid, Høyt_arbeidstempo, Ekstra_arbeid) %>%
+#   select(sykefravaer_2022, Alder, Utdanning, Kjonn, Tilfredshet, Motivasjon, Barn,
+#          Stotte_sjef, Stotte_kollega, Tilbakemelding_sjef, Arbeidsresultater,
+#          Grad_selvbestemming_oppgaver, Grad_selvbestemming_arbeid_som_skal_gjores,
+#          Grad_arbeidstempo, Grad_pavirke_beslutning_arbeid,
+#          For_mye_arbeid, Hoyt_arbeidstempo, Ekstra_arbeid) %>%
 #   summary()
 ```
 
@@ -808,12 +822,12 @@ I \autoref{tab:deskr_kjonn} presenteres deskriptiv statistikk for sykefravær et
 tabell<-NSD3201 %>%
   # 1) Lag om kjonn til faktor med labels
   mutate(
-    kjønn_f = factor(Kjønn,
+    kjonn_f = factor(Kjonn,
                      levels = c(1, 2),
                      labels = c("Mann", "Kvinne"))
   ) %>%
   # 2) Gruppér og summer opp
-  group_by(kjønn_f) %>%
+  group_by(kjonn_f) %>%
   summarise(
     N       = n(),
     pct     = round(N / nrow(NSD3201) * 100, 1),
@@ -934,7 +948,7 @@ fig_1 <- NSD3201 %>%
   ggplot(aes(x = sykefravaer_2022)) +
   geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", alpha=0.8, color = "black") +
   geom_density(color = "red", linewidth = 1) +
-  facet_wrap(~ kjønn_f, ncol = 1) +
+  facet_wrap(~ kjonn_f, ncol = 1) +
   labs(title = "",
        x = "Sykefravær i prosent",
        y = "Tetthet") +
@@ -979,14 +993,14 @@ ggsave("dokumentobjekter/figurer/fig_1.png", plot = fig_1, width = 8, height = 5
 # Histogram/densityplot av alder inkl median og kvartilmarkører
 
 median_alder <- NSD3201 %>%
-  group_by(kjønn_f) %>%
+  group_by(kjonn_f) %>%
   summarise(med = median(Alder, na.rm = TRUE))
 
 fig_2 <- NSD3201 %>% 
   ggplot(aes(x = Alder)) +
   geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", alpha=0.8, color = "black") +
   geom_density(color = "red", linewidth = 1) +
-  facet_wrap(~ kjønn_f, ncol = 1) +
+  facet_wrap(~ kjonn_f, ncol = 1) +
   labs(title = "",
        x = "Alder",
        y = "Tetthet") +
@@ -1075,7 +1089,7 @@ fig_4_1 <- NSD3201 %>%
   ggplot(aes(x = Formue)) +
   geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", color = "black") +
   geom_density(color = "red", linewidth = 1) +
-  facet_wrap(~ kjønn_f, ncol = 1) +
+  facet_wrap(~ kjonn_f, ncol = 1) +
   labs(title = "",
        x = "Formue (Bruttofinanskapital)",
        y = "Antall") +
@@ -1095,7 +1109,7 @@ fig_4_2 <- NSD3201 %>%
   mutate(Formue_qnorm = qnorm(rank(Formue, ties.method = "average") / (n() + 1))) %>% 
   ggplot(aes(x = Formue_qnorm)) +
   geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", color = "black") +
-  facet_wrap(~ kjønn_f, ncol = 1) +
+  facet_wrap(~ kjonn_f, ncol = 1) +
   labs(title = "",
        x = "Formue (Bruttofinanskapital)",
        y = "Tetthet") +
@@ -1147,20 +1161,20 @@ Vi har da $n_{lav} = 1160$, $n_{middels} = 5172$ og $n_{høy} = 1166$. Den laves
 # Søylediagram for kategoriske variabler samlet for kjønn, utdanning og formuegrupper
 
 df_long <- NSD3201 %>%
-  dplyr::select(Formue_grupper, Utdanning_grupper, kjønn_f) %>%
+  dplyr::select(Formue_grupper, Utdanning_grupper, kjonn_f) %>%
   pivot_longer(
     cols      = c(Formue_grupper, Utdanning_grupper),
     names_to  = "variabel",
     values_to = "kategori"
   ) %>%
-  count(variabel, kjønn_f, kategori) %>%
-  group_by(variabel, kjønn_f) %>%
+  count(variabel, kjonn_f, kategori) %>%
+  group_by(variabel, kjonn_f) %>%
   mutate(
     pct = n / sum(n) * 100
   ) %>%
   ungroup()
 
-fig_5 <- ggplot(df_long, aes(x = kategori, y = pct, fill = kjønn_f)) +
+fig_5 <- ggplot(df_long, aes(x = kategori, y = pct, fill = kjonn_f)) +
   geom_col(position = position_dodge(width = 0.9),color="black") +
   geom_text(aes(label = paste0(round(pct, 1), "%")),
             position = position_dodge(width = 0.8),
@@ -1446,8 +1460,29 @@ Vi antar at sammenhengen mellom arbeidstimer representert ved stillingsprosent, 
 
 
 ```{r}
-#LAVAAN BEGINS HERE WITH SEM PLS GEMINI
 
+
+
+
+#LAVAAN BEGINS HERE WITH SEM PLS GEMINI
+NSD3201 %>%
+  dplyr::select(For_mye_arbeid, Hoyt_arbeidstempo, Ekstra_arbeid,
+         Stotte_sjef, Stotte_kollega, Tilbakemelding_sjef, Arbeidsresultater,
+         Grad_selvbestemming_oppgaver, Grad_selvbestemming_arbeid_som_skal_gjores,
+         Grad_arbeidstempo, Grad_pavirke_beslutning_arbeid, Motivasjon) %>%
+  pivot_longer(
+    cols      = everything(),
+    names_to  = "variabel",
+    values_to = "verdi"
+  ) %>%
+  ggplot(aes(x = verdi)) +
+  geom_bar(aes(y = (..count..)/sum(..count..)), fill = "steelblue", color = "black") +
+  facet_wrap(~ variabel, scales = "free_x") +
+  labs(title = "Fordeling av arbeidsrelaterte variabler",
+       x = "",
+       y = "Andel") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 

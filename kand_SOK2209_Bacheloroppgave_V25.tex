@@ -1102,6 +1102,27 @@ som gjenspeiles i grafen. Det er vanskelig å se, men det er også noen
 uteliggere hvor flere respondenter har mer enn 40 prosent sykefravær på
 både menn og kvinner.
 
+\paragraph{KODE for sykefraværprosent logtransform med og uten 0
+sykefravær}\label{kode-for-sykefravuxe6rprosent-logtransform-med-og-uten-0-sykefravuxe6r}
+
+I 2022 var det \(n=et tall\) som hadde 0\% sykefravær, dette gjør at vår
+fordeling er tydelig høyreskjev. Når vi gjennomfører vår SEM analyse så
+vil gi gjøre dette for når vi tar med og uten 0\% sykefravær. Når vi
+logtransformerer sykefraværet uten 0 verdiene så får vi en tilnærmet
+normalfordelt fordeling, mens når vi tar med 0 verdiene så får vi en
+høyreskjev fordeling. Dette er viktig å være oppmerksom på når vi
+gjennomfører vår SEM analyse, da det kan påvirke resultatene våre.
+
+\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-9-1.pdf}
+
+med de med 0, logtransformert med +0.01
+
+\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-10-1.pdf}
+
+Uten de med 0 sykefravær, logtransformert.
+
+\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-11-1.pdf}
+
 \begin{figure}[H]
 \caption{Histogram og tetthetskurve for sykefravær i 2022}
 \label{fig:histogram}
@@ -1122,16 +1143,10 @@ som er på 43 år for menn og 44 år for kvinner.
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_2.png}
 \end{figure}
 
-For analysen så har vi fordelt alder inn i breddeintervaller på omtrent
-10 år, og aldersgruppene er delt inn i 18-29, 30-55 og 55-66 år. I
-\autoref{fig:barplot} presenteres et barplot av aldersgruppene. Vi ser
-at det er flest respondenter i aldersgruppen 50-59 år med 27.4 prosent,
-og at det er færrest respondenter i aldersgruppen 60-66 år med 8.3
-prosent. Dette fordi det er aldersgruppen som er fordelt inn i det
-laveste breddeintervallet. Ellers er det jevnt fordelt mellom de andre
-aldersgruppene, der aldersgruppen 40-49 år har 22.7 prosent,
-aldersgruppen 30-39 år har 23.5 prosent og aldersgruppen 18-29 år har
-17.9 prosent.
+For analysen så har vi fordelt alder inn i tre breddeintervaller på
+18-29, 30-55 og 55-66 år. I \autoref{fig:barplot} presenteres et barplot
+av aldersgruppene. Vi har flest respondenter i aldersgruppen 30-54 år
+med 60.1 prosent som vi bruker som referansegruppe.
 
 \begin{figure}[H]
 \caption{Aldersgruppefordeling}
@@ -1153,17 +1168,14 @@ aldersgruppen 30-39 år har 23.5 prosent og aldersgruppen 18-29 år har
     \label{fig:histogram_formue_fordeling}
 \end{wrapfigure}
 
-I \autoref{fig:histogram_formue} presenteres histogram og tetthetskurve
-for bruttofinanskapitalen log-transformert \((1 + x)\) \footnote{Log
-  \((1 + x)\) er en vanlig transformasjon for å håndtere høyreskjevhet i
-  data, og det kan bidra til å stabilisere variansen og gjøre dataene
-  mer normale. Logaritmen gjør at de store verdiene blir mindre og de
-  små verdiene blir større.}. Originalt er formuefordelingen høyreskjev,
-med en høyere andel av respondentene som har lav formue enn de som har
-høy formue noe som kan svekke analysen. Derfor må vi log-transformere
-formuefordelingen for å få en mer normalfordelt fordeling både for menn
-og kvinner. Når man log-transformerer \((1 + x)\) så tar vi logaritmen
-av formueverdiene og legger til 1 for å unngå problemer med nullverdier.
+\#måfiks I \autoref{fig:histogram_formue} presenteres histogram og
+tetthetskurve for bruttofinanskapitalen log-transformert \((1 + x)\)
+{[}\^{}8{]}. Originalt er formuefordelingen høyreskjev, med en høyere
+andel av respondentene som har lav formue enn de som har høy formue noe
+som kan svekke analysen. Derfor må vi log-transformere formuefordelingen
+for å få en mer normalfordelt fordeling både for menn og kvinner. Når
+man log-transformerer \((1 + x)\) så tar vi logaritmen av formueverdiene
+og legger til 1 for å unngå problemer med nullverdier.
 
 Vi har da \(n_{lav} = 1160\), \(n_{middels} = 5172\) og
 \(n_{høy} = 1166\). Den laveste gruppen har formue fra \(0 - 30000\),
@@ -1172,12 +1184,7 @@ gruppen har formue fra \(850000 - 2500000\). Dette gir oss en god
 fordeling av formuegruppene, og vi kan se om det er forskjeller i
 sykefravær mellom de forskjellige gruppene.
 
-\begin{figure}[H]
-\caption{Fordeling av log-transformert bruttofinanskapital}
-\label{fig:histogram_formue}
-\centering
-\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_4.png}
-\end{figure}
+\newpage
 
 Når vi ser på fordelingen av formue- og utdanningsgrupper fordelt på
 kjønn i \autoref{fig:barplot_2} så ser vi at det er flest kvinner i
@@ -1190,9 +1197,9 @@ i den samme utdanningsgruppen. Dette viser oss at menn har lavere
 utdanningsnivå enn kvinner, og at kvinner er mer tilbøyelige til å ta
 høyere utdanning enn menn.
 
-Formuefordelingen er delt inn i tertiler, som gjør slik at fordelingen
-blir jevnt blant de forskjellige formuegruppene både for menn og
-kvinner.
+\#MÅfiks Formuefordelingen er delt inn i tertiler, som gjør slik at
+fordelingen blir jevnt blant de forskjellige formuegruppene både for
+menn og kvinner.
 
 \begin{figure}[H]
 \caption{Fordeling av formue- og utdanningsgrupper fordelt på kjønn}
@@ -1238,27 +1245,6 @@ litt lavere for de med lavere utdanning.
 
 Korrelationheatmap om vi får tid her til latente variabler.
 
-\paragraph{KODE for sykefraværprosent logtransform med og uten 0
-sykefravær}\label{kode-for-sykefravuxe6rprosent-logtransform-med-og-uten-0-sykefravuxe6r}
-
-I 2022 var det \(n=et tall\) som hadde 0\% sykefravær, dette gjør at vår
-fordeling er tydelig høyreskjev. Når vi gjennomfører vår SEM analyse så
-vil gi gjøre dette for når vi tar med og uten 0\% sykefravær. Når vi
-logtransformerer sykefraværet uten 0 verdiene så får vi en tilnærmet
-normalfordelt fordeling, mens når vi tar med 0 verdiene så får vi en
-høyreskjev fordeling. Dette er viktig å være oppmerksom på når vi
-gjennomfører vår SEM analyse, da det kan påvirke resultatene våre.
-
-\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-16-1.pdf}
-
-med de med 0, logtransformert med +0.01
-
-\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-17-1.pdf}
-
-Uten de med 0 sykefravær, logtransformert.
-
-\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-18-1.pdf}
-
 \subsection{Metode}\label{metode}
 
 I oppgaven vil vi bruke en kvantitativ metode for å analysere
@@ -1268,8 +1254,8 @@ for andre relevante faktorer som kan påvirke sykefraværet. SEM er en
 statistisk metode som gjør det mulig å teste komplekse modeller med
 flere variabler, og som kan håndtere både direkte og indirekte
 sammenhenger mellom variablene. Vi vil bruke R for å gjennomføre
-analysen, og vi vil bruke pakker som x og x for å implementere
-SEM-modellen.
+analysen, og vi vil bruke pakker som Lavaan og Semtools for å
+implementere SEM-modellen.
 
 \subsection{Structural Equation Model
 (SEM)}\label{structural-equation-model-sem}
@@ -1373,55 +1359,18 @@ det ikke er mulig å bli økonomisk trygg som kan oppstå ved stor ulikhet
 Gesiarz et al. (2020), og at du dermed kan styrke den indre motivasjonen
 for arbeidet.
 
-\subsubsection{Hovedmodell for sykefravær
-(SF)}\label{hovedmodell-for-sykefravuxe6r-sf}
+\paragraph{Endring av variabler}\label{endring-av-variabler}
 
-Vi antar at sykefraværet (SF) i hovedsak påvirkes av:
+De ordinale variablene har en skala fra 1-5, hvor 1 ofte er en form for
+``oftest'' eller ``veldig fornøyd'', og 5 er ``aldri'' eller ``veldig
+misfornøyd''.
 
-Jobbkrav (JK) (effekten av arbeidsbelastning),
-
-Motivasjon (M) (som en mekanisme/medierende faktor),
-
-Formuenivå (FN) (som hovedprediktor og også direkte påvirker SF),
-
-Så kan vi ha en X som er en mengde kontrollvariabler som for eksempel
-avtalte dager, demografi, arbeidsrelaterte forhold osv.
-
-\[
-SF_i = \beta_0 + \beta_1 JK_i + \beta_2 M_i + \beta_3 FN_i + \Sigma_j \beta_{4j}X_{ij} + \epsilon_{1i}
-\]
-
-Der \(i\) er individet, \(\beta_0\) er konstanten, \(\beta_1\),
-\(\beta_2\), \(\beta_3\) er koeffisientene for henholdsvis jobbkrav,
-motivasjon og formuenivå, \(\Sigma_j \beta_{4j}X_{ij}\) fanger opp
-effekter av eventuelle kontrollvariabler, \(\epsilon_{1i}\) er
-feilleddet.
-
-Denne likningen innebærer at formuenivået ikke bare antas å ha en
-direkte effekt på sykefravær, men via motivasjon så kan effekten også gå
-via en indirekte kanal.
-
-\subsubsection{Ligning for motivasjon
-(M)}\label{ligning-for-motivasjon-m}
-
-Motivasjonen antas å bli påvirket av:
-
-Jobbressurser (JR) (dvs. støtte og autonomi i arbeidet),
-
-Formuenivå (FN) (som antas å påvirke hvor sensitiv man er for endringer
-i inntekt -- dvs. hvordan man prioriterer fritid/arbeid),
-
-X er kontrollvariabler som f.eks. utdanning eller andre relevante
-demografiske/yrkesmessige mål.
-
-\[
-M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i}
-\]
-
-Der \(\alpha_0\) er konstanten, \(\alpha_1\) og \(\alpha_2\) er
-koeffisientene for henholdsvis jobbressurser og formuenivå,
-\(\Sigma_k \alpha_{3k}X_{ik}\) fanger opp effekter av eventuelle
-kontrollvariabler, \(\epsilon_{2i}\) er feilleddet.
+Vi snur om på skalaen til de negative variablene fordi skalaen til
+variabler som hvor fornøyd vil si at 1 er ofte veldig fornøyd, og 5
+tilsier veldig misfornøyd, mens på foreks for mye å gjøre, så vil 1
+tilsi daglig og 5 tilsi aldri. Som vi ser i REFERER TIL fordeling av
+arbeidsrelaterte variabler så vil det være enklere å tolke resultatene
+når vi har en skala som er lik for alle variablene.
 
 \subsubsection{Hypoteser}\label{sec-hypot}
 
