@@ -80,6 +80,27 @@ Vi vil takke vår veileder Espen Sirnes for strålende veiledning og flotte samt
 
 Sammendrag her
 
+
+
+
+kl 12, droppe h7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \newpage
 
 ```{r, output=FALSE, message=FALSE}
@@ -97,6 +118,8 @@ library(rjstat)
 library(readr)
 library(lavaan)
 library(semPlot)
+library(semTools)
+library(fastDummies)
 ```
 
 ```{r}
@@ -353,41 +376,6 @@ Modellen vi blir å bruke blir da som følger:
 I modellen vår (\autoref{fig:jdr_tikz}) har vi inkludert formue som en moderator som påvirker både jobbkrav og jobbressurser. Dette betyr at formue kan endre hvordan jobbkrav og jobbressurser påvirker sykefraværet. Vi har også separate motivasjonsløp for jobbkrav og jobbressurser, som gjør at vi kan se hvordan motivasjon påvirkes av begge disse faktorene. Vi antar at formuen blir å fungere som en stress-avlastning eller buffer mot jobbkravene og forsterke effekten av jobbressurser, og fungere som en psykologisk trygghet. Dette kan føre til at personer med høyere formue opplever lavere sykefravær, mens de med lavere formue kan oppleve høyere sykefravær på grunn av økt stress og lavere tilgang til ressurser.
 
 
-### Hovedmodell for sykefravær (SF)
-
-Vi antar at sykefraværet (SF) i hovedsak påvirkes av:
-
-Jobbkrav (JK) (effekten av arbeidsbelastning),
-
-Motivasjon (M) (som en mekanisme/medierende faktor),
-
-Formuenivå (FN) (som hovedprediktor og også direkte påvirker SF),
-
-Så kan vi ha en X som er en mengde kontrollvariabler som for eksempel avtalte dager, demografi, arbeidsrelaterte forhold osv.
-
-$$
-SF_i = \beta_0 + \beta_1 JK_i + \beta_2 M_i + \beta_3 FN_i + \Sigma_j \beta_{4j}X_{ij} + \epsilon_{1i}
-$$
-
-Der $i$ er individet, $\beta_0$ er konstanten, $\beta_1$, $\beta_2$, $\beta_3$ er koeffisientene for henholdsvis jobbkrav, motivasjon og formuenivå, $\Sigma_j \beta_{4j}X_{ij}$ fanger opp effekter av eventuelle kontrollvariabler, $\epsilon_{1i}$ er feilleddet.
-
-Denne likningen innebærer at formuenivået ikke bare antas å ha en direkte effekt på sykefravær, men via motivasjon så kan effekten også gå via en indirekte kanal.
-
-### Ligning for motivasjon (M)
-
-Motivasjonen antas å bli påvirket av:
-
-Jobbressurser (JR) (dvs. støtte og autonomi i arbeidet),
-
-Formuenivå (FN) (som antas å påvirke hvor sensitiv man er for endringer i inntekt – dvs. hvordan man prioriterer fritid/arbeid),
-
-X er kontrollvariabler som f.eks. utdanning eller andre relevante demografiske/yrkesmessige mål.
-
-$$
-M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i}
-$$
-
-Der $\alpha_0$ er konstanten, $\alpha_1$ og $\alpha_2$ er koeffisientene for henholdsvis jobbressurser og formuenivå, $\Sigma_k \alpha_{3k}X_{ik}$ fanger opp effekter av eventuelle kontrollvariabler, $\epsilon_{2i}$ er feilleddet.
 
 ### Hypoteseliste
 
@@ -424,6 +412,17 @@ Statistisk sentralbyrå har gjennomført levekårsundersøkelser siden 1973. Lev
 ```{r}
 
 
+
+
+
+
+
+
+
+
+entil5 <- c(1, 2, 3, 4, 5)
+
+
 NSD3201 <- NSD3201 %>%
     mutate(
     sfdagsvj_2022 = if_else(!is.na(mdagsv_2022) & is.na(sfdagsvj_2022), 0, sfdagsvj_2022),
@@ -431,10 +430,23 @@ NSD3201 <- NSD3201 %>%
     sfdagsvj_2023 = if_else(!is.na(mdagsv_2023) & is.na(sfdagsvj_2023), 0, sfdagsvj_2023), 
     sykefravaer_2023 = sfdagsvj_2023 / mdagsv_2023,
     arb_stillingspst = if_else(is.na(arb_stillingspst), 0, arb_stillingspst)) %>%
+  filter(SpMotEng_ny %in% entil5,
+  Sp59g %in% entil5,
+  QPS72_ny %in% entil5,
+  QPS73_ny %in% entil5,
+  Raad3a_ny %in% entil5,
+  QPS78_ny %in% entil5,
+  Sp56a2 %in% entil5,
+  Sp56b2 %in% entil5,
+  QPS47 %in% entil5,
+  QPS53 %in% entil5,
+  QPS15_ny %in% entil5,
+  QPS14_ny %in% entil5,
+  Sp47f %in% entil5) %>% 
   transmute(
     # Avhengig, hoveduavhengig og kontrollvariabler
-    Sykefravær_2022 = sykefravaer_2022,
-    Sykefravær_2023 = sykefravaer_2023,
+    sykefravaer_2022 = sykefravaer_2022,
+    sykefravaer_2023 = sykefravaer_2023,
     Formue = agg_f_08,
     Alder = kullaldr,
     Utdanning = utdnivaa,
@@ -463,38 +475,58 @@ NSD3201 <- NSD3201 %>%
   #fjerner NA verdier
   drop_na()
 
-NSD3201 <- NSD3201 %>%
-  mutate(
-    Formue_grupper = ntile(Formue, 3),
-    Formue_grupper = factor(Formue_grupper,
-                            levels = 1:3,
-                            labels = c("Lav Formue", "Middels formue", "Høy formue")),
-  )
+
 
 NSD3201 <- NSD3201 %>%
   mutate(Log_formue = log1p(Formue))
 
 
-# Ser verdier for formuegruppene
-grenseverdier <- quantile(
-  NSD3201$Formue,
-  probs = c(0, 1/3, 2/3, 1), 
-  na.rm = TRUE
-)
+
+#### Formuegrupper
+NSD3201 <- NSD3201 %>%
+  mutate(Formue_qnorm = qnorm(rank(Formue, ties.method = "average") / (n() + 1)))
+
+
+NSD3201 <- NSD3201 %>%
+  mutate(
+    Formue_grupper = case_when(
+      Formue_qnorm < -1 ~ "Lav formue",
+      Formue_qnorm >= -1 & Formue_qnorm <= 1 ~ "Middels formue",
+      Formue_qnorm > 1  ~ "Hoy formue",
+      TRUE ~ NA_character_ # For eventuelle NA i Formue_qnorm
+    ),
+    # Konverter til faktor for enklere bruk i plotting og tabeller
+    Formue_grupper = factor(Formue_grupper, 
+                                 levels = c("Lav formue", 
+                                            "Middels formue", 
+                                            "Hoy formue")))
+#### Formuegrupper
+
+
+
+
+
+
+
 
 # Deler alder inn i likt breddeintervall
 NSD3201 <- NSD3201 %>%
   mutate(
     Alder_grupper = cut(Alder,
-      breaks = c(18, 30, 40, 50, 60, 66),
+      breaks = c(17, 30, 55, 67),
       right = FALSE,
-      labels = c("18–29", "30–39", "40–49", "50–59", "60–66")
+      labels = c("18–29", "30–54", "55–66")
     )
   )
+
+
+
 
 # Fikser Kjønn variabelen fra 1 og 2 til dummy
 NSD3201 <- NSD3201 %>%
   mutate(Kvinne = if_else(Kjønn == 2, 1L, 0L))
+
+
 
 # Lager færre nivåer på utdanning for enklere tolkning
 NSD3201 <- NSD3201 %>%
@@ -524,10 +556,11 @@ NSD3201 <- NSD3201 %>%
 
 
 
-# print(grenseverdier)
-
-
 ```
+
+
+
+
 
 ## Datakilde og utvalg
 
@@ -572,9 +605,53 @@ Formue:
 
 Bruttofinanskapital i alt (BF) vil være vår hoveduavhengige variabel, og vi vil bruke bruttofinanskapital i alt som mål på formue. Denne variabelen inneholder verdien av alle finansielle eiendeler som respondenten eier, inkludert kontanter, aksjer, obligasjoner og andre investeringer og har en maks verdi på 2 500 000.
 
-Vi vil dele denne inn i tre forskjellige tertiler [^9] for formuegrupper: 0 - 43 333.33, 43 333.33 - 200 000 og 200 000 - 2 500 000. Dette vil gi oss mulighet til å se om det er forskjeller i sykefravær mellom de forskjellige tertilene. Vi definerer de som lav, middels og høy formue. Vi vil også bruke log-transformasjon av formue for å se om det er noen forskjeller i sykefravær mellom de forskjellige tertilene. Dette kan være nyttig for å se om det er noen ikke-lineære sammenhenger mellom formue og sykefravær, og for å håndtere høy skjevhet i dataene, ettersom de fleste har lav formue og få har høy formue.
 
-[^9]: Tertil er en statistisk metode for å dele et datasett inn i like store deler, slik at hver del inneholder en viss prosentandel av dataene. For eksempel, hvis vi deler et datasett inn i tre tertiler, vil hver tertil inneholde omtrent 33,3 % av dataene.
+Formuefordelingen er veldig høyreskjev med mange individer med lav formue og få med svært høy formue. For å håndtere denne skjevheten, vil vi bruke en invertert kumulativ fordeling[^9] (qnorm) for å normalisere formuefordelingen. Vi gjør dette med samme begrunnelse som @gugushvili2025wealth hvor det gjøres for å kunne sammenligne den relative formuen til individer i stedet for den absolutte formuen. 
+
+
+Denne metoden rangerer alle de observerte formueverdiene for å konvertere dem til Z-skårer fra en standard normalfordeling. Dette gjør at variabelen er mindre sensitiv for ekstreme verdier, og at vi kan bruke formue som en kontinuerlig variabel i analysen.
+
+
+
+For å undersøke om det er systematiske forskjeller i sykefravær basert på formue, så deler vi formue inn i tre grupper basert på standardavvik fra gjennomsnittet. Vi definerer lav formue som de mer enn et standardavvik under gjennomsnittet, middels formue som de innenfor ett standardavik, og høy formue som de mer enn ett standardavvik over gjennomsnittet. 
+
+
+
+
+
+
+
+
+```{r}
+# 
+# 
+# # Se fordelingen av de nye gruppene
+# print(table(NSD3201$Formue_grupper, useNA = "ifany"))
+# 
+# 
+# 
+# deskriptiv_formue_qnorm_grupper <- NSD3201 %>%
+#   filter(!is.na(Formue_grupper)) %>% # Fjern rader hvor gruppen er NA
+#   group_by(Formue_grupper) %>%
+#   summarise(
+#     Antall = n(),
+#     Min_Formue_Original = min(Formue, na.rm = TRUE),
+#     Gjennomsnitt_Formue_Original = mean(Formue, na.rm = TRUE),
+#     Median_Formue_Original = median(Formue, na.rm = TRUE),
+#     Max_Formue_Original = max(Formue, na.rm = TRUE),
+#     Min_Formue_Qnorm = min(Formue_qnorm, na.rm = TRUE),
+#     Max_Formue_Qnorm = max(Formue_qnorm, na.rm = TRUE)
+#   )
+# 
+# print(deskriptiv_formue_qnorm_grupper)
+
+```
+
+
+
+
+
+[^9]:  Denne transformasjonen gjør at hver respondents formue nå representeres av dens relative posisjon i den normaliserte fordelingen.
 
 En av våre hypoteser er at formue påvirker individets sensitivitet for inntektsendringer. Altså individets konsumnnivå eller etterspurt fritid endrer seg ulikt basert på om de har mye formue eller ikke. Dette kan være fordi individet har mer buffer til å tåle endringer i inntekt, og dermed kan individet være mer villig til å ta seg fri fra jobb. Motsatt vil individer med lav formue være mer sårbare for inntektsendringer, og kan derfor være mindre tilbøyelige til å være borte fra jobb, selv ved sykdom, for å opprettholde sin inntekt. Dette kan bety at de med høyere formue har bedre forutsetninger for å opprettholde god helse som ved en mindre belastende jobbsituasjon, noe som kan føre til lavere sykefravær, mens de med lavere formue opplever mer stress knyttet til økonomi, som kan gi høyere sykefravær.
 
@@ -628,7 +705,7 @@ Av de opprinnelig 17971 inviterte respondentene i datasettet så fullførte kun 
 # Deskriptiv statistikk
 
 # NSD3201 %>%
-#   select(Sykefravær_2022, Alder, Utdanning, Kjønn, Tilfredshet, Motivasjon, Barn,
+#   select(sykefravaer_2022, Alder, Utdanning, Kjønn, Tilfredshet, Motivasjon, Barn,
 #          Støtte_sjef, Støtte_kollega, Tilbakemelding_sjef, Arbeidsresultater,
 #          Grad_selvbestemming_oppgaver, Grad_selvbestemming_arbeid_som_skal_gjøres,
 #          Grad_arbeidstempo, Grad_påvirke_beslutning_arbeid,
@@ -673,11 +750,11 @@ Motivasjonen er også høyere for de med lav formue enn de med høy formue, noe 
 ```{r}
 # library(kableExtra)
 # 
-# # 1) Først sørg for at du har formue_gruppe som faktor med labels c("Lav","Middels","Høy")
+# # 1) Først sørg for at du har formue_gruppe som faktor med labels c("Lav","Middels","Hoy")
 # #    (antatt allerede laget tidligere)
 # 
 # # 2) Velg hvilke variabler du vil beskrive
-# vars <- c("Sykefravær_2022", "Alder", "Tilfredshet", "Motivasjon")
+# vars <- c("sykefravaer_2022", "Alder", "Tilfredshet", "Motivasjon")
 # 
 # # 3) Lag deskriptiv per formuegruppe
 # df_formue_deskr <- NSD3201 %>%
@@ -740,8 +817,8 @@ tabell<-NSD3201 %>%
   summarise(
     N       = n(),
     pct     = round(N / nrow(NSD3201) * 100, 1),
-    mean_sf = round(mean(Sykefravær_2022, na.rm = TRUE), 2),
-    sd_sf   = round(sd(Sykefravær_2022, na.rm = TRUE), 2)
+    mean_sf = round(mean(sykefravaer_2022, na.rm = TRUE), 2),
+    sd_sf   = round(sd(sykefravaer_2022, na.rm = TRUE), 2)
   )
 
 ```
@@ -768,8 +845,8 @@ I \autoref{tab:deskr_utdanning} presenteres deskriptiv statistikk for sykefravæ
 #   summarise(
 #     N       = n(),
 #     pct     = round(N / nrow(NSD3201) * 100, 1),
-#     mean_sf = round(mean(Sykefravær_2022, na.rm = TRUE), 2),
-#     sd_sf   = round(sd(Sykefravær_2022, na.rm = TRUE), 2)
+#     mean_sf = round(mean(sykefravaer_2022, na.rm = TRUE), 2),
+#     sd_sf   = round(sd(sykefravaer_2022, na.rm = TRUE), 2)
 #   )
 # 
 # print(utd_summ)
@@ -794,11 +871,67 @@ Universitet/Høgskole           & 685 & 32.2 & 11.67               & 13.31 \\
 
 I \autoref{fig:histogram} presenteres histogram og tetthetskurve for sykefraværet i 2022. Vi ser at sykefraværet er høyreskjevt, med en høyere andel av respondentene som har lavt sykefravær enn de som har høyt sykefravær både på menn og kvinner. Vi vet fra \autoref{tab:deskr_kjonn} at gjennomsnittet for begge kjønn er på omtrent 11 prosent for menn mens det er på 13 prosent for kvinner, noe som gjenspeiles i grafen. Det er vanskelig å se, men det er også noen uteliggere hvor flere respondenter har mer enn 40 prosent sykefravær på både menn og kvinner.
 
+
+
+
+
+
+#### KODE for sykefraværprosent logtransform med og uten 0 sykefravær
+
+I 2022 var det $n=et tall$ som hadde 0% sykefravær, dette gjør at vår fordeling er tydelig høyreskjev. Når vi gjennomfører vår SEM analyse så vil gi gjøre dette for når vi tar med og uten 0% sykefravær. Når vi logtransformerer sykefraværet uten 0 verdiene så får vi en tilnærmet normalfordelt fordeling, mens når vi tar med 0 verdiene så får vi en høyreskjev fordeling. Dette er viktig å være oppmerksom på når vi gjennomfører vår SEM analyse, da det kan påvirke resultatene våre.
+
+
+```{r}
+
+NSD3201 %>% 
+  ggplot(aes(x = sykefravaer_2022)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", color = "black") 
+
+```
+
+
+
+
+
+
+med de med 0, logtransformert med +0.01
+
+```{r}
+
+NSD3201 %>% 
+  mutate(logsyk = log(sykefravaer_2022+0.01)) %>% #adding 0.1 to avoid log(0)))
+  ggplot(aes(x = logsyk)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", color = "black") 
+
+```
+
+Uten de med 0 sykefravær, logtransformert.
+
+```{r}
+
+NSD3201 %>% 
+  filter(sykefravaer_2022 >0) %>% 
+  mutate(logsyk = log(sykefravaer_2022)) %>% #adding 0.1 to avoid log(0)))
+  ggplot(aes(x = logsyk)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", color = "black") 
+
+```
+
+
+
+
+
+
+
+
+
+
+
 ```{r}
 # Histogram + tetthetskurve på sykefravær inkl små streker for individuelle observasjoner
 
 fig_1 <- NSD3201 %>% 
-  ggplot(aes(x = Sykefravær_2022)) +
+  ggplot(aes(x = sykefravaer_2022)) +
   geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", alpha=0.8, color = "black") +
   geom_density(color = "red", linewidth = 1) +
   facet_wrap(~ kjønn_f, ncol = 1) +
@@ -825,6 +958,24 @@ ggsave("dokumentobjekter/figurer/fig_1.png", plot = fig_1, width = 8, height = 5
 \end{figure}
 
 ```{r}
+
+
+#plotting aldersgrupper
+# 
+# NSD3201 %>% 
+#   ggplot(aes(x = Alder_grupper)) + #histogram
+#   geom_bar(aes(fill = Alder_grupper), position = "dodge") 
+# 
+
+#18-29
+
+#30-50
+
+#50-66
+
+
+
+
 # Histogram/densityplot av alder inkl median og kvartilmarkører
 
 median_alder <- NSD3201 %>%
@@ -868,7 +1019,7 @@ Når vi ser på aldersfordelingen i \autoref{fig:histogram} så ser vi at den er
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_2.png}
 \end{figure}
 
-For analysen så har vi fordelt alder inn i breddeintervaller på omtrent 10 år, og aldersgruppene er delt inn i 18-29, 30-39, 40-49, 50-59 og 60-66 år. I \autoref{fig:barplot} presenteres et barplot av aldersgruppene. Vi ser at det er flest respondenter i aldersgruppen 50-59 år med 27.4 prosent, og at det er færrest respondenter i aldersgruppen 60-66 år med 8.3 prosent. Dette fordi det er aldersgruppen som er fordelt inn i det laveste breddeintervallet. Ellers er det jevnt fordelt mellom de andre aldersgruppene, der aldersgruppen 40-49 år har 22.7 prosent, aldersgruppen 30-39 år har 23.5 prosent og aldersgruppen 18-29 år har 17.9 prosent.
+For analysen så har vi fordelt alder inn i tre breddeintervaller på 18-29, 30-55 og 55-66 år. I \autoref{fig:barplot} presenteres et barplot av aldersgruppene. Vi har flest respondenter i aldersgruppen 30-54 år med 60.1 prosent som vi bruker som referansegruppe. 
 
 ```{r}
 # Barplot av breddeintervallene på alder
@@ -891,8 +1042,8 @@ fig_3 <- NSD3201 %>%
         axis.text.y = element_text(size = 14),
         axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16))+
-  scale_y_continuous(breaks = seq(0, 30, by = 5),
-                     limits = c(0, 30))
+  scale_y_continuous(breaks = seq(0, 65, by = 10),
+                     limits = c(0, 65))
 
 ggsave("dokumentobjekter/figurer/fig_3.png", plot = fig_3, width = 8, height = 5)
 ```
@@ -904,13 +1055,46 @@ ggsave("dokumentobjekter/figurer/fig_3.png", plot = fig_3, width = 8, height = 5
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_3.png}
 \end{figure}
 
+
+
+
+
+
+
+
+\clearpage
+
+
+
+
+
 ```{r}
 # Respondents rapportere formue
 
-fig_4 <- NSD3201 %>%
-  ggplot(aes(x = Log_formue)) +
+fig_4_1 <- NSD3201 %>%
+  ggplot(aes(x = Formue)) +
   geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", color = "black") +
   geom_density(color = "red", linewidth = 1) +
+  facet_wrap(~ kjønn_f, ncol = 1) +
+  labs(title = "",
+       x = "Formue (Bruttofinanskapital)",
+       y = "Antall") +
+  theme_minimal()+
+  # endrer på y og x akse størrelse på skrift
+  theme(axis.text.x = element_text(size = 14),
+        axis.text.y = element_text(size = 14),
+        axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16),
+        strip.text = element_text(size = 16))
+
+ggsave("dokumentobjekter/figurer/fig_4_1.png", plot = fig_4_1, width = 8, height = 5)
+
+
+# Respondents rapportere formue
+fig_4_2 <- NSD3201 %>% 
+  mutate(Formue_qnorm = qnorm(rank(Formue, ties.method = "average") / (n() + 1))) %>% 
+  ggplot(aes(x = Formue_qnorm)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", color = "black") +
   facet_wrap(~ kjønn_f, ncol = 1) +
   labs(title = "",
        x = "Formue (Bruttofinanskapital)",
@@ -923,25 +1107,47 @@ fig_4 <- NSD3201 %>%
         axis.title.y = element_text(size = 16),
         strip.text = element_text(size = 16))
 
-ggsave("dokumentobjekter/figurer/fig_4.png", plot = fig_4, width = 8, height = 5)
+
+ggsave("dokumentobjekter/figurer/fig_4_2.png", plot = fig_4_2, width = 8, height = 5)
+
+
+
+
 ```
 
+
+
+\begin{wrapfigure}{r}{0.5\textwidth} 
+    \centering
+    \includegraphics[width=0.5\textwidth]{dokumentobjekter/figurer/fig_4_1.png}
+    \caption{Fordeling av bruttofinanskapital}
+    \label{fig:histogram_formue}
+    \smallskip\par
+    \includegraphics[width=0.5\textwidth]{dokumentobjekter/figurer/fig_4_2.png}
+    \caption{Invertert kumulativ fordeling av bruttofinanskapital}
+    \label{fig:histogram_formue_fordeling}
+\end{wrapfigure}
+
+#måfiks
 I \autoref{fig:histogram_formue} presenteres histogram og tetthetskurve for bruttofinanskapitalen log-transformert $(1 + x)$ [^8]. Originalt er formuefordelingen høyreskjev, med en høyere andel av respondentene som har lav formue enn de som har høy formue noe som kan svekke analysen. Derfor må vi log-transformere formuefordelingen for å få en mer normalfordelt fordeling både for menn og kvinner. Når man log-transformerer $(1 + x)$ så tar vi logaritmen av formueverdiene og legger til 1 for å unngå problemer med nullverdier.
 
-[^8]: Log $(1 + x)$ er en vanlig transformasjon for å håndtere høyreskjevhet i data, og det kan bidra til å stabilisere variansen og gjøre dataene mer normale. Logaritmen gjør at de store verdiene blir mindre og de små verdiene blir større.
 
-\begin{figure}[H]
-\caption{Fordeling av log-transformert bruttofinanskapital}
-\label{fig:histogram_formue}
-\centering
-\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_4.png}
-\end{figure}
+
+
+Vi har da $n_{lav} = 1160$, $n_{middels} = 5172$ og $n_{høy} = 1166$. Den laveste gruppen har formue fra $0 - 30000$, den middels gruppen har formue fra $30000 - 850000$ og den høyeste gruppen har formue fra $850000 - 2500000$. Dette gir oss en god fordeling av formuegruppene, og vi kan se om det er forskjeller i sykefravær mellom de forskjellige gruppene.
+
+
+
+
+\newpage
+
+
 
 ```{r}
 # Søylediagram for kategoriske variabler samlet for kjønn, utdanning og formuegrupper
 
 df_long <- NSD3201 %>%
-  select(Formue_grupper, Utdanning_grupper, kjønn_f) %>%
+  dplyr::select(Formue_grupper, Utdanning_grupper, kjønn_f) %>%
   pivot_longer(
     cols      = c(Formue_grupper, Utdanning_grupper),
     names_to  = "variabel",
@@ -990,6 +1196,8 @@ ggsave("dokumentobjekter/figurer/fig_5.png", plot = fig_5, width = 8, height = 5
 
 Når vi ser på fordelingen av formue- og utdanningsgrupper fordelt på kjønn i \autoref{fig:barplot_2} så ser vi at det er flest kvinner i utdanningsgruppen videregående skole med 46.7 prosent, og det samme gjelder for menn med 56.9 prosent. Mer kvinner enn menn har universitetsutdannings eller høyere med 40.2 prosent mot kun 18.5 prosent for menn. Menn har også lavest utdanningsnivå med 24.6 prosent i utdanningsgruppen grunnskole eller mindre, mens kvinner har 13.1 prosent i den samme utdanningsgruppen. Dette viser oss at menn har lavere utdanningsnivå enn kvinner, og at kvinner er mer tilbøyelige til å ta høyere utdanning enn menn.
 
+
+#MÅfiks
 Formuefordelingen er delt inn i tertiler, som gjør slik at fordelingen blir jevnt blant de forskjellige formuegruppene både for menn og kvinner.
 
 \begin{figure}[H]
@@ -1003,7 +1211,7 @@ Formuefordelingen er delt inn i tertiler, som gjør slik at fordelingen blir jev
 # Boksplott av sykefravær etter formuegruppe
 
 fig_6 <- NSD3201 %>%
-  ggplot(aes(x = Formue_grupper, y = Sykefravær_2022)) +
+  ggplot(aes(x = Formue_grupper, y = sykefravaer_2022)) +
   geom_jitter(aes(color = Formue_grupper),
               position = position_jitter(width = 0.2),
               alpha = 0.5)+
@@ -1021,7 +1229,7 @@ fig_6 <- NSD3201 %>%
         axis.title.y = element_text(size = 16),
         strip.text = element_text(size = 16),
         legend.position = "none")+
-  scale_x_discrete(labels=c("Lav", "Middels", "Høy"))+
+  scale_x_discrete(labels=c("Lav", "Middels", "Hoy"))+
     scale_y_continuous(breaks = seq(0, 100, by = 10),
                      limits = c(0, 100))+
   scale_fill_manual(values = c("steelblue", "palevioletred", "lightgreen"))+
@@ -1043,7 +1251,7 @@ I \autoref{fig:boxplot} presenteres et boksplott av sykefravær etter formuegrup
 # Boksplott av sykefravær etter utdanningsnivå
 
 fig_7 <- NSD3201 %>%
-  ggplot(aes(x = Utdanning_grupper, y = Sykefravær_2022)) +
+  ggplot(aes(x = Utdanning_grupper, y = sykefravaer_2022)) +
   geom_jitter(aes(color = Utdanning_grupper),
               position = position_jitter(width = 0.2),
               alpha = 0.5)+
@@ -1080,6 +1288,29 @@ I \autoref{fig:boxplot_2} presenteres et boksplott av sykefravær etter utdannin
 \end{figure}
 
 Korrelationheatmap om vi får tid her til latente variabler.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Metode
 
@@ -1137,7 +1368,7 @@ $SP_i$ & Sentrert stillingsprosent for individ $i$ (0 = 100\% stilling) \\
 $JD_i$ & Latent jobbkrav score (høyere = mer krav) \\
 $JR_i$ & Latent jobbressurser score (høyere = mer støtte/autonomi) \\
 $FN_i$ & Logaritmen eller prosentil rangeringen av individets (eller husholdningens) formue \\
-$M_i$ & Motivasjons-/engasjements score \\
+$M_i$ & Motivasjons-/engasjements score som en observert, endogen variabel \\
 $X_{ij}$ & Kontrollvariabler (alder, kjønn, utdanning …), alle gjennomsnittssentrert \\
 $\epsilon_{1i}, \epsilon_{2i}$ & Forstyrrelser (null-gjennomsnitt, ukorrelerte med prediktorer) \\  
 $\alpha_{3j} $ & Koeffisienter for kontrollvariablene på Motivasjon i motivasjonsmodellen \\
@@ -1151,6 +1382,57 @@ $\gamma_{j} $ & Koeffisienter for kontrollvariablene i på sykefravær i sykefra
 ### Beskrivning av metode
 
 Vår medierende variabel Motivasjon ($M_i$) i \autoref{eq:motivasjon} er modellert som en funksjon av jobbressurser ($JR_i$) og formue ($FN_i$), samt kontrollvariabler. Her forventer vi at $\alpha_1 > 0$ i tråd med JD-R modellen og @langseth2021ticket hvor jobbressurser bygger engasjement og motivasjon. Vi forventer også at $\alpha_2 > 0$ som betyr at høyere formue vil føre til høyere motivasjon. Dette bygger på antagelsen om at økonomisk trygghet reduserer stress og frigjør mental kapasitet. Det bygger også på at på at utsikter til økonomisk fremgang, eller fraværet av en følelse av at det ikke er mulig å bli økonomisk trygg som kan oppstå ved stor ulikhet @gesiarz2020motivational, og at du dermed kan styrke den indre motivasjonen for arbeidet.
+
+
+
+
+
+
+
+
+
+
+### Hovedmodell for sykefravær (SF)
+
+Vi antar at sykefraværet (SF) i hovedsak påvirkes av:
+
+Jobbkrav (JK) (effekten av arbeidsbelastning),
+
+Motivasjon (M) (som en mekanisme/medierende faktor),
+
+Formuenivå (FN) (som hovedprediktor og også direkte påvirker SF),
+
+Så kan vi ha en X som er en mengde kontrollvariabler som for eksempel avtalte dager, demografi, arbeidsrelaterte forhold osv.
+
+$$
+SF_i = \beta_0 + \beta_1 JK_i + \beta_2 M_i + \beta_3 FN_i + \Sigma_j \beta_{4j}X_{ij} + \epsilon_{1i}
+$$
+
+Der $i$ er individet, $\beta_0$ er konstanten, $\beta_1$, $\beta_2$, $\beta_3$ er koeffisientene for henholdsvis jobbkrav, motivasjon og formuenivå, $\Sigma_j \beta_{4j}X_{ij}$ fanger opp effekter av eventuelle kontrollvariabler, $\epsilon_{1i}$ er feilleddet.
+
+Denne likningen innebærer at formuenivået ikke bare antas å ha en direkte effekt på sykefravær, men via motivasjon så kan effekten også gå via en indirekte kanal.
+
+### Ligning for motivasjon (M)
+
+Motivasjonen antas å bli påvirket av:
+
+Jobbressurser (JR) (dvs. støtte og autonomi i arbeidet),
+
+Formuenivå (FN) (som antas å påvirke hvor sensitiv man er for endringer i inntekt – dvs. hvordan man prioriterer fritid/arbeid),
+
+X er kontrollvariabler som f.eks. utdanning eller andre relevante demografiske/yrkesmessige mål.
+
+$$
+M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i}
+$$
+
+Der $\alpha_0$ er konstanten, $\alpha_1$ og $\alpha_2$ er koeffisientene for henholdsvis jobbressurser og formuenivå, $\Sigma_k \alpha_{3k}X_{ik}$ fanger opp effekter av eventuelle kontrollvariabler, $\epsilon_{2i}$ er feilleddet.
+
+
+
+
+
+
 
 
 ### Hypoteser {#sec-hypot}
@@ -1197,8 +1479,19 @@ Vi antar at sammenhengen mellom arbeidstimer representert ved stillingsprosent, 
 
 
 
+```{r}
 
 
+```
+
+
+
+
+
+
+
+
+  
 
 \newpage
 
@@ -1206,68 +1499,6 @@ Vi antar at sammenhengen mellom arbeidstimer representert ved stillingsprosent, 
 
 
 
-
-```{r}
-
-
-jk_indicators <- c("For_mye_arbeid", "Hoyt_arbeidstempo", "Ekstra_arbeid")
-jr_indicators <- c("Stotte_sjef", "Stotte_kollega", "Tilbakemelding_sjef", 
-                   "Arbeidsresultater", "Grad_selvbestemming_oppgaver", 
-                   "Grad_selvbestemming_arbeid_som_skal_gjøres", 
-                   "Grad_arbeidstempo", "Grad_påvirke_beslutning_arbeid")
-
-```
-
-
-
-
-```{r}
-
-NSD3201 <- NSD3201 %>% 
-  rename(Hoyt_arbeidstempo = Høyt_arbeidstempo,
-         Stotte_sjef = Støtte_sjef,
-         Stotte_kollega = Støtte_kollega,
-         Grad_pavirke_beslutning_arbeid = Grad_påvirke_beslutning_arbeid,
-         Grad_selvbestemming_arbeid_som_skal_gjores = Grad_selvbestemming_arbeid_som_skal_gjøres,
-         Sykefravaer_2022 = Sykefravær_2022,
-         Sykefravaer_2023 = Sykefravær_2023)
-
-
-
-var_JK1 <- "For_mye_arbeid"
-var_JK2 <- "Hoyt_arbeidstempo"
-var_JK3 <- "Ekstra_arbeid"
-
-var_JR1 <- "Stotte_sjef"
-var_JR2 <- "Stotte_kollega"
-var_JR3 <- "Tilbakemelding_sjef"
-var_JR4 <- "Arbeidsresultater"
-var_JR5 <- "Grad_selvbestemming_oppgaver"
-var_JR6 <- "Grad_selvbestemming_arbeid_som_skal_gjores"
-var_JR7 <- "Grad_arbeidstempo"
-var_JR8 <- "Grad_pavirke_beslutning_arbeid"
-
-```
-
-
-
-
-
-#wtf ai hjelp for nu. trur man starter denne på nytt altså
-
-
-```{r}
-
-
-```
-
-
-
-
-```{r}
-
-
-```
 
 
 
@@ -1433,6 +1664,66 @@ Her legger vi til vår QMD fil.
 ## Tester {.unnumbered .unlisted}
 
 ## Kunstig intelligens {.unnumbered .unlisted}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

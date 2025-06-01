@@ -254,6 +254,8 @@ flotte samtaler på kontoret.
 
 Sammendrag her
 
+kl 12, droppe h7
+
 \newpage
 
 \section{Innledning}\label{innledning}
@@ -728,56 +730,6 @@ til at personer med høyere formue opplever lavere sykefravær, mens de
 med lavere formue kan oppleve høyere sykefravær på grunn av økt stress
 og lavere tilgang til ressurser.
 
-\subsubsection{Hovedmodell for sykefravær
-(SF)}\label{hovedmodell-for-sykefravuxe6r-sf}
-
-Vi antar at sykefraværet (SF) i hovedsak påvirkes av:
-
-Jobbkrav (JK) (effekten av arbeidsbelastning),
-
-Motivasjon (M) (som en mekanisme/medierende faktor),
-
-Formuenivå (FN) (som hovedprediktor og også direkte påvirker SF),
-
-Så kan vi ha en X som er en mengde kontrollvariabler som for eksempel
-avtalte dager, demografi, arbeidsrelaterte forhold osv.
-
-\[
-SF_i = \beta_0 + \beta_1 JK_i + \beta_2 M_i + \beta_3 FN_i + \Sigma_j \beta_{4j}X_{ij} + \epsilon_{1i}
-\]
-
-Der \(i\) er individet, \(\beta_0\) er konstanten, \(\beta_1\),
-\(\beta_2\), \(\beta_3\) er koeffisientene for henholdsvis jobbkrav,
-motivasjon og formuenivå, \(\Sigma_j \beta_{4j}X_{ij}\) fanger opp
-effekter av eventuelle kontrollvariabler, \(\epsilon_{1i}\) er
-feilleddet.
-
-Denne likningen innebærer at formuenivået ikke bare antas å ha en
-direkte effekt på sykefravær, men via motivasjon så kan effekten også gå
-via en indirekte kanal.
-
-\subsubsection{Ligning for motivasjon
-(M)}\label{ligning-for-motivasjon-m}
-
-Motivasjonen antas å bli påvirket av:
-
-Jobbressurser (JR) (dvs. støtte og autonomi i arbeidet),
-
-Formuenivå (FN) (som antas å påvirke hvor sensitiv man er for endringer
-i inntekt -- dvs. hvordan man prioriterer fritid/arbeid),
-
-X er kontrollvariabler som f.eks. utdanning eller andre relevante
-demografiske/yrkesmessige mål.
-
-\[
-M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i}
-\]
-
-Der \(\alpha_0\) er konstanten, \(\alpha_1\) og \(\alpha_2\) er
-koeffisientene for henholdsvis jobbressurser og formuenivå,
-\(\Sigma_k \alpha_{3k}X_{ik}\) fanger opp effekter av eventuelle
-kontrollvariabler, \(\epsilon_{2i}\) er feilleddet.
-
 \subsubsection{Hypoteseliste}\label{hypoteseliste}
 
 Med dette rammeverket formulerer vi følgende hypoteser:
@@ -889,19 +841,26 @@ variabelen inneholder verdien av alle finansielle eiendeler som
 respondenten eier, inkludert kontanter, aksjer, obligasjoner og andre
 investeringer og har en maks verdi på 2 500 000.
 
-Vi vil dele denne inn i tre forskjellige tertiler \footnote{Tertil er en
-  statistisk metode for å dele et datasett inn i like store deler, slik
-  at hver del inneholder en viss prosentandel av dataene. For eksempel,
-  hvis vi deler et datasett inn i tre tertiler, vil hver tertil
-  inneholde omtrent 33,3 \% av dataene.} for formuegrupper: 0 - 43
-333.33, 43 333.33 - 200 000 og 200 000 - 2 500 000. Dette vil gi oss
-mulighet til å se om det er forskjeller i sykefravær mellom de
-forskjellige tertilene. Vi definerer de som lav, middels og høy formue.
-Vi vil også bruke log-transformasjon av formue for å se om det er noen
-forskjeller i sykefravær mellom de forskjellige tertilene. Dette kan
-være nyttig for å se om det er noen ikke-lineære sammenhenger mellom
-formue og sykefravær, og for å håndtere høy skjevhet i dataene, ettersom
-de fleste har lav formue og få har høy formue.
+Formuefordelingen er veldig høyreskjev med mange individer med lav
+formue og få med svært høy formue. For å håndtere denne skjevheten, vil
+vi bruke en invertert kumulativ fordeling\footnote{Denne
+  transformasjonen gjør at hver respondents formue nå representeres av
+  dens relative posisjon i den normaliserte fordelingen.} (qnorm) for å
+normalisere formuefordelingen. Vi gjør dette med samme begrunnelse som
+Gugushvili \& Wiborg (2025) hvor det gjøres for å kunne sammenligne den
+relative formuen til individer i stedet for den absolutte formuen.
+
+Denne metoden rangerer alle de observerte formueverdiene for å
+konvertere dem til Z-skårer fra en standard normalfordeling. Dette gjør
+at variabelen er mindre sensitiv for ekstreme verdier, og at vi kan
+bruke formue som en kontinuerlig variabel i analysen.
+
+For å undersøke om det er systematiske forskjeller i sykefravær basert
+på formue, så deler vi formue inn i tre grupper basert på standardavvik
+fra gjennomsnittet. Vi definerer lav formue som de mer enn et
+standardavvik under gjennomsnittet, middels formue som de innenfor ett
+standardavik, og høy formue som de mer enn ett standardavvik over
+gjennomsnittet.
 
 En av våre hypoteser er at formue påvirker individets sensitivitet for
 inntektsendringer. Altså individets konsumnnivå eller etterspurt fritid
@@ -1164,15 +1123,15 @@ som er på 43 år for menn og 44 år for kvinner.
 \end{figure}
 
 For analysen så har vi fordelt alder inn i breddeintervaller på omtrent
-10 år, og aldersgruppene er delt inn i 18-29, 30-39, 40-49, 50-59 og
-60-66 år. I \autoref{fig:barplot} presenteres et barplot av
-aldersgruppene. Vi ser at det er flest respondenter i aldersgruppen
-50-59 år med 27.4 prosent, og at det er færrest respondenter i
-aldersgruppen 60-66 år med 8.3 prosent. Dette fordi det er aldersgruppen
-som er fordelt inn i det laveste breddeintervallet. Ellers er det jevnt
-fordelt mellom de andre aldersgruppene, der aldersgruppen 40-49 år har
-22.7 prosent, aldersgruppen 30-39 år har 23.5 prosent og aldersgruppen
-18-29 år har 17.9 prosent.
+10 år, og aldersgruppene er delt inn i 18-29, 30-55 og 55-66 år. I
+\autoref{fig:barplot} presenteres et barplot av aldersgruppene. Vi ser
+at det er flest respondenter i aldersgruppen 50-59 år med 27.4 prosent,
+og at det er færrest respondenter i aldersgruppen 60-66 år med 8.3
+prosent. Dette fordi det er aldersgruppen som er fordelt inn i det
+laveste breddeintervallet. Ellers er det jevnt fordelt mellom de andre
+aldersgruppene, der aldersgruppen 40-49 år har 22.7 prosent,
+aldersgruppen 30-39 år har 23.5 prosent og aldersgruppen 18-29 år har
+17.9 prosent.
 
 \begin{figure}[H]
 \caption{Aldersgruppefordeling}
@@ -1180,6 +1139,19 @@ fordelt mellom de andre aldersgruppene, der aldersgruppen 40-49 år har
 \centering
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_3.png}
 \end{figure}
+
+\clearpage
+
+\begin{wrapfigure}{r}{0.5\textwidth} 
+    \centering
+    \includegraphics[width=0.5\textwidth]{dokumentobjekter/figurer/fig_4_1.png}
+    \caption{Fordeling av bruttofinanskapital}
+    \label{fig:histogram_formue}
+    \smallskip\par
+    \includegraphics[width=0.5\textwidth]{dokumentobjekter/figurer/fig_4_2.png}
+    \caption{Invertert kumulativ fordeling av bruttofinanskapital}
+    \label{fig:histogram_formue_fordeling}
+\end{wrapfigure}
 
 I \autoref{fig:histogram_formue} presenteres histogram og tetthetskurve
 for bruttofinanskapitalen log-transformert \((1 + x)\) \footnote{Log
@@ -1192,6 +1164,13 @@ høy formue noe som kan svekke analysen. Derfor må vi log-transformere
 formuefordelingen for å få en mer normalfordelt fordeling både for menn
 og kvinner. Når man log-transformerer \((1 + x)\) så tar vi logaritmen
 av formueverdiene og legger til 1 for å unngå problemer med nullverdier.
+
+Vi har da \(n_{lav} = 1160\), \(n_{middels} = 5172\) og
+\(n_{høy} = 1166\). Den laveste gruppen har formue fra \(0 - 30000\),
+den middels gruppen har formue fra \(30000 - 850000\) og den høyeste
+gruppen har formue fra \(850000 - 2500000\). Dette gir oss en god
+fordeling av formuegruppene, og vi kan se om det er forskjeller i
+sykefravær mellom de forskjellige gruppene.
 
 \begin{figure}[H]
 \caption{Fordeling av log-transformert bruttofinanskapital}
@@ -1258,6 +1237,27 @@ litt lavere for de med lavere utdanning.
 \end{figure}
 
 Korrelationheatmap om vi får tid her til latente variabler.
+
+\paragraph{KODE for sykefraværprosent logtransform med og uten 0
+sykefravær}\label{kode-for-sykefravuxe6rprosent-logtransform-med-og-uten-0-sykefravuxe6r}
+
+I 2022 var det \(n=et tall\) som hadde 0\% sykefravær, dette gjør at vår
+fordeling er tydelig høyreskjev. Når vi gjennomfører vår SEM analyse så
+vil gi gjøre dette for når vi tar med og uten 0\% sykefravær. Når vi
+logtransformerer sykefraværet uten 0 verdiene så får vi en tilnærmet
+normalfordelt fordeling, mens når vi tar med 0 verdiene så får vi en
+høyreskjev fordeling. Dette er viktig å være oppmerksom på når vi
+gjennomfører vår SEM analyse, da det kan påvirke resultatene våre.
+
+\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-16-1.pdf}
+
+med de med 0, logtransformert med +0.01
+
+\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-17-1.pdf}
+
+Uten de med 0 sykefravær, logtransformert.
+
+\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-18-1.pdf}
 
 \subsection{Metode}\label{metode}
 
@@ -1347,7 +1347,7 @@ $SP_i$ & Sentrert stillingsprosent for individ $i$ (0 = 100\% stilling) \\
 $JD_i$ & Latent jobbkrav score (høyere = mer krav) \\
 $JR_i$ & Latent jobbressurser score (høyere = mer støtte/autonomi) \\
 $FN_i$ & Logaritmen eller prosentil rangeringen av individets (eller husholdningens) formue \\
-$M_i$ & Motivasjons-/engasjements score \\
+$M_i$ & Motivasjons-/engasjements score som en observert, endogen variabel \\
 $X_{ij}$ & Kontrollvariabler (alder, kjønn, utdanning …), alle gjennomsnittssentrert \\
 $\epsilon_{1i}, \epsilon_{2i}$ & Forstyrrelser (null-gjennomsnitt, ukorrelerte med prediktorer) \\  
 $\alpha_{3j} $ & Koeffisienter for kontrollvariablene på Motivasjon i motivasjonsmodellen \\
@@ -1372,6 +1372,56 @@ at utsikter til økonomisk fremgang, eller fraværet av en følelse av at
 det ikke er mulig å bli økonomisk trygg som kan oppstå ved stor ulikhet
 Gesiarz et al. (2020), og at du dermed kan styrke den indre motivasjonen
 for arbeidet.
+
+\subsubsection{Hovedmodell for sykefravær
+(SF)}\label{hovedmodell-for-sykefravuxe6r-sf}
+
+Vi antar at sykefraværet (SF) i hovedsak påvirkes av:
+
+Jobbkrav (JK) (effekten av arbeidsbelastning),
+
+Motivasjon (M) (som en mekanisme/medierende faktor),
+
+Formuenivå (FN) (som hovedprediktor og også direkte påvirker SF),
+
+Så kan vi ha en X som er en mengde kontrollvariabler som for eksempel
+avtalte dager, demografi, arbeidsrelaterte forhold osv.
+
+\[
+SF_i = \beta_0 + \beta_1 JK_i + \beta_2 M_i + \beta_3 FN_i + \Sigma_j \beta_{4j}X_{ij} + \epsilon_{1i}
+\]
+
+Der \(i\) er individet, \(\beta_0\) er konstanten, \(\beta_1\),
+\(\beta_2\), \(\beta_3\) er koeffisientene for henholdsvis jobbkrav,
+motivasjon og formuenivå, \(\Sigma_j \beta_{4j}X_{ij}\) fanger opp
+effekter av eventuelle kontrollvariabler, \(\epsilon_{1i}\) er
+feilleddet.
+
+Denne likningen innebærer at formuenivået ikke bare antas å ha en
+direkte effekt på sykefravær, men via motivasjon så kan effekten også gå
+via en indirekte kanal.
+
+\subsubsection{Ligning for motivasjon
+(M)}\label{ligning-for-motivasjon-m}
+
+Motivasjonen antas å bli påvirket av:
+
+Jobbressurser (JR) (dvs. støtte og autonomi i arbeidet),
+
+Formuenivå (FN) (som antas å påvirke hvor sensitiv man er for endringer
+i inntekt -- dvs. hvordan man prioriterer fritid/arbeid),
+
+X er kontrollvariabler som f.eks. utdanning eller andre relevante
+demografiske/yrkesmessige mål.
+
+\[
+M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i}
+\]
+
+Der \(\alpha_0\) er konstanten, \(\alpha_1\) og \(\alpha_2\) er
+koeffisientene for henholdsvis jobbressurser og formuenivå,
+\(\Sigma_k \alpha_{3k}X_{ik}\) fanger opp effekter av eventuelle
+kontrollvariabler, \(\epsilon_{2i}\) er feilleddet.
 
 \subsubsection{Hypoteser}\label{sec-hypot}
 
@@ -1474,8 +1524,6 @@ positive effekten ved \(\beta_7 < 0\).
 \newpage
 
 \section{Analyse}\label{analyse}
-
-\#wtf ai hjelp for nu. trur man starter denne på nytt altså
 
 \subsubsection{Tabell med resultat fra
 regresjonsanalysen(e)}\label{tabell-med-resultat-fra-regresjonsanalysene}
@@ -1654,6 +1702,12 @@ https://www.consumerfinance.gov/.
 Gesiarz, F., De Neve, J.-E. \& Sharot, T. (2020). The motivational cost
 of inequality: Opportunity gaps reduce the willingness to work.
 \emph{Plos One}, \emph{15}(9), e0237914.
+
+\bibitem[\citeproctext]{ref-gugushvili2025wealth}
+Gugushvili, A. \& Wiborg, Ø. N. (2025). Wealth and mortality among
+late-middle-aged individuals in norway: A nationwide register-based
+retrospective study. \emph{The Lancet Regional Health--Europe},
+\emph{48}.
 
 \bibitem[\citeproctext]{ref-hattrem_hvor}
 Hattrem, A. (n.d.). \emph{Hvor mange er fattige i norge?} SSB. Retrieved
