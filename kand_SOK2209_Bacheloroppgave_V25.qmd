@@ -1617,7 +1617,9 @@ if (!is.null(NSD3201_sem2_temp) && nrow(NSD3201_sem2_temp) > 0) {
   names(NSD3201_sem2_temp) <- gsub("/", "_", names(NSD3201_sem2_temp))
 }
 
-
+names(NSD3201_sem2_temp) <- gsub("/", "_", names(NSD3201_sem2_temp))
+NSD3201_sem2_temp <- NSD3201_sem2_temp %>% 
+  rename(Utdanning_grupper_Universitet_Hogskole = `Utdanning_grupper_Universitet/Hogskole`)
 
 
 
@@ -1682,7 +1684,10 @@ if(nrow(NSD3201_sem2_temp) > 0) {
       For_mye_arbeid, Hoyt_arbeidstempo, Ekstra_arbeid,
       Stotte_sjef, Stotte_kollega, Tilbakemelding_sjef, Arbeidsresultater,
       Grad_selvbestemming_oppgaver, Grad_selvbestemming_arbeid_som_skal_gjores,
-      Grad_arbeidstempo, Grad_pavirke_beslutning_arbeid
+      Grad_arbeidstempo, Grad_pavirke_beslutning_arbeid,
+      Utdanning_grupper_Universitet_Hogskole,
+      Utdanning_grupper_Grunnskole_eller_mindre
+      
     )
   
   cat("Dimensjoner for NSD3201_sem2_final:", dim(NSD3201_sem2_final), "\n")
