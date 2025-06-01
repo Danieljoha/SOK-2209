@@ -257,8 +257,12 @@ Sammendrag her
 Husk å nevne at vi fjernet alle de som hadde over 14 dager
 sammenhengende sykefravær
 
-Nevne fjerning av støtte fra kollega og støtte fra sjef ETTER og ha
+Nevne fjerning av Tilbakemelding\_sjef, Arbeidsresultater ETTER og ha
 testet.
+
+Stotte\_sjef
+
+Stotte\_kollega
 
 \newpage
 
@@ -335,7 +339,7 @@ kapittel 4 gjennomføres analysen og i kapittel 5 vil vi presentere
 resultatene fra analysen. Avslutningsvis i kapittel 6 vil vi diskutere
 resultatene, konkludere og gi anbefalinger for videre forskning.
 
-\section{Teori}\label{teori}
+\section{Teori \{sec:teori\}}\label{teori-secteori}
 
 I dette kapittelet vil vi gi en teoretisk bakgrunn for oppgaven, og
 gjøre rede for tidligere forskning på temaet. Vi vil først definere
@@ -1276,7 +1280,7 @@ litt lavere for de med lavere utdanning.
 
 Korrelationheatmap om vi får tid her til latente variabler.
 
-\subsection{Metode}\label{metode}
+\subsection{Metode \{sec-metode\}}\label{metode-sec-metode}
 
 I oppgaven vil vi bruke en kvantitativ metode for å analysere
 sammenhengen mellom formue og sykefravær. Vi vil bruke en Structural
@@ -1291,23 +1295,9 @@ implementere SEM-modellen.
 \subsection{Structural Equation Model
 (SEM)}\label{structural-equation-model-sem}
 
-Formue inngår i modellen på tre måter: som en direkte
-forklaringsvariabel for sykefravær, som en indirekte påvirkning via
-motivasjon, og som en modererende variabel som endrer effekten av
-jobbkrav og jobbressurser.
-
-Vi antar at formue fungerer som et mål på økonomisk trygghet og
-handlingsrom. Personer med høyere formue har trolig mer fleksibilitet
-til å håndtere belastninger på jobb, og vil kunne tåle høye jobbkrav
-uten samme negative effekt på helse og fravær. Samtidig antar vi at
-høyere formue gir høyere jobbmotivasjon fordi økonomisk trygghet gjør
-det lettere å finne mening, utvikling og balanse i arbeidet.
-
-På bakgrunn av dette har vi inkludert interaksjonsledd mellom formue og
-jobbkrav (\(JD_i FN_i\)), samt mellom formue og jobbressurser
-(\(JR_i FN_i\)), for å fange opp slike modererende effekter. Vi har også
-modellert motivasjon som en medierende variabel, hvor formue kan påvirke
-motivasjonen, som igjen kan påvirke sykefravær.
+Formue inngår i modellen som en direkte forklaringsvariabel for
+sykefravær. Vi har også modellert motivasjon som en medierende variabel,
+hvor formue kan påvirke motivasjonen, som igjen kan påvirke sykefravær.
 
 Dette modellvalget bygger videre på JD-R-rammeverket, men inkluderer
 økonomisk kontekst som en faktor som kan endre hvordan individer
@@ -1389,6 +1379,17 @@ det ikke er mulig å bli økonomisk trygg som kan oppstå ved stor ulikhet
 Gesiarz et al. (2020), og at du dermed kan styrke den indre motivasjonen
 for arbeidet.
 
+\subsubsection{SEM-spesifikasjoner}\label{sem-spesifikasjoner}
+
+Vi kjører to separate SEM-spesifikasjoner for å teste robustheten av
+våre resultater. Den første inkluderer alle observasjoner i utvalget,
+der sykefravær log-transformeres som log(sykefravær + 0,01). Den andre
+modellen tar logaritmen av sykefravær uten å legge til 0,01 siden det
+ikke er nødvendig. Dette er for å undersøke om estimatene endres
+vesentlig når null-gruppen utgår. Vi gjør dette for å undersøke om
+estimatene endres vesentlig når null-gruppen utgår siden sykefraværet er
+så høyreskjevt.
+
 \paragraph{Endring av variabler}\label{endring-av-variabler}
 
 De ordinale variablene har en skala fra 1-5, hvor 1 ofte er en form for
@@ -1401,6 +1402,14 @@ tilsier veldig misfornøyd, mens på foreks for mye å gjøre, så vil 1
 tilsi daglig og 5 tilsi aldri. Som vi ser i REFERER TIL fordeling av
 arbeidsrelaterte variabler så vil det være enklere å tolke resultatene
 når vi har en skala som er lik for alle variablene.
+
+\subsubsection{Estimator}\label{estimator}
+
+Siden flere av våre observerte variabler er ordinale, og med klar
+skjevhet som ikke følger normalfordeling, har vi ikke kunne brukt
+sannsynlighetsmaksimering. Vi har dermed valgt å bruke WLSMV-estimatoren
+(Weighted Least Squares Mean and Variance adjusted) i vår SEM-analyse.
+Denne estimatoren baserer seg på
 
 \subsubsection{Hypoteser}\label{sec-hypot}
 
@@ -1437,162 +1446,337 @@ måtte ty til langvarig fravær.
 
 \includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-19-1.pdf}
 
-\clearpage
+\begin{verbatim}
+lavaan 0.6-19 ended normally after 90 iterations
 
-\begin{table}[ht]
-\centering
-\caption{Parameterestimater fra SEM-modellen} 
-\label{tab:sem_estimater}
-\begin{tabular}{llllrrrrrrrrr}
-  \toprule
-lhs & op & rhs & label & est & se & z & pvalue & ci.lower & ci.upper & std.lv & std.all & std.nox \\ 
-  \midrule
-Latent\_JK & =~ & For\_mye\_arbeid &  & 1.00 & 0.00 &  &  & 1.00 & 1.00 & 0.74 & 0.60 & 0.60 \\ 
-  Latent\_JK & =~ & Hoyt\_arbeidstempo &  & 0.74 & 0.05 & 13.56 & 0.00 & 0.63 & 0.85 & 0.55 & 0.48 & 0.48 \\ 
-  Latent\_JK & =~ & Ekstra\_arbeid &  & 1.10 & 0.09 & 11.78 & 0.00 & 0.91 & 1.28 & 0.82 & 0.63 & 0.63 \\ 
-  Latent\_JR & =~ & Stotte\_sjef &  & 1.00 & 0.00 &  &  & 1.00 & 1.00 & 0.66 & 0.55 & 0.55 \\ 
-  Latent\_JR & =~ & Stotte\_kollega &  & 0.87 & 0.03 & 26.90 & 0.00 & 0.81 & 0.94 & 0.58 & 0.50 & 0.50 \\ 
-  Latent\_JR & =~ & Grad\_selvbestemming\_oppgaver &  & 1.41 & 0.05 & 29.53 & 0.00 & 1.31 & 1.50 & 0.94 & 0.68 & 0.68 \\ 
-  Latent\_JR & =~ & Grad\_selvbestemming\_arbeid\_som\_skal\_gjores &  & 1.69 & 0.06 & 28.51 & 0.00 & 1.57 & 1.80 & 1.12 & 0.75 & 0.75 \\ 
-  Latent\_JR & =~ & Grad\_arbeidstempo &  & 1.34 & 0.05 & 29.76 & 0.00 & 1.25 & 1.43 & 0.89 & 0.67 & 0.67 \\ 
-  Latent\_JR & =~ & Grad\_pavirke\_beslutning\_arbeid &  & 1.59 & 0.05 & 30.40 & 0.00 & 1.49 & 1.69 & 1.06 & 0.73 & 0.73 \\ 
-  Motivasjon & ~ & Latent\_JR & a1 & 0.88 & 0.03 & 26.35 & 0.00 & 0.81 & 0.94 & 0.58 & 0.49 & 0.49 \\ 
-  Motivasjon & ~ & Formue\_qnorm & a2 & -0.00 & 0.02 & -0.02 & 0.98 & -0.03 & 0.03 & -0.00 & -0.00 & -0.00 \\ 
-  Motivasjon & ~ & Alder & c1 & 0.02 & 0.00 & 12.96 & 0.00 & 0.02 & 0.02 & 0.02 & 0.19 & 0.02 \\ 
-  Motivasjon & ~ & Kvinne & c2 & 0.01 & 0.03 & 0.26 & 0.80 & -0.06 & 0.08 & 0.01 & 0.00 & 0.01 \\ 
-  Motivasjon & ~ & Utd\_grunnskole & c3 & 0.03 & 0.05 & 0.55 & 0.58 & -0.07 & 0.12 & 0.03 & 0.01 & 0.02 \\ 
-  Motivasjon & ~ & Utd\_universitet & c4 & -0.01 & 0.04 & -0.29 & 0.77 & -0.08 & 0.06 & -0.01 & -0.00 & -0.01 \\ 
-  Motivasjon & ~ & Barn & c5 & 0.12 & 0.05 & 2.60 & 0.01 & 0.03 & 0.22 & 0.12 & 0.04 & 0.11 \\ 
-  Motivasjon & ~ & arb\_stillingspst & c6 & 0.00 & 0.00 & 5.99 & 0.00 & 0.00 & 0.01 & 0.00 & 0.08 & 0.00 \\ 
-  sykefravaer\_2022 & ~ & Latent\_JK & b1 & 0.00 & 0.00 & 2.94 & 0.00 & 0.00 & 0.00 & 0.00 & 0.05 & 0.05 \\ 
-  sykefravaer\_2022 & ~ & Latent\_JR & b2 & -0.01 & 0.00 & -8.13 & 0.00 & -0.01 & -0.01 & -0.00 & -0.11 & -0.11 \\ 
-  sykefravaer\_2022 & ~ & Formue\_qnorm & b3 & -0.00 & 0.00 & -7.63 & 0.00 & -0.01 & -0.00 & -0.00 & -0.11 & -0.11 \\ 
-  sykefravaer\_2022 & ~ & Motivasjon & b4 & -0.00 & 0.00 & -4.32 & 0.00 & -0.00 & -0.00 & -0.00 & -0.06 & -0.06 \\ 
-  sykefravaer\_2022 & ~ & Alder & g1 & 0.00 & 0.00 & 2.20 & 0.03 & 0.00 & 0.00 & 0.00 & 0.03 & 0.00 \\ 
-  sykefravaer\_2022 & ~ & Kvinne & g2 & 0.01 & 0.00 & 6.55 & 0.00 & 0.01 & 0.01 & 0.01 & 0.09 & 0.18 \\ 
-  sykefravaer\_2022 & ~ & Utd\_grunnskole & g3 & 0.00 & 0.00 & 0.63 & 0.53 & -0.00 & 0.00 & 0.00 & 0.01 & 0.02 \\ 
-  sykefravaer\_2022 & ~ & Utd\_universitet & g4 & -0.00 & 0.00 & -3.18 & 0.00 & -0.01 & -0.00 & -0.00 & -0.05 & -0.09 \\ 
-  sykefravaer\_2022 & ~ & Barn & g5 & 0.00 & 0.00 & 2.11 & 0.03 & 0.00 & 0.01 & 0.00 & 0.03 & 0.08 \\ 
-  sykefravaer\_2022 & ~ & arb\_stillingspst & g6 & 0.00 & 0.00 & 0.45 & 0.65 & -0.00 & 0.00 & 0.00 & 0.01 & 0.00 \\ 
-  For\_mye\_arbeid & | & t1 &  & -1.77 & 0.10 & -17.85 & 0.00 & -1.96 & -1.58 & -1.77 & -1.42 & -1.42 \\ 
-  For\_mye\_arbeid & | & t2 &  & -1.10 & 0.09 & -12.02 & 0.00 & -1.28 & -0.92 & -1.10 & -0.88 & -0.88 \\ 
-  For\_mye\_arbeid & | & t3 &  & 0.04 & 0.09 & 0.48 & 0.63 & -0.13 & 0.22 & 0.04 & 0.03 & 0.03 \\ 
-  For\_mye\_arbeid & | & t4 &  & 1.56 & 0.09 & 16.51 & 0.00 & 1.37 & 1.74 & 1.56 & 1.25 & 1.25 \\ 
-  Hoyt\_arbeidstempo & | & t1 &  & -3.13 & 0.12 & -26.64 & 0.00 & -3.36 & -2.90 & -3.13 & -2.74 & -2.74 \\ 
-  Hoyt\_arbeidstempo & | & t2 &  & -2.56 & 0.10 & -25.80 & 0.00 & -2.75 & -2.36 & -2.56 & -2.24 & -2.24 \\ 
-  Hoyt\_arbeidstempo & | & t3 &  & -1.41 & 0.09 & -15.21 & 0.00 & -1.59 & -1.23 & -1.41 & -1.23 & -1.23 \\ 
-  Hoyt\_arbeidstempo & | & t4 &  & 0.50 & 0.09 & 5.49 & 0.00 & 0.32 & 0.67 & 0.50 & 0.44 & 0.44 \\ 
-  Ekstra\_arbeid & | & t1 &  & -0.15 & 0.10 & -1.57 & 0.12 & -0.34 & 0.04 & -0.15 & -0.12 & -0.12 \\ 
-  Ekstra\_arbeid & | & t2 &  & 0.52 & 0.10 & 5.39 & 0.00 & 0.33 & 0.71 & 0.52 & 0.40 & 0.40 \\ 
-  Ekstra\_arbeid & | & t3 &  & 0.96 & 0.10 & 9.78 & 0.00 & 0.77 & 1.15 & 0.96 & 0.74 & 0.74 \\ 
-  Ekstra\_arbeid & | & t4 &  & 2.48 & 0.11 & 22.76 & 0.00 & 2.27 & 2.70 & 2.48 & 1.92 & 1.92 \\ 
-  Stotte\_sjef & | & t1 &  & -2.13 & 0.09 & -22.95 & 0.00 & -2.31 & -1.95 & -2.13 & -1.77 & -1.77 \\ 
-  Stotte\_sjef & | & t2 &  & -1.51 & 0.09 & -16.51 & 0.00 & -1.69 & -1.33 & -1.51 & -1.26 & -1.26 \\ 
-  Stotte\_sjef & | & t3 &  & -0.68 & 0.09 & -7.49 & 0.00 & -0.85 & -0.50 & -0.68 & -0.56 & -0.56 \\ 
-  Stotte\_sjef & | & t4 &  & 0.28 & 0.09 & 3.14 & 0.00 & 0.11 & 0.46 & 0.28 & 0.24 & 0.24 \\ 
-  Stotte\_kollega & | & t1 &  & -2.82 & 0.10 & -27.42 & 0.00 & -3.02 & -2.62 & -2.82 & -2.44 & -2.44 \\ 
-  Stotte\_kollega & | & t2 &  & -2.23 & 0.10 & -23.09 & 0.00 & -2.42 & -2.04 & -2.23 & -1.93 & -1.93 \\ 
-  Stotte\_kollega & | & t3 &  & -1.36 & 0.09 & -14.42 & 0.00 & -1.55 & -1.18 & -1.36 & -1.18 & -1.18 \\ 
-  Stotte\_kollega & | & t4 &  & -0.22 & 0.09 & -2.32 & 0.02 & -0.40 & -0.03 & -0.22 & -0.19 & -0.19 \\ 
-  Grad\_selvbestemming\_oppgaver & | & t1 &  & -1.37 & 0.10 & -13.38 & 0.00 & -1.57 & -1.17 & -1.37 & -1.00 & -1.00 \\ 
-  Grad\_selvbestemming\_oppgaver & | & t2 &  & -0.02 & 0.10 & -0.16 & 0.87 & -0.21 & 0.18 & -0.02 & -0.01 & -0.01 \\ 
-  Grad\_selvbestemming\_oppgaver & | & t3 &  & 1.35 & 0.10 & 13.27 & 0.00 & 1.15 & 1.55 & 1.35 & 0.99 & 0.99 \\ 
-  Grad\_selvbestemming\_oppgaver & | & t4 &  & 2.45 & 0.10 & 23.56 & 0.00 & 2.25 & 2.66 & 2.45 & 1.79 & 1.79 \\ 
-  Grad\_selvbestemming\_arbeid\_som\_skal\_gjores & | & t1 &  & -2.05 & 0.12 & -16.60 & 0.00 & -2.29 & -1.81 & -2.05 & -1.36 & -1.36 \\ 
-  Grad\_selvbestemming\_arbeid\_som\_skal\_gjores & | & t2 &  & -0.75 & 0.12 & -6.49 & 0.00 & -0.97 & -0.52 & -0.75 & -0.50 & -0.50 \\ 
-  Grad\_selvbestemming\_arbeid\_som\_skal\_gjores & | & t3 &  & 0.70 & 0.11 & 6.11 & 0.00 & 0.48 & 0.93 & 0.70 & 0.47 & 0.47 \\ 
-  Grad\_selvbestemming\_arbeid\_som\_skal\_gjores & | & t4 &  & 2.26 & 0.12 & 19.22 & 0.00 & 2.03 & 2.49 & 2.26 & 1.51 & 1.51 \\ 
-  Grad\_arbeidstempo & | & t1 &  & -1.79 & 0.10 & -17.55 & 0.00 & -1.99 & -1.59 & -1.79 & -1.34 & -1.34 \\ 
-  Grad\_arbeidstempo & | & t2 &  & -0.33 & 0.10 & -3.39 & 0.00 & -0.52 & -0.14 & -0.33 & -0.25 & -0.25 \\ 
-  Grad\_arbeidstempo & | & t3 &  & 1.01 & 0.10 & 10.29 & 0.00 & 0.82 & 1.20 & 1.01 & 0.75 & 0.75 \\ 
-  Grad\_arbeidstempo & | & t4 &  & 2.23 & 0.10 & 22.38 & 0.00 & 2.03 & 2.42 & 2.23 & 1.66 & 1.66 \\ 
-  Grad\_pavirke\_beslutning\_arbeid & | & t1 &  & -2.14 & 0.11 & -19.49 & 0.00 & -2.35 & -1.92 & -2.14 & -1.47 & -1.47 \\ 
-  Grad\_pavirke\_beslutning\_arbeid & | & t2 &  & -0.66 & 0.10 & -6.43 & 0.00 & -0.86 & -0.46 & -0.66 & -0.45 & -0.45 \\ 
-  Grad\_pavirke\_beslutning\_arbeid & | & t3 &  & 0.91 & 0.10 & 8.80 & 0.00 & 0.71 & 1.11 & 0.91 & 0.62 & 0.62 \\ 
-  Grad\_pavirke\_beslutning\_arbeid & | & t4 &  & 2.40 & 0.10 & 22.90 & 0.00 & 2.20 & 2.61 & 2.40 & 1.65 & 1.65 \\ 
-  Motivasjon & | & t1 &  & -1.36 & 0.09 & -14.49 & 0.00 & -1.54 & -1.17 & -1.36 & -1.14 & -1.14 \\ 
-  Motivasjon & | & t2 &  & -0.67 & 0.09 & -7.78 & 0.00 & -0.84 & -0.50 & -0.67 & -0.56 & -0.56 \\ 
-  Motivasjon & | & t3 &  & 0.35 & 0.08 & 4.11 & 0.00 & 0.18 & 0.52 & 0.35 & 0.29 & 0.29 \\ 
-  Motivasjon & | & t4 &  & 1.73 & 0.09 & 20.01 & 0.00 & 1.56 & 1.90 & 1.73 & 1.46 & 1.46 \\ 
-  For\_mye\_arbeid & ~~ & For\_mye\_arbeid &  & 1.00 & 0.00 &  &  & 1.00 & 1.00 & 1.00 & 0.64 & 0.64 \\ 
-  Hoyt\_arbeidstempo & ~~ & Hoyt\_arbeidstempo &  & 1.00 & 0.00 &  &  & 1.00 & 1.00 & 1.00 & 0.77 & 0.77 \\ 
-  Ekstra\_arbeid & ~~ & Ekstra\_arbeid &  & 1.00 & 0.00 &  &  & 1.00 & 1.00 & 1.00 & 0.60 & 0.60 \\ 
-  Stotte\_sjef & ~~ & Stotte\_sjef &  & 1.00 & 0.00 &  &  & 1.00 & 1.00 & 1.00 & 0.69 & 0.69 \\ 
-  Stotte\_kollega & ~~ & Stotte\_kollega &  & 1.00 & 0.00 &  &  & 1.00 & 1.00 & 1.00 & 0.75 & 0.75 \\ 
-  Grad\_selvbestemming\_oppgaver & ~~ & Grad\_selvbestemming\_oppgaver &  & 1.00 & 0.00 &  &  & 1.00 & 1.00 & 1.00 & 0.53 & 0.53 \\ 
-  Grad\_selvbestemming\_arbeid\_som\_skal\_gjores & ~~ & Grad\_selvbestemming\_arbeid\_som\_skal\_gjores &  & 1.00 & 0.00 &  &  & 1.00 & 1.00 & 1.00 & 0.44 & 0.44 \\ 
-  Grad\_arbeidstempo & ~~ & Grad\_arbeidstempo &  & 1.00 & 0.00 &  &  & 1.00 & 1.00 & 1.00 & 0.56 & 0.56 \\ 
-  Grad\_pavirke\_beslutning\_arbeid & ~~ & Grad\_pavirke\_beslutning\_arbeid &  & 1.00 & 0.00 &  &  & 1.00 & 1.00 & 1.00 & 0.47 & 0.47 \\ 
-  Motivasjon & ~~ & Motivasjon &  & 1.00 & 0.00 &  &  & 1.00 & 1.00 & 1.00 & 0.71 & 0.71 \\ 
-  sykefravaer\_2022 & ~~ & sykefravaer\_2022 &  & 0.00 & 0.00 & 111.06 & 0.00 & 0.00 & 0.00 & 0.00 & 0.95 & 0.95 \\ 
-  Latent\_JK & ~~ & Latent\_JK &  & 0.55 & 0.05 & 10.46 & 0.00 & 0.45 & 0.66 & 1.00 & 1.00 & 1.00 \\ 
-  Latent\_JR & ~~ & Latent\_JR &  & 0.44 & 0.02 & 18.02 & 0.00 & 0.39 & 0.49 & 1.00 & 1.00 & 1.00 \\ 
-  Latent\_JK & ~~ & Latent\_JR &  & -0.08 & 0.01 & -7.94 & 0.00 & -0.10 & -0.06 & -0.16 & -0.16 & -0.16 \\ 
-  Formue\_qnorm & ~~ & Formue\_qnorm &  & 0.96 & 0.00 &  &  & 0.96 & 0.96 & 0.96 & 1.00 & 0.96 \\ 
-  Formue\_qnorm & ~~ & Alder &  & 2.90 & 0.00 &  &  & 2.90 & 2.90 & 2.90 & 0.24 & 2.90 \\ 
-  Formue\_qnorm & ~~ & Kvinne &  & -0.03 & 0.00 &  &  & -0.03 & -0.03 & -0.03 & -0.07 & -0.03 \\ 
-  Formue\_qnorm & ~~ & Utd\_grunnskole &  & -0.06 & 0.00 &  &  & -0.06 & -0.06 & -0.06 & -0.19 & -0.06 \\ 
-  Formue\_qnorm & ~~ & Utd\_universitet &  & 0.09 & 0.00 &  &  & 0.09 & 0.09 & 0.09 & 0.19 & 0.09 \\ 
-  Formue\_qnorm & ~~ & Barn &  & -0.01 & 0.00 &  &  & -0.01 & -0.01 & -0.01 & -0.04 & -0.01 \\ 
-  Formue\_qnorm & ~~ & arb\_stillingspst &  & 3.30 & 0.00 &  &  & 3.30 & 3.30 & 3.30 & 0.15 & 3.30 \\ 
-  Alder & ~~ & Alder &  & 155.69 & 0.00 &  &  & 155.69 & 155.69 & 155.69 & 1.00 & 155.69 \\ 
-  Alder & ~~ & Kvinne &  & 0.03 & 0.00 &  &  & 0.03 & 0.03 & 0.03 & 0.01 & 0.03 \\ 
-  Alder & ~~ & Utd\_grunnskole &  & -0.21 & 0.00 &  &  & -0.21 & -0.21 & -0.21 & -0.05 & -0.21 \\ 
-  Alder & ~~ & Utd\_universitet &  & -0.17 & 0.00 &  &  & -0.17 & -0.17 & -0.17 & -0.03 & -0.17 \\ 
-  Alder & ~~ & Barn &  & -1.05 & 0.00 &  &  & -1.05 & -1.05 & -1.05 & -0.24 & -1.05 \\ 
-  Alder & ~~ & arb\_stillingspst &  & 68.43 & 0.00 &  &  & 68.43 & 68.43 & 68.43 & 0.24 & 68.43 \\ 
-  Kvinne & ~~ & Kvinne &  & 0.25 & 0.00 &  &  & 0.25 & 0.25 & 0.25 & 1.00 & 0.25 \\ 
-  Kvinne & ~~ & Utd\_grunnskole &  & -0.01 & 0.00 &  &  & -0.01 & -0.01 & -0.01 & -0.07 & -0.01 \\ 
-  Kvinne & ~~ & Utd\_universitet &  & 0.04 & 0.00 &  &  & 0.04 & 0.04 & 0.04 & 0.16 & 0.04 \\ 
-  Kvinne & ~~ & Barn &  & -0.01 & 0.00 &  &  & -0.01 & -0.01 & -0.01 & -0.05 & -0.01 \\ 
-  Kvinne & ~~ & arb\_stillingspst &  & -1.99 & 0.00 &  &  & -1.99 & -1.99 & -1.99 & -0.18 & -1.99 \\ 
-  Utd\_grunnskole & ~~ & Utd\_grunnskole &  & 0.12 & 0.00 &  &  & 0.12 & 0.12 & 0.12 & 1.00 & 0.12 \\ 
-  Utd\_grunnskole & ~~ & Utd\_universitet &  & -0.05 & 0.00 &  &  & -0.05 & -0.05 & -0.05 & -0.31 & -0.05 \\ 
-  Utd\_grunnskole & ~~ & Barn &  & -0.00 & 0.00 &  &  & -0.00 & -0.00 & -0.00 & -0.04 & -0.00 \\ 
-  Utd\_grunnskole & ~~ & arb\_stillingspst &  & -0.95 & 0.00 &  &  & -0.95 & -0.95 & -0.95 & -0.12 & -0.95 \\ 
-  Utd\_universitet & ~~ & Utd\_universitet &  & 0.24 & 0.00 &  &  & 0.24 & 0.24 & 0.24 & 1.00 & 0.24 \\ 
-  Utd\_universitet & ~~ & Barn &  & 0.01 & 0.00 &  &  & 0.01 & 0.01 & 0.01 & 0.09 & 0.01 \\ 
-  Utd\_universitet & ~~ & arb\_stillingspst &  & 1.11 & 0.00 &  &  & 1.11 & 1.11 & 1.11 & 0.10 & 1.11 \\ 
-  Barn & ~~ & Barn &  & 0.12 & 0.00 &  &  & 0.12 & 0.12 & 0.12 & 1.00 & 0.12 \\ 
-  Barn & ~~ & arb\_stillingspst &  & 0.50 & 0.00 &  &  & 0.50 & 0.50 & 0.50 & 0.06 & 0.50 \\ 
-  arb\_stillingspst & ~~ & arb\_stillingspst &  & 501.48 & 0.00 &  &  & 501.48 & 501.48 & 501.48 & 1.00 & 501.48 \\ 
-  For\_mye\_arbeid & ~*~ & For\_mye\_arbeid &  & 0.80 & 0.00 &  &  & 0.80 & 0.80 & 0.80 & 1.00 & 1.00 \\ 
-  Hoyt\_arbeidstempo & ~*~ & Hoyt\_arbeidstempo &  & 0.88 & 0.00 &  &  & 0.88 & 0.88 & 0.88 & 1.00 & 1.00 \\ 
-  Ekstra\_arbeid & ~*~ & Ekstra\_arbeid &  & 0.77 & 0.00 &  &  & 0.77 & 0.77 & 0.77 & 1.00 & 1.00 \\ 
-  Stotte\_sjef & ~*~ & Stotte\_sjef &  & 0.83 & 0.00 &  &  & 0.83 & 0.83 & 0.83 & 1.00 & 1.00 \\ 
-  Stotte\_kollega & ~*~ & Stotte\_kollega &  & 0.87 & 0.00 &  &  & 0.87 & 0.87 & 0.87 & 1.00 & 1.00 \\ 
-  Grad\_selvbestemming\_oppgaver & ~*~ & Grad\_selvbestemming\_oppgaver &  & 0.73 & 0.00 &  &  & 0.73 & 0.73 & 0.73 & 1.00 & 1.00 \\ 
-  Grad\_selvbestemming\_arbeid\_som\_skal\_gjores & ~*~ & Grad\_selvbestemming\_arbeid\_som\_skal\_gjores &  & 0.67 & 0.00 &  &  & 0.67 & 0.67 & 0.67 & 1.00 & 1.00 \\ 
-  Grad\_arbeidstempo & ~*~ & Grad\_arbeidstempo &  & 0.75 & 0.00 &  &  & 0.75 & 0.75 & 0.75 & 1.00 & 1.00 \\ 
-  Grad\_pavirke\_beslutning\_arbeid & ~*~ & Grad\_pavirke\_beslutning\_arbeid &  & 0.69 & 0.00 &  &  & 0.69 & 0.69 & 0.69 & 1.00 & 1.00 \\ 
-  Motivasjon & ~*~ & Motivasjon &  & 0.86 & 0.00 &  &  & 0.86 & 0.86 & 0.86 & 1.00 & 1.00 \\ 
-  For\_mye\_arbeid & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  Hoyt\_arbeidstempo & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  Ekstra\_arbeid & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  Stotte\_sjef & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  Stotte\_kollega & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  Grad\_selvbestemming\_oppgaver & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  Grad\_selvbestemming\_arbeid\_som\_skal\_gjores & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  Grad\_arbeidstempo & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  Grad\_pavirke\_beslutning\_arbeid & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  Motivasjon & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  sykefravaer\_2022 & ~1 &  &  & 0.01 & 0.00 & 3.67 & 0.00 & 0.01 & 0.02 & 0.01 & 0.27 & 0.27 \\ 
-  Formue\_qnorm & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  Alder & ~1 &  &  & 43.33 & 0.00 &  &  & 43.33 & 43.33 & 43.33 & 3.47 & 43.33 \\ 
-  Kvinne & ~1 &  &  & 0.48 & 0.00 &  &  & 0.48 & 0.48 & 0.48 & 0.96 & 0.48 \\ 
-  Utd\_grunnskole & ~1 &  &  & 0.13 & 0.00 &  &  & 0.13 & 0.13 & 0.13 & 0.39 & 0.13 \\ 
-  Utd\_universitet & ~1 &  &  & 0.38 & 0.00 &  &  & 0.38 & 0.38 & 0.38 & 0.79 & 0.38 \\ 
-  Barn & ~1 &  &  & 0.14 & 0.00 &  &  & 0.14 & 0.14 & 0.14 & 0.41 & 0.14 \\ 
-  arb\_stillingspst & ~1 &  &  & 90.66 & 0.00 &  &  & 90.66 & 90.66 & 90.66 & 4.05 & 90.66 \\ 
-  Latent\_JK & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  Latent\_JR & ~1 &  &  & 0.00 & 0.00 &  &  & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-   \bottomrule
-\end{tabular}
-\end{table}
+  Estimator                                       DWLS
+  Optimization method                           NLMINB
+  Number of model parameters                        60
+
+  Number of observations                          6103
+  Number of missing patterns                         1
+
+Model Test User Model:
+                                              Standard      Scaled
+  Test Statistic                              1679.341    1470.660
+  Degrees of freedom                                80          80
+  P-value (Chi-square)                           0.000       0.000
+  Scaling correction factor                                  1.156
+  Shift parameter                                           17.644
+    simple second-order correction                                
+
+Model Test Baseline Model:
+
+  Test statistic                             27795.716   20453.789
+  Degrees of freedom                                36          36
+  P-value                                        0.000       0.000
+  Scaling correction factor                                  1.360
+
+User Model versus Baseline Model:
+
+  Comparative Fit Index (CFI)                    0.942       0.932
+  Tucker-Lewis Index (TLI)                       0.974       0.969
+                                                                  
+  Robust Comparative Fit Index (CFI)                            NA
+  Robust Tucker-Lewis Index (TLI)                               NA
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.057       0.053
+  90 Percent confidence interval - lower         0.055       0.051
+  90 Percent confidence interval - upper         0.060       0.056
+  P-value H_0: RMSEA <= 0.050                    0.000       0.010
+  P-value H_0: RMSEA >= 0.080                    0.000       0.000
+                                                                  
+  Robust RMSEA                                                  NA
+  90 Percent confidence interval - lower                        NA
+  90 Percent confidence interval - upper                        NA
+  P-value H_0: Robust RMSEA <= 0.050                            NA
+  P-value H_0: Robust RMSEA >= 0.080                            NA
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.035       0.035
+
+Parameter Estimates:
+
+  Parameterization                               Theta
+  Standard errors                           Robust.sem
+  Information                                 Expected
+  Information saturated (h1) model        Unstructured
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  Latent_JK =~                                                          
+    For_mye_arbeid    1.000                               0.684    0.565
+    Hoyt_arbedstmp    0.397    0.025   15.628    0.000    0.272    0.393
+    Ekstra_arbeid     1.359    0.123   11.005    0.000    0.929    0.681
+  Latent_JR =~                                                          
+    Grd_slvbstmmn_    1.000                               1.023    0.715
+    Grd_slvbst____    1.283    0.041   31.384    0.000    1.312    0.795
+    Grad_arbedstmp    0.932    0.027   34.628    0.000    0.953    0.690
+    Grd_pvrk_bslt_    1.060    0.031   34.023    0.000    1.084    0.735
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  Motivasjon ~                                                          
+    Latent_JR (a1)    0.479    0.019   25.304    0.000    0.490    0.430
+    Form_qnrm (a2)    0.008    0.017    0.479    0.632    0.008    0.007
+    ald_ung   (c1)   -0.363    0.045   -8.098    0.000   -0.363   -0.121
+    ald_elder (c2)    0.253    0.041    6.192    0.000    0.253    0.093
+    Kvinne    (c3)    0.013    0.033    0.406    0.685    0.013    0.006
+    Utd_grnns (c4)    0.016    0.047    0.346    0.730    0.016    0.005
+    Utd_nvrst (c5)   -0.016    0.035   -0.462    0.644   -0.016   -0.007
+    Barn      (c6)    0.017    0.046    0.379    0.704    0.017    0.005
+    arb_stlln (c7)    0.004    0.001    6.134    0.000    0.004    0.087
+  logsyk ~                                                              
+    Latent_JK (b1)    0.042    0.020    2.071    0.038    0.029    0.035
+    Latent_JR (b2)   -0.087    0.013   -6.887    0.000   -0.089   -0.108
+    Form_qnrm (b3)   -0.104    0.012   -9.015    0.000   -0.104   -0.123
+    Motivasjn (b4)   -0.033    0.011   -2.951    0.003   -0.033   -0.046
+    ald_ung   (g1)    0.010    0.029    0.344    0.731    0.010    0.005
+    ald_elder (g2)    0.005    0.026    0.191    0.848    0.005    0.003
+    Kvinne    (g3)    0.216    0.022    9.674    0.000    0.216    0.130
+    Utd_grnns (g4)    0.037    0.030    1.230    0.219    0.037    0.015
+    Utd_nvrst (g5)   -0.113    0.024   -4.709    0.000   -0.113   -0.066
+    Barn      (g6)    0.042    0.030    1.411    0.158    0.042    0.018
+    arb_stlln (g7)    0.002    0.000    3.356    0.001    0.002    0.045
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  Latent_JK ~~                                                          
+    Latent_JR        -0.071    0.013   -5.269    0.000   -0.101   -0.101
+
+Intercepts:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+   .Hoyt_arbedstmp    4.055    0.046   87.671    0.000    4.055    5.865
+   .logsyk           -4.305    0.056  -77.022    0.000   -4.305   -5.213
+
+Thresholds:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+    For_mye_rbd|t1   -2.130    0.092  -23.078    0.000   -2.130   -1.758
+    For_mye_rbd|t2   -1.481    0.086  -17.294    0.000   -1.481   -1.223
+    For_mye_rbd|t3   -0.366    0.082   -4.458    0.000   -0.366   -0.302
+    For_mye_rbd|t4    1.109    0.083   13.304    0.000    1.109    0.915
+    Ekstra_arbd|t1   -0.100    0.094   -1.064    0.288   -0.100   -0.073
+    Ekstra_arbd|t2    0.609    0.096    6.333    0.000    0.609    0.446
+    Ekstra_arbd|t3    1.074    0.099   10.807    0.000    1.074    0.787
+    Ekstra_arbd|t4    2.684    0.120   22.398    0.000    2.684    1.966
+    Grd_slvbstm_|1   -1.820    0.100  -18.273    0.000   -1.820   -1.272
+    Grd_slvbstm_|2   -0.406    0.097   -4.173    0.000   -0.406   -0.284
+    Grd_slvbstm_|3    1.020    0.098   10.429    0.000    1.020    0.713
+    Grd_slvbstm_|4    2.171    0.100   21.705    0.000    2.171    1.518
+    Grd_slvb____|1   -2.894    0.127  -22.861    0.000   -2.894   -1.755
+    Grd_slvb____|2   -1.469    0.118  -12.490    0.000   -1.469   -0.891
+    Grd_slvb____|3    0.120    0.116    1.041    0.298    0.120    0.073
+    Grd_slvb____|4    1.829    0.118   15.533    0.000    1.829    1.109
+    Grd_rbdstmp|t1   -2.388    0.102  -23.526    0.000   -2.388   -1.729
+    Grd_rbdstmp|t2   -0.884    0.096   -9.233    0.000   -0.884   -0.640
+    Grd_rbdstmp|t3    0.497    0.095    5.204    0.000    0.497    0.360
+    Grd_rbdstmp|t4    1.750    0.097   18.121    0.000    1.750    1.267
+    Grd_pvrk_bs_|1   -2.398    0.105  -22.871    0.000   -2.398   -1.626
+    Grd_pvrk_bs_|2   -0.896    0.096   -9.315    0.000   -0.896   -0.608
+    Grd_pvrk_bs_|3    0.691    0.096    7.174    0.000    0.691    0.469
+    Grd_pvrk_bs_|4    2.207    0.098   22.497    0.000    2.207    1.496
+    Motivasjon|t1    -2.074    0.088  -23.694    0.000   -2.074   -1.820
+    Motivasjon|t2    -1.417    0.079  -17.971    0.000   -1.417   -1.244
+    Motivasjon|t3    -0.441    0.077   -5.724    0.000   -0.441   -0.387
+    Motivasjon|t4     0.886    0.077   11.495    0.000    0.886    0.778
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+   .For_mye_arbeid    1.000                               1.000    0.681
+   .Hoyt_arbedstmp    0.404    0.007   57.258    0.000    0.404    0.845
+   .Ekstra_arbeid     1.000                               1.000    0.537
+   .Grd_slvbstmmn_    1.000                               1.000    0.489
+   .Grd_slvbst____    1.000                               1.000    0.368
+   .Grad_arbedstmp    1.000                               1.000    0.524
+   .Grd_pvrk_bslt_    1.000                               1.000    0.460
+   .Motivasjon        1.000                               1.000    0.770
+   .logsyk            0.642    0.015   42.372    0.000    0.642    0.941
+    Latent_JK         0.468    0.043   10.881    0.000    1.000    1.000
+    Latent_JR         1.046    0.046   22.600    0.000    1.000    1.000
+
+Scales y*:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+    For_mye_arbeid    0.825                               0.825    1.000
+    Ekstra_arbeid     0.733                               0.733    1.000
+    Grd_slvbstmmn_    0.699                               0.699    1.000
+    Grd_slvbst____    0.606                               0.606    1.000
+    Grad_arbedstmp    0.724                               0.724    1.000
+    Grd_pvrk_bslt_    0.678                               0.678    1.000
+    Motivasjon        0.898                               0.898    1.000
+\end{verbatim}
+
+\begin{verbatim}
+lavaan 0.6-19 ended normally after 93 iterations
+
+  Estimator                                       DWLS
+  Optimization method                           NLMINB
+  Number of model parameters                        60
+
+  Number of observations                          6103
+  Number of missing patterns                         2
+
+Model Test User Model:
+                                              Standard      Scaled
+  Test Statistic                              1656.220    1450.355
+  Degrees of freedom                                80          80
+  P-value (Chi-square)                           0.000       0.000
+  Scaling correction factor                                  1.156
+  Shift parameter                                           17.587
+    simple second-order correction                                
+
+Model Test Baseline Model:
+
+  Test statistic                             27526.979   20379.516
+  Degrees of freedom                                36          36
+  P-value                                        0.000       0.000
+  Scaling correction factor                                  1.351
+
+User Model versus Baseline Model:
+
+  Comparative Fit Index (CFI)                    0.943       0.933
+  Tucker-Lewis Index (TLI)                       0.974       0.970
+                                                                  
+  Robust Comparative Fit Index (CFI)                            NA
+  Robust Tucker-Lewis Index (TLI)                               NA
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.057       0.053
+  90 Percent confidence interval - lower         0.054       0.051
+  90 Percent confidence interval - upper         0.059       0.055
+  P-value H_0: RMSEA <= 0.050                    0.000       0.019
+  P-value H_0: RMSEA >= 0.080                    0.000       0.000
+                                                                  
+  Robust RMSEA                                                  NA
+  90 Percent confidence interval - lower                        NA
+  90 Percent confidence interval - upper                        NA
+  P-value H_0: Robust RMSEA <= 0.050                            NA
+  P-value H_0: Robust RMSEA >= 0.080                            NA
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.035       0.035
+
+Parameter Estimates:
+
+  Parameterization                               Theta
+  Standard errors                           Robust.sem
+  Information                                 Expected
+  Information saturated (h1) model        Unstructured
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  Latent_JK =~                                                          
+    For_mye_arbeid    1.000                               0.682    0.563
+    Hoyt_arbedstmp    0.396    0.025   15.710    0.000    0.270    0.390
+    Ekstra_arbeid     1.384    0.127   10.927    0.000    0.944    0.686
+  Latent_JR =~                                                          
+    Grd_slvbstmmn_    1.000                               1.021    0.715
+    Grd_slvbst____    1.288    0.041   31.361    0.000    1.316    0.796
+    Grad_arbedstmp    0.933    0.027   34.654    0.000    0.953    0.690
+    Grd_pvrk_bslt_    1.060    0.031   34.008    0.000    1.083    0.735
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  Motivasjon ~                                                          
+    Latent_JR (a1)    0.480    0.019   25.303    0.000    0.490    0.430
+    Form_qnrm (a2)    0.008    0.017    0.479    0.632    0.008    0.007
+    ald_ung   (c1)   -0.363    0.045   -8.098    0.000   -0.363   -0.121
+    ald_elder (c2)    0.253    0.041    6.192    0.000    0.253    0.093
+    Kvinne    (c3)    0.013    0.033    0.406    0.685    0.013    0.006
+    Utd_grnns (c4)    0.016    0.047    0.346    0.730    0.016    0.005
+    Utd_nvrst (c5)   -0.016    0.035   -0.462    0.644   -0.016   -0.007
+    Barn      (c6)    0.017    0.046    0.379    0.704    0.017    0.005
+    arb_stlln (c7)    0.004    0.001    6.134    0.000    0.004    0.087
+  logsyk_u0 ~                                                           
+    Latent_JK (b1)    0.035    0.030    1.168    0.243    0.024    0.034
+    Latent_JR (b2)   -0.025    0.018   -1.364    0.173   -0.025   -0.037
+    Form_qnrm (b3)   -0.076    0.018   -4.330    0.000   -0.076   -0.108
+    Motivasjn (b4)   -0.040    0.016   -2.444    0.015   -0.040   -0.066
+    ald_ung   (g1)   -0.074    0.042   -1.772    0.076   -0.074   -0.041
+    ald_elder (g2)    0.127    0.040    3.145    0.002    0.127    0.077
+    Kvinne    (g3)    0.051    0.032    1.577    0.115    0.051    0.037
+    Utd_grnns (g4)   -0.002    0.044   -0.048    0.962   -0.002   -0.001
+    Utd_nvrst (g5)   -0.038    0.035   -1.085    0.278   -0.038   -0.027
+    Barn      (g6)    0.033    0.042    0.787    0.431    0.033    0.017
+    arb_stlln (g7)   -0.002    0.001   -2.188    0.029   -0.002   -0.049
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  Latent_JK ~~                                                          
+    Latent_JR        -0.070    0.013   -5.243    0.000   -0.100   -0.100
+
+Intercepts:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+   .Hoyt_arbedstmp    4.055    0.046   87.671    0.000    4.055    5.865
+   .logsyk_u0        -2.960    0.072  -41.002    0.000   -2.960   -4.299
+
+Thresholds:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+    For_mye_rbd|t1   -2.128    0.092  -23.090    0.000   -2.128   -1.758
+    For_mye_rbd|t2   -1.480    0.086  -17.298    0.000   -1.480   -1.223
+    For_mye_rbd|t3   -0.365    0.082   -4.458    0.000   -0.365   -0.302
+    For_mye_rbd|t4    1.108    0.083   13.311    0.000    1.108    0.915
+    Ekstra_arbd|t1   -0.101    0.095   -1.064    0.288   -0.101   -0.073
+    Ekstra_arbd|t2    0.613    0.097    6.326    0.000    0.613    0.446
+    Ekstra_arbd|t3    1.082    0.100   10.777    0.000    1.082    0.787
+    Ekstra_arbd|t4    2.703    0.122   22.155    0.000    2.703    1.966
+    Grd_slvbstm_|1   -1.818    0.100  -18.273    0.000   -1.818   -1.272
+    Grd_slvbstm_|2   -0.406    0.097   -4.173    0.000   -0.406   -0.284
+    Grd_slvbstm_|3    1.019    0.098   10.429    0.000    1.019    0.713
+    Grd_slvbstm_|4    2.169    0.100   21.705    0.000    2.169    1.518
+    Grd_slvb____|1   -2.900    0.127  -22.859    0.000   -2.900   -1.755
+    Grd_slvb____|2   -1.472    0.118  -12.489    0.000   -1.472   -0.891
+    Grd_slvb____|3    0.121    0.116    1.041    0.298    0.121    0.073
+    Grd_slvb____|4    1.832    0.118   15.532    0.000    1.832    1.109
+    Grd_rbdstmp|t1   -2.388    0.101  -23.532    0.000   -2.388   -1.729
+    Grd_rbdstmp|t2   -0.884    0.096   -9.234    0.000   -0.884   -0.640
+    Grd_rbdstmp|t3    0.497    0.095    5.204    0.000    0.497    0.360
+    Grd_rbdstmp|t4    1.750    0.097   18.118    0.000    1.750    1.267
+    Grd_pvrk_bs_|1   -2.396    0.105  -22.867    0.000   -2.396   -1.626
+    Grd_pvrk_bs_|2   -0.896    0.096   -9.315    0.000   -0.896   -0.608
+    Grd_pvrk_bs_|3    0.691    0.096    7.174    0.000    0.691    0.469
+    Grd_pvrk_bs_|4    2.205    0.098   22.503    0.000    2.205    1.496
+    Motivasjon|t1    -2.074    0.088  -23.694    0.000   -2.074   -1.820
+    Motivasjon|t2    -1.417    0.079  -17.971    0.000   -1.417   -1.244
+    Motivasjon|t3    -0.441    0.077   -5.724    0.000   -0.441   -0.387
+    Motivasjon|t4     0.886    0.077   11.495    0.000    0.886    0.778
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+   .For_mye_arbeid    1.000                               1.000    0.683
+   .Hoyt_arbedstmp    0.405    0.007   57.520    0.000    0.405    0.848
+   .Ekstra_arbeid     1.000                               1.000    0.529
+   .Grd_slvbstmmn_    1.000                               1.000    0.489
+   .Grd_slvbst____    1.000                               1.000    0.366
+   .Grad_arbedstmp    1.000                               1.000    0.524
+   .Grd_pvrk_bslt_    1.000                               1.000    0.460
+   .Motivasjon        1.000                               1.000    0.770
+   .logsyk_u0         0.459    0.016   28.127    0.000    0.459    0.968
+    Latent_JK         0.465    0.043   10.915    0.000    1.000    1.000
+    Latent_JR         1.043    0.046   22.589    0.000    1.000    1.000
+
+Scales y*:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+    For_mye_arbeid    0.826                               0.826    1.000
+    Ekstra_arbeid     0.727                               0.727    1.000
+    Grd_slvbstmmn_    0.700                               0.700    1.000
+    Grd_slvbst____    0.605                               0.605    1.000
+    Grad_arbedstmp    0.724                               0.724    1.000
+    Grd_pvrk_bslt_    0.679                               0.679    1.000
+    Motivasjon        0.898                               0.898    1.000
+\end{verbatim}
 
 \newpage
 
 \section{Analyse}\label{analyse}
+
+Vi bruker den definerte modellen i \ref{sec-metode} ved hjelp at pakken
+Lavaan i R, og i vurdering av resultatene våre tar vi utgangspunkt i
+\ref{teori}.
 
 forklare estimator = ``WLSMV'', parameterization = ``theta'',
 
@@ -1600,6 +1784,42 @@ forklare hva tallene i tabellen betyr etter transformasjonene
 
 \subsubsection{Tabell med resultat fra
 regresjonsanalysen(e)}\label{tabell-med-resultat-fra-regresjonsanalysene}
+
+\begin{table}[htbp]
+\centering
+\caption{Resultater fra strukturmodellen (Modell 1) for prediksjon av motivasjon og sykefravær (\texttt{logsyk}).}
+\label{tab:sem_results_model1}
+\begin{tabular}{@{}llrrrrc@{}}
+\toprule
+Avhengig variabel & Prediktor & Estimat & Std.Err & z-verdi & p-verdi & Std.all \\
+\midrule
+\multicolumn{7}{l}{\textit{Prediktorer for motivasjon}} \\
+& \texttt{Latent\_JR} (a1) & 0.479 & 0.019 & 25.304 & <0.001 & 0.430 \\
+& \texttt{Formue\_qnorm} (a2) & 0.008 & 0.017 & 0.479 & 0.632 & 0.007 \\
+& \texttt{ald\_ung} (c1) & -0.363 & 0.045 & -8.098 & <0.001 & -0.121 \\
+& \texttt{ald\_elder} (c2) & 0.253 & 0.041 & 6.192 & <0.001 & 0.093 \\
+& \texttt{Kvinne} (c3) & 0.013 & 0.033 & 0.406 & 0.685 & 0.006 \\
+& \texttt{Utd\_grunnskole} (c4) & 0.016 & 0.047 & 0.346 & 0.730 & 0.005 \\
+& \texttt{Utd\_universitet} (c5) & -0.016 & 0.035 & -0.462 & 0.644 & -0.007 \\
+& \texttt{Barn} (c6) & 0.017 & 0.046 & 0.379 & 0.704 & 0.005 \\
+& \texttt{arb\_stillingspst} (c7) & 0.004 & 0.001 & 6.134 & <0.001 & 0.087 \\
+\midrule
+\multicolumn{7}{l}{\textit{Prediktorer for sykefravær (\texttt{logsyk})}} \\
+& \texttt{Latent\_JK} (b1) & 0.042 & 0.020 & 2.071 & 0.038 & 0.035 \\
+& \texttt{Latent\_JR} (b2) & -0.087 & 0.013 & -6.887 & <0.001 & -0.108 \\
+& \texttt{Formue\_qnorm} (b3) & -0.104 & 0.012 & -9.015 & <0.001 & -0.123 \\
+& \texttt{Motivasjon} (b4) & -0.033 & 0.011 & -2.951 & 0.003 & -0.046 \\
+& \texttt{ald\_ung} (g1) & 0.010 & 0.029 & 0.344 & 0.731 & 0.005 \\
+& \texttt{ald\_elder} (g2) & 0.005 & 0.026 & 0.191 & 0.848 & 0.003 \\
+& \texttt{Kvinne} (g3) & 0.216 & 0.022 & 9.674 & <0.001 & 0.130 \\
+& \texttt{Utd\_grunnskole} (g4) & 0.037 & 0.030 & 1.230 & 0.219 & 0.015 \\
+& \texttt{Utd\_universitet} (g5) & -0.113 & 0.024 & -4.709 & <0.001 & -0.066 \\
+& \texttt{Barn} (g6) & 0.042 & 0.030 & 1.411 & 0.158 & 0.018 \\
+& \texttt{arb\_stillingspst} (g7) & 0.002 & 0.000 & 3.356 & 0.001 & 0.045 \\
+\bottomrule
+\end{tabular}
+\footnotesize{\textit{Merk:} Estimat er ustandardisert koeffisient. Std.Err er standardfeil. Std.all er fullstendig standardisert koeffisient. Referansekategorier: Alder (30–54 år), Utdanning (videregående). \texttt{Formue\_qnorm} er normalisert formue. \texttt{arb\_stillingspst} er sentrert stillingsprosent. \texttt{logsyk} er log(sykefravær + 0.01).}
+\end{table}
 
 \subsubsection{Redegjørelse for resultat knyttet til
 hypoteser}\label{redegjuxf8relse-for-resultat-knyttet-til-hypoteser}
@@ -1609,6 +1829,17 @@ kontrollvariabler}\label{redegjuxf8relse-for-effekt-av-kontrollvariabler}
 
 \subsubsection{Redegjørelse for svakheter i
 modellen/data}\label{redegjuxf8relse-for-svakheter-i-modellendata}
+
+Til å starte med så er denne typen modell i grensepunktet på vår
+forståelse og dette fører til at det må tilføyes usikkerhet til
+tolkningen av resultatene. Spesielt gjelder dette for forståelsen av
+modelltilpasning, estimatorjusteringer og tolkning av latente
+sammenhenger i strukturelle ligningsmodeller med kategoriske data. Selv
+om analysen bygger på anerkjent metode og teori, er SEM med latente
+variabler og robuste estimatorer som WLSMV et metodisk nivå som ligger i
+ytterkanten av hva vi på bachelor nivå kan tolke. Resultatene diskuteres
+derfor med forsiktighet, og vi legger vekt på overordnede mønstre
+fremfor detaljerte tolkninger.
 
 \newpage
 
@@ -1685,156 +1916,124 @@ funn/teori}\label{diskusjon-av-hvilke-konklusjoner-som-kan-trekkes-fra-dette-og-
 \subsubsection{Diskusjon av svakheter i
 analysen}\label{diskusjon-av-svakheter-i-analysen}
 
-omskrive dette for å være i diskusjonskapittelet til hva som kan være
-for videre forskning. se på hvilken teori som er vært nevn tidligere i
-teksten. og skriv det med min skrivestil
-
-omskrive dette for å være i diskusjonskapittelet til hva som kan være
-for videre forskning. se på hvilken teori som er vært nevn tidligere i
-teksten. og skriv det med min skrivestil. Dette er ikke lengere hyptoser
-men har vært droppet fra vår bacheloroppgave. det står hypotese og beta
-fra før det ble droppet
-
-Vi tror at formue potensielt har effekt på avtalte timer også, som da
-vil ha en effekt på sykefravær siden avtalte timer er endret. Men at
-dette er en mer kompleks sammenheng som vi ikke har undersøkt utenom
-inkludering som kontrollvariabel. Dette er en svakhet med modellen
-
-I \autoref{sec-formue-jdr} forteller vi at effekten av formue på
-sykefravær kan være ikke-lineær, og at det kan være en bueformet
-sammenheng. Dette er ikke fanget opp i H1-H6 hvor vi antar lineære
-interaksjoner som er en begrensning i modellen.
-
-\paragraph{omskrivings}\label{omskrivings}
-
-Vi tror at effekten av stillingsprosent på sykefravær modereres av
-formue \(\beta_7 < 0\)
-
-Vi antar at sammenhengen mellom arbeidstimer representert ved
-stillingsprosent, \(SP_i\) og sykefravær, \(SF_i\), ikke er lik for alle
-formuesnivåer. For eksempel kan en høy stillingsprosent ha en sterkere
-positiv effekt på sykefravær (mer slitasje) for de med lav formue, som
-kanskje har mindre mulighet til restitusjon eller opplever arbeidet som
-mer påtvunget. For de med høy formue kan en høy stillingsprosent enten
-ha en svakere effekt, eller så kan de i større grad velge jobber med
-mange timer som også gir andre kompenserende faktorer. Vi forventer
-derfor at \(\beta_7\) vil være signifikant. Vi antar at hovedeffekten av
-stillingsprosent på sykefravær representert ved \(\gamma_{SP}\) i
-\(\Sigma_j \gamma_{j}X_{ij}\)) er positiv og at høy formue demper denne
-positive effekten ved \(\beta_7 < 0\).
-
-Hypotese 4(H4): Indirekte effekt via motivasjon \(\alpha_2\beta_6 < 0\)
-
-Vi forventer en indirekte vei der formue påvirker sykefravær gjennom
-motivasjon. Som nevnt AUTOREF, forventer vi at høyere formue øker
-motivasjonen \(\alpha_2 > 0\) som ved å redusere finansiell usikkerhet,
-og gode fremtidsutsikter. Videre forventer vi at høyere
-motivasjon/engasjement reduserer sykefraværet (\(\beta_6 <0\)), slik
-Langseth-Eide \& Vittersø (2021) fant. Samlet sett gir dette en
-forventning om en negativ indirekte effekt \(\alpha_2 \beta_6 <0\), som
-betyr at en del av formues positive effekt på helse/nærvær går via økt
-arbeidsglede og engasjement som igjen gir lavere sykefravær.
-
-Hypotese 4(H4): \(\beta_4 < 0\) Høyere formuenivå demper de negative
-effektene til høyere jobbkrav
-
-Dette er en modereringshypotese. Vi tror at formue reduserer
-sensitiviteten for jobbkrav. For en person med lav formue kan høye krav
-oppleves som svært truende, da konsekvensene av å ikke mestre (for eks,
-miste jobben) er store. For en person med høy formue, gir den økonomiske
-tryggheten en mental ``pute'' som gjør at de samme kravene ikke utløser
-like mye stress. Dette er i tråd med Üngüren et al. (2021), som fant at
-økonomisk velvære fungerte som en slik buffer. Den marginale effekten av
-jobbkrav er
-\(\frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i\). En
-negativ \(\beta_4\) betyr at effekten av JK på SF blir mindre etter
-hvert som FN øker.
-
-\(\beta_5 > 0\) Høyere formuenivå demper den reduserende effekten av
-høyere jobbressurser på sykefravær
-
-Dette er vår andre modereringshypotese, basert på en antagelse om
-avtagende grensenytte. Vi antar at jobbressurser har størst relativ
-effekt for de med lav formue. For en person med lav formue og potensielt
-høy økonomisk usikkerhet, vil en økning i jobbressurser som er en
-negativ effekt på sykefravær ha en stor reduserende effekt på
-sykefravær. En person med høy formue, som allerede har høy økonomisk
-trygghet, vil den samme økningen i jobbressurser ha en mindre
-tilleggseffekt. Effekten er altså sterkest for de med lav formue, og
-blir svakere jo høyere formuen blir. Den marginale effekten av
-jobbressurser er
-\(\frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i\). Siden
-\(\beta_2 < 0\) er negativ, vil en positiv \(\beta_5\) gjøre den totale
-effekten mindre negativ etter hvert som \(FN_i\) øker.
-
-Stillingsprosent * formue
-
-Vi har ikke testet hvordan formue endrer effekten av arbeidstimer på
-sykefravær. JD--R‐modellen sier at jobbkrav sliter på helsen, men vi
-mangler innsikt i om økonomisk buffer gjør at tyngre jobbbelastning gir
-mindre økt fravær. Folk med lav formue har ofte mindre mulighet til å
-redusere arbeidstempo eller kreve fleksibilitet, mens de med høy formue
-kan velge seg jobber med høyt timeantall og bedre
-restitusjonsmuligheter. En oppfølging bør lage et eksplisitt
-interaksjonsledd mellom sentrert stillingsprosent \(SP_i\) og Z‐skåren
-av formue \(FQN\_i\)) for å undersøke om sammenhengen mellom
-stillingsprosent og sykefravær avtar med økende formue.
-
-Formue -\textgreater{} motivasjon -\textgreater{} sykefravær
-
-Vi forventer at formue kan øke jobbmotivasjonen ved å redusere økonomisk
-usikkerhet (jf. COR‐teorien), og at høyere motivasjon fører til mindre
-sykefravær (jf. Langseth‐Eide \& Vittersø 2021). I denne studien har vi
-behandlet motivasjon som en enkel observerbar variabel. Fremtidig arbeid
-bør teste en fullstendig medierende modell hvor formue måles både som
-direkte prediktor og som indirekte via motivasjon. Det vil si: kartlegg
-om høyere formue faktisk øker indre motivasjon (redusert finansiell
-stress, bedre fremtidsutsikter) og om den motivasjonsøkningen i sin tur
-betydelig reduserer sykefravær.
-
-Ikke‐lineær moderering av jobbkrav JD--R‐modellen forutsetter lineær
-effekt av jobbkrav på sykefravær, modifisert av formue. Men
-virkeligheten kan være mer komplisert: de med svært lav formue kan være
-hyper‐sensitive for økte krav (tap av inntektsmulighet, helse), mens
-formuesfordelen kan flate ut på svært høyt nivå (de rikeste slipper
-sykefravær uansett). Teorier om motivasjonskostnaden ved ulikhet
-(Gesiarz et al.~2020) antyder at de med lavest formue kan miste
-motivasjon helt hvis ulikheten blir for stor, mens effekten av krav på
-de med høy formue er marginal. Fremtidige studier bør utforske
-kvadratiske eller kubiske interaksjonsledd (formue², formue³) for å
-fange opp eventuelle buede effekter.
-
-Avtagende nytte av jobbressurser blant de rike I JD--R‐rammeverket er
-jobbressurser beskyttende, men effekten kan avta med økende formue. De
-med lav formue får mer utbytte av ekstra støtte, autonomi og
-påvirkningsmulighet fordi de har lite annet økonomisk spillerom. De med
-høy formue har allerede en buffer, så tillegg av jobbressurser gir
-mindre helsegevinst. Dette kan testes med et interaksjonsledd mellom
-jobbressurser og formuez‐skåre, men også ved å undersøke effekter
-separat for laveste og høyeste tertil av formue.
-
-Alternative formuemål Vi har brukt bruttofinanskapital rangert til en
-normalfordeling \(FQN\_i\)). I praksis kan nettoformue, bolig‐ versus
-verdipapirformue eller arvet formue ha ulik psykologisk betydning. En
-person med mye bolig, men stor gjeld, opplever kanskje mindre trygghet
-enn én med lik bruttoformue i aksjer og obligasjoner. Videre forskning
-kan sammenligne flere formuemål for å se om typen formue modererer
-jobbkrav og jobbressurser ulikt.
-
-Ulike dimensjoner av jobbkrav og -ressurser Vi opererer med brede
-latente skalaer for jobbkrav (arbeidsmengde, tidspress, ekstra arbeid)
-og jobbressurser (støtte, autonomi, påvirkning). Teoretisk kan formue
-moderere effekten av spesifikke krav -- fysiske versus emosjonelle --
-ulikt. Videre forskning kan teste om formue demper fysiske belastninger
-mer enn emosjonelle krav, eller om høy formue i seg selv fører til
-høyere ambisjoner som oppveier ressursfordelen.
-
 \subsubsection{Diskusjon av implikasjoner for policy gitt
 svakheter}\label{diskusjon-av-implikasjoner-for-policy-gitt-svakheter}
 
 \subsubsection{Eventuelt: diskusjon av hva framtidig forskning kan
 forske videre på (basert påderes funn og svakheter i
 analysen)}\label{eventuelt-diskusjon-av-hva-framtidig-forskning-kan-forske-videre-puxe5-basert-puxe5deres-funn-og-svakheter-i-analysen}
+
+Formues påvirkning på avtalte timer og ikke-lineære effekter. Vi har en
+antakelse om at formue potensielt kan ha en effekt på avtalte timer, som
+igjen vil påvirke sykefraværet. Dette fremstår som en mer intrikat
+sammenheng enn det vi har hatt rom for å utforske, utover å inkludere
+stillingsprosent som en kontrollvariabel. Dette representerer en svakhet
+ved den nåværende modellen. Fremtidige studier kunne med fordel
+undersøke denne mekanismen nærmere.
+
+I teori i \autoref{sec-formue-jdr} så vi at effekten av formue på
+sykefravær kan være ikke lineær eller evt bue formet. Vår nåværende
+modell har primært antatt lineære sammenhenger for formues direkte
+roller (utenom den normaliserte transformasjonen av formuevariabelen i
+seg selv).
+
+Basert på dette, og inspirert av tidligere ideer som ikke ble fullt ut
+testet i denne omgang, ser vi flere konkrete områder for videre
+utforskning:
+
+Interaksjon mellom stillingsprosent og formue: Vi har ikke testet
+hvordan formue eventuelt endrer effekten av arbeidstimer (representert
+ved stillingsprosent, på sykefravær. JD-R-modellen understreker at
+jobbkrav kan tære på helsen. Det er imidlertid uklart om en økonomisk
+buffer i form av høyere formue kan dempe den negative effekten av høy
+arbeidsbelastning. Individer med lav formue har ofte mindre
+fleksibilitet til å justere arbeidstempo eller jobbe redusert ved
+slitasje. De med høyere formue kan derimot i større grad ha mulighet til
+å velge jobber med høyt timeantall som også tilbyr bedre
+restitusjonsmuligheter eller andre kompenserende faktorer.
+
+Videre forskning: En fremtidig studie burde vurdere et eksplisitt
+interaksjonsledd mellom (sentrert) stillingsprosent og formue. Målet
+ville være å undersøke om den potensielt positive sammenhengen mellom
+stillingsprosent og sykefravær, kanskje blir svakere (eller til og med
+snur) ved økende formuesnivå.
+
+Formues indirekte påvirkning på sykefravær via motivasjon: Vi har antatt
+at formue kan påvirke sykefravær indirekte gjennom arbeidsmotivasjon.
+Forventningen er at høyere formue kan bidra til økt motivasjon ved å
+redusere finansiell usikkerhet og skape positive fremtidsutsikter (en
+positiv effekt, a2\textgreater0 i vår motivasjonsmodell,
+\autoref{eq:motivasjon}). Videre, i tråd med funn som hos Langseth-Eide
+\& Vittersø (2021), kan høyere motivasjon og engasjement tenkes å
+redusere sykefraværet (en negativ effekt i vår sykefraværsmodell.
+
+Videre forskning: Selv om vår nåværende SEM-modell estimerer disse
+separate stiene, og en indirekte effekt kan beregnes, behandlet vi
+motivasjon som en enkel observert variabel basert på ett spørsmål.
+Fremtidig arbeid kunne med fordel teste en mer utdypende
+medieringsmodell hvor motivasjon kanskje operasjonaliseres som en latent
+variabel basert på flere indikatorer. Det vil være sentralt å kartlegge
+mer robust om økt formue faktisk styrker ulike fasetter av motivasjon
+(f.eks. indre vs.~ytre), og om denne motivasjonsøkningen i sin tur har
+en signifikant og substansiell fraværsreduserende effekt.
+
+Ikke-lineær moderering av jobbkrav med formue: JD-R-modellen forutsetter
+ofte en lineær effekt av jobbkrav på utfall som stress eller sykefravær.
+Vi har i våre tidligere betraktninger tenkt at formue kunne moderere
+denne sammenhengen lineært.
+
+Videre forskning: I virkeligheten kan det tenkes at individer med svært
+lav formue er spesielt sensitive for økte jobbkrav, grunnet frykt for
+tap av inntektsmulighet og forverret helse. Samtidig kan formues
+buffereffekt flate ut på svært høye formuesnivåer (de rikeste opplever
+kanskje uansett lite fravær relatert til jobbstress, uavhengig av små
+variasjoner i jobbkrav). Det kan også være at de med aller lavest formue
+mister motivasjon dersom opplevd ulikhet og manglende muligheter blir
+for store. Fremtidige studier bør derfor utforske potensielle
+ikke-lineære modereringseffekter. Dette kan innebære å teste
+interaksjonsledd som tillater effekten av jobbkrav å variere på en mer
+kompleks måte med formuesnivået, for eksempel ved å bruke
+spline-funksjoner for formue i interaksjonen, eller ved å sammenligne
+effekter på tvers av flere, mer detaljerte formueskategorier.
+
+Avtagende grensenytte av jobbressurser for de med høy formue:
+JJobbressurser antas å fungere beskyttende, men effekten kan tenkes å
+avta med økende formue. De med lav formue kan få relativt større utbytte
+av ekstra støtte, autonomi og påvirkningsmulighet fordi de har mindre
+økonomisk spillerom og færre alternative buffere. De med høy formue har
+allerede en betydelig buffer, så den marginale gevinsten av ytterligere
+jobbressurser kan være mindre.
+
+Videre forskning: Dette kan testes mer inngående, ikke bare med et
+lineært interaksjonsledd mellom jobbressurser og formue (hvor man ville
+forvente en positiv koeffisient hvis den negative effekten av
+jobbressurser på sykefravær svekkes med økende formue), men også ved å
+undersøke effekter separat for ulike formuessegmenter (f.eks. laveste,
+midterste og høyeste kvintil/kvartil av formuesfordelingen) for å se om
+styrken på sammenhengen mellom jobbressurser og sykefravær varierer
+systematisk.
+
+Ulike operasjonaliseringer og dimensjoner av formue: Vi har benyttet
+bruttofinanskapital, transformert til en normalfordeling (Z-skåre). Det
+er imidlertid sannsynlig at ulike typer formue kan ha ulik psykologisk
+betydning og dermed ulik effekt. For eksempel kan nettoformue (som tar
+hensyn til gjeld), sammensetningen av formuen (boligformue
+vs.~verdipapirformue), eller kilden til formuen (arvet vs.~opparbeidet)
+spille forskjellig inn på opplevd trygghet og handlingsrom. En person
+med betydelig boligformue, men også høy gjeld, opplever kanskje mindre
+reell økonomisk trygghet enn en med tilsvarende bruttoformue plassert i
+likvide midler.
+
+Videre forskning: Fremtidige studier bør derfor utforske og sammenligne
+ulike formuemål for å se om typen formue modererer effekten av jobbkrav
+og jobbressurser på ulike måter.
+
+\begin{verbatim}
+Differensiering av jobbkrav og -ressurser:
+Vi har operert med relativt brede latente skalaer for jobbkrav (inkludert arbeidsmengde, tidspress, ekstra arbeid) og jobbressurser (inkludert støtte, autonomi, påvirkning). Teoretisk sett er det mulig at formue modererer effekten av ulike spesifikke dimensjoner av krav og ressurser forskjellig.
+
+    Videre forskning: Kan formue i større grad dempe effekten av fysiske belastninger enn emosjonelle krav? Eller kan høy formue paradoksalt nok føre til høyere personlige ambisjoner og krav til egen prestasjon, som delvis nøytraliserer fordelene av økte ressurser? Fremtidige studier kunne med fordel dekomponere disse brede konstruktene for å undersøke slike nyanserte interaksjoner.
+\end{verbatim}
 
 \newpage
 

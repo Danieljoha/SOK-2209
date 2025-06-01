@@ -88,7 +88,11 @@ Husk å nevne at vi fjernet alle de som hadde over 14 dager sammenhengende sykef
 
 
 
-Nevne fjerning av støtte fra kollega og støtte fra sjef ETTER og ha testet.
+Nevne fjerning av Tilbakemelding_sjef, Arbeidsresultater ETTER og ha testet.
+
+Stotte_sjef
+
+Stotte_kollega
 
 
 
@@ -156,7 +160,7 @@ I teorien starter vi med å gå gjennom begrepsavklaringer, hvor vi vil definere
 
 Oppgaven er delt inn i følgende kapitler: I kapittel 2 vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. I kapittel 3 vil vi forklare metode og datagrunnlag, i kapittel 4 gjennomføres analysen og i kapittel 5 vil vi presentere resultatene fra analysen. Avslutningsvis i kapittel 6 vil vi diskutere resultatene, konkludere og gi anbefalinger for videre forskning.
 
-# Teori
+# Teori {sec:teori}
 
 I dette kapittelet vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. Vi vil først definere begrepene kortfattet, og deretter presentere teori og empiri som er relevant for oppgaven. Vi vil spesielt fokusere på JD-R-modellen, som er et mye brukt rammeverk for å forstå sammenhengen mellom arbeidsmiljø og helse.
 
@@ -417,7 +421,6 @@ NSD3201 <- NSD3201 %>%
     sykefravaer_2023 = sfdagsvj_2023 / mdagsv_2023,
     arb_stillingspst = if_else(is.na(arb_stillingspst), 0, arb_stillingspst)) %>%
   filter(SpMotEng_ny %in% entil5,
-  Sp59g %in% entil5,
   QPS72_ny %in% entil5,
   QPS73_ny %in% entil5,
   Sp56a2 %in% entil5,
@@ -429,7 +432,6 @@ NSD3201 <- NSD3201 %>%
   Sp47f %in% entil5) %>% 
   mutate(
     SpMotEng_ny = 6 - SpMotEng_ny,
-    Sp59g = 6 - Sp59g,
     QPS72_ny = 6 - QPS72_ny,
     QPS73_ny = 6 - QPS73_ny,
     Sp56a2 = 6 - Sp56a2,
@@ -447,7 +449,6 @@ NSD3201 <- NSD3201 %>%
     Alder = kullaldr,
     Utdanning = utdnivaa,
     Kjonn = Kjonn,
-    Tilfredshet = Sp59g,
     Motivasjon = SpMotEng_ny,
     Barn = barn05,
     # Jobbressurser
@@ -1302,17 +1303,13 @@ Korrelationheatmap om vi får tid her til latente variabler.
 
 
 
-## Metode
+## Metode {sec-metode}
 
 I oppgaven vil vi bruke en kvantitativ metode for å analysere sammenhengen mellom formue og sykefravær. Vi vil bruke en Structural Equation Model (SEM) for å teste hypotesene våre, og vi vil kontrollere for andre relevante faktorer som kan påvirke sykefraværet. SEM er en statistisk metode som gjør det mulig å teste komplekse modeller med flere variabler, og som kan håndtere både direkte og indirekte sammenhenger mellom variablene. Vi vil bruke R for å gjennomføre analysen, og vi vil bruke pakker som Lavaan og Semtools for å implementere SEM-modellen.
 
 ## Structural Equation Model (SEM)
 
-Formue inngår i modellen på tre måter: som en direkte forklaringsvariabel for sykefravær, som en indirekte påvirkning via motivasjon, og som en modererende variabel som endrer effekten av jobbkrav og jobbressurser.
-
-Vi antar at formue fungerer som et mål på økonomisk trygghet og handlingsrom. Personer med høyere formue har trolig mer fleksibilitet til å håndtere belastninger på jobb, og vil kunne tåle høye jobbkrav uten samme negative effekt på helse og fravær. Samtidig antar vi at høyere formue gir høyere jobbmotivasjon fordi økonomisk trygghet gjør det lettere å finne mening, utvikling og balanse i arbeidet.
-
-På bakgrunn av dette har vi inkludert interaksjonsledd mellom formue og jobbkrav ($JD_i FN_i$), samt mellom formue og jobbressurser ($JR_i FN_i$), for å fange opp slike modererende effekter. Vi har også modellert motivasjon som en medierende variabel, hvor formue kan påvirke motivasjonen, som igjen kan påvirke sykefravær.
+Formue inngår i modellen som en direkte forklaringsvariabel for sykefravær. Vi har også modellert motivasjon som en medierende variabel, hvor formue kan påvirke motivasjonen, som igjen kan påvirke sykefravær.
 
 Dette modellvalget bygger videre på JD-R-rammeverket, men inkluderer økonomisk kontekst som en faktor som kan endre hvordan individer påvirkes av jobbsituasjonen. Ved å bruke en SEM-modell kan vi teste både de direkte og indirekte sammenhengene mellom formue og sykefravær.
 
@@ -1377,6 +1374,12 @@ Vår medierende variabel Motivasjon ($M_i$) i \autoref{eq:motivasjon} er modelle
 
 
 
+
+### SEM-spesifikasjoner
+
+Vi kjører to separate SEM-spesifikasjoner for å teste robustheten av våre resultater. Den første inkluderer alle observasjoner i utvalget, der sykefravær log-transformeres som log(sykefravær + 0,01). Den andre modellen tar logaritmen av sykefravær uten å legge til 0,01 siden det ikke er nødvendig. Dette er for å undersøke om estimatene endres vesentlig når null-gruppen utgår. Vi gjør dette for å undersøke om estimatene endres vesentlig når null-gruppen utgår siden sykefraværet er så høyreskjevt. 
+
+
 #### Endring av variabler
 
 De ordinale variablene har en skala fra 1-5, hvor 1 ofte er en form for "oftest" eller "veldig fornøyd", og 5 er "aldri" eller "veldig misfornøyd". 
@@ -1384,6 +1387,11 @@ De ordinale variablene har en skala fra 1-5, hvor 1 ofte er en form for "oftest"
 Vi snur om på skalaen til de negative variablene fordi skalaen til variabler som hvor fornøyd vil si at 1 er ofte veldig fornøyd, og 5 tilsier veldig misfornøyd, mens på foreks for mye å gjøre, så vil 1 tilsi daglig og 5 tilsi aldri. Som vi ser i REFERER TIL fordeling av arbeidsrelaterte variabler så vil det være enklere å tolke resultatene når vi har en skala som er lik for alle variablene. 
 
 
+
+
+### Estimator
+
+Siden flere av våre observerte variabler er ordinale, og med klar skjevhet som ikke følger normalfordeling, har vi ikke kunne brukt sannsynlighetsmaksimering. Vi har dermed valgt å bruke WLSMV-estimatoren (Weighted Least Squares Mean and Variance adjusted) i vår SEM-analyse. Denne estimatoren baserer seg på  
 
 
 
@@ -1414,7 +1422,6 @@ Vi forventer en direkte, gunstig effekt av formue på sykefravær. Formue funger
 ```{r}
 NSD3201 %>%
   dplyr::select(For_mye_arbeid, Hoyt_arbeidstempo, Ekstra_arbeid,
-         Stotte_sjef, Stotte_kollega,
          Grad_selvbestemming_oppgaver, Grad_selvbestemming_arbeid_som_skal_gjores,
          Grad_arbeidstempo, Grad_pavirke_beslutning_arbeid, Motivasjon) %>%
   pivot_longer(
@@ -1436,19 +1443,21 @@ NSD3201 %>%
 
 
 
-```{r}
-ordinal_vars <- c(
-  "For_mye_arbeid",
-  "Hoyt_arbeidstempo",
-  "Ekstra_arbeid",
-  "Stotte_sjef",
-  "Stotte_kollega",
-  "Grad_selvbestemming_oppgaver",
-  "Grad_selvbestemming_arbeid_som_skal_gjores",
-  "Grad_arbeidstempo",
-  "Grad_pavirke_beslutning_arbeid",
-  "Motivasjon")
 
+
+
+
+```{r}
+
+
+NSD3201$Alder_grupper <- factor(
+  NSD3201$Alder_grupper,
+  levels = c("30_54", "18_29", "55_66")
+)
+NSD3201$Utdanning_grupper <- factor(NSD3201$Utdanning_grupper, levels = c("Videregaende", "Grunnskole_eller_mindre", "Universitet_Hogskole"))
+
+
+library(xtable)
 NSD3201$Alder_grupper <- factor(
   NSD3201$Alder_grupper,
   levels = c("30_54", "18_29", "55_66")
@@ -1458,21 +1467,17 @@ NSD3201$Utdanning_grupper <- factor(NSD3201$Utdanning_grupper, levels = c("Vider
 
 
 
-```
-
-
-
-
-
-
-
-```{r}
-
 NSD3201 <- NSD3201 %>% #Videregående referanse
+ mutate(logsyk = log(sykefravaer_2022+0.01)) %>% 
+  #making a logsyk with only sykefravær >0 
+  mutate(logsyk_u0 = if_else(sykefravaer_2022 > 0, log(sykefravaer_2022 + 0.01), NA_real_)) %>%
   mutate(
     Utd_grunnskole     = if_else(Utdanning_grupper == "Grunnskole_eller_mindre", 1L, 0L),
     Utd_universitet    = if_else(Utdanning_grupper == "Universitet_Hogskole", 1L, 0L)
-  )
+  ) %>% 
+    mutate(
+    ald_ung = if_else(Alder_grupper == "18_29", 1L, 0L),
+    ald_elder = if_else(Alder_grupper == "55_66", 1L, 0L))
 
 
 
@@ -1493,11 +1498,10 @@ NSD3201 <- NSD3201 %>%
 
 
 
-lavaan_model_latent_refVGS <- '
+lavaan_model_latent_log <- '
   # Latente faktorer
   Latent_JK =~ For_mye_arbeid + Hoyt_arbeidstempo + Ekstra_arbeid
-  Latent_JR =~ Stotte_sjef + Stotte_kollega +
-               Grad_selvbestemming_oppgaver +
+  Latent_JR =~ Grad_selvbestemming_oppgaver +
                Grad_selvbestemming_arbeid_som_skal_gjores +
                Grad_arbeidstempo +
                Grad_pavirke_beslutning_arbeid
@@ -1505,33 +1509,34 @@ lavaan_model_latent_refVGS <- '
   # Motivasjon som funksjon av jobbressurser, Formue og kontroller
   Motivasjon ~ a1*Latent_JR
              + a2*Formue_qnorm
-             + c1*Alder
-             + c2*Kvinne
-             + c3*Utd_grunnskole
-             + c4*Utd_universitet
-             + c5*Barn
-             + c6*arb_stillingspst
+             + c1*ald_ung
+             + c2*ald_elder
+             + c3*Kvinne
+             + c4*Utd_grunnskole
+             + c5*Utd_universitet
+             + c6*Barn
+             + c7*arb_stillingspst
 
   # Sykefravær som funksjon av jobbkrav, jobbressurser, Formue, motivasjon og kontroller
-  sykefravaer_2022 ~ b1*Latent_JK
+  logsyk ~ b1*Latent_JK
                    + b2*Latent_JR
                    + b3*Formue_qnorm
                    + b4*Motivasjon
-                   + g1*Alder
-                   + g2*Kvinne
-                   + g3*Utd_grunnskole
-                   + g4*Utd_universitet
-                   + g5*Barn
-                   + g6*arb_stillingspst
+                   + g1*ald_ung
+                   + g2*ald_elder
+                   + g3*Kvinne
+                   + g4*Utd_grunnskole
+                   + g5*Utd_universitet
+                   + g6*Barn
+                   + g7*arb_stillingspst
 '
 
-fit_latent_refVGS <- sem(
-  model     = lavaan_model_latent_refVGS,
+fit_latent_log0 <- sem(
+  model     = lavaan_model_latent_log,
   data      = NSD3201,
   estimator = "WLSMV",
   parameterization = "theta",
-  ordered   = c("For_mye_arbeid", "Hoyt_arbeidstempo", "Ekstra_arbeid",
-                "Stotte_sjef", "Stotte_kollega",
+  ordered   = c("For_mye_arbeid", "Ekstra_arbeid",
                 "Grad_selvbestemming_oppgaver",
                 "Grad_selvbestemming_arbeid_som_skal_gjores",
                 "Grad_arbeidstempo",
@@ -1540,71 +1545,96 @@ fit_latent_refVGS <- sem(
   missing   = "pairwise"
 )
 
-#summary(fit_latent_refVGS, standardized = TRUE, fit.measures = TRUE)
 
-
-
+summary(fit_latent_log0, standardized = TRUE, fit.measures = TRUE)
 ```
-
-```{r results='asis'}
-library(xtable)
-#pe <- parameterEstimates(fit_latent_refVGS, standardized = TRUE)
-#print(xtable(pe), include.rownames = FALSE)
-```
-
-
 
 
 
 
 ```{r}
 
-library(lavaanPlot)
-# lavaanPlot(model = fit_latent_refVGS, coefs = TRUE, stand = TRUE)
-```
+lavaan_model_latent_log_u0 <- '
+  # Latente faktorer
+  Latent_JK =~ For_mye_arbeid + Hoyt_arbeidstempo + Ekstra_arbeid
+  Latent_JR =~ Grad_selvbestemming_oppgaver +
+               Grad_selvbestemming_arbeid_som_skal_gjores +
+               Grad_arbeidstempo +
+               Grad_pavirke_beslutning_arbeid
+
+  # Motivasjon som funksjon av jobbressurser, Formue og kontroller
+  Motivasjon ~ a1*Latent_JR
+             + a2*Formue_qnorm
+             + c1*ald_ung
+             + c2*ald_elder
+             + c3*Kvinne
+             + c4*Utd_grunnskole
+             + c5*Utd_universitet
+             + c6*Barn
+             + c7*arb_stillingspst
+
+  # Sykefravær som funksjon av jobbkrav, jobbressurser, Formue, motivasjon og kontroller
+  logsyk_u0 ~ b1*Latent_JK
+                   + b2*Latent_JR
+                   + b3*Formue_qnorm
+                   + b4*Motivasjon
+                   + g1*ald_ung
+                   + g2*ald_elder
+                   + g3*Kvinne
+                   + g4*Utd_grunnskole
+                   + g5*Utd_universitet
+                   + g6*Barn
+                   + g7*arb_stillingspst
+'
 
 
-
-
-
-
-
-\clearpage
-
-
-
-
-```{r sem-parameterestimater-tabell, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-library(xtable) # Sikre at xtable er lastet
-
-# Antar at 'fit_latent_refVGS' er modellen din som allerede er estimert
-pe <- parameterEstimates(fit_latent_refVGS, standardized = TRUE)
-
-# Lag xtable-objektet med norsk tabelltekst og en label for referanser
-xtable_obj <- xtable(pe, 
-                     caption = "Parameterestimater fra SEM-modellen", 
-                     label = "tab:sem_estimater") # Bruk "tab:" prefiks for \autoref
-
-# Her kan du eventuelt justere kolonnejustering om nødvendig.
-# Standard er høyrejustert for tall og venstrejustert for tekst.
-# For finere kontroll, se kommentaren i den engelske versjonen om siunitx S-kolonner.
-
-# Skriv ut xtable-objektet med lure innstillinger for en komplett LaTeX-tabell
-print(xtable_obj, 
-      floating.environment = "table",     # Pakker output inn i \begin{table}...\end{table}
-      table.placement = "ht",             # Foreslår tabellplassering [ht], som i dine andre tabeller
-      caption.placement = "top",          # Plasserer tabellteksten øverst
-      include.rownames = FALSE,           # Som i ditt opprinnelige forsøk
-      booktabs = TRUE,                    # Bruker booktabs-regler (\toprule, \midrule, \bottomrule) for penere tabeller
-      sanitize.text.function = function(x) {gsub("_", "\\\\_", x)}, # Viser understreker korrekt i variabelnavn
-      comment = FALSE,                    # Fjerner kommentaren "% latex table generated in R ..."
-      # Et lurt tips til: Bruk 'digits' for å styre antall desimaler.
-      # For eksempel, for å sette 3 desimaler på de fleste estimater, men kanskje 2 for z-verdier og 4 for p-verdier:
-      # (Antall kolonner i 'pe' er vanligvis 12: lhs, op, rhs, est, se, z, pvalue, ci.lower, ci.upper, std.lv, std.all, std.nox)
-      # Dette er et eksempel, tilpass til dine faktiske kolonner og ønsket presisjon:
-      digits = c(NA, NA, NA, 3, 3, 2, 4, 3, 3, 3, 3, 3) # NA for tekstkolonner (lhs, op, rhs), deretter for de numeriske
+fit_latent_log_u0 <- sem(
+  model     = lavaan_model_latent_log_u0,
+  data      = NSD3201,
+  estimator = "WLSMV",
+  parameterization = "theta",
+  ordered   = c("For_mye_arbeid", "Ekstra_arbeid",
+                "Grad_selvbestemming_oppgaver",
+                "Grad_selvbestemming_arbeid_som_skal_gjores",
+                "Grad_arbeidstempo",
+                "Grad_pavirke_beslutning_arbeid",
+                "Motivasjon"),
+  missing   = "pairwise"
 )
+
+
+summary(fit_latent_log_u0, standardized = TRUE, fit.measures = TRUE)
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1631,6 +1661,13 @@ print(xtable_obj,
 # Analyse
 
 
+Vi bruker den definerte modellen i \ref{sec-metode} ved hjelp at pakken Lavaan i R, og i vurdering av resultatene våre tar vi utgangspunkt i \ref{teori}. 
+
+
+
+
+
+
 
 
 forklare   estimator = "WLSMV",
@@ -1645,11 +1682,99 @@ forklare hva tallene i tabellen betyr etter transformasjonene
 
 ### Tabell med resultat fra regresjonsanalysen(e)
 
+
+
+
+
+
+
+
+
+
+\begin{table}[htbp]
+\centering
+\caption{Resultater fra strukturmodellen (Modell 1) for prediksjon av motivasjon og sykefravær (\texttt{logsyk}).}
+\label{tab:sem_results_model1}
+\begin{tabular}{@{}llrrrrc@{}}
+\toprule
+Avhengig variabel & Prediktor & Estimat & Std.Err & z-verdi & p-verdi & Std.all \\
+\midrule
+\multicolumn{7}{l}{\textit{Prediktorer for motivasjon}} \\
+& \texttt{Latent\_JR} (a1) & 0.479 & 0.019 & 25.304 & <0.001 & 0.430 \\
+& \texttt{Formue\_qnorm} (a2) & 0.008 & 0.017 & 0.479 & 0.632 & 0.007 \\
+& \texttt{ald\_ung} (c1) & -0.363 & 0.045 & -8.098 & <0.001 & -0.121 \\
+& \texttt{ald\_elder} (c2) & 0.253 & 0.041 & 6.192 & <0.001 & 0.093 \\
+& \texttt{Kvinne} (c3) & 0.013 & 0.033 & 0.406 & 0.685 & 0.006 \\
+& \texttt{Utd\_grunnskole} (c4) & 0.016 & 0.047 & 0.346 & 0.730 & 0.005 \\
+& \texttt{Utd\_universitet} (c5) & -0.016 & 0.035 & -0.462 & 0.644 & -0.007 \\
+& \texttt{Barn} (c6) & 0.017 & 0.046 & 0.379 & 0.704 & 0.005 \\
+& \texttt{arb\_stillingspst} (c7) & 0.004 & 0.001 & 6.134 & <0.001 & 0.087 \\
+\midrule
+\multicolumn{7}{l}{\textit{Prediktorer for sykefravær (\texttt{logsyk})}} \\
+& \texttt{Latent\_JK} (b1) & 0.042 & 0.020 & 2.071 & 0.038 & 0.035 \\
+& \texttt{Latent\_JR} (b2) & -0.087 & 0.013 & -6.887 & <0.001 & -0.108 \\
+& \texttt{Formue\_qnorm} (b3) & -0.104 & 0.012 & -9.015 & <0.001 & -0.123 \\
+& \texttt{Motivasjon} (b4) & -0.033 & 0.011 & -2.951 & 0.003 & -0.046 \\
+& \texttt{ald\_ung} (g1) & 0.010 & 0.029 & 0.344 & 0.731 & 0.005 \\
+& \texttt{ald\_elder} (g2) & 0.005 & 0.026 & 0.191 & 0.848 & 0.003 \\
+& \texttt{Kvinne} (g3) & 0.216 & 0.022 & 9.674 & <0.001 & 0.130 \\
+& \texttt{Utd\_grunnskole} (g4) & 0.037 & 0.030 & 1.230 & 0.219 & 0.015 \\
+& \texttt{Utd\_universitet} (g5) & -0.113 & 0.024 & -4.709 & <0.001 & -0.066 \\
+& \texttt{Barn} (g6) & 0.042 & 0.030 & 1.411 & 0.158 & 0.018 \\
+& \texttt{arb\_stillingspst} (g7) & 0.002 & 0.000 & 3.356 & 0.001 & 0.045 \\
+\bottomrule
+\end{tabular}
+\footnotesize{\textit{Merk:} Estimat er ustandardisert koeffisient. Std.Err er standardfeil. Std.all er fullstendig standardisert koeffisient. Referansekategorier: Alder (30–54 år), Utdanning (videregående). \texttt{Formue\_qnorm} er normalisert formue. \texttt{arb\_stillingspst} er sentrert stillingsprosent. \texttt{logsyk} er log(sykefravær + 0.01).}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Redegjørelse for resultat knyttet til hypoteser
+
+
+
+
 
 ### Redegjørelse for effekt av kontrollvariabler
 
+
+
+
+
+
+
+
+
 ### Redegjørelse for svakheter i modellen/data
+
+Til å starte med så er denne typen modell i grensepunktet på vår forståelse og dette fører til at det må tilføyes usikkerhet til tolkningen av resultatene. Spesielt gjelder dette for forståelsen av modelltilpasning, estimatorjusteringer og tolkning av latente sammenhenger i strukturelle ligningsmodeller med kategoriske data.
+Selv om analysen bygger på anerkjent metode og teori, er SEM med latente variabler og robuste estimatorer som WLSMV et metodisk nivå som ligger i ytterkanten av hva vi på bachelor nivå kan tolke. Resultatene diskuteres derfor med forsiktighet, og vi legger vekt på overordnede mønstre fremfor detaljerte tolkninger.
+
+
+
+
+ 
+
+
+
+
+
 
 \newpage
 
@@ -1734,92 +1859,6 @@ Dette kapitlet drøfter resultatene i forhold til problemstillingen. Hva er funn
 
 
 
-omskrive dette for å være i diskusjonskapittelet til hva som kan være for videre forskning. se på hvilken teori som er vært nevn tidligere i teksten. og skriv det med min skrivestil
-
-
-omskrive dette for å være i diskusjonskapittelet til hva som kan være for videre forskning. se på hvilken teori som er vært nevn tidligere i teksten. og skriv det med min skrivestil. Dette er ikke lengere hyptoser men har vært droppet fra vår bacheloroppgave. det står hypotese og beta fra før det ble droppet
-
-
-
-
-Vi tror at formue potensielt har effekt på avtalte timer også, som da vil ha en effekt på sykefravær siden avtalte timer er endret. Men at dette er en mer kompleks sammenheng som vi ikke har undersøkt utenom inkludering som kontrollvariabel. Dette er en svakhet med modellen
-
-
-
-I \autoref{sec-formue-jdr} forteller vi at effekten av formue på sykefravær kan være ikke-lineær, og at det kan være en bueformet sammenheng. Dette er ikke fanget opp i H1-H6 hvor vi antar lineære interaksjoner som er en begrensning i modellen. 
-
-
-
-
-
-
-
-#### omskrivings 
-
-
-Vi tror at effekten av stillingsprosent på sykefravær modereres av formue $\beta_7 < 0$
-
-Vi antar at sammenhengen mellom arbeidstimer representert ved stillingsprosent, $SP_i$ og sykefravær, $SF_i$, ikke er lik for alle formuesnivåer. For eksempel kan en høy stillingsprosent ha en sterkere positiv effekt på sykefravær (mer slitasje) for de med lav formue, som kanskje har mindre mulighet til restitusjon eller opplever arbeidet som mer påtvunget. For de med høy formue kan en høy stillingsprosent enten ha en svakere effekt, eller så kan de i større grad velge jobber med mange timer som også gir andre kompenserende faktorer. Vi forventer derfor at $\beta_7$ vil være signifikant. Vi antar at hovedeffekten av stillingsprosent på sykefravær representert ved $\gamma_{SP}$ i $\Sigma_j \gamma_{j}X_{ij}$) er positiv og at høy formue demper denne positive effekten ved $\beta_7 < 0$.
-
-
-
-
-
-
-Hypotese 4(H4): Indirekte effekt via motivasjon $\alpha_2\beta_6 < 0$
-
-
-Vi forventer en indirekte vei der formue påvirker sykefravær gjennom motivasjon. Som nevnt AUTOREF, forventer vi at høyere formue øker motivasjonen $\alpha_2 > 0$ som ved å redusere finansiell usikkerhet, og gode fremtidsutsikter. Videre forventer vi at høyere motivasjon/engasjement reduserer sykefraværet ($\beta_6 <0$), slik @langseth2021ticket fant. Samlet sett gir dette en forventning om en negativ indirekte effekt $\alpha_2 \beta_6 <0$, som betyr at en del av formues positive effekt på helse/nærvær går via økt arbeidsglede og engasjement som igjen gir lavere sykefravær.
-
-
-
-
-
-Hypotese 4(H4): $\beta_4 < 0$ Høyere formuenivå demper de negative effektene til høyere jobbkrav 
-
-
-Dette er en modereringshypotese. Vi tror at formue reduserer sensitiviteten for jobbkrav. For en person med lav formue kan høye krav oppleves som svært truende, da konsekvensene av å ikke mestre (for eks, miste jobben) er store. For en person med høy formue, gir den økonomiske tryggheten en mental "pute" som gjør at de samme kravene ikke utløser like mye stress. Dette er i tråd med @unguren2021moderator, som fant at økonomisk velvære fungerte som en slik buffer. Den marginale effekten av jobbkrav er $\frac{\partial SF_i}{\partial JD_i} = \beta_1 + \beta_4 FN_i$. En negativ $\beta_4$ betyr at effekten av JK på SF blir mindre etter hvert som FN øker.
-
-
-
-
-
-$\beta_5 > 0$ Høyere formuenivå demper den reduserende effekten av høyere jobbressurser på sykefravær 
-
-Dette er vår andre modereringshypotese, basert på en antagelse om avtagende grensenytte. Vi antar at jobbressurser har størst relativ effekt for de med lav formue. For en person med lav formue og potensielt høy økonomisk usikkerhet, vil en økning i jobbressurser som er en negativ effekt på sykefravær ha en stor reduserende effekt på sykefravær. En person med høy formue, som allerede har høy økonomisk trygghet, vil den samme økningen i jobbressurser ha en mindre tilleggseffekt. Effekten er altså sterkest for de med lav formue, og blir svakere jo høyere formuen blir. Den marginale effekten av jobbressurser er $\frac{\partial SF_i}{\partial JR_i} = \beta_2 + \beta_5 FN_i$. Siden $\beta_2 < 0$ er negativ, vil en positiv $\beta_5$ gjøre den totale effekten mindre negativ etter hvert som $FN_i$ øker. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1837,6 +1876,60 @@ Dette er vår andre modereringshypotese, basert på en antagelse om avtagende gr
 ### Diskusjon av implikasjoner for policy gitt svakheter
 
 ### Eventuelt: diskusjon av hva framtidig forskning kan forske videre på (basert påderes funn og svakheter i analysen)
+
+
+
+
+Formues påvirkning på avtalte timer og ikke-lineære effekter.
+Vi har en antakelse om at formue potensielt kan ha en effekt på avtalte timer, som igjen vil påvirke sykefraværet. Dette fremstår som en mer intrikat sammenheng enn det vi har hatt rom for å utforske, utover å inkludere stillingsprosent som en kontrollvariabel. Dette representerer en svakhet ved den nåværende modellen. Fremtidige studier kunne med fordel undersøke denne mekanismen nærmere.
+
+I teori i \autoref{sec-formue-jdr} så vi at effekten av formue på sykefravær kan være ikke lineær eller evt bue formet.  Vår nåværende modell har primært antatt lineære sammenhenger for formues direkte roller (utenom den normaliserte transformasjonen av formuevariabelen i seg selv). 
+
+
+
+
+
+
+Basert på dette, og inspirert av tidligere ideer som ikke ble fullt ut testet i denne omgang, ser vi flere konkrete områder for videre utforskning:
+
+Interaksjon mellom stillingsprosent og formue:
+Vi har ikke testet hvordan formue eventuelt endrer effekten av arbeidstimer (representert ved stillingsprosent, på sykefravær. JD-R-modellen understreker at jobbkrav kan tære på helsen. Det er imidlertid uklart om en økonomisk buffer i form av høyere formue kan dempe den negative effekten av høy arbeidsbelastning. Individer med lav formue har ofte mindre fleksibilitet til å justere arbeidstempo eller jobbe redusert ved slitasje. De med høyere formue kan derimot i større grad ha mulighet til å velge jobber med høyt timeantall som også tilbyr bedre restitusjonsmuligheter eller andre kompenserende faktorer.
+
+Videre forskning: En fremtidig studie burde vurdere et eksplisitt interaksjonsledd mellom (sentrert) stillingsprosent og formue. Målet ville være å undersøke om den potensielt positive sammenhengen mellom stillingsprosent og sykefravær, kanskje blir svakere (eller til og med snur) ved økende formuesnivå. 
+
+Formues indirekte påvirkning på sykefravær via motivasjon:
+Vi har antatt at formue kan påvirke sykefravær indirekte gjennom arbeidsmotivasjon. Forventningen er at høyere formue kan bidra til økt motivasjon ved å redusere finansiell usikkerhet og skape positive fremtidsutsikter (en positiv effekt, a2>0 i vår motivasjonsmodell, \autoref{eq:motivasjon}). Videre, i tråd med funn som hos @langseth2021ticket, kan høyere motivasjon og engasjement tenkes å redusere sykefraværet (en negativ effekt i vår sykefraværsmodell.
+
+Videre forskning: Selv om vår nåværende SEM-modell estimerer disse separate stiene, og en indirekte effekt  kan beregnes, behandlet vi motivasjon som en enkel observert variabel basert på ett spørsmål. Fremtidig arbeid kunne med fordel teste en mer utdypende medieringsmodell hvor motivasjon kanskje operasjonaliseres som en latent variabel basert på flere indikatorer. Det vil være sentralt å kartlegge mer robust om økt formue faktisk styrker ulike fasetter av motivasjon (f.eks. indre vs. ytre), og om denne motivasjonsøkningen i sin tur har en signifikant og substansiell fraværsreduserende effekt.
+
+Ikke-lineær moderering av jobbkrav med formue:
+JD-R-modellen forutsetter ofte en lineær effekt av jobbkrav på utfall som stress eller sykefravær. Vi har i våre tidligere betraktninger tenkt at formue kunne moderere denne sammenhengen lineært.
+
+Videre forskning: I virkeligheten kan det tenkes at individer med svært lav formue er spesielt sensitive for økte jobbkrav, grunnet frykt for tap av inntektsmulighet og forverret helse. Samtidig kan formues buffereffekt flate ut på svært høye formuesnivåer (de rikeste opplever kanskje uansett lite fravær relatert til jobbstress, uavhengig av små variasjoner i jobbkrav). Det kan også være at de med aller lavest formue mister motivasjon dersom opplevd ulikhet og manglende muligheter blir for store. Fremtidige studier bør derfor utforske potensielle ikke-lineære modereringseffekter. Dette kan innebære å teste interaksjonsledd som tillater effekten av jobbkrav å variere på en mer kompleks måte med formuesnivået, for eksempel ved å bruke spline-funksjoner for formue i interaksjonen, eller ved å sammenligne effekter på tvers av flere, mer detaljerte formueskategorier.
+
+Avtagende grensenytte av jobbressurser for de med høy formue:
+JJobbressurser antas å fungere beskyttende, men effekten kan tenkes å avta med økende formue. De med lav formue kan få relativt større utbytte av ekstra støtte, autonomi og påvirkningsmulighet fordi de har mindre økonomisk spillerom og færre alternative buffere. De med høy formue har allerede en betydelig buffer, så den marginale gevinsten av ytterligere jobbressurser kan være mindre.
+
+Videre forskning: Dette kan testes mer inngående, ikke bare med et lineært interaksjonsledd mellom jobbressurser og formue (hvor man ville forvente en positiv koeffisient hvis den negative effekten av jobbressurser på sykefravær svekkes med økende formue), men også ved å undersøke effekter separat for ulike formuessegmenter (f.eks. laveste, midterste og høyeste kvintil/kvartil av formuesfordelingen) for å se om styrken på sammenhengen mellom jobbressurser og sykefravær varierer systematisk.
+
+Ulike operasjonaliseringer og dimensjoner av formue:
+Vi har benyttet bruttofinanskapital, transformert til en normalfordeling (Z-skåre). Det er imidlertid sannsynlig at ulike typer formue kan ha ulik psykologisk betydning og dermed ulik effekt. For eksempel kan nettoformue (som tar hensyn til gjeld), sammensetningen av formuen (boligformue vs. verdipapirformue), eller kilden til formuen (arvet vs. opparbeidet) spille forskjellig inn på opplevd trygghet og handlingsrom. En person med betydelig boligformue, men også høy gjeld, opplever kanskje mindre reell økonomisk trygghet enn en med tilsvarende bruttoformue plassert i likvide midler.
+
+Videre forskning: Fremtidige studier bør derfor utforske og sammenligne ulike formuemål for å se om typen formue modererer effekten av jobbkrav og jobbressurser på ulike måter.
+
+    Differensiering av jobbkrav og -ressurser:
+    Vi har operert med relativt brede latente skalaer for jobbkrav (inkludert arbeidsmengde, tidspress, ekstra arbeid) og jobbressurser (inkludert støtte, autonomi, påvirkning). Teoretisk sett er det mulig at formue modererer effekten av ulike spesifikke dimensjoner av krav og ressurser forskjellig.
+
+        Videre forskning: Kan formue i større grad dempe effekten av fysiske belastninger enn emosjonelle krav? Eller kan høy formue paradoksalt nok føre til høyere personlige ambisjoner og krav til egen prestasjon, som delvis nøytraliserer fordelene av økte ressurser? Fremtidige studier kunne med fordel dekomponere disse brede konstruktene for å undersøke slike nyanserte interaksjoner.
+
+
+
+
+
+
+
+
+
 
 \newpage
 
