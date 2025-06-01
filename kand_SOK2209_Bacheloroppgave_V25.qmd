@@ -1328,7 +1328,7 @@ I \autoref{fig:kontrollvariabler} presenteres fordelingen av de arbeidsrelaterte
 
 \newpage
 
-## Metode {sec-metode}
+## Metode {#sec-metode}
 
 I oppgaven vil vi bruke en kvantitativ metode for å analysere sammenhengen mellom formue og sykefravær. Vi vil bruke en Structural Equation Model (SEM) for å teste hypotesene våre, og vi vil kontrollere for andre relevante faktorer som kan påvirke sykefraværet. SEM er en statistisk metode som gjør det mulig å teste komplekse modeller med flere variabler, og som kan håndtere både direkte og indirekte sammenhenger mellom variablene. Vi vil bruke R for å gjennomføre analysen, og vi vil bruke pakker som Lavaan og Semtools for å implementere SEM-modellen.
 
