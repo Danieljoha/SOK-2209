@@ -1314,7 +1314,7 @@ Korrelationheatmap om vi får tid her til latente variabler.
 
 ## Metode
 
-I oppgaven vil vi bruke en kvantitativ metode for å analysere sammenhengen mellom formue og sykefravær. Vi vil bruke en Structural Equation Model (SEM) for å teste hypotesene våre, og vi vil kontrollere for andre relevante faktorer som kan påvirke sykefraværet. SEM er en statistisk metode som gjør det mulig å teste komplekse modeller med flere variabler, og som kan håndtere både direkte og indirekte sammenhenger mellom variablene. Vi vil bruke R for å gjennomføre analysen, og vi vil bruke pakker som x og x for å implementere SEM-modellen.
+I oppgaven vil vi bruke en kvantitativ metode for å analysere sammenhengen mellom formue og sykefravær. Vi vil bruke en Structural Equation Model (SEM) for å teste hypotesene våre, og vi vil kontrollere for andre relevante faktorer som kan påvirke sykefraværet. SEM er en statistisk metode som gjør det mulig å teste komplekse modeller med flere variabler, og som kan håndtere både direkte og indirekte sammenhenger mellom variablene. Vi vil bruke R for å gjennomføre analysen, og vi vil bruke pakker som Lavaan og Semtools for å implementere SEM-modellen.
 
 ## Structural Equation Model (SEM)
 
@@ -1386,47 +1386,13 @@ Vår medierende variabel Motivasjon ($M_i$) i \autoref{eq:motivasjon} er modelle
 
 
 
+#### Endring av variabler
+
+De ordinale variablene har en skala fra 1-5, hvor 1 ofte er en form for "oftest" eller "veldig fornøyd", og 5 er "aldri" eller "veldig misfornøyd". 
+
+Vi snur om på skalaen til de negative variablene fordi skalaen til variabler som hvor fornøyd vil si at 1 er ofte veldig fornøyd, og 5 tilsier veldig misfornøyd, mens på foreks for mye å gjøre, så vil 1 tilsi daglig og 5 tilsi aldri. Som vi ser i REFERER TIL fordeling av arbeidsrelaterte variabler så vil det være enklere å tolke resultatene når vi har en skala som er lik for alle variablene. 
 
 
-
-
-
-
-### Hovedmodell for sykefravær (SF)
-
-Vi antar at sykefraværet (SF) i hovedsak påvirkes av:
-
-Jobbkrav (JK) (effekten av arbeidsbelastning),
-
-Motivasjon (M) (som en mekanisme/medierende faktor),
-
-Formuenivå (FN) (som hovedprediktor og også direkte påvirker SF),
-
-Så kan vi ha en X som er en mengde kontrollvariabler som for eksempel avtalte dager, demografi, arbeidsrelaterte forhold osv.
-
-$$
-SF_i = \beta_0 + \beta_1 JK_i + \beta_2 M_i + \beta_3 FN_i + \Sigma_j \beta_{4j}X_{ij} + \epsilon_{1i}
-$$
-
-Der $i$ er individet, $\beta_0$ er konstanten, $\beta_1$, $\beta_2$, $\beta_3$ er koeffisientene for henholdsvis jobbkrav, motivasjon og formuenivå, $\Sigma_j \beta_{4j}X_{ij}$ fanger opp effekter av eventuelle kontrollvariabler, $\epsilon_{1i}$ er feilleddet.
-
-Denne likningen innebærer at formuenivået ikke bare antas å ha en direkte effekt på sykefravær, men via motivasjon så kan effekten også gå via en indirekte kanal.
-
-### Ligning for motivasjon (M)
-
-Motivasjonen antas å bli påvirket av:
-
-Jobbressurser (JR) (dvs. støtte og autonomi i arbeidet),
-
-Formuenivå (FN) (som antas å påvirke hvor sensitiv man er for endringer i inntekt – dvs. hvordan man prioriterer fritid/arbeid),
-
-X er kontrollvariabler som f.eks. utdanning eller andre relevante demografiske/yrkesmessige mål.
-
-$$
-M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \Sigma_k \alpha_{3k}X_{ik} + \epsilon_{2i}
-$$
-
-Der $\alpha_0$ er konstanten, $\alpha_1$ og $\alpha_2$ er koeffisientene for henholdsvis jobbressurser og formuenivå, $\Sigma_k \alpha_{3k}X_{ik}$ fanger opp effekter av eventuelle kontrollvariabler, $\epsilon_{2i}$ er feilleddet.
 
 
 
@@ -1480,7 +1446,7 @@ Vi antar at sammenhengen mellom arbeidstimer representert ved stillingsprosent, 
 
 
 ```{r}
-
+#LAVAAN BEGINS HERE WITH SEM PLS GEMINI
 
 ```
 
