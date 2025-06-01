@@ -667,7 +667,7 @@ Modellen vi blir å bruke blir da som følger:
   \centering
   \begin{tikzpicture}[
       latent/.style={rectangle, draw, fill=blue!20, minimum width=3cm, minimum height=1cm},
-      item/.style  ={rectangle, draw, fill=blue!10, font=\small},
+      item/.style  ={rectangle, draw, fill=blue!10, font=\small, minimum width=2.5cm},
       medi/.style  ={rectangle, draw, fill=green!20, minimum width=2.5cm, minimum height=1cm},
       medi2/.style ={rectangle, draw, fill=red!20,   minimum width=2.5cm, minimum height=1cm},
       moder/.style ={diamond,   draw, fill=yellow!20,aspect=2, minimum width=2.5cm, minimum height=1cm},
@@ -677,19 +677,23 @@ Modellen vi blir å bruke blir da som følger:
 
     % Latente noder
     \node[latent]              (JK)  {Jobbkrav};
-    \node[latent, below=of JK] (JR)  {Jobbressurser};
+    \node[latent, below=of JK, yshift=-3cm] (JR) {Jobbressurser};
 
     % Indikator-noder for Jobbkrav
-    \node[item, above left=of JK] (v1) {Variabel 1};
-    \node[item, left=of JK]       (v2) {Variabel 2};
+    \node[item, above left=of JK]      (v1) {For mye arbeid};
+    \node[item, left=of JK]            (v2) {Høyt arbeidstempo};
+    \node[item, below left=of JK]      (v5) {Ekstra arbeid};
     \draw[-{Circle[length=2mm]}] (JK) -- (v1);
     \draw[-{Circle[length=2mm]}] (JK) -- (v2);
+    \draw[-{Circle[length=2mm]}] (JK) -- (v5);
 
     % Indikator-noder for Jobbressurser
-    \node[item, left=of JR]        (v3) {Variabel 3};
-    \node[item, below left=of JR]  (v4) {Variabel 4};
+    \node[item, above left=of JR]            (v3) {Selvbestemmelse oppgaver};
+    \node[item, left=of JR]      (v4) {Selvbestemmelse arbeid};
+    \node[item, below left=of JR, yshift=0cm] (v6) {Påvirkning i beslutninger};
     \draw[-{Circle[length=2mm]}] (JR) -- (v3);
     \draw[-{Circle[length=2mm]}] (JR) -- (v4);
+    \draw[-{Circle[length=2mm]}] (JR) -- (v6);
 
     % Moderator-node plassert midt over
     \node[moder, right=1.4cm of $(JK)!0.5!(JR)$] (FN) {Formue};
@@ -712,7 +716,7 @@ Modellen vi blir å bruke blir da som følger:
     \draw[->] (M2) -- node[midway, below] {$-$} (SF);
 
   \end{tikzpicture}
-  \caption{Utvidet JD–R-modell med formue som moderator og separate motivasjonsløp.}
+  \caption{Utvidet JD–R-modell med formue som moderator, indikatorer og motivasjonsløp.}
   \label{fig:jdr_tikz}
 \end{figure}
 

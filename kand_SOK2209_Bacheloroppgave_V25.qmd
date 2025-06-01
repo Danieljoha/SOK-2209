@@ -160,7 +160,7 @@ I teorien starter vi med å gå gjennom begrepsavklaringer, hvor vi vil definere
 
 Oppgaven er delt inn i følgende kapitler: I kapittel 2 vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. I kapittel 3 vil vi forklare metode og datagrunnlag, i kapittel 4 gjennomføres analysen og i kapittel 5 vil vi presentere resultatene fra analysen. Avslutningsvis i kapittel 6 vil vi diskutere resultatene, konkludere og gi anbefalinger for videre forskning.
 
-# Teori {sec:teori}
+# Teori {#sec:teori}
 
 I dette kapittelet vil vi gi en teoretisk bakgrunn for oppgaven, og gjøre rede for tidligere forskning på temaet. Vi vil først definere begrepene kortfattet, og deretter presentere teori og empiri som er relevant for oppgaven. Vi vil spesielt fokusere på JD-R-modellen, som er et mye brukt rammeverk for å forstå sammenhengen mellom arbeidsmiljø og helse.
 
@@ -327,7 +327,7 @@ Modellen vi blir å bruke blir da som følger:
   \centering
   \begin{tikzpicture}[
       latent/.style={rectangle, draw, fill=blue!20, minimum width=3cm, minimum height=1cm},
-      item/.style  ={rectangle, draw, fill=blue!10, font=\small},
+      item/.style  ={rectangle, draw, fill=blue!10, font=\small, minimum width=2.5cm},
       medi/.style  ={rectangle, draw, fill=green!20, minimum width=2.5cm, minimum height=1cm},
       medi2/.style ={rectangle, draw, fill=red!20,   minimum width=2.5cm, minimum height=1cm},
       moder/.style ={diamond,   draw, fill=yellow!20,aspect=2, minimum width=2.5cm, minimum height=1cm},
@@ -337,19 +337,23 @@ Modellen vi blir å bruke blir da som følger:
 
     % Latente noder
     \node[latent]              (JK)  {Jobbkrav};
-    \node[latent, below=of JK] (JR)  {Jobbressurser};
+    \node[latent, below=of JK, yshift=-3cm] (JR) {Jobbressurser};
 
     % Indikator-noder for Jobbkrav
-    \node[item, above left=of JK] (v1) {Variabel 1};
-    \node[item, left=of JK]       (v2) {Variabel 2};
+    \node[item, above left=of JK]      (v1) {For mye arbeid};
+    \node[item, left=of JK]            (v2) {Høyt arbeidstempo};
+    \node[item, below left=of JK]      (v5) {Ekstra arbeid};
     \draw[-{Circle[length=2mm]}] (JK) -- (v1);
     \draw[-{Circle[length=2mm]}] (JK) -- (v2);
+    \draw[-{Circle[length=2mm]}] (JK) -- (v5);
 
     % Indikator-noder for Jobbressurser
-    \node[item, left=of JR]        (v3) {Variabel 3};
-    \node[item, below left=of JR]  (v4) {Variabel 4};
+    \node[item, above left=of JR]            (v3) {Selvbestemmelse oppgaver};
+    \node[item, left=of JR]      (v4) {Selvbestemmelse arbeid};
+    \node[item, below left=of JR, yshift=0cm] (v6) {Påvirkning i beslutninger};
     \draw[-{Circle[length=2mm]}] (JR) -- (v3);
     \draw[-{Circle[length=2mm]}] (JR) -- (v4);
+    \draw[-{Circle[length=2mm]}] (JR) -- (v6);
 
     % Moderator-node plassert midt over
     \node[moder, right=1.4cm of $(JK)!0.5!(JR)$] (FN) {Formue};
@@ -372,9 +376,10 @@ Modellen vi blir å bruke blir da som følger:
     \draw[->] (M2) -- node[midway, below] {$-$} (SF);
 
   \end{tikzpicture}
-  \caption{Utvidet JD–R-modell med formue som moderator og separate motivasjonsløp.}
+  \caption{Utvidet JD–R-modell med formue som moderator, indikatorer og motivasjonsløp.}
   \label{fig:jdr_tikz}
 \end{figure}
+
 ```
 
 I modellen vår (\autoref{fig:jdr_tikz}) har vi inkludert formue som en moderator som påvirker både jobbkrav og jobbressurser. Dette betyr at formue kan endre hvordan jobbkrav og jobbressurser påvirker sykefraværet. Vi har også separate motivasjonsløp for jobbkrav og jobbressurser, som gjør at vi kan se hvordan motivasjon påvirkes av begge disse faktorene. Vi antar at formuen blir å fungere som en stress-avlastning eller buffer mot jobbkravene og forsterke effekten av jobbressurser, og fungere som en psykologisk trygghet. Dette kan føre til at personer med høyere formue opplever lavere sykefravær, mens de med lavere formue kan oppleve høyere sykefravær på grunn av økt stress og lavere tilgang til ressurser.
@@ -391,6 +396,7 @@ Med dette rammeverket formulerer vi følgende hypoteser:
 
 **H3:** Høyere formuenivå gir lavere sykefravær
 
+**H4:** Formue øker motivasjon
 
 For en grundig gjennomgang av hypotesene og hvordan de er relatert til JD-R-modellen, se kapittel [-@sec-hypot].
 
@@ -570,7 +576,7 @@ Sykefravær:
 
 Datasettet inneholder en ferdig variabel for sykefraværsprosent (sfpros_uten_feriekorr_2022, sfpros_uten_feriekorr_2023), men vi velger å beregne denne selv siden de med 0 fravær står som NA, også for å kunne ta høyde for avtalt arbeidstid.
 
-Vi benytter variablene sfdagsvj_2022 (sykefraværsdagsverk) og mdagsv_2022 (avtalte dagsverk) fra Levekårsundersøkelsen. Sykefraværsprosenten ($SF_i$) for individ $i$ beregnes som:
+Vi benytter variablene sfdagsvj_2022 (sykefraværsdagsverk) og mdagsv_2022 (avtalte dagsverk) fra Levekårsundersøkelsen. Sykefraværsraten ($SF_i$) for individ $i$ beregnes som:
 
 
 $$
@@ -582,6 +588,8 @@ SF_i =
 $$
 
 Dette gjør at individer med avtalte dagsverk, men uten legemeldt sykefraværsdager, får verdien 0 i stedet for NA slik det gjøres i den ferdigberegnede variabelen sfpros_uten_feriekorr_2022.
+
+Vi har fjernet alle som har over 14 dager sammenhengende sykefravær, for å unngå å inkludere langtidssykemeldte som kan ha andre årsaker til fravær enn de vi ønsker å undersøke. Dette gjør at vi får et mer representativt bilde av korttidsfravær og dets sammenheng med formue.
 
 Formue:
 
@@ -632,7 +640,7 @@ Jobbkrav er en latent variabel som vi måler med tre indikatorer: For mye arbeid
 
 Jobbressurser:
 
-Jobbressurser er en latent variabel som vi måler med syv indikatorer: Støtte fra sjef (QPS72_ny), Støtte fra kollegaer (QPS73_ny), Grad av selvbestemmelse over oppgaver (Sp56a2), Grad av selvbestemmelse over arbeid som skal gjøres (Sp56b2) og Grad av påvirkning på beslutninger i arbeidet (QPS53). Disse indikatorene er basert på spørsmål i Levekårsundersøkelsen som måler hvor mye støtte og ressurser respondenten opplever at de har på jobben, og hvor mye kontroll de har over eget arbeid. Disse indikatorene vil gi oss en indikasjon på hvor gode jobbressursene er for individet.
+Jobbressurser er en latent variabel som vi måler med tre indikatorer: Grad av selvbestemmelse over oppgaver (Sp56a2), Grad av selvbestemmelse over arbeid som skal gjøres (Sp56b2) og Grad av påvirkning på beslutninger i arbeidet (QPS53). Disse indikatorene er basert på spørsmål i Levekårsundersøkelsen som måler hvor mye støtte og ressurser respondenten opplever at de har på jobben, og hvor mye kontroll de har over eget arbeid. Disse indikatorene vil gi oss en indikasjon på hvor gode jobbressursene er for individet.
 
 ### Kontrollvariabler
 
@@ -646,11 +654,7 @@ Kjønn til respondenten. Denne kontrollvariabelen er en dummyvariabel, hvor 0 er
 
 Utdanning:
 
-Utdanningsnivået til respondenten er en ordinal variabel, og vi vil bruke utdanningsgruppene grunnskole eller mindre, videregående skole, Universitet/Høgskole og forskernivå. Denne variabelen inkluderes for å justere for mulige utdanningsrelaterte forskjeller i sykefravær. 
-
-Tilfredshet med arbeid:
-
-Selvrapportert tilfredshet med arbeid (TS) er en ordinal variabel, og vi vil bruke denne variabelen for å kontrollere for eventuelle forskjeller i sykefraværet basert på hvor tilfreds respondenten er med jobben sin. Denne variabelen er basert på en skala med 5 nivåer (1=svært misfornøyd til 5=svært fornøyd).
+Utdanningsnivået til respondenten er en ordinal variabel, og vi vil bruke utdanningsgruppene grunnskole eller mindre, videregående skole, Universitet/Høgskole og forskernivå. Denne variabelen inkluderes for å justere for mulige utdanningsrelaterte forskjeller i sykefravær.
 
 Motivasjon:
 
@@ -674,75 +678,56 @@ For å ta høyde for denne kompleksiteten og kontrollere for variasjon i arbeids
 
 I dette avsnittet vil vi gi en oversikt over deskriptiv statistikk for alle variablene i analysen. Vi vil presentere gjennomsnitt, standardavvik og minimums- og maksimumsverdier for alle variablene, samt korrelasjonsmatrisen for de uavhengige variablene.
 
-I \autoref{tab:deskriptiv} presenteres deskriptiv statistikk for alle variablene i analysen. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 4.67 prosent, med en minsteverdi på 0 prosent og maksimalverdi på 92.6 prosent. Alder ligger på et gjennomsnitt på 43.59 år, med en minsteverdi på 18 år og maksimalverdi på 66, som stemmer overns med alderen til respondentene i datasettet. Utdanningsnivået har et gjennomsnitt på 4.59, som tilsvarer videregående skole, med en minimumsverdi på 2 (grunnskole eller mindre) og en maksimumsverdi på 8 (doktorgrad).
+I \autoref{tab:deskriptiv} presenteres deskriptiv statistikk for alle variablene i analysen. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 1.70 prosent (0.00170), med en minsteverdi på 0 prosent og maksimalverdi på 48.08 prosent. Alder ligger på et gjennomsnitt på 43.33 år, med en minsteverdi på 18 år og maksimalverdi på 66, som stemmer med alderen til respondentene i datasettet. Utdanningsnivået har et gjennomsnitt på 4.65, som tilsvarer videregående skole, med en minimumsverdi på 2 (grunnskole eller mindre) og en maksimumsverdi på 8 (doktorgrad).
 
-Av de opprinnelig 17971 inviterte respondentene i datasettet så fullførte 7 498 svarene til alle de relevante variablene. Hvor eksakt responsrate da blir $\frac{7498}{17971} = 41.7\%$. Dette kan føre til skjevheter i dataene, og kan bli en svakhet ved analysen når vi tolker resultatene. Siden det er vanskelig for oss å vite om det er systematiske forskjeller mellom de som svarte og de som ikke svarte, så kan vi ikke si noe sikkert om hvor representativt utvalget er for den norske befolkningen.
+Av de opprinnelig 17971 inviterte respondentene i datasettet så fullførte 6 103 svarene til alle de relevante variablene etter at vi fjernet de som var langtidssykemeldt over 2 uker. Hvor eksakt responsrate da blir $\frac{6103}{17971} = 33.9\%$. Dette kan føre til skjevheter i dataene, og kan bli en svakhet ved analysen når vi tolker resultatene. Siden det er vanskelig for oss å vite om det er systematiske forskjeller mellom de som svarte og de som ikke svarte, så kan vi ikke si noe sikkert om hvor representativt utvalget er for den norske befolkningen.
 
 ```{r}
 # Deskriptiv statistikk
 
 # NSD3201 %>%
 #   select(sykefravaer_2022, Alder, Utdanning, Kjonn, Tilfredshet, Motivasjon, Barn,
-#          Stotte_sjef, Stotte_kollega,
 #          Grad_selvbestemming_oppgaver, Grad_selvbestemming_arbeid_som_skal_gjores,
 #          Grad_arbeidstempo, Grad_pavirke_beslutning_arbeid,
 #          For_mye_arbeid, Hoyt_arbeidstempo, Ekstra_arbeid, arb_stillingspst) %>%
 #   summary()
 ```
 
+```{=tex}
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrrrrrr}
 \toprule
-Variabel                               & Min   & 1.\,Q  & Median & Mean   & 3.\,Q  & Max  & N    \\
+Variabel                               & Min    & 1.\,Q  & Median & Mean   & 3.\,Q  & Max    & N    \\
 \midrule
-Sykefravær 2022                        & 0.0000 & 0.0000 & 0.0000 & 0.0467 & 0.0413 & 0.9206 & 7498 \\
-Alder                                  & 18     & 33     & 45     & 43.59  & 54     & 66     & 7498 \\
-Utdanning                              & 2      & 4      & 4      & 4.596  & 6      & 8      & 7498 \\
-Kjønn (1=Mann, 2=Kvinne)               & 1      & 1      & 2      & 1.507  & 2      & 2      & 7498 \\
-Tilfredshet                            & 1      & 4      & 4      & 4.14   & 5      & 5      & 7498 \\
-Motivasjon                             & 1      & 4      & 4      & 3.996  & 5      & 5      & 7498 \\
-Barn                                   & 0      & 0      & 0      & 0.14   & 0      & 1      & 7498 \\
-Støtte fra sjef                        & 1      & 3      & 4      & 3.923  & 5      & 5      & 7498 \\
-Støtte fra kollega                     & 1      & 4      & 5      & 4.293  & 5      & 5      & 7498 \\
-Tilbakemelding fra sjef                & 1      & 2      & 3      & 3.147  & 4      & 5      & 7498 \\
-Arbeidsresultater                      & 1      & 3      & 4      & 3.707  & 5      & 5      & 7498 \\
-Selvbestemmelse (oppgaver)             & 1      & 2      & 3      & 2.977  & 4      & 5      & 7498 \\
-Selvbestemmelse (arbeidsinnhold)       & 1      & 3      & 4      & 3.694  & 4      & 5      & 7498 \\
-Grad arbeidstempo                      & 1      & 3      & 4      & 3.322  & 4      & 5      & 7498 \\
-Påvirkningsgrad                        & 1      & 3      & 3      & 3.433  & 4      & 5      & 7498 \\
-For mye arbeid                         & 1      & 3      & 4      & 3.972  & 5      & 5      & 7498 \\
-Høyt arbeidstempo                      & 1      & 3      & 4      & 4.148  & 5      & 5      & 7498 \\
-Ekstra arbeid                          & 1      & 2      & 2      & 2.610  & 4      & 5      & 7498 \\
-Stillingsprosent                       & 0      & 100    & 100    & 90.30  & 100    & 120    & 7498 \\
+Sykefravær 2022                        & 0.0000 & 0.0000 & 0.0000 & 0.0170 & 0.0193 & 0.4808 & 6103 \\
+Alder                                  & 18     & 33     & 45     & 43.33  & 54     & 66     & 6103 \\
+Utdanning                              & 2      & 4      & 4      & 4.65   & 6      & 8      & 6103 \\
+Kjønn (0=Kvinne, 1=Mann)               & 1      & 1      & 2      & 1.48   & 2      & 2      & 6103 \\
+Tilfredshet                            & 1      & 4      & 4      & 4.19   & 5      & 5      & 6103 \\
+Motivasjon                             & 1      & 4      & 4      & 4.03   & 5      & 5      & 6103 \\
+Barn                                   & 0      & 0      & 0      & 0.14   & 0      & 1      & 6103 \\
+Selvbestemmelse (oppgaver)             & 1      & 2      & 3      & 3.03   & 4      & 5      & 6103 \\
+Selvbestemmelse (arbeidsinnhold)       & 1      & 3      & 4      & 3.73   & 4      & 5      & 6103 \\
+Grad arbeidstempo                      & 1      & 3      & 4      & 3.37   & 4      & 5      & 6103 \\
+Påvirkningsgrad                        & 1      & 3      & 3      & 3.47   & 4      & 5      & 6103 \\
+For mye arbeid                         & 1      & 3      & 4      & 3.95   & 5      & 5      & 6103 \\
+Høyt arbeidstempo                      & 1      & 4      & 4      & 4.13   & 5      & 5      & 6103 \\
+Ekstra arbeid                          & 1      & 1      & 2      & 2.63   & 4      & 5      & 6103 \\
+Stillingsprosent                       & 0      & 100    & 100    & 90.66  & 100    & 120    & 6103 \\
 \bottomrule
 \end{tabular}
-\caption{Deskriptiv statistikk for hovedvariabler (N = 7498)}
+\caption{Deskriptiv statistikk for hovedvariabler (N = 6103)}
 \label{tab:deskriptiv}
 \end{table}
 
+```
 
-I \autoref{tab:deskr_formue} ser vi at sykefraværet i 2022 har et gjennomsnitt på 6 % for de med lav formue, 5 % for de med middels formue og 3 % for de med høy formue. Dette antyder at de med høyere formue har litt lavere sykefravær, selv om forskjellene er relativt små.
+I \autoref{tab:deskr_formue} ser vi at sykefraværet i 2022 har et gjennomsnitt på 2 prosent (0.02) for de med lav formue, 2 prosent (0.02) for de med middels formue og 1 prosent (0.01) for de med høy formue. Dette antyder at de med høyere formue har litt lavere sykefravær, selv om forskjellene er relativt små.
 
-Alderen øker tydelig med formuegruppe: gjennomsnittsalderen er
+Alderen øker noe med formuegruppe: gjennomsnittsalderen er 40.44 år i lav formue, 42.43 år i middels formue og 49.96 år i høy formue. Når motivasjon måles på skalaen 1–5, er gjennomsnittsskårene 3.98 i lav formue, 4.02 i middels formue og 4.15 i høy formue.
 
-- 40,84 år i lav formue
-- 42,76 år i middels formue
-- 50,06 år i høy formue.
-
-Når motivasjon måles på skalaen 1–5, er gjennomsnittsskårene
-
-- 3,96 i lav formue
-- 3,98 i middels formue
-- 4,11 i høy formue.
-
-Tilfredshet (1–5) følger samme mønster:
-
-- 4,10 i lav formue
-- 4,12 i middels formue
-- 4,26 i høy formue.
-
-Forskjellene i motivasjon og tilfredshet er små, men systematiske: personer med høy formue rapporterer noe høyere motivasjon og tilfredshet enn dem med lav formue. Samtidig ser vi at de med høyest formue også har den høyeste gjennomsnittsalderen, noe som indikerer en kobling mellom alder og formue (eldre personer har gjerne opparbeidet mer formue).
+Forskjellene i motivasjon er små, men systematisk: personer med høy formue rapporterer noe høyere motivasjon enn de med lav formue, tilfredshet følger også omtrent samme mønster (4.14 mot 4.17 og 4.29).Samtidig ser vi at de med høyest formue også har den høyeste gjennomsnittsalderen, noe som indikerer en kobling mellom alder og formue (eldre personer har gjerne opparbeidet mer formue).
 
 
 ```{r}
@@ -780,41 +765,46 @@ Forskjellene i motivasjon og tilfredshet er små, men systematiske: personer med
 #   kable_styling(latex_options = c("hold_position","repeat_header"))
 ```
 
-\begin{table}[ht]
+```{=tex}
+\begin{table}[H]
 \centering
-\begin{tabular}{lrrrrrr}
+\begin{tabular}{lcccccc}
 \toprule
-Variabel             & \multicolumn{2}{c}{Lav formue} & \multicolumn{2}{c}{Middels formue} & \multicolumn{2}{c}{Høy formue} \\
-                     & M       & SD       & M         & SD        & M       & SD      \\
+                        & \multicolumn{2}{c}{Lav formue (n = 883)} 
+                        & \multicolumn{2}{c}{Middels formue (n = 4255)} 
+                        & \multicolumn{2}{c}{Høy formue (n = 965)}         \\
+\cmidrule(r){2-3}\cmidrule(lr){4-5}\cmidrule(l){6-7}
+Variabel                & M      & SD     & M       & SD     & M      & SD    \\
 \midrule
-Alder                & 40.84   & 12.47    & 42.76     & 12.33     & 50.06   & 10.31   \\
-Motivasjon           & 3.96    & 0.99     & 3.98      & 0.92      & 4.11    & 0.84    \\
-Tilfredshet          & 4.10    & 0.93     & 4.12      & 0.89      & 4.26    & 0.79    \\
-Sykefravær 2022      & 0.06    & 0.11     & 0.05      & 0.11      & 0.03    & 0.09    \\
+Alder                   & 40.44  & 12.61  & 42.43   & 12.41  & 49.96  & 10.24 \\
+Motivasjon              &  3.98  &  0.98  &  4.02   &  0.90  &  4.15  &  0.83 \\
+Tilfredshet             &  4.14  &  0.88  &  4.17   &  0.85  &  4.29  &  0.76 \\
+Sykefravær 2022         &  0.02  &  0.05  &  0.02   &  0.04  &  0.01  &  0.03 \\
 \bottomrule
 \end{tabular}
 \caption{Deskriptiv statistikk etter formuegruppe}
 \label{tab:deskr_formue}
 \end{table}
+```
 
-I \autoref{tab:deskr_kjonn} presenteres deskriptiv statistikk for sykefravær etter kjønn. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 3 prosent for menn og 6 prosent for kvinner, kvinner har da dobbelt så høyt sykefravær enn menn. Dette kan skyldes at kvinner i større grad enn menn jobber i yrker med høyere sykefravær, eller at kvinner er mer tilbøyelige til å rapportere sykefravær enn menn. Det kan også være andre faktorer som påvirker sykefraværet, som for eksempel alder, utdanning og arbeidsforhold. Vi ser også at vi har en bra fordeling av kvinner og menn i utvalget, der 50.7 prosent av respondentene er kvinner og 49.3 prosent er menn.
+I \autoref{tab:deskr_kjonn} presenteres deskriptiv statistikk for sykefravær etter kjønn. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 1 prosent for menn og 2 prosent for kvinner, kvinner har da dobbelt så høyt sykefravær enn menn. Dette kan skyldes at kvinner i større grad enn menn jobber i yrker med høyere sykefravær, eller at kvinner er mer tilbøyelige til å rapportere sykefravær enn menn. Det kan også være andre faktorer som påvirker sykefraværet, som for eksempel alder, utdanning og arbeidsforhold. Vi ser også at vi har en bra fordeling av kvinner og menn i utvalget, der 47.9 prosent av respondentene er kvinner og 52.1 prosent er menn.
 
 ```{r}
-tabell<-NSD3201 %>%
-  # 1) Lag om kjonn til faktor med labels
-  mutate(
-    kjonn_f = factor(Kjonn,
-                     levels = c(1, 2),
-                     labels = c("Mann", "Kvinne"))
-  ) %>%
-  # 2) Gruppér og summer opp
-  group_by(kjonn_f) %>%
-  summarise(
-    N       = n(),
-    pct     = round(N / nrow(NSD3201) * 100, 1),
-    mean_sf = round(mean(sykefravaer_2022, na.rm = TRUE), 2),
-    sd_sf   = round(sd(sykefravaer_2022, na.rm = TRUE), 2)
-  )
+# tabell<-NSD3201 %>%
+#   # 1) Lag om kjonn til faktor med labels
+#   mutate(
+#     kjonn_f = factor(Kjonn,
+#                      levels = c(1, 2),
+#                      labels = c("Mann", "Kvinne"))
+#   ) %>%
+#   # 2) Gruppér og summer opp
+#   group_by(kjonn_f) %>%
+#   summarise(
+#     N       = n(),
+#     pct     = round(N / nrow(NSD3201) * 100, 1),
+#     mean_sf = round(mean(sykefravaer_2022, na.rm = TRUE), 2),
+#     sd_sf   = round(sd(sykefravaer_2022, na.rm = TRUE), 2)
+#   )
 
 ```
 
@@ -824,15 +814,15 @@ tabell<-NSD3201 %>%
 \toprule
 Kjønn   & N   & \%   & Gj.snitt sykefravær & SD    \\
 \midrule
-Mann    & 3700 & 49.3 & 3               & 8 \\
-Kvinne  & 3798 & 50.7 & 6               & 12 \\
+Mann    & 3177 & 52.1 & 1\% (0.01)               & 4 (0.04) \\
+Kvinne  & 2926 & 47.9 & 2\% (0.02)               & 4 (0.04) \\
 \bottomrule
 \end{tabular}
-\caption{Deskriptiv statistikk for sykefravær etter kjønn (N = 7498)}
+\caption{Deskriptiv statistikk for sykefravær etter kjønn (N = 6103)}
 \label{tab:deskr_kjonn}
 \end{table}
 
-I \autoref{tab:deskr_utdanning} presenteres deskriptiv statistikk for sykefravær etter utdanningsnivå. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 6 prosent for de med grunnskole eller mindre, 5 prosent for de med videregående skole og 4 prosent for de med universitet/høgskole. Dette tyder på at sykefraværet er høyere for de med lavere utdanning, og at det kan være er en sammenheng mellom utdanningsnivå og sykefravær.
+I \autoref{tab:deskr_utdanning} presenteres deskriptiv statistikk for sykefravær etter utdanningsnivå. Vi ser at sykefraværet i 2022 har et gjennomsnitt på 2 prosent for de med grunnskole eller mindre, 2 prosent for de med videregående skole og 1 prosent for de med universitet/høgskole. Dette tyder på at sykefraværet er høyere for de med lavere utdanning, og at det kan være en liten sammenheng mellom utdanningsnivå og sykefravær.
 
 ```{r}
 # utd_summ <- NSD3201 %>%
@@ -855,75 +845,24 @@ I \autoref{tab:deskr_utdanning} presenteres deskriptiv statistikk for sykefravæ
 \toprule
 Utdanningsnivå                & N    & \%   & Gj.snitt sykefravær & SD   \\
 \midrule
-Grunnskole eller mindre       & 1039 & 13.9 & 6                    & 12   \\
-Videregående                   & 3667 & 48.9 & 5                    & 11   \\
-Universitet/Høgskole           & 2792 & 37.2 & 4                    & 9    \\
+Grunnskole eller mindre       & 816 & 13.3 & 2\% (0.02)                    & 4 (0.04)   \\
+Videregående                   & 2941 & 48.2 & 2\% (0.02)                  & 4 (0.04)   \\
+Universitet/Høgskole           & 2346 & 38.5 & 1\% (0.01)                   & 4 (0.04)  \\
 \bottomrule
 \end{tabular}
-\caption{Deskriptiv statistikk for sykefravær i 2022 etter utdanningsnivå (N = 7498).}
+\caption{Deskriptiv statistikk for sykefravær i 2022 etter utdanningsnivå (N = 6103).}
 \label{tab:deskr_utdanning}
 \end{table}
 
+\clearpage
 
-I \autoref{fig:histogram} presenteres histogram og tetthetskurve for sykefraværet i 2022. Vi ser at sykefraværet er høyreskjevt, med en høyere andel av respondentene som har lavt sykefravær enn de som har høyt sykefravær både på menn og kvinner. Vi vet fra \autoref{tab:deskr_kjonn} at gjennomsnittet for begge kjønn er på omtrent 11 prosent for menn mens det er på 13 prosent for kvinner, noe som gjenspeiles i grafen. Det er vanskelig å se, men det er også noen uteliggere hvor flere respondenter har mer enn 40 prosent sykefravær på både menn og kvinner.
-
-#### KODE for sykefraværprosent logtransform med og uten 0 sykefravær
-
-I 2022 var det $n=et tall$ som hadde 0% sykefravær, dette gjør at vår fordeling er tydelig høyreskjev. Når vi gjennomfører vår SEM analyse så vil gi gjøre dette for når vi tar med og uten 0% sykefravær. Når vi logtransformerer sykefraværet uten 0 verdiene så får vi en tilnærmet normalfordelt fordeling, mens når vi tar med 0 verdiene så får vi en høyreskjev fordeling. Dette er viktig å være oppmerksom på når vi gjennomfører vår SEM analyse, da det kan påvirke resultatene våre.
+### Figurer
 
 
 ```{r}
-
-NSD3201 %>% 
-  ggplot(aes(x = sykefravaer_2022)) +
-  geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", color = "black") 
-
-```
-
-
-
-
-
-
-med de med 0, logtransformert med +0.01
-
-```{r}
-
-NSD3201 %>% 
-  mutate(logsyk = log(sykefravaer_2022+0.01)) %>% #adding 0.1 to avoid log(0)))
-  ggplot(aes(x = logsyk)) +
-  geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", color = "black") 
-
-```
-
-Uten de med 0 sykefravær, logtransformert.
-
-```{r}
-
-NSD3201 %>% 
-  filter(sykefravaer_2022 >0) %>% 
-  mutate(logsyk = log(sykefravaer_2022)) %>% #adding 0.1 to avoid log(0)))
-  ggplot(aes(x = logsyk)) +
-  geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", color = "black") 
-
-```
-
-
-
-
-
-
-
-
-
-
-
-```{r}
-# Histogram + tetthetskurve på sykefravær inkl små streker for individuelle observasjoner
-
-fig_1 <- NSD3201 %>% 
-  ggplot(aes(x = sykefravaer_2022)) +
-  geom_histogram(aes(y = ..density..), bins = 30, fill = "steelblue", alpha=0.8, color = "black") +
+sykefrav<-NSD3201 %>% 
+  ggplot(aes(x = sykefravaer_2022*100)) +
+  geom_histogram(aes(y = ..density..), bins = 40, fill = "steelblue", color = "black")+
   geom_density(color = "red", linewidth = 1) +
   facet_wrap(~ kjonn_f, ncol = 1) +
   labs(title = "",
@@ -935,18 +874,63 @@ fig_1 <- NSD3201 %>%
         axis.text.y = element_text(size = 14),
         axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16),
-        strip.text = element_text(size = 16))+
-  scale_x_continuous(breaks = seq(0, 100, by = 10))
+        strip.text = element_text(size = 16))
 
-ggsave("dokumentobjekter/figurer/fig_1.png", plot = fig_1, width = 8, height = 5)
+ggsave("dokumentobjekter/figurer/fig_sykefrav.png", plot = sykefrav, width = 8, height = 5)
 ```
 
+
+```{r}
+sykefrav2<-NSD3201 %>% 
+  mutate(logsyk = log(sykefravaer_2022+0.01)) %>% #adding 0.1 to avoid log(0)))
+  ggplot(aes(x = logsyk)) +
+  geom_histogram(aes(y = ..density..), bins = 40, fill = "steelblue", color = "black")+
+  geom_density(color = "red", linewidth = 1) +
+  facet_wrap(~ kjonn_f, ncol = 1) +
+  labs(title = "",
+       x = "Log(Sykefraværrate + 0.01)",
+       y = "Tetthet") +
+  theme_minimal()+
+  # endrer på y og x akse størrelse på skrift
+  theme(axis.text.x = element_text(size = 14),
+        axis.text.y = element_text(size = 14),
+        axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16),
+        strip.text = element_text(size = 16))
+
+ggsave("dokumentobjekter/figurer/fig_sykefrav_log.png", plot = sykefrav2, width = 8, height = 5)
+```
+
+I \autoref{fig:histogram_sykefravar} presenteres histogram og tetthetskurve for sykefraværet i 2022. Vi ser at sykefraværet er veldig høyreskjevt, med en høyere andel av respondentene som har lavt sykefravær enn de som har høyt sykefravær både på menn og kvinner. Vi vet fra \autoref{tab:deskr_kjonn} at gjennomsnittet er på 3 prosent for menn mens det er på 6 prosent for kvinner, noe som gjenspeiles i grafen. Det er vanskelig å se, men det er også noen uteliggere hvor flere respondenter har mer enn 40 prosent sykefravær på både menn og kvinner, noe som fører til halen som strekker seg mot høyre i histogrammet.
+
 \begin{figure}[H]
-\caption{Histogram og tetthetskurve for sykefravær i 2022}
-\label{fig:histogram}
+\caption{Sykefravær i 2022}
+\label{fig:histogram_sykefravar}
 \centering
-\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_1.png}
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_sykefrav.png}
 \end{figure}
+
+
+```{r}
+# teller nullverdier i sykefravær
+# n <- sum(NSD3201$sykefravaer_2022 == 0, na.rm = TRUE)
+# 
+# n
+```
+
+I 2022 var det $n=4081$ som hadde 0% sykefravær, dette gjør at vår fordeling er tydelig høyreskjev. I \autoref{fig:histogram_sykefravar_log} er sykefraværet logtransformert med +0.01, noe som fører til å glatte ut fordelingen og gjøre den mer normalfordelt. Dette er en vanlig teknikk for å håndtere høyreskjeve fordelinger, og det gjør at vi kan gjøre analysen vår mer robust mot skjevheter. Men selv om vi har logtransformert sykefraværet, så er det fortsatt mange som har lavt sykefravær, noe som kan påvirke resultatene våre.
+
+```{=tex}
+\vspace{-0.5cm}
+\begin{figure}[H]
+\caption{Sykefravær i 2022 logtransformert med +0.01}
+\label{fig:histogram_sykefravar_log}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_sykefrav_log.png}
+\end{figure}
+```
+
+
 
 ```{r}
 
@@ -1001,7 +985,7 @@ fig_2 <- NSD3201 %>%
 ggsave("dokumentobjekter/figurer/fig_2.png", plot = fig_2, width = 8, height = 5)
 ```
 
-Når vi ser på aldersfordelingen i \autoref{fig:histogram} så ser vi at den er jevn og symmetrisk fordelt blant respondentene. Som nevnt tidligere så er spennet på alderene til respondentene i undersøkelsen mellom 18 til 66 år. Medianalderen kan man se i den blå stiplede linjen som er på 43 år for menn og 44 år for kvinner.
+Når vi ser på aldersfordelingen i \autoref{fig:histogram} så ser vi at den er jevn og symmetrisk fordelt blant respondentene. Som nevnt tidligere så er spennet på alderene til respondentene i undersøkelsen mellom 18 til 66 år. Medianalderen kan man se i den blå stiplede linjen som er på 44 år for menn og 45 år for kvinner.
 
 \begin{figure}[H]
 \caption{Histogram og tetthetskurve for alder}
@@ -1010,7 +994,9 @@ Når vi ser på aldersfordelingen i \autoref{fig:histogram} så ser vi at den er
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_2.png}
 \end{figure}
 
-For analysen så har vi fordelt alder inn i tre breddeintervaller på 18-29, 30-55 og 55-66 år. I \autoref{fig:barplot} presenteres et barplot av aldersgruppene. Vi har flest respondenter i aldersgruppen 30-54 år med 60.1 prosent som vi bruker som referansegruppe. 
+\newpage
+
+For analysen så har vi fordelt alder inn i tre breddeintervaller på 18-29, 30-55 og 55-66 år. I \autoref{fig:barplot} presenteres et barplot av aldersgruppene. Vi har flest respondenter i aldersgruppen 30-54 år med totalt 59.6 prosent som vi bruker som referansegruppe. 
 
 ```{r}
 # Barplot av breddeintervallene på alder
@@ -1034,7 +1020,9 @@ fig_3 <- NSD3201 %>%
         axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16))+
   scale_y_continuous(breaks = seq(0, 65, by = 10),
-                     limits = c(0, 65))
+                     limits = c(0, 65))+
+  #endrer navnet på x-akse navn
+  scale_x_discrete(labels = c("18-29 år", "30-54 år", "55-66 år")) 
 
 ggsave("dokumentobjekter/figurer/fig_3.png", plot = fig_3, width = 8, height = 5)
 ```
@@ -1047,20 +1035,9 @@ ggsave("dokumentobjekter/figurer/fig_3.png", plot = fig_3, width = 8, height = 5
 \end{figure}
 
 
-
-
-
-
-
-
-\clearpage
-
-
-
-
-
 ```{r}
 # Respondents rapportere formue
+options(scipen = 999) # for å unngå vitenskapelig notasjon
 
 fig_4_1 <- NSD3201 %>%
   ggplot(aes(x = Formue)) +
@@ -1069,7 +1046,7 @@ fig_4_1 <- NSD3201 %>%
   facet_wrap(~ kjonn_f, ncol = 1) +
   labs(title = "",
        x = "Formue (Bruttofinanskapital)",
-       y = "Antall") +
+       y = "Tetthet") +
   theme_minimal()+
   # endrer på y og x akse størrelse på skrift
   theme(axis.text.x = element_text(size = 14),
@@ -1107,40 +1084,41 @@ ggsave("dokumentobjekter/figurer/fig_4_2.png", plot = fig_4_2, width = 8, height
 ```
 
 
-
-\begin{wrapfigure}{r}{0.5\textwidth} 
-    \centering
-    \includegraphics[width=0.5\textwidth]{dokumentobjekter/figurer/fig_4_1.png}
-    \caption{Fordeling av bruttofinanskapital}
-    \label{fig:histogram_formue}
-    \smallskip\par
-    \includegraphics[width=0.5\textwidth]{dokumentobjekter/figurer/fig_4_2.png}
-    \caption{Invertert kumulativ fordeling av bruttofinanskapital}
-    \label{fig:histogram_formue_fordeling}
-\end{wrapfigure}
-
-#måfiks
-I \autoref{fig:histogram_formue} presenteres histogram og tetthetskurve for bruttofinanskapitalen log-transformert $(1 + x)$ [^8]. Originalt er formuefordelingen høyreskjev, med en høyere andel av respondentene som har lav formue enn de som har høy formue noe som kan svekke analysen. Derfor må vi log-transformere formuefordelingen for å få en mer normalfordelt fordeling både for menn og kvinner. Når man log-transformerer $(1 + x)$ så tar vi logaritmen av formueverdiene og legger til 1 for å unngå problemer med nullverdier.
+I \autoref{fig:histogram_formue} presenteres histogram og tetthetskurve for bruttofinanskapitalen. Som man kan se er formuefordelingen høyreskjev både for menn og kvinner, med en høyere andel av respondentene som har lav formue enn de som har høy formue noe som kan svekke analysen.
 
 
+```{=tex}
+\vspace{-0.5cm}
+\begin{figure}[H]
+\caption{Fordeling av bruttofinanskapital}
+\label{fig:histogram_formue}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_4_1.png}
+\end{figure}
+```
 
+For å korrigere for denne skjevheten i formuefordelingen må vi gjøre en invertering av den kumulative fordelingen av bruttofinanskapitalen. Som man kan se i \autoref{fig:histogram_formue_fordeling} så er den inverterte kumulative fordelingen av bruttofinanskapitalen mer normalfordelt, noe som gjør at vi kan bruke den i analysen vår. 
 
-Vi har da $n_{lav} = 1160$, $n_{middels} = 5172$ og $n_{høy} = 1166$. Den laveste gruppen har formue fra $0 - 30000$, den middels gruppen har formue fra $30000 - 850000$ og den høyeste gruppen har formue fra $850000 - 2500000$. Dette gir oss en god fordeling av formuegruppene, og vi kan se om det er forskjeller i sykefravær mellom de forskjellige gruppene.
-
-
-
-
-\newpage
+```{=tex}
+\vspace{-0.75cm}
+\begin{figure}[H]
+\caption{Invertert kumulativ fordeling av bruttofinanskapital}
+\label{fig:histogram_formue_fordeling}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_4_2.png}
+\end{figure}
+\vspace{-0.75cm}
+```
 
 
 
 ```{r}
-# Søylediagram for kategoriske variabler samlet for kjønn, utdanning og formuegrupper
+# Søylediagram for kategoriske variabler samlet for kjønn og utdanning
 
 df_long <- NSD3201 %>%
-  dplyr::select(Formue_grupper, Utdanning_grupper, kjonn_f) %>%
+  dplyr::select(Utdanning_grupper, kjonn_f) %>%
   pivot_longer(
-    cols      = c(Formue_grupper, Utdanning_grupper),
+    cols      = c(Utdanning_grupper),
     names_to  = "variabel",
     values_to = "kategori"
   ) %>%
@@ -1156,12 +1134,6 @@ fig_5 <- ggplot(df_long, aes(x = kategori, y = pct, fill = kjonn_f)) +
   geom_text(aes(label = paste0(round(pct, 1), "%")),
             position = position_dodge(width = 0.8),
             vjust = -0.5, size = 4) +
-  facet_wrap(~ variabel,
-             scales = "free_x",
-             labeller = labeller(
-               variabel = c(
-                 Formue_grupper       = "Formuefordeling",
-                 Utdanning_grupper   = "Utdanning"))) +
   labs(x     = "",
        y     = "",
        fill  = "",
@@ -1172,37 +1144,40 @@ fig_5 <- ggplot(df_long, aes(x = kategori, y = pct, fill = kjonn_f)) +
     axis.text.y = element_text(size = 14),
     axis.title.x = element_text(size = 16),
     axis.title.y = element_text(size = 16),
-    axis.text.x      = element_text(size = 14, angle = 30, hjust = 1),
+    axis.text.x      = element_text(size = 14),
     legend.title     = element_text(size = 14),
     legend.text      = element_text(size = 12),
     legend.key.size  = unit(1.2, "lines"),
     legend.position  = "bottom")+
   scale_y_continuous(breaks = seq(0, 60, by = 10),
                      limits = c(0, 60))+
-  scale_fill_manual(values = c("steelblue", "palevioletred"))
+  scale_fill_manual(values = c("steelblue", "palevioletred"))+
+  #fikse x-akse navn
+  scale_x_discrete(labels = c("Grunnskole eller mindre", "Videregående skole", "Universitet/Høgskole"))
 
 ggsave("dokumentobjekter/figurer/fig_5.png", plot = fig_5, width = 8, height = 5)
 
 ```
 
-Når vi ser på fordelingen av formue- og utdanningsgrupper fordelt på kjønn i \autoref{fig:barplot_2} så ser vi at det er flest kvinner i utdanningsgruppen videregående skole med 46.7 prosent, og det samme gjelder for menn med 56.9 prosent. Mer kvinner enn menn har universitetsutdannings eller høyere med 40.2 prosent mot kun 18.5 prosent for menn. Menn har også lavest utdanningsnivå med 24.6 prosent i utdanningsgruppen grunnskole eller mindre, mens kvinner har 13.1 prosent i den samme utdanningsgruppen. Dette viser oss at menn har lavere utdanningsnivå enn kvinner, og at kvinner er mer tilbøyelige til å ta høyere utdanning enn menn.
+Når vi ser på fordelingen av  utdanningsgrupper fordelt på kjønn i \autoref{fig:barplot_2} så ser vi at det er flest menn i utdanningsgruppen videregående skole med 53.7 prosent, mens kvinner har noe lavere med 42.3 prosent. Mer kvinner enn menn har universitetsutdannings eller høyskole med 46.7 prosent mot 30.8 prosent for menn. Menn har også lavest utdanningsnivå med 15.5 prosent i utdanningsgruppen grunnskole eller mindre, mens kvinner har 11 prosent i den samme utdanningsgruppen. Menn har lavere utdanningsnivå enn kvinner, og kvinner er mer tilbøyelige til å ta høyere utdanning.
 
-
-#MÅfiks
-Formuefordelingen er delt inn i tertiler, som gjør slik at fordelingen blir jevnt blant de forskjellige formuegruppene både for menn og kvinner.
-
+```{=tex}
+\vspace{-0.5cm}
 \begin{figure}[H]
-\caption{Fordeling av formue- og utdanningsgrupper fordelt på kjønn}
+\caption{Fordeling av utdanningsgrupper fordelt på kjønn}
 \label{fig:barplot_2}
 \centering
-\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_5.png}
+\includegraphics[width=0.75\textwidth]{dokumentobjekter/figurer/fig_5.png}
 \end{figure}
+\vspace{-1cm}
+```
+
 
 ```{r}
 # Boksplott av sykefravær etter formuegruppe
 
 fig_6 <- NSD3201 %>%
-  ggplot(aes(x = Formue_grupper, y = sykefravaer_2022)) +
+  ggplot(aes(x = Formue_grupper, y = sykefravaer_2022*100)) +
   geom_jitter(aes(color = Formue_grupper),
               position = position_jitter(width = 0.2),
               alpha = 0.5)+
@@ -1221,15 +1196,23 @@ fig_6 <- NSD3201 %>%
         strip.text = element_text(size = 16),
         legend.position = "none")+
   scale_x_discrete(labels=c("Lav", "Middels", "Hoy"))+
-    scale_y_continuous(breaks = seq(0, 100, by = 10),
-                     limits = c(0, 100))+
+    scale_y_continuous(breaks = seq(0, 60, by = 10),
+                     limits = c(0, 69))+
   scale_fill_manual(values = c("steelblue", "palevioletred", "lightgreen"))+
-  scale_color_manual(values = c("steelblue", "palevioletred", "lightgreen"))
+  scale_color_manual(values = c("steelblue", "palevioletred", "lightgreen"))+
+  # endrer navn på x-akse
+  scale_x_discrete(labels = c("Lav formue", "Middels formue", "Høy formue"))
 
 ggsave("dokumentobjekter/figurer/fig_6.png", plot = fig_6, width = 8, height = 5)
 ```
 
-I \autoref{fig:boxplot} presenteres et boksplott av sykefravær etter formuegruppe. Vi kan se at det ikke er store forskjeller i sykefraværet mellom formuegruppene. Medianen vises i den sorte streken i midten av boksen, og den viser at sykefraværet med små marginer går ned fra lav formue, til middels formue og til høy formue. Bunnen og toppen til boksene viser oss henholdsvis første og tredje kvartil, og de stiplede linjene viser oss minimum og maksimum sykefravær. Det er også noen uteliggere som er vist med små prikker, og de viser at det er noen respondenter som har rapportert sykefravær på over 40 prosent. Dette kan være at de har vært sykemeldt i en lengre periode. I bakgrunnen av figuren man man se alle observasjonene spredt utover for en bedre oversikt siden det er mange observasjoner som går over hverandre i boksen. Dette er gjort med en funksjon som sprer ut observasjonene litt for å få en bedre oversikt over dem.
+I \autoref{fig:boxplot} presenteres et boksplott av sykefravær etter formuegrupper som er definert etter standardavvik fra gjennomsnittet. Vi har tre formuegrupper: lav formue (under 1 standardavvik under gjennomsnittet), middels formue (mellom 1 standardavvik under og over gjennomsnittet) og høy formue (over 1 standardavvik over gjennomsnittet).
+
+Vi kan se at det er en liten trend i sykefraværet etter formuegruppe, der de med høy formue har lavest sykefravær, mens de med lav formue har høyest sykefravær. Dette er i tråd med hypotesen vår om at formue kan påvirke sykefraværet.
+
+Medianen vises i den sorte streken i midten av boksen, og den viser at sykefraværet med små marginer går ned fra lav formue, til middels formue og til høy formue. Bunnen og toppen til boksene viser oss henholdsvis første og tredje kvartil, og de stiplede linjene viser oss minimum og maksimum sykefravær. Det er også noen uteliggere som er vist med små prikker, og de viser at det er noen respondenter som har rapportert sykefravær på over 40 prosent. Dette kan være at de har vært sykemeldt i en lengre periode. I bakgrunnen av figuren man man se alle observasjonene spredt utover for en bedre oversikt siden det er mange observasjoner som går over hverandre i boksen. Dette er gjort med en funksjon som sprer ut observasjonene litt for å få en bedre oversikt over dem.
+
+I analysen bruker vi ikke formuegruppene, men figuren inkluderes for å få en bedre oversikt over hvordan sykefraværet fordeler seg etter formue.
 
 \begin{figure}[H]
 \caption{Boksplott av sykefravær etter formuegruppe}
@@ -1242,13 +1225,13 @@ I \autoref{fig:boxplot} presenteres et boksplott av sykefravær etter formuegrup
 # Boksplott av sykefravær etter utdanningsnivå
 
 fig_7 <- NSD3201 %>%
-  ggplot(aes(x = Utdanning_grupper, y = sykefravaer_2022)) +
+  ggplot(aes(x = Utdanning_grupper, y = sykefravaer_2022*100)) +
   geom_jitter(aes(color = Utdanning_grupper),
               position = position_jitter(width = 0.2),
               alpha = 0.5)+
   geom_boxplot(aes(fill = Utdanning_grupper), color = "black") +
   labs(title = "",
-       x = "Utdanningsnivå",
+       x = "",
        y = "Sykefravær i prosent",
        color= "",
        fill = "") +
@@ -1261,47 +1244,89 @@ fig_7 <- NSD3201 %>%
         strip.text = element_text(size = 16),
         legend.position = "none")+
   scale_x_discrete(labels=c("Grunnskole_eller_mindre", "Videregaende", "Universitet_Hogskole"))+
-    scale_y_continuous(breaks = seq(0, 100, by = 10),
-                     limits = c(0, 100))+
+    scale_y_continuous(breaks = seq(0, 60, by = 10),
+                     limits = c(0, 60))+
   scale_fill_manual(values = c("steelblue", "palevioletred", "lightgreen"))+
-  scale_color_manual(values = c("steelblue", "palevioletred", "lightgreen"))
+  scale_color_manual(values = c("steelblue", "palevioletred", "lightgreen"))+
+  # endrer navn på x-akse
+  scale_x_discrete(labels = c("Grunnskole eller mindre", "Videregående skole", "Universitet/Høgskole"))
 
 ggsave("dokumentobjekter/figurer/fig_7.png", plot = fig_7, width = 8, height = 5)
 ```
 
-I \autoref{fig:boxplot_2} presenteres et boksplott av sykefravær etter utdanningsnivå. Vi ser at sykefraværet er veldig jevnt mellom utdanningsnivåene. Medianen er litt over 10 prosent, og som tidligere vet vi at gjennomsnittlig sykefravær er lavere for høyt utdannede og litt lavere for de med lavere utdanning.
+\newpage
 
+I \autoref{fig:boxplot_2} presenteres et boksplott av sykefravær etter utdanningsnivå. Vi ser at sykefraværet er relativt jevnt mellom utdanningsnivåene. Medianen er litt over 10 prosent, og som tidligere vet vi at gjennomsnittlig sykefravær er lavere for høyt utdannede og litt lavere for de med lavere utdanning.
+
+```{=tex}
+\vspace{-0.5cm}
 \begin{figure}[H]
 \caption{Boksplott av sykefravær etter utdanningsnivå}
 \label{fig:boxplot_2}
 \centering
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_7.png}
 \end{figure}
-
-Korrelationheatmap om vi får tid her til latente variabler.
-
-
+\vspace{-1cm}
+```
 
 
+```{r}
+kontrollvariabler <-NSD3201 %>%
+  dplyr::select(For_mye_arbeid, Hoyt_arbeidstempo, Ekstra_arbeid,
+         Grad_selvbestemming_oppgaver, Grad_selvbestemming_arbeid_som_skal_gjores,
+         Grad_arbeidstempo, Grad_pavirke_beslutning_arbeid, Motivasjon) %>%
+  pivot_longer(
+    cols      = everything(),
+    names_to  = "variabel",
+    values_to = "verdi"
+  ) %>%
+  ggplot(aes(x = verdi)) +
+  geom_bar(aes(y = (..count..)/sum(..count..)), fill = "steelblue", color = "black") +
+  facet_wrap(~ variabel, scales = "free_x",
+             labeller = labeller(
+               variabel = c(
+                 For_mye_arbeid = "For mye arbeid",
+                 Hoyt_arbeidstempo = "Høyt arbeidstempo",
+                 Ekstra_arbeid = "Jobber ekstra",
+                 Grad_selvbestemming_oppgaver = "Selvbestemmelse i oppgaver",
+                 Grad_selvbestemming_arbeid_som_skal_gjores = "Bestemmelse i arbeid",
+                 Grad_arbeidstempo = "Grad av arbeidstempo",
+                 Grad_pavirke_beslutning_arbeid = "Beslutninger i arbeidet",
+                 Motivasjon = "Motivasjon"
+               )
+             )) +
+  labs(title = "",
+       x = "",
+       y = "Tetthet") +
+    theme_minimal(base_size = 12) +
+  theme(
+    strip.text       = element_text(size = 16),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x      = element_text(size = 14),
+    legend.title     = element_text(size = 14),
+    legend.text      = element_text(size = 12),
+    legend.key.size  = unit(1.2, "lines"),
+    legend.position  = "none")
 
+ggsave("dokumentobjekter/figurer/fig_kontrollvariabler.png", plot = kontrollvariabler, width = 10, height = 6)
+```
 
+I \autoref{fig:kontrollvariabler} presenteres fordelingen av de arbeidsrelaterte variablene som inngår i de latente variablene jobbkrav og jobbressurser samt motivasjon. Vi ser at det er en høy andel som rapporterer at de har for mye arbeid, og at de jobber i et høyt tempo. Det er også en høy andel som rapporterer at de jobber ekstra, og selvbestemmelse i oppgaver og grad av arbeidstempo er ganske normalfordelt. Motivasjon har de fleste respondenter selvrapportert at de har høyt av i arbeidet.
 
+```{=tex}
+\vspace{-0.5cm}
+\begin{figure}[H]
+\caption{Fordeling av arbeidsrelaterte variabler}
+\label{fig:kontrollvariabler}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_kontrollvariabler.png}
+\end{figure}
+\vspace{-1cm}
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\newpage
 
 ## Metode {sec-metode}
 

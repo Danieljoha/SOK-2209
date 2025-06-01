@@ -339,7 +339,7 @@ kapittel 4 gjennomføres analysen og i kapittel 5 vil vi presentere
 resultatene fra analysen. Avslutningsvis i kapittel 6 vil vi diskutere
 resultatene, konkludere og gi anbefalinger for videre forskning.
 
-\section{Teori \{sec:teori\}}\label{teori-secteori}
+\section{Teori}\label{sec:teori}
 
 I dette kapittelet vil vi gi en teoretisk bakgrunn for oppgaven, og
 gjøre rede for tidligere forskning på temaet. Vi vil først definere
@@ -671,7 +671,7 @@ Modellen vi blir å bruke blir da som følger:
   \centering
   \begin{tikzpicture}[
       latent/.style={rectangle, draw, fill=blue!20, minimum width=3cm, minimum height=1cm},
-      item/.style  ={rectangle, draw, fill=blue!10, font=\small},
+      item/.style  ={rectangle, draw, fill=blue!10, font=\small, minimum width=2.5cm},
       medi/.style  ={rectangle, draw, fill=green!20, minimum width=2.5cm, minimum height=1cm},
       medi2/.style ={rectangle, draw, fill=red!20,   minimum width=2.5cm, minimum height=1cm},
       moder/.style ={diamond,   draw, fill=yellow!20,aspect=2, minimum width=2.5cm, minimum height=1cm},
@@ -681,19 +681,23 @@ Modellen vi blir å bruke blir da som følger:
 
     % Latente noder
     \node[latent]              (JK)  {Jobbkrav};
-    \node[latent, below=of JK] (JR)  {Jobbressurser};
+    \node[latent, below=of JK, yshift=-3cm] (JR) {Jobbressurser};
 
     % Indikator-noder for Jobbkrav
-    \node[item, above left=of JK] (v1) {Variabel 1};
-    \node[item, left=of JK]       (v2) {Variabel 2};
+    \node[item, above left=of JK]      (v1) {For mye arbeid};
+    \node[item, left=of JK]            (v2) {Høyt arbeidstempo};
+    \node[item, below left=of JK]      (v5) {Ekstra arbeid};
     \draw[-{Circle[length=2mm]}] (JK) -- (v1);
     \draw[-{Circle[length=2mm]}] (JK) -- (v2);
+    \draw[-{Circle[length=2mm]}] (JK) -- (v5);
 
     % Indikator-noder for Jobbressurser
-    \node[item, left=of JR]        (v3) {Variabel 3};
-    \node[item, below left=of JR]  (v4) {Variabel 4};
+    \node[item, above left=of JR]            (v3) {Selvbestemmelse oppgaver};
+    \node[item, left=of JR]      (v4) {Selvbestemmelse arbeid};
+    \node[item, below left=of JR, yshift=0cm] (v6) {Påvirkning i beslutninger};
     \draw[-{Circle[length=2mm]}] (JR) -- (v3);
     \draw[-{Circle[length=2mm]}] (JR) -- (v4);
+    \draw[-{Circle[length=2mm]}] (JR) -- (v6);
 
     % Moderator-node plassert midt over
     \node[moder, right=1.4cm of $(JK)!0.5!(JR)$] (FN) {Formue};
@@ -716,7 +720,7 @@ Modellen vi blir å bruke blir da som følger:
     \draw[->] (M2) -- node[midway, below] {$-$} (SF);
 
   \end{tikzpicture}
-  \caption{Utvidet JD–R-modell med formue som moderator og separate motivasjonsløp.}
+  \caption{Utvidet JD–R-modell med formue som moderator, indikatorer og motivasjonsløp.}
   \label{fig:jdr_tikz}
 \end{figure}
 
@@ -741,6 +745,8 @@ Med dette rammeverket formulerer vi følgende hypoteser:
 \textbf{H2:} Høyere jobbressurser gir lavere sykefravær
 
 \textbf{H3:} Høyere formuenivå gir lavere sykefravær
+
+\textbf{H4:} Formue øker motivasjon
 
 For en grundig gjennomgang av hypotesene og hvordan de er relatert til
 JD-R-modellen, se kapittel \ref{sec-hypot}.
@@ -808,7 +814,7 @@ velger å beregne denne selv siden de med 0 fravær står som NA, også for
 
 Vi benytter variablene sfdagsvj\_2022 (sykefraværsdagsverk) og
 mdagsv\_2022 (avtalte dagsverk) fra Levekårsundersøkelsen.
-Sykefraværsprosenten (\(SF_i\)) for individ \(i\) beregnes som:
+Sykefraværsraten (\(SF_i\)) for individ \(i\) beregnes som:
 
 \[
 SF_i = 
@@ -821,6 +827,11 @@ SF_i =
 Dette gjør at individer med avtalte dagsverk, men uten legemeldt
 sykefraværsdager, får verdien 0 i stedet for NA slik det gjøres i den
 ferdigberegnede variabelen sfpros\_uten\_feriekorr\_2022.
+
+Vi har fjernet alle som har over 14 dager sammenhengende sykefravær, for
+å unngå å inkludere langtidssykemeldte som kan ha andre årsaker til
+fravær enn de vi ønsker å undersøke. Dette gjør at vi får et mer
+representativt bilde av korttidsfravær og dets sammenheng med formue.
 
 Formue:
 
@@ -879,12 +890,11 @@ indikasjon på hvor høye jobbkravene er for individet.
 
 Jobbressurser:
 
-Jobbressurser er en latent variabel som vi måler med syv indikatorer:
-Støtte fra sjef (QPS72\_ny), Støtte fra kollegaer (QPS73\_ny), Grad av
-selvbestemmelse over oppgaver (Sp56a2), Grad av selvbestemmelse over
-arbeid som skal gjøres (Sp56b2) og Grad av påvirkning på beslutninger i
-arbeidet (QPS53). Disse indikatorene er basert på spørsmål i
-Levekårsundersøkelsen som måler hvor mye støtte og ressurser
+Jobbressurser er en latent variabel som vi måler med tre indikatorer:
+Grad av selvbestemmelse over oppgaver (Sp56a2), Grad av selvbestemmelse
+over arbeid som skal gjøres (Sp56b2) og Grad av påvirkning på
+beslutninger i arbeidet (QPS53). Disse indikatorene er basert på
+spørsmål i Levekårsundersøkelsen som måler hvor mye støtte og ressurser
 respondenten opplever at de har på jobben, og hvor mye kontroll de har
 over eget arbeid. Disse indikatorene vil gi oss en indikasjon på hvor
 gode jobbressursene er for individet.
@@ -911,14 +921,6 @@ Utdanningsnivået til respondenten er en ordinal variabel, og vi vil
 bruke utdanningsgruppene grunnskole eller mindre, videregående skole,
 Universitet/Høgskole og forskernivå. Denne variabelen inkluderes for å
 justere for mulige utdanningsrelaterte forskjeller i sykefravær.
-
-Tilfredshet med arbeid:
-
-Selvrapportert tilfredshet med arbeid (TS) er en ordinal variabel, og vi
-vil bruke denne variabelen for å kontrollere for eventuelle forskjeller
-i sykefraværet basert på hvor tilfreds respondenten er med jobben sin.
-Denne variabelen er basert på en skala med 5 nivåer (1=svært misfornøyd
-til 5=svært fornøyd).
 
 Motivasjon:
 
@@ -967,17 +969,18 @@ korrelasjonsmatrisen for de uavhengige variablene.
 
 I \autoref{tab:deskriptiv} presenteres deskriptiv statistikk for alle
 variablene i analysen. Vi ser at sykefraværet i 2022 har et gjennomsnitt
-på 4.67 prosent, med en minsteverdi på 0 prosent og maksimalverdi på
-92.6 prosent. Alder ligger på et gjennomsnitt på 43.59 år, med en
-minsteverdi på 18 år og maksimalverdi på 66, som stemmer overns med
+på 1.70 prosent (0.00170), med en minsteverdi på 0 prosent og
+maksimalverdi på 48.08 prosent. Alder ligger på et gjennomsnitt på 43.33
+år, med en minsteverdi på 18 år og maksimalverdi på 66, som stemmer med
 alderen til respondentene i datasettet. Utdanningsnivået har et
-gjennomsnitt på 4.59, som tilsvarer videregående skole, med en
+gjennomsnitt på 4.65, som tilsvarer videregående skole, med en
 minimumsverdi på 2 (grunnskole eller mindre) og en maksimumsverdi på 8
 (doktorgrad).
 
 Av de opprinnelig 17971 inviterte respondentene i datasettet så
-fullførte 7 498 svarene til alle de relevante variablene. Hvor eksakt
-responsrate da blir \(\frac{7498}{17971} = 41.7\%\). Dette kan føre til
+fullførte 6 103 svarene til alle de relevante variablene etter at vi
+fjernet de som var langtidssykemeldt over 2 uker. Hvor eksakt
+responsrate da blir \(\frac{6103}{17971} = 33.9\%\). Dette kan føre til
 skjevheter i dataene, og kan bli en svakhet ved analysen når vi tolker
 resultatene. Siden det er vanskelig for oss å vite om det er
 systematiske forskjeller mellom de som svarte og de som ikke svarte, så
@@ -988,91 +991,61 @@ norske befolkningen.
 \centering
 \begin{tabular}{lrrrrrrr}
 \toprule
-Variabel                               & Min   & 1.\,Q  & Median & Mean   & 3.\,Q  & Max  & N    \\
+Variabel                               & Min    & 1.\,Q  & Median & Mean   & 3.\,Q  & Max    & N    \\
 \midrule
-Sykefravær 2022                        & 0.0000 & 0.0000 & 0.0000 & 0.0467 & 0.0413 & 0.9206 & 7498 \\
-Alder                                  & 18     & 33     & 45     & 43.59  & 54     & 66     & 7498 \\
-Utdanning                              & 2      & 4      & 4      & 4.596  & 6      & 8      & 7498 \\
-Kjønn (1=Mann, 2=Kvinne)               & 1      & 1      & 2      & 1.507  & 2      & 2      & 7498 \\
-Tilfredshet                            & 1      & 4      & 4      & 4.14   & 5      & 5      & 7498 \\
-Motivasjon                             & 1      & 4      & 4      & 3.996  & 5      & 5      & 7498 \\
-Barn                                   & 0      & 0      & 0      & 0.14   & 0      & 1      & 7498 \\
-Støtte fra sjef                        & 1      & 3      & 4      & 3.923  & 5      & 5      & 7498 \\
-Støtte fra kollega                     & 1      & 4      & 5      & 4.293  & 5      & 5      & 7498 \\
-Tilbakemelding fra sjef                & 1      & 2      & 3      & 3.147  & 4      & 5      & 7498 \\
-Arbeidsresultater                      & 1      & 3      & 4      & 3.707  & 5      & 5      & 7498 \\
-Selvbestemmelse (oppgaver)             & 1      & 2      & 3      & 2.977  & 4      & 5      & 7498 \\
-Selvbestemmelse (arbeidsinnhold)       & 1      & 3      & 4      & 3.694  & 4      & 5      & 7498 \\
-Grad arbeidstempo                      & 1      & 3      & 4      & 3.322  & 4      & 5      & 7498 \\
-Påvirkningsgrad                        & 1      & 3      & 3      & 3.433  & 4      & 5      & 7498 \\
-For mye arbeid                         & 1      & 3      & 4      & 3.972  & 5      & 5      & 7498 \\
-Høyt arbeidstempo                      & 1      & 3      & 4      & 4.148  & 5      & 5      & 7498 \\
-Ekstra arbeid                          & 1      & 2      & 2      & 2.610  & 4      & 5      & 7498 \\
-Stillingsprosent                       & 0      & 100    & 100    & 90.30  & 100    & 120    & 7498 \\
+Sykefravær 2022                        & 0.0000 & 0.0000 & 0.0000 & 0.0170 & 0.0193 & 0.4808 & 6103 \\
+Alder                                  & 18     & 33     & 45     & 43.33  & 54     & 66     & 6103 \\
+Utdanning                              & 2      & 4      & 4      & 4.65   & 6      & 8      & 6103 \\
+Kjønn (0=Kvinne, 1=Mann)               & 1      & 1      & 2      & 1.48   & 2      & 2      & 6103 \\
+Tilfredshet                            & 1      & 4      & 4      & 4.19   & 5      & 5      & 6103 \\
+Motivasjon                             & 1      & 4      & 4      & 4.03   & 5      & 5      & 6103 \\
+Barn                                   & 0      & 0      & 0      & 0.14   & 0      & 1      & 6103 \\
+Selvbestemmelse (oppgaver)             & 1      & 2      & 3      & 3.03   & 4      & 5      & 6103 \\
+Selvbestemmelse (arbeidsinnhold)       & 1      & 3      & 4      & 3.73   & 4      & 5      & 6103 \\
+Grad arbeidstempo                      & 1      & 3      & 4      & 3.37   & 4      & 5      & 6103 \\
+Påvirkningsgrad                        & 1      & 3      & 3      & 3.47   & 4      & 5      & 6103 \\
+For mye arbeid                         & 1      & 3      & 4      & 3.95   & 5      & 5      & 6103 \\
+Høyt arbeidstempo                      & 1      & 4      & 4      & 4.13   & 5      & 5      & 6103 \\
+Ekstra arbeid                          & 1      & 1      & 2      & 2.63   & 4      & 5      & 6103 \\
+Stillingsprosent                       & 0      & 100    & 100    & 90.66  & 100    & 120    & 6103 \\
 \bottomrule
 \end{tabular}
-\caption{Deskriptiv statistikk for hovedvariabler (N = 7498)}
+\caption{Deskriptiv statistikk for hovedvariabler (N = 6103)}
 \label{tab:deskriptiv}
 \end{table}
 
 I \autoref{tab:deskr_formue} ser vi at sykefraværet i 2022 har et
-gjennomsnitt på 6 \% for de med lav formue, 5 \% for de med middels
-formue og 3 \% for de med høy formue. Dette antyder at de med høyere
-formue har litt lavere sykefravær, selv om forskjellene er relativt små.
+gjennomsnitt på 2 prosent (0.02) for de med lav formue, 2 prosent (0.02)
+for de med middels formue og 1 prosent (0.01) for de med høy formue.
+Dette antyder at de med høyere formue har litt lavere sykefravær, selv
+om forskjellene er relativt små.
 
-Alderen øker tydelig med formuegruppe: gjennomsnittsalderen er
+Alderen øker noe med formuegruppe: gjennomsnittsalderen er 40.44 år i
+lav formue, 42.43 år i middels formue og 49.96 år i høy formue. Når
+motivasjon måles på skalaen 1--5, er gjennomsnittsskårene 3.98 i lav
+formue, 4.02 i middels formue og 4.15 i høy formue.
 
-\begin{itemize}
-\tightlist
-\item
-  40,84 år i lav formue
-\item
-  42,76 år i middels formue
-\item
-  50,06 år i høy formue.
-\end{itemize}
+Forskjellene i motivasjon er små, men systematisk: personer med høy
+formue rapporterer noe høyere motivasjon enn de med lav formue,
+tilfredshet følger også omtrent samme mønster (4.14 mot 4.17 og
+4.29).Samtidig ser vi at de med høyest formue også har den høyeste
+gjennomsnittsalderen, noe som indikerer en kobling mellom alder og
+formue (eldre personer har gjerne opparbeidet mer formue).
 
-Når motivasjon måles på skalaen 1--5, er gjennomsnittsskårene
-
-\begin{itemize}
-\tightlist
-\item
-  3,96 i lav formue
-\item
-  3,98 i middels formue
-\item
-  4,11 i høy formue.
-\end{itemize}
-
-Tilfredshet (1--5) følger samme mønster:
-
-\begin{itemize}
-\tightlist
-\item
-  4,10 i lav formue
-\item
-  4,12 i middels formue
-\item
-  4,26 i høy formue.
-\end{itemize}
-
-Forskjellene i motivasjon og tilfredshet er små, men systematiske:
-personer med høy formue rapporterer noe høyere motivasjon og tilfredshet
-enn dem med lav formue. Samtidig ser vi at de med høyest formue også har
-den høyeste gjennomsnittsalderen, noe som indikerer en kobling mellom
-alder og formue (eldre personer har gjerne opparbeidet mer formue).
-
-\begin{table}[ht]
+\begin{table}[H]
 \centering
-\begin{tabular}{lrrrrrr}
+\begin{tabular}{lcccccc}
 \toprule
-Variabel             & \multicolumn{2}{c}{Lav formue} & \multicolumn{2}{c}{Middels formue} & \multicolumn{2}{c}{Høy formue} \\
-                     & M       & SD       & M         & SD        & M       & SD      \\
+                        & \multicolumn{2}{c}{Lav formue (n = 883)} 
+                        & \multicolumn{2}{c}{Middels formue (n = 4255)} 
+                        & \multicolumn{2}{c}{Høy formue (n = 965)}         \\
+\cmidrule(r){2-3}\cmidrule(lr){4-5}\cmidrule(l){6-7}
+Variabel                & M      & SD     & M       & SD     & M      & SD    \\
 \midrule
-Alder                & 40.84   & 12.47    & 42.76     & 12.33     & 50.06   & 10.31   \\
-Motivasjon           & 3.96    & 0.99     & 3.98      & 0.92      & 4.11    & 0.84    \\
-Tilfredshet          & 4.10    & 0.93     & 4.12      & 0.89      & 4.26    & 0.79    \\
-Sykefravær 2022      & 0.06    & 0.11     & 0.05      & 0.11      & 0.03    & 0.09    \\
+Alder                   & 40.44  & 12.61  & 42.43   & 12.41  & 49.96  & 10.24 \\
+Motivasjon              &  3.98  &  0.98  &  4.02   &  0.90  &  4.15  &  0.83 \\
+Tilfredshet             &  4.14  &  0.88  &  4.17   &  0.85  &  4.29  &  0.76 \\
+Sykefravær 2022         &  0.02  &  0.05  &  0.02   &  0.04  &  0.01  &  0.03 \\
 \bottomrule
 \end{tabular}
 \caption{Deskriptiv statistikk etter formuegruppe}
@@ -1081,14 +1054,14 @@ Sykefravær 2022      & 0.06    & 0.11     & 0.05      & 0.11      & 0.03    & 0
 
 I \autoref{tab:deskr_kjonn} presenteres deskriptiv statistikk for
 sykefravær etter kjønn. Vi ser at sykefraværet i 2022 har et
-gjennomsnitt på 3 prosent for menn og 6 prosent for kvinner, kvinner har
+gjennomsnitt på 1 prosent for menn og 2 prosent for kvinner, kvinner har
 da dobbelt så høyt sykefravær enn menn. Dette kan skyldes at kvinner i
 større grad enn menn jobber i yrker med høyere sykefravær, eller at
 kvinner er mer tilbøyelige til å rapportere sykefravær enn menn. Det kan
 også være andre faktorer som påvirker sykefraværet, som for eksempel
 alder, utdanning og arbeidsforhold. Vi ser også at vi har en bra
-fordeling av kvinner og menn i utvalget, der 50.7 prosent av
-respondentene er kvinner og 49.3 prosent er menn.
+fordeling av kvinner og menn i utvalget, der 47.9 prosent av
+respondentene er kvinner og 52.1 prosent er menn.
 
 \begin{table}[ht]
 \centering
@@ -1096,20 +1069,20 @@ respondentene er kvinner og 49.3 prosent er menn.
 \toprule
 Kjønn   & N   & \%   & Gj.snitt sykefravær & SD    \\
 \midrule
-Mann    & 3700 & 49.3 & 3               & 8 \\
-Kvinne  & 3798 & 50.7 & 6               & 12 \\
+Mann    & 3177 & 52.1 & 1\% (0.01)               & 4 (0.04) \\
+Kvinne  & 2926 & 47.9 & 2\% (0.02)               & 4 (0.04) \\
 \bottomrule
 \end{tabular}
-\caption{Deskriptiv statistikk for sykefravær etter kjønn (N = 7498)}
+\caption{Deskriptiv statistikk for sykefravær etter kjønn (N = 6103)}
 \label{tab:deskr_kjonn}
 \end{table}
 
 I \autoref{tab:deskr_utdanning} presenteres deskriptiv statistikk for
 sykefravær etter utdanningsnivå. Vi ser at sykefraværet i 2022 har et
-gjennomsnitt på 6 prosent for de med grunnskole eller mindre, 5 prosent
-for de med videregående skole og 4 prosent for de med
+gjennomsnitt på 2 prosent for de med grunnskole eller mindre, 2 prosent
+for de med videregående skole og 1 prosent for de med
 universitet/høgskole. Dette tyder på at sykefraværet er høyere for de
-med lavere utdanning, og at det kan være er en sammenheng mellom
+med lavere utdanning, og at det kan være en liten sammenheng mellom
 utdanningsnivå og sykefravær.
 
 \begin{table}[ht]
@@ -1118,58 +1091,59 @@ utdanningsnivå og sykefravær.
 \toprule
 Utdanningsnivå                & N    & \%   & Gj.snitt sykefravær & SD   \\
 \midrule
-Grunnskole eller mindre       & 1039 & 13.9 & 6                    & 12   \\
-Videregående                   & 3667 & 48.9 & 5                    & 11   \\
-Universitet/Høgskole           & 2792 & 37.2 & 4                    & 9    \\
+Grunnskole eller mindre       & 816 & 13.3 & 2\% (0.02)                    & 4 (0.04)   \\
+Videregående                   & 2941 & 48.2 & 2\% (0.02)                  & 4 (0.04)   \\
+Universitet/Høgskole           & 2346 & 38.5 & 1\% (0.01)                   & 4 (0.04)  \\
 \bottomrule
 \end{tabular}
-\caption{Deskriptiv statistikk for sykefravær i 2022 etter utdanningsnivå (N = 7498).}
+\caption{Deskriptiv statistikk for sykefravær i 2022 etter utdanningsnivå (N = 6103).}
 \label{tab:deskr_utdanning}
 \end{table}
 
-I \autoref{fig:histogram} presenteres histogram og tetthetskurve for
-sykefraværet i 2022. Vi ser at sykefraværet er høyreskjevt, med en
-høyere andel av respondentene som har lavt sykefravær enn de som har
-høyt sykefravær både på menn og kvinner. Vi vet fra
-\autoref{tab:deskr_kjonn} at gjennomsnittet for begge kjønn er på
-omtrent 11 prosent for menn mens det er på 13 prosent for kvinner, noe
-som gjenspeiles i grafen. Det er vanskelig å se, men det er også noen
-uteliggere hvor flere respondenter har mer enn 40 prosent sykefravær på
-både menn og kvinner.
+\clearpage
 
-\paragraph{KODE for sykefraværprosent logtransform med og uten 0
-sykefravær}\label{kode-for-sykefravuxe6rprosent-logtransform-med-og-uten-0-sykefravuxe6r}
+\subsubsection{Figurer}\label{figurer}
 
-I 2022 var det \(n=et tall\) som hadde 0\% sykefravær, dette gjør at vår
-fordeling er tydelig høyreskjev. Når vi gjennomfører vår SEM analyse så
-vil gi gjøre dette for når vi tar med og uten 0\% sykefravær. Når vi
-logtransformerer sykefraværet uten 0 verdiene så får vi en tilnærmet
-normalfordelt fordeling, mens når vi tar med 0 verdiene så får vi en
-høyreskjev fordeling. Dette er viktig å være oppmerksom på når vi
-gjennomfører vår SEM analyse, da det kan påvirke resultatene våre.
-
-\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-9-1.pdf}
-
-med de med 0, logtransformert med +0.01
-
-\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-10-1.pdf}
-
-Uten de med 0 sykefravær, logtransformert.
-
-\includegraphics{kand_SOK2209_Bacheloroppgave_V25_files/figure-pdf/unnamed-chunk-11-1.pdf}
+I \autoref{fig:histogram_sykefravar} presenteres histogram og
+tetthetskurve for sykefraværet i 2022. Vi ser at sykefraværet er veldig
+høyreskjevt, med en høyere andel av respondentene som har lavt
+sykefravær enn de som har høyt sykefravær både på menn og kvinner. Vi
+vet fra \autoref{tab:deskr_kjonn} at gjennomsnittet er på 3 prosent for
+menn mens det er på 6 prosent for kvinner, noe som gjenspeiles i grafen.
+Det er vanskelig å se, men det er også noen uteliggere hvor flere
+respondenter har mer enn 40 prosent sykefravær på både menn og kvinner,
+noe som fører til halen som strekker seg mot høyre i histogrammet.
 
 \begin{figure}[H]
-\caption{Histogram og tetthetskurve for sykefravær i 2022}
-\label{fig:histogram}
+\caption{Sykefravær i 2022}
+\label{fig:histogram_sykefravar}
 \centering
-\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_1.png}
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_sykefrav.png}
+\end{figure}
+
+I 2022 var det \(n=4081\) som hadde 0\% sykefravær, dette gjør at vår
+fordeling er tydelig høyreskjev. I
+\autoref{fig:histogram_sykefravar_log} er sykefraværet logtransformert
+med +0.01, noe som fører til å glatte ut fordelingen og gjøre den mer
+normalfordelt. Dette er en vanlig teknikk for å håndtere høyreskjeve
+fordelinger, og det gjør at vi kan gjøre analysen vår mer robust mot
+skjevheter. Men selv om vi har logtransformert sykefraværet, så er det
+fortsatt mange som har lavt sykefravær, noe som kan påvirke resultatene
+våre.
+
+\vspace{-0.5cm}
+\begin{figure}[H]
+\caption{Sykefravær i 2022 logtransformert med +0.01}
+\label{fig:histogram_sykefravar_log}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_sykefrav_log.png}
 \end{figure}
 
 Når vi ser på aldersfordelingen i \autoref{fig:histogram} så ser vi at
 den er jevn og symmetrisk fordelt blant respondentene. Som nevnt
 tidligere så er spennet på alderene til respondentene i undersøkelsen
 mellom 18 til 66 år. Medianalderen kan man se i den blå stiplede linjen
-som er på 43 år for menn og 44 år for kvinner.
+som er på 44 år for menn og 45 år for kvinner.
 
 \begin{figure}[H]
 \caption{Histogram og tetthetskurve for alder}
@@ -1178,10 +1152,12 @@ som er på 43 år for menn og 44 år for kvinner.
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_2.png}
 \end{figure}
 
+\newpage
+
 For analysen så har vi fordelt alder inn i tre breddeintervaller på
 18-29, 30-55 og 55-66 år. I \autoref{fig:barplot} presenteres et barplot
 av aldersgruppene. Vi har flest respondenter i aldersgruppen 30-54 år
-med 60.1 prosent som vi bruker som referansegruppe.
+med totalt 59.6 prosent som vi bruker som referansegruppe.
 
 \begin{figure}[H]
 \caption{Aldersgruppefordeling}
@@ -1190,73 +1166,82 @@ med 60.1 prosent som vi bruker som referansegruppe.
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_3.png}
 \end{figure}
 
-\clearpage
+I \autoref{fig:histogram_formue} presenteres histogram og tetthetskurve
+for bruttofinanskapitalen. Som man kan se er formuefordelingen
+høyreskjev både for menn og kvinner, med en høyere andel av
+respondentene som har lav formue enn de som har høy formue noe som kan
+svekke analysen.
 
-\begin{wrapfigure}{r}{0.5\textwidth} 
-    \centering
-    \includegraphics[width=0.5\textwidth]{dokumentobjekter/figurer/fig_4_1.png}
-    \caption{Fordeling av bruttofinanskapital}
-    \label{fig:histogram_formue}
-    \smallskip\par
-    \includegraphics[width=0.5\textwidth]{dokumentobjekter/figurer/fig_4_2.png}
-    \caption{Invertert kumulativ fordeling av bruttofinanskapital}
-    \label{fig:histogram_formue_fordeling}
-\end{wrapfigure}
-
-\#måfiks I \autoref{fig:histogram_formue} presenteres histogram og
-tetthetskurve for bruttofinanskapitalen log-transformert \((1 + x)\)
-{[}\^{}8{]}. Originalt er formuefordelingen høyreskjev, med en høyere
-andel av respondentene som har lav formue enn de som har høy formue noe
-som kan svekke analysen. Derfor må vi log-transformere formuefordelingen
-for å få en mer normalfordelt fordeling både for menn og kvinner. Når
-man log-transformerer \((1 + x)\) så tar vi logaritmen av formueverdiene
-og legger til 1 for å unngå problemer med nullverdier.
-
-Vi har da \(n_{lav} = 1160\), \(n_{middels} = 5172\) og
-\(n_{høy} = 1166\). Den laveste gruppen har formue fra \(0 - 30000\),
-den middels gruppen har formue fra \(30000 - 850000\) og den høyeste
-gruppen har formue fra \(850000 - 2500000\). Dette gir oss en god
-fordeling av formuegruppene, og vi kan se om det er forskjeller i
-sykefravær mellom de forskjellige gruppene.
-
-\newpage
-
-Når vi ser på fordelingen av formue- og utdanningsgrupper fordelt på
-kjønn i \autoref{fig:barplot_2} så ser vi at det er flest kvinner i
-utdanningsgruppen videregående skole med 46.7 prosent, og det samme
-gjelder for menn med 56.9 prosent. Mer kvinner enn menn har
-universitetsutdannings eller høyere med 40.2 prosent mot kun 18.5
-prosent for menn. Menn har også lavest utdanningsnivå med 24.6 prosent i
-utdanningsgruppen grunnskole eller mindre, mens kvinner har 13.1 prosent
-i den samme utdanningsgruppen. Dette viser oss at menn har lavere
-utdanningsnivå enn kvinner, og at kvinner er mer tilbøyelige til å ta
-høyere utdanning enn menn.
-
-\#MÅfiks Formuefordelingen er delt inn i tertiler, som gjør slik at
-fordelingen blir jevnt blant de forskjellige formuegruppene både for
-menn og kvinner.
-
+\vspace{-0.5cm}
 \begin{figure}[H]
-\caption{Fordeling av formue- og utdanningsgrupper fordelt på kjønn}
-\label{fig:barplot_2}
+\caption{Fordeling av bruttofinanskapital}
+\label{fig:histogram_formue}
 \centering
-\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_5.png}
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_4_1.png}
 \end{figure}
 
+For å korrigere for denne skjevheten i formuefordelingen må vi gjøre en
+invertering av den kumulative fordelingen av bruttofinanskapitalen. Som
+man kan se i \autoref{fig:histogram_formue_fordeling} så er den
+inverterte kumulative fordelingen av bruttofinanskapitalen mer
+normalfordelt, noe som gjør at vi kan bruke den i analysen vår.
+
+\vspace{-0.75cm}
+\begin{figure}[H]
+\caption{Invertert kumulativ fordeling av bruttofinanskapital}
+\label{fig:histogram_formue_fordeling}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_4_2.png}
+\end{figure}
+\vspace{-0.75cm}
+
+Når vi ser på fordelingen av utdanningsgrupper fordelt på kjønn i
+\autoref{fig:barplot_2} så ser vi at det er flest menn i
+utdanningsgruppen videregående skole med 53.7 prosent, mens kvinner har
+noe lavere med 42.3 prosent. Mer kvinner enn menn har
+universitetsutdannings eller høyskole med 46.7 prosent mot 30.8 prosent
+for menn. Menn har også lavest utdanningsnivå med 15.5 prosent i
+utdanningsgruppen grunnskole eller mindre, mens kvinner har 11 prosent i
+den samme utdanningsgruppen. Menn har lavere utdanningsnivå enn kvinner,
+og kvinner er mer tilbøyelige til å ta høyere utdanning.
+
+\vspace{-0.5cm}
+\begin{figure}[H]
+\caption{Fordeling av utdanningsgrupper fordelt på kjønn}
+\label{fig:barplot_2}
+\centering
+\includegraphics[width=0.75\textwidth]{dokumentobjekter/figurer/fig_5.png}
+\end{figure}
+\vspace{-1cm}
+
 I \autoref{fig:boxplot} presenteres et boksplott av sykefravær etter
-formuegruppe. Vi kan se at det ikke er store forskjeller i sykefraværet
-mellom formuegruppene. Medianen vises i den sorte streken i midten av
-boksen, og den viser at sykefraværet med små marginer går ned fra lav
-formue, til middels formue og til høy formue. Bunnen og toppen til
-boksene viser oss henholdsvis første og tredje kvartil, og de stiplede
-linjene viser oss minimum og maksimum sykefravær. Det er også noen
-uteliggere som er vist med små prikker, og de viser at det er noen
-respondenter som har rapportert sykefravær på over 40 prosent. Dette kan
-være at de har vært sykemeldt i en lengre periode. I bakgrunnen av
-figuren man man se alle observasjonene spredt utover for en bedre
-oversikt siden det er mange observasjoner som går over hverandre i
-boksen. Dette er gjort med en funksjon som sprer ut observasjonene litt
-for å få en bedre oversikt over dem.
+formuegrupper som er definert etter standardavvik fra gjennomsnittet. Vi
+har tre formuegrupper: lav formue (under 1 standardavvik under
+gjennomsnittet), middels formue (mellom 1 standardavvik under og over
+gjennomsnittet) og høy formue (over 1 standardavvik over
+gjennomsnittet).
+
+Vi kan se at det er en liten trend i sykefraværet etter formuegruppe,
+der de med høy formue har lavest sykefravær, mens de med lav formue har
+høyest sykefravær. Dette er i tråd med hypotesen vår om at formue kan
+påvirke sykefraværet.
+
+Medianen vises i den sorte streken i midten av boksen, og den viser at
+sykefraværet med små marginer går ned fra lav formue, til middels formue
+og til høy formue. Bunnen og toppen til boksene viser oss henholdsvis
+første og tredje kvartil, og de stiplede linjene viser oss minimum og
+maksimum sykefravær. Det er også noen uteliggere som er vist med små
+prikker, og de viser at det er noen respondenter som har rapportert
+sykefravær på over 40 prosent. Dette kan være at de har vært sykemeldt i
+en lengre periode. I bakgrunnen av figuren man man se alle
+observasjonene spredt utover for en bedre oversikt siden det er mange
+observasjoner som går over hverandre i boksen. Dette er gjort med en
+funksjon som sprer ut observasjonene litt for å få en bedre oversikt
+over dem.
+
+I analysen bruker vi ikke formuegruppene, men figuren inkluderes for å
+få en bedre oversikt over hvordan sykefraværet fordeler seg etter
+formue.
 
 \begin{figure}[H]
 \caption{Boksplott av sykefravær etter formuegruppe}
@@ -1265,20 +1250,42 @@ for å få en bedre oversikt over dem.
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_6.png}
 \end{figure}
 
+\newpage
+
 I \autoref{fig:boxplot_2} presenteres et boksplott av sykefravær etter
-utdanningsnivå. Vi ser at sykefraværet er veldig jevnt mellom
+utdanningsnivå. Vi ser at sykefraværet er relativt jevnt mellom
 utdanningsnivåene. Medianen er litt over 10 prosent, og som tidligere
 vet vi at gjennomsnittlig sykefravær er lavere for høyt utdannede og
 litt lavere for de med lavere utdanning.
 
+\vspace{-0.5cm}
 \begin{figure}[H]
 \caption{Boksplott av sykefravær etter utdanningsnivå}
 \label{fig:boxplot_2}
 \centering
 \includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_7.png}
 \end{figure}
+\vspace{-1cm}
 
-Korrelationheatmap om vi får tid her til latente variabler.
+I \autoref{fig:kontrollvariabler} presenteres fordelingen av de
+arbeidsrelaterte variablene som inngår i de latente variablene jobbkrav
+og jobbressurser samt motivasjon. Vi ser at det er en høy andel som
+rapporterer at de har for mye arbeid, og at de jobber i et høyt tempo.
+Det er også en høy andel som rapporterer at de jobber ekstra, og
+selvbestemmelse i oppgaver og grad av arbeidstempo er ganske
+normalfordelt. Motivasjon har de fleste respondenter selvrapportert at
+de har høyt av i arbeidet.
+
+\vspace{-0.5cm}
+\begin{figure}[H]
+\caption{Fordeling av arbeidsrelaterte variabler}
+\label{fig:kontrollvariabler}
+\centering
+\includegraphics[width=0.8\textwidth]{dokumentobjekter/figurer/fig_kontrollvariabler.png}
+\end{figure}
+\vspace{-1cm}
+
+\newpage
 
 \subsection{Metode \{sec-metode\}}\label{metode-sec-metode}
 
@@ -1619,45 +1626,45 @@ Scales y*:
 \end{verbatim}
 
 \begin{verbatim}
-lavaan 0.6-19 ended normally after 93 iterations
+lavaan 0.6-19 ended normally after 95 iterations
 
   Estimator                                       DWLS
   Optimization method                           NLMINB
   Number of model parameters                        60
 
-  Number of observations                          6103
-  Number of missing patterns                         2
+  Number of observations                          2021
+  Number of missing patterns                         1
 
 Model Test User Model:
                                               Standard      Scaled
-  Test Statistic                              1656.220    1450.355
+  Test Statistic                               475.465     432.960
   Degrees of freedom                                80          80
   P-value (Chi-square)                           0.000       0.000
-  Scaling correction factor                                  1.156
-  Shift parameter                                           17.587
+  Scaling correction factor                                  1.143
+  Shift parameter                                           16.846
     simple second-order correction                                
 
 Model Test Baseline Model:
 
-  Test statistic                             27526.979   20379.516
+  Test statistic                              8108.347    5994.862
   Degrees of freedom                                36          36
   P-value                                        0.000       0.000
-  Scaling correction factor                                  1.351
+  Scaling correction factor                                  1.355
 
 User Model versus Baseline Model:
 
-  Comparative Fit Index (CFI)                    0.943       0.933
-  Tucker-Lewis Index (TLI)                       0.974       0.970
+  Comparative Fit Index (CFI)                    0.951       0.941
+  Tucker-Lewis Index (TLI)                       0.978       0.973
                                                                   
   Robust Comparative Fit Index (CFI)                            NA
   Robust Tucker-Lewis Index (TLI)                               NA
 
 Root Mean Square Error of Approximation:
 
-  RMSEA                                          0.057       0.053
-  90 Percent confidence interval - lower         0.054       0.051
-  90 Percent confidence interval - upper         0.059       0.055
-  P-value H_0: RMSEA <= 0.050                    0.000       0.019
+  RMSEA                                          0.049       0.047
+  90 Percent confidence interval - lower         0.045       0.042
+  90 Percent confidence interval - upper         0.054       0.051
+  P-value H_0: RMSEA <= 0.050                    0.572       0.889
   P-value H_0: RMSEA >= 0.080                    0.000       0.000
                                                                   
   Robust RMSEA                                                  NA
@@ -1668,7 +1675,7 @@ Root Mean Square Error of Approximation:
 
 Standardized Root Mean Square Residual:
 
-  SRMR                                           0.035       0.035
+  SRMR                                           0.040       0.040
 
 Parameter Estimates:
 
@@ -1680,104 +1687,104 @@ Parameter Estimates:
 Latent Variables:
                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
   Latent_JK =~                                                          
-    For_mye_arbeid    1.000                               0.682    0.563
-    Hoyt_arbedstmp    0.396    0.025   15.710    0.000    0.270    0.390
-    Ekstra_arbeid     1.384    0.127   10.927    0.000    0.944    0.686
+    For_mye_arbeid    1.000                               0.862    0.653
+    Hoyt_arbedstmp    0.338    0.040    8.424    0.000    0.291    0.429
+    Ekstra_arbeid     0.923    0.130    7.089    0.000    0.796    0.623
   Latent_JR =~                                                          
-    Grd_slvbstmmn_    1.000                               1.021    0.715
-    Grd_slvbst____    1.288    0.041   31.361    0.000    1.316    0.796
-    Grad_arbedstmp    0.933    0.027   34.654    0.000    0.953    0.690
-    Grd_pvrk_bslt_    1.060    0.031   34.008    0.000    1.083    0.735
+    Grd_slvbstmmn_    1.000                               0.897    0.668
+    Grd_slvbst____    1.365    0.077   17.814    0.000    1.224    0.774
+    Grad_arbedstmp    1.020    0.052   19.598    0.000    0.915    0.675
+    Grd_pvrk_bslt_    1.143    0.059   19.327    0.000    1.025    0.716
 
 Regressions:
                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
   Motivasjon ~                                                          
-    Latent_JR (a1)    0.480    0.019   25.303    0.000    0.490    0.430
-    Form_qnrm (a2)    0.008    0.017    0.479    0.632    0.008    0.007
-    ald_ung   (c1)   -0.363    0.045   -8.098    0.000   -0.363   -0.121
-    ald_elder (c2)    0.253    0.041    6.192    0.000    0.253    0.093
-    Kvinne    (c3)    0.013    0.033    0.406    0.685    0.013    0.006
-    Utd_grnns (c4)    0.016    0.047    0.346    0.730    0.016    0.005
-    Utd_nvrst (c5)   -0.016    0.035   -0.462    0.644   -0.016   -0.007
-    Barn      (c6)    0.017    0.046    0.379    0.704    0.017    0.005
-    arb_stlln (c7)    0.004    0.001    6.134    0.000    0.004    0.087
+    Latent_JR (a1)    0.548    0.038   14.610    0.000    0.492    0.431
+    Form_qnrm (a2)    0.022    0.030    0.742    0.458    0.022    0.018
+    ald_ung   (c1)   -0.463    0.075   -6.206    0.000   -0.463   -0.161
+    ald_elder (c2)    0.183    0.073    2.524    0.012    0.183    0.065
+    Kvinne    (c3)    0.132    0.058    2.291    0.022    0.132    0.057
+    Utd_grnns (c4)    0.052    0.076    0.685    0.493    0.052    0.016
+    Utd_nvrst (c5)   -0.146    0.064   -2.273    0.023   -0.146   -0.061
+    Barn      (c6)    0.068    0.078    0.873    0.383    0.068    0.021
+    arb_stlln (c7)    0.001    0.001    1.079    0.281    0.001    0.027
   logsyk_u0 ~                                                           
-    Latent_JK (b1)    0.035    0.030    1.168    0.243    0.024    0.034
-    Latent_JR (b2)   -0.025    0.018   -1.364    0.173   -0.025   -0.037
-    Form_qnrm (b3)   -0.076    0.018   -4.330    0.000   -0.076   -0.108
-    Motivasjn (b4)   -0.040    0.016   -2.444    0.015   -0.040   -0.066
-    ald_ung   (g1)   -0.074    0.042   -1.772    0.076   -0.074   -0.041
-    ald_elder (g2)    0.127    0.040    3.145    0.002    0.127    0.077
-    Kvinne    (g3)    0.051    0.032    1.577    0.115    0.051    0.037
-    Utd_grnns (g4)   -0.002    0.044   -0.048    0.962   -0.002   -0.001
-    Utd_nvrst (g5)   -0.038    0.035   -1.085    0.278   -0.038   -0.027
-    Barn      (g6)    0.033    0.042    0.787    0.431    0.033    0.017
-    arb_stlln (g7)   -0.002    0.001   -2.188    0.029   -0.002   -0.049
+    Latent_JK (b1)    0.027    0.024    1.151    0.250    0.024    0.034
+    Latent_JR (b2)   -0.030    0.022   -1.347    0.178   -0.027   -0.039
+    Form_qnrm (b3)   -0.075    0.018   -4.304    0.000   -0.075   -0.102
+    Motivasjn (b4)   -0.040    0.017   -2.389    0.017   -0.040   -0.067
+    ald_ung   (g1)   -0.078    0.042   -1.859    0.063   -0.078   -0.045
+    ald_elder (g2)    0.124    0.040    3.092    0.002    0.124    0.073
+    Kvinne    (g3)    0.056    0.032    1.725    0.085    0.056    0.040
+    Utd_grnns (g4)   -0.001    0.044   -0.016    0.987   -0.001   -0.000
+    Utd_nvrst (g5)   -0.044    0.035   -1.231    0.218   -0.044   -0.030
+    Barn      (g6)    0.035    0.042    0.837    0.403    0.035    0.018
+    arb_stlln (g7)   -0.002    0.001   -2.363    0.018   -0.002   -0.051
 
 Covariances:
                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
   Latent_JK ~~                                                          
-    Latent_JR        -0.070    0.013   -5.243    0.000   -0.100   -0.100
+    Latent_JR        -0.126    0.026   -4.776    0.000   -0.163   -0.163
 
 Intercepts:
                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-   .Hoyt_arbedstmp    4.055    0.046   87.671    0.000    4.055    5.865
-   .logsyk_u0        -2.960    0.072  -41.002    0.000   -2.960   -4.299
+   .Hoyt_arbedstmp    4.159    0.079   52.798    0.000    4.159    6.128
+   .logsyk_u0        -2.960    0.072  -40.996    0.000   -2.960   -4.304
 
 Thresholds:
                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-    For_mye_rbd|t1   -2.128    0.092  -23.090    0.000   -2.128   -1.758
-    For_mye_rbd|t2   -1.480    0.086  -17.298    0.000   -1.480   -1.223
-    For_mye_rbd|t3   -0.365    0.082   -4.458    0.000   -0.365   -0.302
-    For_mye_rbd|t4    1.108    0.083   13.311    0.000    1.108    0.915
-    Ekstra_arbd|t1   -0.101    0.095   -1.064    0.288   -0.101   -0.073
-    Ekstra_arbd|t2    0.613    0.097    6.326    0.000    0.613    0.446
-    Ekstra_arbd|t3    1.082    0.100   10.777    0.000    1.082    0.787
-    Ekstra_arbd|t4    2.703    0.122   22.155    0.000    2.703    1.966
-    Grd_slvbstm_|1   -1.818    0.100  -18.273    0.000   -1.818   -1.272
-    Grd_slvbstm_|2   -0.406    0.097   -4.173    0.000   -0.406   -0.284
-    Grd_slvbstm_|3    1.019    0.098   10.429    0.000    1.019    0.713
-    Grd_slvbstm_|4    2.169    0.100   21.705    0.000    2.169    1.518
-    Grd_slvb____|1   -2.900    0.127  -22.859    0.000   -2.900   -1.755
-    Grd_slvb____|2   -1.472    0.118  -12.489    0.000   -1.472   -0.891
-    Grd_slvb____|3    0.121    0.116    1.041    0.298    0.121    0.073
-    Grd_slvb____|4    1.832    0.118   15.532    0.000    1.832    1.109
-    Grd_rbdstmp|t1   -2.388    0.101  -23.532    0.000   -2.388   -1.729
-    Grd_rbdstmp|t2   -0.884    0.096   -9.234    0.000   -0.884   -0.640
-    Grd_rbdstmp|t3    0.497    0.095    5.204    0.000    0.497    0.360
-    Grd_rbdstmp|t4    1.750    0.097   18.118    0.000    1.750    1.267
-    Grd_pvrk_bs_|1   -2.396    0.105  -22.867    0.000   -2.396   -1.626
-    Grd_pvrk_bs_|2   -0.896    0.096   -9.315    0.000   -0.896   -0.608
-    Grd_pvrk_bs_|3    0.691    0.096    7.174    0.000    0.691    0.469
-    Grd_pvrk_bs_|4    2.205    0.098   22.503    0.000    2.205    1.496
-    Motivasjon|t1    -2.074    0.088  -23.694    0.000   -2.074   -1.820
-    Motivasjon|t2    -1.417    0.079  -17.971    0.000   -1.417   -1.244
-    Motivasjon|t3    -0.441    0.077   -5.724    0.000   -0.441   -0.387
-    Motivasjon|t4     0.886    0.077   11.495    0.000    0.886    0.778
+    For_mye_rbd|t1   -2.235    0.183  -12.222    0.000   -2.235   -1.693
+    For_mye_rbd|t2   -1.576    0.171   -9.242    0.000   -1.576   -1.194
+    For_mye_rbd|t3   -0.407    0.161   -2.525    0.012   -0.407   -0.308
+    For_mye_rbd|t4    1.129    0.165    6.824    0.000    1.129    0.855
+    Ekstra_arbd|t1   -0.156    0.161   -0.970    0.332   -0.156   -0.122
+    Ekstra_arbd|t2    0.482    0.162    2.975    0.003    0.482    0.377
+    Ekstra_arbd|t3    0.896    0.164    5.457    0.000    0.896    0.701
+    Ekstra_arbd|t4    2.378    0.180   13.180    0.000    2.378    1.861
+    Grd_slvbstm_|1   -1.563    0.169   -9.229    0.000   -1.563   -1.164
+    Grd_slvbstm_|2   -0.252    0.167   -1.506    0.132   -0.252   -0.188
+    Grd_slvbstm_|3    1.158    0.169    6.856    0.000    1.158    0.862
+    Grd_slvbstm_|4    2.183    0.173   12.657    0.000    2.183    1.626
+    Grd_slvb____|1   -2.598    0.219  -11.891    0.000   -2.598   -1.644
+    Grd_slvb____|2   -1.156    0.201   -5.766    0.000   -1.156   -0.732
+    Grd_slvb____|3    0.368    0.200    1.841    0.066    0.368    0.233
+    Grd_slvb____|4    1.945    0.204    9.536    0.000    1.945    1.231
+    Grd_rbdstmp|t1   -2.338    0.171  -13.688    0.000   -2.338   -1.725
+    Grd_rbdstmp|t2   -0.781    0.165   -4.732    0.000   -0.781   -0.576
+    Grd_rbdstmp|t3    0.541    0.165    3.286    0.001    0.541    0.399
+    Grd_rbdstmp|t4    1.675    0.167   10.033    0.000    1.675    1.236
+    Grd_pvrk_bs_|1   -2.237    0.184  -12.168    0.000   -2.237   -1.563
+    Grd_pvrk_bs_|2   -0.772    0.174   -4.445    0.000   -0.772   -0.539
+    Grd_pvrk_bs_|3    0.792    0.174    4.545    0.000    0.792    0.553
+    Grd_pvrk_bs_|4    2.227    0.178   12.533    0.000    2.227    1.555
+    Motivasjon|t1    -2.207    0.155  -14.228    0.000   -2.207   -1.936
+    Motivasjon|t2    -1.560    0.146  -10.654    0.000   -1.560   -1.368
+    Motivasjon|t3    -0.567    0.144   -3.928    0.000   -0.567   -0.497
+    Motivasjon|t4     0.733    0.144    5.102    0.000    0.733    0.643
 
 Variances:
                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-   .For_mye_arbeid    1.000                               1.000    0.683
-   .Hoyt_arbedstmp    0.405    0.007   57.520    0.000    0.405    0.848
-   .Ekstra_arbeid     1.000                               1.000    0.529
-   .Grd_slvbstmmn_    1.000                               1.000    0.489
-   .Grd_slvbst____    1.000                               1.000    0.366
-   .Grad_arbedstmp    1.000                               1.000    0.524
-   .Grd_pvrk_bslt_    1.000                               1.000    0.460
-   .Motivasjon        1.000                               1.000    0.770
-   .logsyk_u0         0.459    0.016   28.127    0.000    0.459    0.968
-    Latent_JK         0.465    0.043   10.915    0.000    1.000    1.000
-    Latent_JR         1.043    0.046   22.589    0.000    1.000    1.000
+   .For_mye_arbeid    1.000                               1.000    0.574
+   .Hoyt_arbedstmp    0.376    0.012   31.714    0.000    0.376    0.816
+   .Ekstra_arbeid     1.000                               1.000    0.612
+   .Grd_slvbstmmn_    1.000                               1.000    0.554
+   .Grd_slvbst____    1.000                               1.000    0.400
+   .Grad_arbedstmp    1.000                               1.000    0.544
+   .Grd_pvrk_bslt_    1.000                               1.000    0.488
+   .Motivasjon        1.000                               1.000    0.769
+   .logsyk_u0         0.459    0.016   28.115    0.000    0.459    0.970
+    Latent_JK         0.742    0.119    6.228    0.000    1.000    1.000
+    Latent_JR         0.804    0.063   12.674    0.000    1.000    1.000
 
 Scales y*:
                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-    For_mye_arbeid    0.826                               0.826    1.000
-    Ekstra_arbeid     0.727                               0.727    1.000
-    Grd_slvbstmmn_    0.700                               0.700    1.000
-    Grd_slvbst____    0.605                               0.605    1.000
-    Grad_arbedstmp    0.724                               0.724    1.000
-    Grd_pvrk_bslt_    0.679                               0.679    1.000
-    Motivasjon        0.898                               0.898    1.000
+    For_mye_arbeid    0.758                               0.758    1.000
+    Ekstra_arbeid     0.783                               0.783    1.000
+    Grd_slvbstmmn_    0.745                               0.745    1.000
+    Grd_slvbst____    0.633                               0.633    1.000
+    Grad_arbedstmp    0.738                               0.738    1.000
+    Grd_pvrk_bslt_    0.698                               0.698    1.000
+    Motivasjon        0.897                               0.897    1.000
 \end{verbatim}
 
 \newpage
@@ -1903,38 +1910,39 @@ i modell 2, og vi ser at det er store endringer i resultatene.
 
 \begin{table}[htbp]
 \centering
-\caption{Resultater fra strukturmodellen (Modell 2) for prediksjon av motivasjon og sykefravær (\texttt{logsyk\_u0}).}
-\label{tab:sem_results_model2}
+\caption{SEM‐resultater (Modell 2): Prediksjon av motivasjon og sykefravær (\texttt{logsyk\_u0}), estimert kun på de med sykefravær > 0 (N = 2021).}
+\label{tab:sem_results_model2_fixed}
 \begin{tabular}{@{}llrrrrc@{}}
 \toprule
-Avhengig variabel & Prediktor & Estimat & Std.Err & z-verdi & p-verdi & Std.all \\
+Avhengig variabel & Prediktor & Estimat & Std.Err & z‐verdi & p‐verdi & Std.all \\
 \midrule
-\multicolumn{7}{l}{\textit{Prediktorer for motivasjon}} \\
-& \texttt{Latent\_JR} (a1) & 0.480 & 0.019 & 25.303 & <0.001 & 0.430 \\
-& \texttt{Formue\_qnorm} (a2) & 0.008 & 0.017 & 0.479 & 0.632 & 0.007 \\
-& \texttt{ald\_ung} (c1) & -0.363 & 0.045 & -8.098 & <0.001 & -0.121 \\
-& \texttt{ald\_elder} (c2) & 0.253 & 0.041 & 6.192 & <0.001 & 0.093 \\
-& \texttt{Kvinne} (c3) & 0.013 & 0.033 & 0.406 & 0.685 & 0.006 \\
-& \texttt{Utd\_grunnskole} (c4) & 0.016 & 0.047 & 0.346 & 0.730 & 0.005 \\
-& \texttt{Utd\_universitet} (c5) & -0.016 & 0.035 & -0.462 & 0.644 & -0.007 \\
-& \texttt{Barn} (c6) & 0.017 & 0.046 & 0.379 & 0.704 & 0.005 \\
-& \texttt{arb\_stillingspst} (c7) & 0.004 & 0.001 & 6.134 & <0.001 & 0.087 \\
+\multicolumn{7}{l}{\textit{Prediktorer for \texttt{Motivasjon}}} \\
+& \texttt{Latent\_JR} (a1)           & 0.480 & 0.019 & 25.303 & < 0.001 & 0.430 \\
+& \texttt{Formue\_qnorm} (a2)       & 0.008 & 0.017 & 0.479  & 0.632   & 0.007 \\
+& \texttt{ald\_ung} (c1)            & -0.363 & 0.045 & -8.098 & < 0.001 & -0.121 \\
+& \texttt{ald\_elder} (c2)          & 0.253  & 0.041 & 6.192  & < 0.001 & 0.093 \\
+& \texttt{Kvinne} (c3)              & 0.013  & 0.033 & 0.406  & 0.685   & 0.006 \\
+& \texttt{Utd\_grunnskole} (c4)      & 0.016  & 0.047 & 0.346  & 0.730   & 0.005 \\
+& \texttt{Utd\_universitet} (c5)     & -0.016 & 0.035 & -0.462 & 0.644   & -0.007 \\
+& \texttt{Barn} (c6)                & 0.017  & 0.046 & 0.379  & 0.704   & 0.005 \\
+& \texttt{arb\_stillingspst} (c7)   & 0.004  & 0.001 & 6.134  & < 0.001 & 0.087 \\
 \midrule
-\multicolumn{7}{l}{\textit{Prediktorer for sykefravær (\texttt{logsyk\_u0})}} \\
-& \texttt{Latent\_JK} (b1) & 0.035 & 0.030 & 1.168 & 0.243 & 0.034 \\
-& \texttt{Latent\_JR} (b2) & -0.025 & 0.018 & -1.364 & 0.173 & -0.037 \\
-& \texttt{Formue\_qnorm} (b3) & -0.076 & 0.018 & -4.330 & <0.001 & -0.108 \\
-& \texttt{Motivasjon} (b4) & -0.040 & 0.016 & -2.444 & 0.015 & -0.066 \\
-& \texttt{ald\_ung} (g1) & -0.074 & 0.042 & -1.772 & 0.076 & -0.041 \\
-& \texttt{ald\_elder} (g2) & 0.127 & 0.040 & 3.145 & 0.002 & 0.077 \\
-& \texttt{Kvinne} (g3) & 0.051 & 0.032 & 1.577 & 0.115 & 0.037 \\
-& \texttt{Utd\_grunnskole} (g4) & -0.002 & 0.044 & -0.048 & 0.962 & -0.001 \\
-& \texttt{Utd\_universitet} (g5) & -0.038 & 0.035 & -1.085 & 0.278 & -0.027 \\
-& \texttt{Barn} (g6) & 0.033 & 0.042 & 0.787 & 0.431 & 0.017 \\
-& \texttt{arb\_stillingspst} (g7) & -0.002 & 0.001 & -2.188 & 0.029 & -0.049 \\
+\multicolumn{7}{l}{\textit{Prediktorer for \texttt{logsyk\_u0}}} \\
+& \texttt{Latent\_JK} (b1)           & 0.035  & 0.030 & 1.168  & 0.243   & 0.034 \\
+& \texttt{Latent\_JR} (b2)           & -0.025 & 0.018 & -1.364 & 0.173   & -0.037 \\
+& \texttt{Formue\_qnorm} (b3)        & -0.076 & 0.018 & -4.330 & < 0.001 & -0.108 \\
+& \texttt{Motivasjon} (b4)           & -0.040 & 0.016 & -2.444 & 0.015   & -0.066 \\
+& \texttt{ald\_ung} (g1)             & -0.074 & 0.042 & -1.772 & 0.076   & -0.041 \\
+& \texttt{ald\_elder} (g2)           & 0.127  & 0.040 & 3.145  & 0.002   & 0.077 \\
+& \texttt{Kvinne} (g3)               & 0.051  & 0.032 & 1.577  & 0.115   & 0.037 \\
+& \texttt{Utd\_grunnskole} (g4)       & -0.002 & 0.044 & -0.048 & 0.962   & -0.001 \\
+& \texttt{Utd\_universitet} (g5)      & -0.038 & 0.035 & -1.085 & 0.278   & -0.027 \\
+& \texttt{Barn} (g6)                 & 0.033  & 0.042 & 0.787  & 0.431   & 0.017 \\
+& \texttt{arb\_stillingspst} (g7)    & -0.002 & 0.001 & -2.188 & 0.029   & -0.049 \\
 \bottomrule
 \end{tabular}
-\footnotesize{\textit{Merk:} Estimat er ustandardisert koeffisient. Std.Err er standardfeil. Std.all er fullstendig standardisert koeffisient. Referansekategorier: Alder (30–54 år), Utdanning (videregående). \texttt{Formue\_qnorm} er normalisert formue. \texttt{arb\_stillingspst} er sentrert stillingsprosent. \texttt{logsyk\_u0} er log(sykefravær) for respondenter med sykefravær > 0.}
+\footnotesize{%
+\textit{Merk:} Alle estimeringer er gjort på subutvalget av respondenter med sykefravær > 0 (N = 2021). I begge ligninger (Motivasjon og logsyk\_u0) er variablene \texttt{Latent\_JK}, \texttt{Latent\_JR}, \texttt{Formue\_qnorm}, demografiske kontroll‐ og arbeidsvariabler benyttet på nøyaktig samme delpopulasjon. Estimat = ustandardisert koeffisient; Std.Err = robust standardfeil; Std.all = fullstendig standardisert koeffisient. Referansekategorier: Alder (30–54 år), Utdanning (videregående). \texttt{arb\_stillingspst} er sentrert stillingsprosent.}
 \end{table}
 
 \newpage
@@ -1947,7 +1955,7 @@ Andre muligheter kan diskuteres med veilederen.
 
 \subsection{Tabeller}\label{tabeller}
 
-\subsection{Figurer}\label{figurer}
+\subsection{Figurer}\label{figurer-1}
 
 \subsection{Forklaring av tabeller og
 figurer}\label{forklaring-av-tabeller-og-figurer}
