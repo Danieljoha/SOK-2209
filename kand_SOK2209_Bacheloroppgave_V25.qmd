@@ -1416,6 +1416,13 @@ Jobbressurser (støtte, autonomi, tilbakemelding) fungerer som beskyttende fakto
 Vi forventer en direkte, gunstig effekt av formue på sykefravær. Formue fungerer som en "buffer" mot levekårsproblemer [@normann_2009_inntektsfattig; @hattrem_hvor] og gir økonomisk trygghet. Dette kan redusere generelt stressnivå og forbedre helsen, slik funn fra @jaeggi2021wealth indikerer (høyere formue -\> lavere blodtrykk, færre luftveissykdommer). Økonomisk trygghet kan også gi bedre tilgang til helsetjenester og en større evne til å håndtere helseutfordringer uten å måtte ty til langvarig fravær.
 
 
+#### Hypotese 4(H4): Formue øker motivasjon $\alpha_2 > 0$
+
+
+
+Vi forventer en indirekte vei der formue påvirker sykefravær gjennom motivasjon. Som nevnt AUTOREF, forventer vi at høyere formue øker motivasjonen $\alpha_2 > 0$ som ved å redusere finansiell usikkerhet, og gode fremtidsutsikter. Videre forventer vi at høyere motivasjon/engasjement reduserer sykefraværet, slik @langseth2021ticket fant.
+
+
 
 
 
@@ -1745,8 +1752,41 @@ Avhengig variabel & Prediktor & Estimat & Std.Err & z-verdi & p-verdi & Std.all 
 
 
 
-### Redegjørelse for resultat knyttet til hypoteser
+### Resultat knyttet til hypoteser
 
+
+
+## Prediksjon av log-transformert sykefravær
+
+### Hypotese 1 
+
+Vi finner en positiv og statistisk signifikant sammenheng mellom **Jobbkrav (`Latent_JK`)** og `logsyk` (Estimat = $0.042$, Std.all = $0.035$, $p = 0.038$). Dette gir støtte til H1. Økte jobbkrav er assosiert med en økning i log-transformert sykefravær. Effekten er relativt liten, men signifikant.
+
+
+
+
+
+### Hypotese 2
+
+Det er en negativ og statistisk signifikant sammenheng mellom Jobbressurser (Latent_JR) og logsyk (Estimat = $-0.087$, Std.all = $-0.108$, $p < 0.001$). Dette gir i utgangspunktet sterk støtte til H2. Økt tilgang på jobbressurser er assosiert med en reduksjon i log-transformert sykefravær.
+
+
+### Hypotese 3
+
+
+Formue (Formue_qnorm) viser en negativ og statistisk signifikant sammenheng med logsyk (Estimat = $-0.104$, Std.all = $-0.123$, $p < 0.001$). Dette gir sterk støtte til H3. Et høyere formuenivå (målt på en normalisert skala) er assosiert med en reduksjon i log-transformert sykefravær, selv når vi kontrollerer for jobbkrav, jobbressurser og motivasjon.
+
+
+
+
+## Prediksjon av motivasjon
+
+
+### Hypotese 4 
+
+
+Som vist i øvre del av \autoref{tab:sem_results_model1}, er Jobbressurser (Latent_JR) en sterk og positiv prediktor for Motivasjon (Estimat = $0.479$, Std.all = $0.430$, $p < 0.001$). Dette er i tråd med JD-R-modellen, som postulerer at ressurser i jobben fremmer en motiverende prosess.
+Formue (Formue_qnorm) viser derimot ingen signifikant direkte sammenheng med Motivasjon (Estimat = $0.008$, $p = 0.632$). Vår antakelse om at formue direkte påvirker motivasjon får dermed ikke støtte i denne modellen og H3
 
 
 
@@ -1769,6 +1809,50 @@ Selv om analysen bygger på anerkjent metode og teori, er SEM med latente variab
 
 
 
+
+
+
+Siden sykefraværet er så høyreskjevt selv når det er log-transformert, kan det gi oss p-verdier som er for lave, og dermed kan det være at vi overestimerer effekten av prediktorene. 
+
+Hvis vi ekskluderer de uten legemeldt sykefravær og log-transformerer sykefraværet uten å legge til 0.01, slik at det er tilnærmet normalfordelt, så kan vi se om dette endrer resultatene. Dette er gjort i modell 2, og vi ser at det er store endringer i resultatene.
+
+
+
+\begin{table}[htbp]
+\centering
+\caption{Resultater fra strukturmodellen (Modell 2) for prediksjon av motivasjon og sykefravær (\texttt{logsyk\_u0}).}
+\label{tab:sem_results_model2}
+\begin{tabular}{@{}llrrrrc@{}}
+\toprule
+Avhengig variabel & Prediktor & Estimat & Std.Err & z-verdi & p-verdi & Std.all \\
+\midrule
+\multicolumn{7}{l}{\textit{Prediktorer for motivasjon}} \\
+& \texttt{Latent\_JR} (a1) & 0.480 & 0.019 & 25.303 & <0.001 & 0.430 \\
+& \texttt{Formue\_qnorm} (a2) & 0.008 & 0.017 & 0.479 & 0.632 & 0.007 \\
+& \texttt{ald\_ung} (c1) & -0.363 & 0.045 & -8.098 & <0.001 & -0.121 \\
+& \texttt{ald\_elder} (c2) & 0.253 & 0.041 & 6.192 & <0.001 & 0.093 \\
+& \texttt{Kvinne} (c3) & 0.013 & 0.033 & 0.406 & 0.685 & 0.006 \\
+& \texttt{Utd\_grunnskole} (c4) & 0.016 & 0.047 & 0.346 & 0.730 & 0.005 \\
+& \texttt{Utd\_universitet} (c5) & -0.016 & 0.035 & -0.462 & 0.644 & -0.007 \\
+& \texttt{Barn} (c6) & 0.017 & 0.046 & 0.379 & 0.704 & 0.005 \\
+& \texttt{arb\_stillingspst} (c7) & 0.004 & 0.001 & 6.134 & <0.001 & 0.087 \\
+\midrule
+\multicolumn{7}{l}{\textit{Prediktorer for sykefravær (\texttt{logsyk\_u0})}} \\
+& \texttt{Latent\_JK} (b1) & 0.035 & 0.030 & 1.168 & 0.243 & 0.034 \\
+& \texttt{Latent\_JR} (b2) & -0.025 & 0.018 & -1.364 & 0.173 & -0.037 \\
+& \texttt{Formue\_qnorm} (b3) & -0.076 & 0.018 & -4.330 & <0.001 & -0.108 \\
+& \texttt{Motivasjon} (b4) & -0.040 & 0.016 & -2.444 & 0.015 & -0.066 \\
+& \texttt{ald\_ung} (g1) & -0.074 & 0.042 & -1.772 & 0.076 & -0.041 \\
+& \texttt{ald\_elder} (g2) & 0.127 & 0.040 & 3.145 & 0.002 & 0.077 \\
+& \texttt{Kvinne} (g3) & 0.051 & 0.032 & 1.577 & 0.115 & 0.037 \\
+& \texttt{Utd\_grunnskole} (g4) & -0.002 & 0.044 & -0.048 & 0.962 & -0.001 \\
+& \texttt{Utd\_universitet} (g5) & -0.038 & 0.035 & -1.085 & 0.278 & -0.027 \\
+& \texttt{Barn} (g6) & 0.033 & 0.042 & 0.787 & 0.431 & 0.017 \\
+& \texttt{arb\_stillingspst} (g7) & -0.002 & 0.001 & -2.188 & 0.029 & -0.049 \\
+\bottomrule
+\end{tabular}
+\footnotesize{\textit{Merk:} Estimat er ustandardisert koeffisient. Std.Err er standardfeil. Std.all er fullstendig standardisert koeffisient. Referansekategorier: Alder (30–54 år), Utdanning (videregående). \texttt{Formue\_qnorm} er normalisert formue. \texttt{arb\_stillingspst} er sentrert stillingsprosent. \texttt{logsyk\_u0} er log(sykefravær) for respondenter med sykefravær > 0.}
+\end{table}
  
 
 
