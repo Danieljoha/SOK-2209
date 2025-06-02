@@ -66,7 +66,10 @@ Vi vil takke vår veileder Espen Sirnes for strålende veiledning og flotte samt
 \renewcommand{\contentsname}{Innholdsfortegnelse}
 \renewcommand*{\figureautorefname}{Figur}
 \renewcommand*{\tableautorefname}{Tabell}
-\renewcommand*{\equationautorefname}{Ligning:}
+\renewcommand*{\equationautorefname}{Ligning}
+\renewcommand*{\sectionautorefname}{Kapittel}
+\renewcommand*{\subsectionautorefname}{Underkapittel}
+\renewcommand*{\subsubsectionautorefname}{Delkapittel}
 \tableofcontents
 \listoffigures
 \listoftables
@@ -419,7 +422,6 @@ I dette kapitlet går vi gjennom datagrunnlaget for oppgaven. Vi vil først fork
 
 I problemstillingen *forklarer nivået på formue sykefraværet i Norge?* så velger vi å bruke en Structural Equation Model fordi denne kan bedre vise oss hvordan formue påvirker sykefraværet, inkludert eventuelle indirekte sammenhenger via motivasjon, mellom variablene vi velger å bruke. Dette gjør analysen mer kompleks, men vi kan bedre peke på hvilke effekter som er positive eller negative på selve sykefraværet.
 
-## Data
 
 Dataen vi bruker er hentet fra Statistisk sentralbyrå (SSB) sin [levekårsundersøkelse om arbeidsmiljø](https://www.ssb.no/arbeid-og-lonn/arbeidsmiljo-sykefravaer-og-arbeidskonflikter/artikler/levekarsundersokelsen-om-arbeidsmiljo-2022), som ble gjennomført i 2022. Vedlagt følger et bilde av kodeboken:
 
@@ -1361,9 +1363,11 @@ Modellen består av to ligninger: en for motivasjon ($M_i$) og en for sykefravæ
 Motivasjonen ($M_i$) antas å påvirkes av jobbressurser, formuenivå og kontrollvariablene $X_{ik}$. 
 
 
-$$
-M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \sum_k \alpha_{3k}X_{ik} + \epsilon_{Mi} \label{eq:motivasjon}
-$$
+\begin{equation}
+  M_i = \alpha_0 + \alpha_1 JR_i + \alpha_2 FN_i + \sum_k \alpha_{3k}X_{ik} + \epsilon_{Mi} \label{eq:motivasjon}
+\end{equation}
+
+
 Hvor $\alpha_0$ er konstantleddet, $\alpha_1$ er effekten for jobbressurser, $\alpha_2$ er effekten av formue, og $\alpha_{3k}$ er effektene av kontrollvariablene. $\epsilon_{Mi}$ er feilleddet for motivasjonsmodellen.
 
 
@@ -1374,10 +1378,10 @@ Sykefraværet antas å påvirkes direkte av jobbkrav ($JK_i$), jobbressurser ($J
 
 
 
-$$
+\begin{equation}
 SF_i = \beta_0 + \beta_1 JK_i + \beta_2 JR_i + \beta_3 FN_i
         + \beta_4 M_i + \Sigma_j \gamma_{j}X_{ij} + \epsilon_{1i} \label{eq:sf_utvidet}
-$$
+\end{equation}
 
 
 Hvor $\beta_0$ er konstantleddet, $\beta_1$ er effekten av jobbkrav, $\beta_2$ er effekten av jobbressurser, $\beta_3$ er effekten av formue, og $\beta_4$ er effekten av motivasjon. $\gamma_{j}$ er effekten av kontrollvariablene $X_{ij}$ som alder, stillingsprosent, kjønn og utdanning. Dette vil si at for eksempel koeffisienten $\gamma_{SP}$ som del av $\sum_j \gamma_{j}X_{ij}$ vil vise den direkte sammenhengen mellom stillingsprosent og sykefravær kontrollert for de andre variablene. $\epsilon_{SFi}$ er feilleddet for sykefraværmodellen.
@@ -1420,7 +1424,7 @@ Vår medierende variabel Motivasjon ($M_i$) i \autoref{eq:motivasjon} er modelle
 
 ### SEM-spesifikasjoner
 
-Vi kjører to separate SEM-spesifikasjoner for å teste robustheten av våre resultater. Den første inkluderer alle observasjoner i utvalget, der sykefravær log-transformeres som log(sykefravær + 0,01) for å håndtere nullverdier og skjevhet. Den andre modellen inkluderer kun respondenter med registrert sykefravær, og benytter log(sykefravær +0.01). Dette er for å undersøke om estimatene endres vesentlig når null-gruppen utgår.
+Vi kjører to separate SEM-spesifikasjoner for å teste robustheten av våre resultater. Den første inkluderer alle observasjoner i utvalget, der sykefravær log-transformeres som log(sykefravær + 0.01) for å håndtere nullverdier og skjevhet. Den andre modellen inkluderer kun respondenter med registrert sykefravær, og benytter log(sykefravær +0.01). Dette er for å undersøke om estimatene endres vesentlig når null-gruppen utgår.
 
 
 I appendix vil det være inkludert to tabeller der det er testet på dataen for 2023 for å videre undersøke om det er noen endringer i estimatene når vi bruker data fra 2023. 
@@ -1481,32 +1485,6 @@ Vi forventer en direkte, gunstig effekt av formue på sykefravær. Formue funger
 
 
 Vi forventer en indirekte vei der formue påvirker sykefravær gjennom motivasjon. Som nevnt \autoref{sec-formue-jdr}, forventer vi at høyere formue øker motivasjonen $\alpha_2 > 0$ som ved å redusere finansiell usikkerhet, og gode fremtidsutsikter. Videre forventer vi at høyere motivasjon/engasjement reduserer sykefraværet, slik @langseth2021ticket fant.
-
-
-
-
-
-```{r}
-NSD3201 %>%
-  dplyr::select(For_mye_arbeid, Hoyt_arbeidstempo, Ekstra_arbeid,
-         Grad_selvbestemming_oppgaver, Grad_selvbestemming_arbeid_som_skal_gjores,
-         Grad_arbeidstempo, Grad_pavirke_beslutning_arbeid, Motivasjon) %>%
-  pivot_longer(
-    cols      = everything(),
-    names_to  = "variabel",
-    values_to = "verdi"
-  ) %>%
-  ggplot(aes(x = verdi)) +
-  geom_bar(aes(y = (..count..)/sum(..count..)), fill = "steelblue", color = "black") +
-  facet_wrap(~ variabel, scales = "free_x") +
-  labs(title = "Fordeling av arbeidsrelaterte variabler",
-       x = "",
-       y = "Andel") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-```
-
 
 
 
@@ -1755,7 +1733,7 @@ Resultatene fra SEM-analysene presenteres i tabellform
 Avhengig variabel: Viser hvilken endogen variabel i modellen som predikeres i den aktuelle delen av tabellen (enten Motivasjon eller logsyk/logsyk_u0).
 
 
-Prediktor: Navnet på den uavhengige variabelen (observert eller latent) eller kontrollvariabelen som predikerer den avhengige variabelen. Bokstavkombinasjonene i parentes (f.eks. a1, b1) refererer til parameterbenevnelsene brukt i våre ligningsspesifikasjoner i kapittel \ref{sec-metode} og i lavaan-koden.
+Prediktor: Navnet på den uavhengige variabelen (observert eller latent) eller kontrollvariabelen som predikerer den avhengige variabelen. Bokstavkombinasjonene i parentes (f.eks. $\alpha_1$, $\beta_1$) refererer til parameterbenevnelsene brukt i våre ligningsspesifikasjoner i kapittel \ref{sec-metode} og i lavaan-koden.
 
 
 Estimat: Dette er den ustandardiserte regresjonskoeffisienten. Den viser endringen i den avhengige variabelen for en enhets endring i prediktorvariabelen, kontrollert for alle andre variabler i ligningen. For eksempel, hvis logsyk er avhengig variabel og Formue_qnorm er prediktor, viser estimatet hvor mye logsyk endres når Formue_qnorm øker med én enhet (som tilsvarer ett standardavvik i den normaliserte formuesfordelingen).
@@ -1795,8 +1773,8 @@ Std.all: Den fullstendig standardiserte koeffisienten. Denne koeffisienten varie
 Avhengig variabel & Prediktor & Estimat & Std.Err & z-verdi & p-verdi & Std.all \\
 \midrule
 \multicolumn{7}{l}{\textit{Prediktorer for motivasjon}} \\
-& \texttt{Latent\_JR} (a1) & 0.479 & 0.019 & 25.304 & <0.001 & 0.430 \\
-& \texttt{Formue\_qnorm} (a2) & 0.008 & 0.017 & 0.479 & 0.632 & 0.007 \\
+& \texttt{Latent\_JR} ($\alpha_1$) & 0.479 & 0.019 & 25.304 & <0.001 & 0.430 \\
+& \texttt{Formue\_qnorm} ($\alpha_2$) & 0.008 & 0.017 & 0.479 & 0.632 & 0.007 \\
 & \texttt{ald\_ung} (c1) & -0.363 & 0.045 & -8.098 & <0.001 & -0.121 \\
 & \texttt{ald\_elder} (c2) & 0.253 & 0.041 & 6.192 & <0.001 & 0.093 \\
 & \texttt{Kvinne} (c3) & 0.013 & 0.033 & 0.406 & 0.685 & 0.006 \\
@@ -1806,19 +1784,20 @@ Avhengig variabel & Prediktor & Estimat & Std.Err & z-verdi & p-verdi & Std.all 
 & \texttt{arb\_stillingspst} (c7) & 0.004 & 0.001 & 6.134 & <0.001 & 0.087 \\
 \midrule
 \multicolumn{7}{l}{\textit{Prediktorer for sykefravær (\texttt{logsyk})}} \\
-& \texttt{Latent\_JK} (b1) & 0.042 & 0.020 & 2.071 & 0.038 & 0.035 \\
-& \texttt{Latent\_JR} (b2) & -0.087 & 0.013 & -6.887 & <0.001 & -0.108 \\
-& \texttt{Formue\_qnorm} (b3) & -0.104 & 0.012 & -9.015 & <0.001 & -0.123 \\
-& \texttt{Motivasjon} (b4) & -0.033 & 0.011 & -2.951 & 0.003 & -0.046 \\
-& \texttt{ald\_ung} (g1) & 0.010 & 0.029 & 0.344 & 0.731 & 0.005 \\
-& \texttt{ald\_elder} (g2) & 0.005 & 0.026 & 0.191 & 0.848 & 0.003 \\
-& \texttt{Kvinne} (g3) & 0.216 & 0.022 & 9.674 & <0.001 & 0.130 \\
-& \texttt{Utd\_grunnskole} (g4) & 0.037 & 0.030 & 1.230 & 0.219 & 0.015 \\
-& \texttt{Utd\_universitet} (g5) & -0.113 & 0.024 & -4.709 & <0.001 & -0.066 \\
-& \texttt{Barn} (g6) & 0.042 & 0.030 & 1.411 & 0.158 & 0.018 \\
-& \texttt{arb\_stillingspst} (g7) & 0.002 & 0.000 & 3.356 & 0.001 & 0.045 \\
+& \texttt{Latent\_JK} ($\beta_1$) & 0.042 & 0.020 & 2.071 & 0.038 & 0.035 \\
+& \texttt{Latent\_JR} ($\beta_2$) & -0.087 & 0.013 & -6.887 & <0.001 & -0.108 \\
+& \texttt{Formue\_qnorm} ($\beta_3$) & -0.104 & 0.012 & -9.015 & <0.001 & -0.123 \\
+& \texttt{Motivasjon} ($\beta_4$) & -0.033 & 0.011 & -2.951 & 0.003 & -0.046 \\
+& \texttt{ald\_ung} ($\gamma_1$) & 0.010 & 0.029 & 0.344 & 0.731 & 0.005 \\
+& \texttt{ald\_elder} ($\gamma_2$) & 0.005 & 0.026 & 0.191 & 0.848 & 0.003 \\
+& \texttt{Kvinne} $\gamma_3$ & 0.216 & 0.022 & 9.674 & <0.001 & 0.130 \\
+& \texttt{Utd\_grunnskole} $\gamma_4$ & 0.037 & 0.030 & 1.230 & 0.219 & 0.015 \\
+& \texttt{Utd\_universitet} $\gamma_5$ & -0.113 & 0.024 & -4.709 & <0.001 & -0.066 \\
+& \texttt{Barn} $\gamma_6$ & 0.042 & 0.030 & 1.411 & 0.158 & 0.018 \\
+& \texttt{arb\_stillingspst} $\gamma_7$ & 0.002 & 0.000 & 3.356 & 0.001 & 0.045 \\
 \bottomrule
 \end{tabular}
+\raggedright
 \footnotesize{\textit{Merk:} Estimat er ustandardisert koeffisient. Std.Err er standardfeil. Std.all er fullstendig standardisert koeffisient. Referansekategorier: Alder (30–54 år), Utdanning (videregående). \texttt{Formue\_qnorm} er normalisert formue. \texttt{arb\_stillingspst} er stillingsprosent. \texttt{logsyk} er log(sykefravær + 0.01).}
 \end{table}
 
@@ -1914,15 +1893,15 @@ Hvis vi ekskluderer de uten legemeldt sykefravær og log-transformerer sykefrav�
 
 \begin{table}[htbp]
 \centering
-\caption{SEM‐resultater (Modell 2): Prediksjon av motivasjon og sykefravær (\texttt{logsyk\_u0}), estimert kun på de med sykefravær < 0 ($N = 2142$).}
+\caption{SEM‐resultater (Modell 2): Prediksjon av motivasjon og sykefravær (\texttt{logsyk\_u0}), estimert kun på de med sykefravær < 0 ($N = 2021$).}
 \label{tab:sem_results_model2}
 \begin{tabular}{@{}llrrrrc@{}}
 \toprule
 Avhengig variabel & Prediktor & Estimat & Std.Err & z‐verdi & p‐verdi & Std.all \\
 \midrule
 \multicolumn{7}{l}{\textit{Prediktorer for \texttt{Motivasjon}}} \\
-& \texttt{Latent\_JR} (a1)        & 0.548 & 0.038 & 14.610 & <0.001 & 0.431 \\
-& \texttt{Formue\_qnorm} (a2)     & 0.022 & 0.030 & 0.742  & 0.458  & 0.018 \\
+& \texttt{Latent\_JR} ($\alpha_1$)        & 0.548 & 0.038 & 14.610 & <0.001 & 0.431 \\
+& \texttt{Formue\_qnorm} ($\alpha_2$)     & 0.022 & 0.030 & 0.742  & 0.458  & 0.018 \\
 & \texttt{ald\_ung} (c1)          & -0.463& 0.075 & -6.206 & <0.001 & -0.161 \\
 & \texttt{ald\_elder} (c2)        & 0.183 & 0.073 & 2.524  & 0.012  & 0.065 \\
 & \texttt{Kvinne} (c3)            & 0.132 & 0.058 & 2.291  & 0.022  & 0.057 \\
@@ -1932,21 +1911,22 @@ Avhengig variabel & Prediktor & Estimat & Std.Err & z‐verdi & p‐verdi & Std.
 & \texttt{arb\_stillingspst} (c7) & 0.001 & 0.001 & 1.079  & 0.281  & 0.027 \\
 \midrule
 \multicolumn{7}{l}{\textit{Prediktorer for \texttt{logsyk\_u0}}} \\
-& \texttt{Latent\_JK} (b1)        & 0.027 & 0.024 & 1.151  & 0.250  & 0.034 \\
-& \texttt{Latent\_JR} (b2)        & -0.030& 0.022 & -1.347 & 0.178  & -0.039 \\
-& \texttt{Formue\_qnorm} (b3)     & -0.075& 0.018 & -4.304 & <0.001 & -0.102 \\
-& \texttt{Motivasjon} (b4)        & -0.040& 0.017 & -2.389 & 0.017  & -0.067 \\
-& \texttt{ald\_ung} (g1)          & -0.078& 0.042 & -1.859 & 0.063  & -0.045 \\
-& \texttt{ald\_elder} (g2)        & 0.124 & 0.040 & 3.092  & 0.002  & 0.073 \\
-& \texttt{Kvinne} (g3)            & 0.056 & 0.032 & 1.725  & 0.085  & 0.040 \\
-& \texttt{Utd\_grunnskole} (g4)   & -0.001& 0.044 & -0.016 & 0.987  & -0.000 \\
-& \texttt{Utd\_universitet} (g5)  & -0.044& 0.035 & -1.231 & 0.218  & -0.030 \\
-& \texttt{Barn} (g6)              & 0.035 & 0.042 & 0.837  & 0.403  & 0.018 \\
-& \texttt{arb\_stillingspst} (g7) & -0.002& 0.001 & -2.363 & 0.018  & -0.051 \\
+& \texttt{Latent\_JK} ($\beta_1$)        & 0.027 & 0.024 & 1.151  & 0.250  & 0.034 \\
+& \texttt{Latent\_JR} ($\beta_2$)        & -0.030& 0.022 & -1.347 & 0.178  & -0.039 \\
+& \texttt{Formue\_qnorm} ($\beta_3$)     & -0.075& 0.018 & -4.304 & <0.001 & -0.102 \\
+& \texttt{Motivasjon} ($\beta_4$)        & -0.040& 0.017 & -2.389 & 0.017  & -0.067 \\
+& \texttt{ald\_ung} ($\gamma_1$)          & -0.078& 0.042 & -1.859 & 0.063  & -0.045 \\
+& \texttt{ald\_elder} ($\gamma_2$)        & 0.124 & 0.040 & 3.092  & 0.002  & 0.073 \\
+& \texttt{Kvinne} $\gamma_3$            & 0.056 & 0.032 & 1.725  & 0.085  & 0.040 \\
+& \texttt{Utd\_grunnskole} $\gamma_4$   & -0.001& 0.044 & -0.016 & 0.987  & -0.000 \\
+& \texttt{Utd\_universitet} $\gamma_5$  & -0.044& 0.035 & -1.231 & 0.218  & -0.030 \\
+& \texttt{Barn} $\gamma_6$              & 0.035 & 0.042 & 0.837  & 0.403  & 0.018 \\
+& \texttt{arb\_stillingspst} $\gamma_7$ & -0.002& 0.001 & -2.363 & 0.018  & -0.051 \\
 \bottomrule
 \end{tabular}
+\raggedright
 \footnotesize{%
-\textit{Merk:} Alle estimeringer er gjort på subutvalget av respondenter med sykefravær < 0 (N = 2142). Estimat = ustandardisert koeffisient; Std.Err = robust standardfeil; z-verdi = z-teststatistikk; p-verdi = sannsynlighet for z-verdien; Std.all = fullstendig standardisert koeffisient. Referansekategorier: Alder (30–54 år), Utdanning (videregående). \texttt{arb\_stlln} er arbeidsstillingsprosent}
+\textit{Merk:} Alle estimeringer er gjort på subutvalget av respondenter med sykefravær < 0 (N = 2021). Estimat = ustandardisert koeffisient; Std.Err = robust standardfeil; z-verdi = z-teststatistikk; p-verdi = sannsynlighet for z-verdien; Std.all = fullstendig standardisert koeffisient. Referansekategorier: Alder (30–54 år), Utdanning (videregående). \texttt{arb\_stlln} er arbeidsstillingsprosent}
 \end{table}
 
 
@@ -2036,6 +2016,7 @@ P-verdi (RMSEA $\le$ 0.050)     & 0.010             & 0.889             \\
 SRMR                            & 0.035             & 0.040             \\
 \bottomrule
 \end{tabular}
+\raggedright
 \footnotesize{%
 \textit{Merk:} KI = Konfidensintervall.
 }
@@ -2213,7 +2194,7 @@ Vi har ikke testet hvordan formue eventuelt endrer effekten av arbeidstimer (rep
 Videre forskning: En fremtidig studie burde vurdere et eksplisitt interaksjonsledd mellom (sentrert) stillingsprosent og formue. Målet ville være å undersøke om den potensielt positive sammenhengen mellom stillingsprosent og sykefravær, kanskje blir svakere (eller til og med snur) ved økende formuesnivå. 
 
 Formues indirekte påvirkning på sykefravær via motivasjon:
-Vi har antatt at formue kan påvirke sykefravær indirekte gjennom arbeidsmotivasjon. Forventningen er at høyere formue kan bidra til økt motivasjon ved å redusere finansiell usikkerhet og skape positive fremtidsutsikter (en positiv effekt, a2>0 i vår motivasjonsmodell, \autoref{eq:motivasjon}). Videre, i tråd med funn som hos @langseth2021ticket, kan høyere motivasjon og engasjement tenkes å redusere sykefraværet (en negativ effekt i vår sykefraværsmodell.
+Vi har antatt at formue kan påvirke sykefravær indirekte gjennom arbeidsmotivasjon. Forventningen er at høyere formue kan bidra til økt motivasjon ved å redusere finansiell usikkerhet og skape positive fremtidsutsikter (en positiv effekt, $\alpha_2$>0 i vår motivasjonsmodell, \autoref{eq:motivasjon}). Videre, i tråd med funn som hos @langseth2021ticket, kan høyere motivasjon og engasjement tenkes å redusere sykefraværet (en negativ effekt i vår sykefraværsmodell.
 
 Videre forskning: Selv om vår nåværende SEM-modell estimerer disse separate stiene, og en indirekte effekt  kan beregnes, behandlet vi motivasjon som en enkel observert variabel basert på ett spørsmål. Fremtidig arbeid kunne med fordel teste en mer utdypende medieringsmodell hvor motivasjon kanskje operasjonaliseres som en latent variabel basert på flere indikatorer. Det vil være sentralt å kartlegge mer robust om økt formue faktisk styrker ulike fasetter av motivasjon (f.eks. indre vs. ytre), og om denne motivasjonsøkningen i sin tur har en signifikant og substansiell fraværsreduserende effekt.
 
@@ -2424,8 +2405,8 @@ fit_latent_log_u0_2023 <- sem(
 Avhengig variabel & Prediktor & Estimat & Std.Err & z‐verdi & p‐verdi & Std.all \\
 \midrule
 \multicolumn{7}{l}{\textit{Prediktorer for \texttt{Motivasjon}}} \\
-& \texttt{Latent\_JR} (a1)        & 0.480 & 0.019 & 25.302 & < 0.001 & 0.430 \\
-& \texttt{Form\_qnrm} (a2)        & 0.008 & 0.017 & 0.479  & 0.632   & 0.007 \\
+& \texttt{Latent\_JR} ($\alpha_1$)        & 0.480 & 0.019 & 25.302 & < 0.001 & 0.430 \\
+& \texttt{Form\_qnrm} ($\alpha_2$)        & 0.008 & 0.017 & 0.479  & 0.632   & 0.007 \\
 & \texttt{ald\_ung} (c1)          & -0.363& 0.045 & -8.098 & < 0.001 & -0.121 \\
 & \texttt{ald\_elder} (c2)        & 0.253 & 0.041 & 6.192  & < 0.001 & 0.093 \\
 & \texttt{Kvinne} (c3)            & 0.013 & 0.033 & 0.406  & 0.685   & 0.006 \\
@@ -2435,19 +2416,20 @@ Avhengig variabel & Prediktor & Estimat & Std.Err & z‐verdi & p‐verdi & Std.
 & \texttt{arb\_stlln} (c7)        & 0.004 & 0.001 & 6.134  & < 0.001 & 0.087 \\
 \midrule
 \multicolumn{7}{l}{\textit{Prediktorer for \texttt{logsyk\_2023}}} \\
-& \texttt{Latent\_JK} (b1)        & 0.108 & 0.027 & 3.946  & < 0.001 & 0.065 \\
-& \texttt{Latent\_JR} (b2)        & -0.090& 0.018 & -5.033 & < 0.001 & -0.081 \\
-& \texttt{Form\_qnrm} (b3)        & -0.146& 0.015 & -9.526 & < 0.001 & -0.125 \\
-& \texttt{Motivasjon} (b4)        & -0.051& 0.016 & -3.158 & 0.002   & -0.051 \\
-& \texttt{ald\_ung} (g1)          & -0.098& 0.043 & -2.251 & 0.024   & -0.033 \\
-& \texttt{ald\_elder} (g2)        & 0.074 & 0.036 & 2.081  & 0.037   & 0.027 \\
-& \texttt{Kvinne} (g3)            & 0.320 & 0.031 & 10.304 & < 0.001 & 0.140 \\
-& \texttt{Utd\_grnns} (g4)        & 0.144 & 0.042 & 3.473  & 0.001   & 0.043 \\
-& \texttt{Utd\_nvrst} (g5)        & -0.072& 0.033 & -2.165 & 0.030   & -0.030 \\
-& \texttt{Barn} (g6)              & 0.109 & 0.042 & 2.587  & 0.010   & 0.034 \\
-& \texttt{arb\_stlln} (g7)        & 0.001 & 0.001 & 1.332  & 0.183   & 0.018 \\
+& \texttt{Latent\_JK} ($\beta_1$)        & 0.108 & 0.027 & 3.946  & < 0.001 & 0.065 \\
+& \texttt{Latent\_JR} ($\beta_2$)        & -0.090& 0.018 & -5.033 & < 0.001 & -0.081 \\
+& \texttt{Form\_qnrm} ($\beta_3$)        & -0.146& 0.015 & -9.526 & < 0.001 & -0.125 \\
+& \texttt{Motivasjon} ($\beta_4$)        & -0.051& 0.016 & -3.158 & 0.002   & -0.051 \\
+& \texttt{ald\_ung} ($\gamma_1$)          & -0.098& 0.043 & -2.251 & 0.024   & -0.033 \\
+& \texttt{ald\_elder} ($\gamma_2$)        & 0.074 & 0.036 & 2.081  & 0.037   & 0.027 \\
+& \texttt{Kvinne} $\gamma_3$            & 0.320 & 0.031 & 10.304 & < 0.001 & 0.140 \\
+& \texttt{Utd\_grnns} $\gamma_4$        & 0.144 & 0.042 & 3.473  & 0.001   & 0.043 \\
+& \texttt{Utd\_nvrst} $\gamma_5$        & -0.072& 0.033 & -2.165 & 0.030   & -0.030 \\
+& \texttt{Barn} $\gamma_6$              & 0.109 & 0.042 & 2.587  & 0.010   & 0.034 \\
+& \texttt{arb\_stlln} $\gamma_7$        & 0.001 & 0.001 & 1.332  & 0.183   & 0.018 \\
 \bottomrule
 \end{tabular}
+\raggedright
 \footnotesize{%
 \textit{Merk:} Estimat = ustandardisert koeffisient; Std.Err = robust standardfeil; Std.all = fullstendig standardisert koeffisient. Referansekategorier: Alder (30–54 år), Utdanning (videregående).}
 \end{table}
@@ -2458,15 +2440,15 @@ Avhengig variabel & Prediktor & Estimat & Std.Err & z‐verdi & p‐verdi & Std.
 
 \begin{table}[htbp]
 \centering
-\caption{SEM‐resultater (Modell 4): Prediksjon av motivasjon og sykefravær (\texttt{logsyk\_u0\_2023}), estimert kun på de med sykefravær < 0 ($N = 2142$).}
+\caption{SEM‐resultater (Modell 4): Prediksjon av motivasjon og sykefravær (\texttt{logsyk\_u0\_2023}), estimert kun på de med sykefravær < 0 ($N = 2021$).}
 \label{tab:sem_results_model4}
 \begin{tabular}{@{}llrrrrc@{}}
 \toprule
 Avhengig variabel & Prediktor & Estimat & Std.Err & z‐verdi & p‐verdi & Std.all \\
 \midrule
 \multicolumn{7}{l}{\textit{Prediktorer for \texttt{Motivasjon}}} \\
-& \texttt{Latent\_JR} (a1)        & 0.487 & 0.031 & 15.615 & < 0.001 & 0.452 \\
-& \texttt{Form\_qnrm} (a2)        & 0.008 & 0.028 & 0.281  & 0.779   & 0.007 \\
+& \texttt{Latent\_JR} ($\alpha_1$)        & 0.487 & 0.031 & 15.615 & < 0.001 & 0.452 \\
+& \texttt{Form\_qnrm} ($\alpha_2$)        & 0.008 & 0.028 & 0.281  & 0.779   & 0.007 \\
 & \texttt{ald\_ung} (c1)          & -0.360& 0.075 & -4.816 & < 0.001 & -0.121 \\
 & \texttt{ald\_elder} (c2)        & 0.207 & 0.071 & 2.915  & 0.004   & 0.075 \\
 & \texttt{Kvinne} (c3)            & 0.015 & 0.056 & 0.271  & 0.786   & 0.007 \\
@@ -2476,19 +2458,20 @@ Avhengig variabel & Prediktor & Estimat & Std.Err & z‐verdi & p‐verdi & Std.
 & \texttt{arb\_stlln} (c7)        & 0.002 & 0.001 & 1.520  & 0.129   & 0.036 \\
 \midrule
 \multicolumn{7}{l}{\textit{Prediktorer for \texttt{logsyk\_u0\_2023}}} \\
-& \texttt{Latent\_JK} (b1)        & 0.101 & 0.042 & 2.384  & 0.017   & 0.068 \\
-& \texttt{Latent\_JR} (b2)        & -0.036& 0.027 & -1.322 & 0.186   & -0.038 \\
-& \texttt{Form\_qnrm} (b3)        & -0.092& 0.024 & -3.837 & < 0.001 & -0.086 \\
-& \texttt{Motivasjon} (b4)        & -0.034& 0.025 & -1.379 & 0.168   & -0.038 \\
-& \texttt{ald\_ung} (g1)          & -0.176& 0.064 & -2.736 & 0.006   & -0.067 \\
-& \texttt{ald\_elder} (g2)        & 0.161 & 0.056 & 2.881  & 0.004   & 0.066 \\
-& \texttt{Kvinne} (g3)            & 0.128 & 0.047 & 2.717  & 0.007   & 0.062 \\
-& \texttt{Utd\_grnns} (g4)        & 0.070 & 0.062 & 1.125  & 0.261   & 0.025 \\
-& \texttt{Utd\_nvrst} (g5)        & 0.003 & 0.051 & 0.058  & 0.953   & 0.001 \\
-& \texttt{Barn} (g6)              & -0.041& 0.061 & -0.671 & 0.502   & -0.015 \\
-& \texttt{arb\_stlln} (g7)        & -0.001& 0.001 & -0.709 & 0.478   & -0.016 \\
+& \texttt{Latent\_JK} ($\beta_1$)        & 0.101 & 0.042 & 2.384  & 0.017   & 0.068 \\
+& \texttt{Latent\_JR} ($\beta_2$)        & -0.036& 0.027 & -1.322 & 0.186   & -0.038 \\
+& \texttt{Form\_qnrm} ($\beta_3$)        & -0.092& 0.024 & -3.837 & < 0.001 & -0.086 \\
+& \texttt{Motivasjon} ($\beta_4$)        & -0.034& 0.025 & -1.379 & 0.168   & -0.038 \\
+& \texttt{ald\_ung} ($\gamma_1$)          & -0.176& 0.064 & -2.736 & 0.006   & -0.067 \\
+& \texttt{ald\_elder} ($\gamma_2$)        & 0.161 & 0.056 & 2.881  & 0.004   & 0.066 \\
+& \texttt{Kvinne} $\gamma_3$            & 0.128 & 0.047 & 2.717  & 0.007   & 0.062 \\
+& \texttt{Utd\_grnns} $\gamma_4$        & 0.070 & 0.062 & 1.125  & 0.261   & 0.025 \\
+& \texttt{Utd\_nvrst} $\gamma_5$        & 0.003 & 0.051 & 0.058  & 0.953   & 0.001 \\
+& \texttt{Barn} $\gamma_6$              & -0.041& 0.061 & -0.671 & 0.502   & -0.015 \\
+& \texttt{arb\_stlln} $\gamma_7$        & -0.001& 0.001 & -0.709 & 0.478   & -0.016 \\
 \bottomrule
 \end{tabular}
+\raggedright
 \footnotesize{%
 \textit{Merk:} Alle estimeringer er gjort på subutvalget av respondenter med sykefravær < 0. Estimat = ustandardisert koeffisient; Std.Err = robust standardfeil; z-verdi = z-teststatistikk; p-verdi = sannsynlighet for z-verdien; Std.all = fullstendig standardisert koeffisient. Referansekategorier: Alder (30–54 år), Utdanning (videregående). \texttt{arb\_stlln} er arbeidsstillingsprosent}
 \end{table}
