@@ -2242,7 +2242,7 @@ Videre forskning: Fremtidige studier bør derfor utforske og sammenligne ulike f
 
 # Vedlegg {.unnumbered .unlisted}
 
-Her legger vi til vår QMD fil.
+QMD-filen finnes på github siden [her](https://github.com/Danieljoha/SOK-2209/blob/main/kand_SOK2209_Bacheloroppgave_V25.qmd).
 
 # Appendiks {.unnumbered .unlisted}
 
