@@ -207,7 +207,7 @@
 \begin{flushleft}
     \vspace*{0.5cm}
     \hspace*{2.5cm}\large{\color{black}\textbf{Formuefordeling og sykefravær}}  \\[0.5em]
-\hspace*{2.5cm}\color{black}\fontsize{11}{13.2}\selectfont  28 og 35 \\[0.5em]
+\hspace*{2.5cm}\color{black}\fontsize{11}{13.2}\selectfont  Kandidatnummer 28 og 35 \\[0.5em]
     \hspace*{2.5cm}{\color{black}\fontsize{11}{13.2}\selectfont Handelshøgskolen ved UiT \\[0.2em]
     \hspace*{2.5cm}\color{black}\fontsize{11}{13.2}\selectfont Juni 2025 \\[0.5em]
     \hspace*{2.0cm}
@@ -437,9 +437,9 @@ arbeidet, og fleksibilitet i arbeidsoppgaver. (Schaufeli \& Bakker,
 2004)
 
 Vi vil bruke jobbressurser som en latent variabel som består av følgende
-observerbare variabler: støtte fra sjef, støtte fra kolleger, grad av
-selvbestemmelse i oppgaver og arbeid som skal gjøres, grad av
-arbeidstempo og grad av påvirkning på beslutninger i arbeidet.
+observerbare variabler:, grad av selvbestemmelse i oppgaver og arbeid
+som skal gjøres, grad av selvbestemmelse i hvordan arbeidet utføres,
+grad av arbeidstempo og grad av påvirkning på beslutninger i arbeidet.
 
 \subsubsection{Motivasjon}\label{motivasjon}
 
@@ -1253,11 +1253,11 @@ første og tredje kvartil, og de stiplede linjene viser oss minimum og
 maksimum sykefravær. Det er også noen uteliggere som er vist med små
 prikker, og de viser at det er noen respondenter som har rapportert
 sykefravær på over 40 prosent. Dette kan være at de har vært sykemeldt i
-en lengre periode, dog ikke over 14 dager sammenhengende. I bakgrunnen
-av figuren man man se alle observasjonene spredt utover for en bedre
-oversikt siden det er mange observasjoner som går over hverandre i
-boksen. Dette er gjort med en funksjon som sprer ut observasjonene litt
-for å få en bedre oversikt over dem.
+en lengre periode. I bakgrunnen av figuren man man se alle
+observasjonene spredt utover for en bedre oversikt siden det er mange
+observasjoner som går over hverandre i boksen. Dette er gjort med en
+funksjon som sprer ut observasjonene litt for å få en bedre oversikt
+over dem.
 
 I analysen bruker vi ikke formuegruppene, men figuren inkluderes for å
 få en bedre oversikt over hvordan sykefraværet fordeler seg etter
@@ -1537,12 +1537,15 @@ ordinale, og fordi vi ikke kan anta normalfordeling for alle variablene
 som vist i \autoref{fig:kontrollvariabler}, spesielt ikke for sykefravær
 som vist i \autoref{fig:histogram_sykefravar_log}.
 
-Modell 1 inkluderer alle respondenter, mens Modell 2 kun inkluderer
-respondenter som har registrert sykefravær.
-
-Vi bruker den definerte modellen i \ref{sec-metode} ved hjelp at pakken
-Lavaan i R, og i vurdering av resultatene våre tar vi utgangspunkt i
-\ref{teori}.
+Resultatene presenteres i to modeller: Modell 1 inkluderer alle
+respondenter hvor sykefravær er log-transformert (logsyk =
+\(log(sykefravær_2022+0.01)\)), mens Modell 2 kun inkluderer
+respondenter med registrert sykefravær og benytter samme
+log-transformasjon (logsyk\_u0 = \(log(sykefravær_2022+0.01)\)). Dette
+gjøres for å kunne sjekke om resultatene er robuste når vi ekskluderer
+individer med null sykefravær. Vi presenterer også resultater for 2023 i
+appendix for å undersøke om det er noen endringer i estimatene når vi
+bruker data fra 2023.
 
 \subsubsection{Tolkning av resultater}\label{tolkning-av-resultater}
 
@@ -1577,16 +1580,16 @@ koeffisienten er signifikant forskjellig fra null.
 
 p-verdi: Sannsynligheten for å observere en z-verdi som er minst like
 ekstrem som den beregnede, gitt at nullhypotesen (om at den sanne
-koeffisienten er null) er sann. En lav p-verdi (typisk \textless{} 0.05)
-indikerer at vi kan forkaste nullhypotesen og konkludere med at det er
-en statistisk signifikant sammenheng.
+koeffisienten er null) er sann. Vi benevner p-verdier som signifikante
+hvis de er mindre enn 0.05, og svært signifikante hvis de er mindre enn
+0.001.
 
 Std.all: Den fullstendig standardiserte koeffisienten. Denne
-koeffisienten varierer vanligvis mellom -1 og 1 og indikerer hvor mange
-standardavvik den avhengige variabelen endres med når den uavhengige
-variabelen endres med ett standardavvik, kontrollert for andre
-variabler. Dette gjør det lettere å sammenligne styrken på effekter
-mellom ulike prediktorer som er målt på forskjellige skalaer.
+koeffisienten indikerer hvor mange standardavvik den avhengige
+variabelen endres med når den uavhengige variabelen endres med ett
+standardavvik, kontrollert for andre variabler. Dette gjør det lettere å
+sammenligne styrken på effekter mellom ulike prediktorer som er målt på
+forskjellige skalaer.
 
 \subsubsection{Resultat for vår
 hovedmodell}\label{resultat-for-vuxe5r-hovedmodell}
@@ -1641,7 +1644,8 @@ Vi finner en positiv og statistisk signifikant sammenheng mellom
 \textbf{Jobbkrav (\texttt{Latent\_JK})} og \texttt{logsyk} (Estimat =
 \(0.042\), Std.all = \(0.035\), \(p = 0.038\)). Dette gir støtte til H1.
 Økte jobbkrav er assosiert med en økning i log-transformert sykefravær.
-Effekten er relativt liten, men signifikant.
+Effekten er relativt liten, men signifikant, som indikerer at høyere
+opplevde krav i jobben er forbundet med høyere sykefravær.
 
 \paragraph{\texorpdfstring{Hypotese 2
 \(\text{Latent JR} \rightarrow \text{Sykefravær } \beta_2 < 0\)}{Hypotese 2 \textbackslash text\{Latent JR\} \textbackslash rightarrow \textbackslash text\{Sykefravær \} \textbackslash beta\_2 \textless{} 0}}\label{hypotese-2-textlatent-jr-rightarrow-textsykefravuxe6r-beta_2-0}
@@ -1673,10 +1677,10 @@ tråd med JD-R-modellen, som postulerer at ressurser i jobben fremmer en
 motiverende prosess. Formue (Formue\_qnorm) viser derimot ingen
 signifikant direkte sammenheng med Motivasjon (Estimat = \(0.008\),
 \(p = 0.632\)). Vår antakelse om at formue direkte påvirker motivasjon
-får dermed ikke støtte i denne modellen og H3
+får dermed ikke støtte i denne modellen.
 
-\subsubsection{Redegjørelse for effekt av
-kontrollvariabler}\label{redegjuxf8relse-for-effekt-av-kontrollvariabler}
+\subsubsection{Redegjørelse for effekt av kontrollvariabler i modell
+1.}\label{redegjuxf8relse-for-effekt-av-kontrollvariabler-i-modell-1.}
 
 \paragraph{Sykefravær}\label{sykefravuxe6r-1}
 
@@ -1707,7 +1711,7 @@ høyere motivasjon (Estimat = 0.253, Std.all = 0.093, p\textless0.001)
 enn referansegruppen.
 
 Høyere stillingsprosent (arb\_stillingspst) er også assosiert med
-signifikant høyere motivasjon (Estimat = 0.004, Std.all = 0.087,
+signifikant høyere sykefravær (Estimat = 0.004, Std.all = 0.087,
 p\textless0.001).
 
 Kjønn, utdanningsnivå og om individet har barn under 5 år viser ingen
@@ -1767,26 +1771,125 @@ Avhengig variabel & Prediktor & Estimat & Std.Err & z‐verdi & p‐verdi & Std.
 \subsection{Resultat knyttet til modell
 2}\label{resultat-knyttet-til-modell-2-1}
 
+Det er langt mye færre signifikante resultater i modell 2 enn i modell
+1, og det er også en del endringer i retning på effektene. Dette kan
+indikere at de som ikke har sykefravær har en annen sammenheng mellom
+jobbkrav, jobbressurser, formue og sykefravær enn de som har sykefravær,
+eller at p-verdiene i modell 1 er for lave på grunn av skjevheten i
+sykefraværsdataene. Vi vil derfor tolke resultatene med forsiktighet, og
+vi vil også diskutere svakhetene i modellen og dataene i kapittel
+\ref{sec-diskusjon}.
+
 \subsubsection{Prediksjon av log-transformert sykefravær i modell
 2.}\label{prediksjon-av-log-transformert-sykefravuxe6r-i-modell-2.}
 
-\paragraph{Hypotese 1}\label{hypotese-1}
+\paragraph{\texorpdfstring{Hypotese 1 Jobbkrav
+\(\text{Latent JK} \rightarrow \text{Sykefravær } \beta_1 > 0\)}{Hypotese 1 Jobbkrav \textbackslash text\{Latent JK\} \textbackslash rightarrow \textbackslash text\{Sykefravær \} \textbackslash beta\_1 \textgreater{} 0}}\label{hypotese-1-jobbkrav-textlatent-jk-rightarrow-textsykefravuxe6r-beta_1-0-1}
 
-\paragraph{Hypotese 2}\label{hypotese-2}
+Effekten er ikke signifikant (Estimat = \(0.027\), Std.all = \(0.034\),
+\(p = 0.250\)). Dette indikerer at jobbkrav ikke har en signifikant
+direkte effekt på sykefravær blandt de som hadde mer enn 0 dager
+sykefravær i 2022. Støtten for H1 svekkes og vi kan ikke med sikkerhet
+si at høyere jobbkrav er assosiert med høyere sykefravær i denne
+undergruppen av respondenter.
 
-\paragraph{Hypotese 3}\label{hypotese-3}
+\paragraph{\texorpdfstring{Hypotese 2
+\(\text{Latent JR} \rightarrow \text{Sykefravær } \beta_2 < 0\)}{Hypotese 2 \textbackslash text\{Latent JR\} \textbackslash rightarrow \textbackslash text\{Sykefravær \} \textbackslash beta\_2 \textless{} 0}}\label{hypotese-2-textlatent-jr-rightarrow-textsykefravuxe6r-beta_2-0-1}
+
+Effekten er negativ men ikke signifikant (Estimat = \(-0.030\), Std.all
+= \(-0.039\), \(p = 0.178\)). Dette indikerer at jobbressurser ikke har
+en signifikant direkte effekt på sykefravær blant de som hadde mer enn 0
+dager sykefravær i 2022. Støtten for H2 svekkes også.
+
+\paragraph{\texorpdfstring{Hypotese 3
+\(\text{Formue} \rightarrow \text{Sykefravær } \beta_3 < 0\)}{Hypotese 3 \textbackslash text\{Formue\} \textbackslash rightarrow \textbackslash text\{Sykefravær \} \textbackslash beta\_3 \textless{} 0}}\label{hypotese-3-textformue-rightarrow-textsykefravuxe6r-beta_3-0-1}
+
+Formue (Formue\_qnorm) har en signifikant negativ effekt på sykefravær
+(Estimat = \(-0.075\), Std.all = \(-0.102\), \(p < 0.001\)). Dette
+styrker H3. En økning på et standardavvik i den normaliserte
+formueskalaen er assosiert med en reduksjon i log-transformert
+sykefravær, selv når vi kun ser på de som har sykefravær. Dette
+indikerer at formue fortsatt fungerer som en buffer mot sykefravær i
+denne undergruppen av respondenter.
 
 \subsubsection{Prediksjon av
 motivasjon}\label{prediksjon-av-motivasjon-1}
 
 \paragraph{Hypotese 4}\label{hypotese-4-1}
 
-\subsubsection{Redegjørelse for effekt av
-kontrollvariabler}\label{redegjuxf8relse-for-effekt-av-kontrollvariabler-1}
+Motivasjon er fortsatt negativt og signifikant assosiert med sykefravær
+(Estimat = \(-0.040\), Std.all = \(-0.067\), \(p = 0.017\)). Dette
+styrker H4.
+
+Formue ser ikke ut til å ha noe signifikant direkte effekt på motivasjon
+i denne modellen (Estimat = \(0.022\), \(p = 0.458\)).
+
+\subsubsection{Redegjørelse for effekt av kontrollvariabler i modell
+2.}\label{redegjuxf8relse-for-effekt-av-kontrollvariabler-i-modell-2.}
 
 \paragraph{Sykefravær}\label{sykefravuxe6r-2}
 
+Eldre arbeidstakere (ald\_elder, 55-66 år) rapporterer signifikant
+høyere sykefravær (Estimat = 0.124, Std.all = 0.073, \(p = 0.002\)) enn
+referansegruppen (30-54 år). Dette var ikke fanget opp i modell 1.
+
+Stillingsprosenten snur retning og blir negativt assosiert med
+sykefravær (Estimat = \(-0.002\), Std.all = \(-0.051\), \(p = 0.018\)).
+Dette indikerer at høyere stillingsprosent er assosiert med lavere
+sykefravær i denne undergruppen av respondenter. Dette kan tilsi at av
+de som har sykefravær så er det de med lavere stillingsprosent som har
+høyere sykefravær, mens de med høyere stillingsprosent har lavere
+sykefravær. Effektstørrelsen i begge retninger er imidlertid liten.
+
+Kjønn er ikke lengere signifikant assosiert med sykefravær (Estimat =
+0.056, Std.all = 0.040, \(p = 0.085\)), noe som kan indikere at
+forskjellene i sykefravær mellom kjønnene er mindre når vi kun ser på de
+med sykefravær og at det er skjevheten i sykefraværsdataene som har
+gjort at det så ut til å være en signifikant forskjell i modell 1.
+
+Utdanningsnivå viser ingen signifikant effekt på sykefravær i denne
+modellen.
+
 \paragraph{Motivasjon}\label{motivasjon-2}
+
+Laten variabelen Jobbressurser (Latent\_JR) er fortsatt en sterk og
+positiv prediktor for Motivasjon (Estimat = \(0.548\), Std.all =
+\(0.431\), \(p < 0.001\)). Dette styrker funnet i modell 1 og gir
+fortsatt støtte til JD-R-modellen.
+
+Formue har ingen signifikant effekt på Motivasjon.
+
+I modell 2 blir har nå kjønn en signifikant positiv effekt på motivasjon
+(Estimat = 0.132, Std.all = 0.057, \(p = 0.022\)). Dette indikerer at
+kvinner rapporterer høyere motivasjon enn menn, og utdanningsnivået
+universitetsutdanning er fortsatt assosiert med lavere motivasjon
+(Estimat = \(-0.146\), Std.all = \(-0.061\), \(p = 0.023\)) sammenlignet
+med de med videregående utdanning.
+
+Stillingsprosent er ikke lenger signifikant assosiert med motivasjon
+(Estimat = \(0.001\), Std.all = \(0.027\), \(p = 0.281\)).
+
+\subsection{Sammenligning av modell 1 og modell
+2}\label{sammenligning-av-modell-1-og-modell-2}
+
+Modell 1 inkluderer alle respondenter, mens modell 2 kun inkluderer de
+med registrert sykefravær. Dette kan påvirke resultatene, spesielt for
+sykefravær, da modell 1 kan ha skjevheter på grunn av nullverdier i
+sykefravær. Modell 2 gir en mer presis vurdering av sammenhengene blant
+de som faktisk har sykefravær. Det er en del motsetninger i resultatene
+mellom modell 1 og modell 2 noe som svekker troverdigheten til
+hypotesene.
+
+Hovedforskjellen er at effektene til jobbkrav og jobbressurser på
+sykefravær mister sin signifikans i modell 2, noe som kan indikere at
+disse sammenhengene er mindre robuste eller muligens ikke lineære. Dette
+kan skyldes at de som har sykefravær har en annen dynamikk enn de som
+ikke har det, eller at skjevheten i sykefraværsdataene i modell 1 har
+påvirket resultatene.
+
+Formue og motivasjon beholder derimot en signifikant negativ effekt på
+sykefravær i begge modeller, noe som styrker hypotesen om at formue
+fungerer som en buffer mot sykefravær.
 
 \subsection{Modeltilpasning}\label{modeltilpasning}
 
@@ -1814,6 +1917,18 @@ SRMR                            & 0.035             & 0.040             \\
 \textit{Merk:} KI = Konfidensintervall.
 }
 \end{table}
+
+For begge modeller er \(\chi^2\)-verdien signifikant som indikerer en
+signifikant forskjell mellom observert og estimert kovariansmatrise. Men
+siden \(\chi^2\)-testen er sensitiv for store utvalg så kan dette
+fremdeles godkjennes.
+
+Comparative Fit Index (CFI) og Tucker-Lewis Index (TLI) er begge over
+0.90, noe indikerer god tilpasning for begge modeller. Root Mean Square
+Error of Approximation (RMSEA) er under 0.06 for begge modeller, noe som
+også indikerer god tilpasning. Standardized Root Mean Square Residual
+(SRMR) er under 0.08 for begge modeller, noe som også er et tegn på god
+tilpasning.
 
 \subsubsection{Redegjørelse for svakheter i
 modellen/data}\label{redegjuxf8relse-for-svakheter-i-modellendata}
