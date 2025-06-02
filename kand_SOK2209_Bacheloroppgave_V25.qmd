@@ -1480,7 +1480,7 @@ Vi forventer en direkte, gunstig effekt av formue på sykefravær. Formue funger
 
 
 
-Vi forventer en indirekte vei der formue påvirker sykefravær gjennom motivasjon. Som nevnt AUTOREF, forventer vi at høyere formue øker motivasjonen $\alpha_2 > 0$ som ved å redusere finansiell usikkerhet, og gode fremtidsutsikter. Videre forventer vi at høyere motivasjon/engasjement reduserer sykefraværet, slik @langseth2021ticket fant.
+Vi forventer en indirekte vei der formue påvirker sykefravær gjennom motivasjon. Som nevnt \autoref{sec-formue-jdr}, forventer vi at høyere formue øker motivasjonen $\alpha_2 > 0$ som ved å redusere finansiell usikkerhet, og gode fremtidsutsikter. Videre forventer vi at høyere motivasjon/engasjement reduserer sykefraværet, slik @langseth2021ticket fant.
 
 
 
@@ -1727,7 +1727,7 @@ fit_latent_log_u0 <- sem(
 # Analyse og resultater {#sec-analyse}
 
 I dette kapittelet presenter vi resultatene fra SEM-analysen. Analysen er utført med lavaan-pakken i R, basert på den teoretiske modellen og metodebeskrivelsen i henholdsvis kapittel \ref{sec:teori} og \ref{sec-metode}. Formålet er å undersøke sammenhengen mellom formue, jobbkrav, jobbressurser, motivasjon og sykefravær.
-Vi benytter en Weighted Least Squares Mean and Variance adjusted (WLSMV) estimator. Denne estimatoren er valgt fordi flere av våre sentrale indikatorvariabler (som måler jobbkrav, jobbressurser og motivasjon) er ordinale, og fordi vi ikke kan anta normalfordeling for alle variablene som vist i \autoref{fig:kontrollvariabler}, spesielt ikke for sykefravær som vist i \autoref{fig:histogram_sykefravar}. 
+Vi benytter en Weighted Least Squares Mean and Variance adjusted (WLSMV) estimator. Denne estimatoren er valgt fordi flere av våre sentrale indikatorvariabler (som måler jobbkrav, jobbressurser og motivasjon) er ordinale, og fordi vi ikke kan anta normalfordeling for alle variablene som vist i \autoref{fig:kontrollvariabler}, spesielt ikke for sykefravær som vist i \autoref{fig:histogram_sykefravar_log}. 
 
 
 
