@@ -255,17 +255,37 @@ flotte samtaler på kontoret.
     \textbf{Sammendrag}
 \end{center}
 
-Sammendrag her
+Denne bacheloroppgaven undersøker hvordan individuelle økonomiske
+ressurser (målt som bruttofinanskapital) påvirker sykefravær blant
+yrkesaktive i Norge, med utgangspunkt i Job Demands--Resources
+(JD-R)-modellen. Vi benytter data fra Statistisk sentralbyrås
+levekårsundersøkelse om arbeidsmiljø 2022 (N = 6103), hvor
+formuevariabelen er transformert til en tilnærmet normalfordelt Z-skår
+(Formue\_qnorm). Jobbkrav og jobbressurser modelleres som latente
+variabler basert på flere spørsmål om arbeidsmengde, arbeidstempo,
+selvbestemmelse og innflytelse. Motivasjon måles med en selvrapportert
+fempunkts skala. Sykefravær beregnes som forholdet mellom antall
+sykefraværsdagsverk og avtalte dagsverk, log-transformert for å håndtere
+høyreskjevhet.
 
-Husk å nevne at vi fjernet alle de som hadde over 14 dager
-sammenhengende sykefravær
+Analysen gjennomføres ved Structural Equation Model (SEM) med
+WLSMV-estimator, først på hele utvalget (Modell 1) og deretter kun på de
+som faktisk har hatt sykefravær (Modell 2). I Modell 1 finner vi at
+høyere jobbkrav øker sykefravær, mens jobbressurser og formue reduserer
+det. Jobbressurser styrker også motivasjonen, som igjen fører til lavere
+sykefravær. Formue har derimot ingen direkte effekt på motivasjon, men
+reduserer sykefravær direkte. I Modell 2 svekkes effektene av jobbkrav
+og -ressurser, mens formue fortsatt har en signifikant negativ
+sammenheng med sykefravær. Motivasjon reduserer sykefravær i begge
+modeller.
 
-Nevne fjerning av Tilbakemelding\_sjef, Arbeidsresultater ETTER og ha
-testet.
-
-Stotte\_sjef
-
-Stotte\_kollega
+Resultatene støtter teorien om at økonomisk trygghet fungerer som en
+buffer mot helse- og fraværsproblemer, mens jobbressurser fremmer
+motivasjon og reduserer fravær. Tverrsnittsdesign, selvrapportering og
+en stor andel nullverdier i sykefravær begrenser imidlertid muligheten
+for kausale tolkninger. Fremtidig forskning bør utforske ikke-lineære
+formueeffekter, modererende samspill mellom formue og arbeidsbelastning,
+samt mer detaljerte målinger av både formue og motivasjon.
 
 \newpage
 
@@ -990,7 +1010,7 @@ korrelasjonsmatrisen for de uavhengige variablene.
 
 I \autoref{tab:deskriptiv} presenteres deskriptiv statistikk for alle
 variablene i analysen. Vi ser at sykefraværet i 2022 har et gjennomsnitt
-på 1.70 prosent (0.00170), med en minsteverdi på 0 prosent og
+på 1.70 prosent (0.0170), med en minsteverdi på 0 prosent og
 maksimalverdi på 48.08 prosent. Alder ligger på et gjennomsnitt på 43.33
 år, med en minsteverdi på 18 år og maksimalverdi på 66, som stemmer med
 alderen til respondentene i datasettet. Utdanningsnivået har et
@@ -1764,7 +1784,7 @@ Avhengig variabel & Prediktor & Estimat & Std.Err & z‐verdi & p‐verdi & Std.
 \bottomrule
 \end{tabular}
 \raggedright
-\footnotesize{%
+\footnotesize{\\ 
 \textit{Merk:} Alle estimeringer er gjort på subutvalget av respondenter med sykefravær < 0 (N = 2021). Estimat = ustandardisert koeffisient; Std.Err = robust standardfeil; z-verdi = z-teststatistikk; p-verdi = sannsynlighet for z-verdien; Std.all = fullstendig standardisert koeffisient. Referansekategorier: Alder (30–54 år), Utdanning (videregående). \texttt{arb\_stlln} er arbeidsstillingsprosent}
 \end{table}
 
@@ -1913,7 +1933,7 @@ SRMR                            & 0.035             & 0.040             \\
 \bottomrule
 \end{tabular}
 \raggedright
-\footnotesize{%
+\footnotesize{\\
 \textit{Merk:} KI = Konfidensintervall.
 }
 \end{table}
@@ -1925,10 +1945,37 @@ fremdeles godkjennes.
 
 Comparative Fit Index (CFI) og Tucker-Lewis Index (TLI) er begge over
 0.90, noe indikerer god tilpasning for begge modeller. Root Mean Square
-Error of Approximation (RMSEA) er under 0.06 for begge modeller, noe som
-også indikerer god tilpasning. Standardized Root Mean Square Residual
-(SRMR) er under 0.08 for begge modeller, noe som også er et tegn på god
-tilpasning.
+Error of Approximation (RMSEA) støtter modell tilpasning med verdier
+under 0.06 for begge modeller, og P-verdien for RMSEA er signifikant for
+modell 2 som støtter tilpasningen til modell 2. Standardized Root Mean
+Square Residual (SRMR) er under 0.08 for begge modeller, noe som også
+indikerer god tilpasning.
+
+Vi fjernet variablene ``Raad3a\_ny''(Hvor ofte for du tilbakemeldinger
+fra nærmeste sjef?), ``QPS78\_ny''(Blir dine arbeidsresultater verdsatt
+av din nærmeste sjef?), ``QPS72\_ny'', ``QPS73\_ny'' som var for støtte
+fra nærmeste sjef og kollegaer. Disse hadde faktorladninger under 0.4
+men var signifikante i noen av modellene. Men de små effektene gjorde
+modeltilpasningen disproportionalt dårligere.
+
+\subsubsection{Oppsummering av
+hypotesestøtte}\label{oppsummering-av-hypotesestuxf8tte}
+
+Hypotese 1 (Jobbkrav \(\rightarrow\) Sykefravær) fikk støtte i modell 1,
+men ikke i modell 2.
+
+Hypotese 2 (Jobbressurser \(\rightarrow\) Sykefravær) fikk støtte i
+modell 1, men ikke i modell 2.
+
+Hypotese 3 (Formue \(\rightarrow\) Sykefravær) fikk sterk støtte i begge
+modeller.
+
+Hypotese 4 (Jobbressurser \(\rightarrow\) Motivasjon) fikk støtte i
+begge modeller
+
+Vi kan ikke konkludere med at formue har en direkte effekt på
+motivasjon. Implisitt fra motivasjonseffekten på sykefravær kan vi anta
+at motivasjon er assosiert med lavere sykefravær.
 
 \subsubsection{Redegjørelse for svakheter i
 modellen/data}\label{redegjuxf8relse-for-svakheter-i-modellendata}
@@ -1944,191 +1991,294 @@ ytterkanten av hva vi på bachelor nivå kan tolke. Resultatene diskuteres
 derfor med forsiktighet, og vi legger vekt på overordnede mønstre
 fremfor detaljerte tolkninger.
 
-Vi har ikke testet med egenmeldt sykefravær da dette var en ja/nei
-kategori i datasettet.
+Dataene er også selvrapporterte og kan være utsatt for skjevheter som
+sosial ønskverdighet, der respondenter kan overdrive eller underdrive
+sine svar for å fremstå bedre. Dette kan påvirke både jobbkrav,
+jobbressurser, motivasjon og sykefravær.
+
+Dataen er også Tverrsnittsdata, noe som begrenser vår evne til å trekke
+kausale konklusjoner. Selv om vi har kontrollert for flere variabler,
+kan det fortsatt være uobserverte faktorer som påvirker både formue og
+sykefravær.
+
+Vi bruker legemeldt sykefravær. Egenmeldt fravær er ikke inkludert på
+samme detaljnivå, noe som kan gi et ufullstendig bilde av det totale
+fraværet. Fjerningen av de med \textgreater14 dagers sammenhengende
+fravær fokuserer analysen på kortere fraværstilfeller.
+
+Utvalget i modell 2 er betydelig mindre enn i modell 1, noe som kan
+påvirke generaliserbarheten av resultatene.
+
+Vår proxy for formue var basert på bruttofinanskapital, og vi har ikke
+tatt hensyn til formen for formue (f.eks. bolig, aksjer, gjeld). Dette
+kan påvirke hvordan formue faktisk påvirker sykefravær og motivasjon. En
+mer detaljert analyse av formueskomponenter kunne gitt en bedre
+forståelse av denne sammenhengen. Ved å transformere formue til en
+normalfordelt variabel har vi også mistet noe informasjon om den
+faktiske formuesfordelingen, og vi har antatt at effekten av formue er
+lineær. Dette kan være en forenkling av virkeligheten, da effekten av
+formue på sykefravær kan være ikke-lineær eller bueformet, som diskutert
+i teoridelen.
 
 \newpage
 
-\section{Diskusjon}\label{diskusjon}
+\section{Diskusjon}\label{sec-diskusjon}
 
-\paragraph{får se om vi beholder
-dette}\label{fuxe5r-se-om-vi-beholder-dette}
+Dette kapitlet drøfter resultatene fra analysen i lys av
+problemstillingen: Forklarer nivået på formue sykefraværet i Norge?. Vi
+vil oppsummere hovedfunnene, diskutere dem i forhold til tidligere
+forskning og teori, belyse oppavens styrker og svakheter, og til slutt
+foreslå veier for fremtidig forskning.
 
-Karrierevalg og utdanning fra gallup som viste en fattigere har
-dårligere tilgang på ``career role models'' som gjør at de kanskje ikke
-vet om de bedre yrkene og sånt og dermed igjen blir mindre utdanna og
-sånt https://www.gallup.com/analytics/506696/amazon-research-hub.aspx så
-effekt på karriærevalg, utdanning osv. langsiktig effekt av
-formue/bakrunn er noe påvirker hvilken type jobb folk har og dermed
-jobbkrav og jobbresssurser. Dette er da en indirekte effekt som vi ikke
-får med.
+\subsection{Oppsummering av funn og
+problemstilling}\label{oppsummering-av-funn-og-problemstilling}
 
-\subsubsection{Formueeffekt på konsum}\label{formueeffekt-puxe5-konsum}
+Vår analyse, basert på Levekårsundersøkelsen indikerer at formue har en
+statistisk signifikant og negativ sammenheng med log-transformert
+sykefravær. Dette funnet gjelder både når vi analyserer hele utvalget i
+Modell 1, og når vi begrenser analysen til kun de som har registrert
+sykefravær i modell 2. Dette gir støtte til vår primære hypotese om at
+høyere formuenivå er assosiert med lavere sykefravær. Den standardiserte
+effekten av formue var blandt de sterkeste i begge modeller på Std.all
+-0.123 i modell 1, og -0.102 i modell 2.
 
-https://fnce.wharton.upenn.edu/wp-content/uploads/2019/08/chodorowreich-crns\_stock\_wealth\_effects.pdf
+Modellens kjernekomponenter viste blandede resultater. I modell 1 fant
+vi støtte for at høyere jobbkrav var assosiert med høyere sykefravær, og
+at høyere jobbressurser var assosiert med lavere sykefravær. Dette var
+grunnhypotesene H1 og H2 og de mistet sin statistiske signifikans i
+modell 2. Det kan tyde på at sammenhengene er mer komplekse enn det vi
+har modellert, eller at de er påvirket av skjevheten i
+sykefraværsdataene i modell 1. Det kan også bety at jobbkrav og
+jobbressurser hjelper med å skape den mengden nullverdier i sykefravær
+som vi ser i dataene.
 
-for hver dollar i formue du har så har du 0.028usd mer i konsum eller
-noe
+Jobbressurser hadde en sterk og positiv effekt på motivasjon, noe som
+gir støtte til H4. Dette er i tråd med JD-R-modellen. Formue hadde
+derimot ingen signifikant direkte effekt på motivasjon i noen av
+modellene. Siden motivasjon hadde en signifikant negativ effekt på
+sykefraværet i begge modellene så støtter dette den medierende effekten
+av motivasjon på sykefravær. Men ikke igjennom formue til motivasjon til
+sykefravær.
 
-https://usa.visa.com/partner-with-us/visa-consulting-analytics/economic-insights/the-sudden-increase-in-the-wealth-effect-and-its-impact-on-spending.html
+\subsubsection{Teori og tidligere
+forskning}\label{teori-og-tidligere-forskning}
 
-så vi kan vise til hvordan de med lav formue da kan være tvungen til å
-ta mer tima selv med lav motivasjon for samme konsumnivå fant det
-tilfeldigvis her
-https://www.economist.com/finance-and-economics/2025/03/19/the-trump-administration-is-playing-a-dangerous-stockmarket-game
+Funnene knyttet til formue samsvarer godt med teorier som Conservation
+of Resources (COR)-teorien Hobfoll (1989), som postulerer at ressurser
+(inkludert finansielle) fungerer som en buffer mot stress og bidrar til
+velvære. Våre resultater støtter også tidligere empiriske studier som
+Jaeggi et al. (2021), som fant en kobling mellom formue og bedre
+helseutfall, og Normann (2009) og Hattrem (n.d.) som viser til formues
+rolle som en buffer mot levekårsproblemer. Den observerte negative
+sammenhengen mellom formue og sykefravær kan reflektere at økonomisk
+trygghet reduserer generelt stress, gir bedre tilgang til helsefremmende
+ressurser, og kanskje øker individets evne til å håndtere
+helseutfordringer uten at det resulterer i fravær fra jobb.
 
-\subsubsection{Motivasjonseffekt av
-ulikhet}\label{motivasjonseffekt-av-ulikhet}
+At jobbressurser konsekvent øker motivasjon er helt i tråd med
+JD-R-modellens antakelser og funn som hos Schaufeli \& Bakker (2004) og
+Langseth-Eide \& Vittersø (2021). Den svekkede direkte effekten av
+jobbressurser og jobbkrav på sykefravær i Modell 2 (kun de med fravær)
+er mer overraskende. Det kan antyde at når fravær først inntreffer, er
+det andre faktorer enn de målte arbeidsmiljøaspektene som i større grad
+bestemmer omfanget, eller at de med null fravær representerer en
+distinkt gruppe der disse faktorene spiller en annen rolle.
 
-``The motivational cost of inequality: Opportunity gaps reduce the
-willingness to work'' https://pmc.ncbi.nlm.nih.gov/articles/PMC7473543/
+Den manglende direkte effekten av formue på motivasjon var ikke som
+forventet i henhold til vår hypotese (H4 delvis). Mens økonomisk
+trygghet kan redusere stress, oversettes dette ikke nødvendigvis direkte
+til økt arbeidsmotivasjon slik vi har målt det. Det er mulig at formue
+påvirker andre aspekter ved jobbopplevelsen, eller at motivasjon er mer
+drevet av selve jobbinnholdet og de direkte jobbressursene, slik
+JD-R-modellen primært antyder. Studier som Gesiarz et al. (2020) peker
+på at opplevd ulikhet kan redusere motivasjon for de med færre
+ressurser, men vår modell testet ikke ulikhet direkte, kun individuelt
+formuenivå.
 
-https://www.brookings.edu/articles/income-inequality-social-mobility-and-the-decision-to-drop-out-of-high-school/
+Det er også relevant å trekke inn bredere samfunnsmessige forhold. Som
+nevnt i teoridelen, kan økende formueulikhet Zucman (2019) og redusert
+sosial mobilitet (Gatsby-kurven, Durlauf et al. (2022)) skape et
+bakteppe der formue får en stadig viktigere rolle for individets
+generelle livssituasjon og helse. Våre funn på mikronivå, som viser en
+sammenheng mellom individuell formue og sykefravær, kan sees i lys av
+disse makrotrendene. Lavere formue kan bety økt sårbarhet i et samfunn
+preget av høy boligprisvekst og der lønnsvekst ikke holder tritt for
+alle grupper.
 
-ulikhet gjør at fattige blir mindre motivert siden dem føler det å bli
-rik er ``umulig'' og dermed investerer mindre i seg -\textgreater{}
-lavere motivasjon og lavere utdanning. kanskje mer fysisk arbeid.
+Videre kan formue indirekte påvirke sykefravær gjennom mekanismer vi
+ikke fullt ut har kartlagt. For eksempel, kan tilgang til ``career role
+models'' og dermed karrierevalg og utdanningsnivå være påvirket av
+sosioøkonomisk bakgrunn. Dette kan lede til at individer med lavere
+formue oftere ender i jobber med høyere krav og færre ressurser, noe som
+igjen øker risikoen for sykefravær. Vår modell kontrollerer for
+utdanning, men fanger ikke opp hele denne komplekse årsakskjeden.
 
-så formue har effekt på hvor mye utdanning du har. formue har effekt på
-hvilken motivasjon du har. formue har effekt på m som er annen inntekt
-utenom jobb.
+Formue kan også påvirke konsummuligheter og økonomisk atferd. Individer
+med lav formue kan føle seg tvunget til å jobbe mer, eller å gå på jobb
+selv når de er syke, for å opprettholde et visst konsumnivå eller dekke
+faste utgifter, noe som potensielt kan forverre helsen og føre til
+lengre fravær senere. Dette er en nyanse vår studie ikke direkte måler,
+men som kan bidra til å forklare hvorfor lav formue er assosiert med
+høyere sykefravær.
 
-Dette kapitlet drøfter resultatene i forhold til problemstillingen. Hva
-er funnet ut av, hva gjenstår, hvilke styrker og svakheter har analysen?
+\subsubsection{Styrker og svakheter ved
+analysen}\label{styrker-og-svakheter-ved-analysen}
 
-\subsubsection{Oppsummering av hva formålet med oppgaven var, og hva
-analysen
-viste}\label{oppsummering-av-hva-formuxe5let-med-oppgaven-var-og-hva-analysen-viste}
+En klar styrke ved studien er bruken av et stort, landsrepresentativt
+datasett (Levekårsundersøkelsen om arbeidsmiljø), som øker
+generaliserbarheten av funnene til den norske arbeidstakerbefolkningen.
+Bruken av SEM-modellering med latente variabler for jobbkrav og
+jobbressurser er også en styrke, da det tillater en mer nyansert måling
+av disse komplekse konstruktene og reduserer målefeil sammenlignet med
+bruk av enkle, observerte variabler. Transformasjonen av
+formuevariabelen (Formue\_qnorm) bidro til å håndtere skjevhet og
+fokusere på relativ formue.
 
-\subsubsection{Diskusjon av hvilke konklusjoner som kan trekkes fra
-dette og om resultatene er forenlig med tidligere
-funn/teori}\label{diskusjon-av-hvilke-konklusjoner-som-kan-trekkes-fra-dette-og-om-resultatene-er-forenlig-med-tidligere-funnteori}
+Imidlertid har studien også flere svakheter. For det første, som påpekt
+under ``Redegjørelse for svakheter i modellen/data'', ligger
+kompleksiteten i SEM-analysen med kategoriske data og WLSMV-estimator i
+ytterkanten av vår metodiske kompetanse på bachelornivå. Dette medfører
+en viss usikkerhet i tolkningen av modelltilpasningsmål og enkelte
+resultater.
 
-\subsubsection{Diskusjon av svakheter i
-analysen}\label{diskusjon-av-svakheter-i-analysen}
+Sykefraværsdataene er selvrapporterte og måler kun legemeldt fravær,
+ikke egenmeldt. Videre er sykefraværsvariabelen svært høyreskjev, selv
+etter log-transformasjon. Dette utfordrer antakelsene for mange
+statistiske metoder. Selv om WLSMV-estimatoren er robust for brudd på
+normalfordeling for endogene kontinuerlige variabler når man har
+kategoriske indikatorer, kan den ekstreme skjevheten og den store
+andelen nullverdier i logsyk (Modell 1) fortsatt påvirke resultatene.
+Forskjellene mellom Modell 1 og Modell 2 illustrerer denne
+sensitiviteten.
+
+Videre er studien tverrsnittsbasert, noe som gjør det umulig å trekke
+bastante konklusjoner om årsakssammenhenger. Selv om vår teoretiske
+modell postulerer at formue og arbeidsmiljø påvirker sykefravær, kan det
+også være omvendte eller gjensidige sammenhenger (f.eks. kan langvarig
+sykdom påvirke formue negativt).
+
+Målingen av motivasjon er basert på ett enkelt spørsmål, noe som kan
+begrense validiteten og reliabiliteten til dette konstruktet. En mer
+omfattende skala for motivasjon kunne gitt et rikere bilde. Fjerningen
+av variabler knyttet til støtte fra sjef/kollegaer og verdsettelse av
+arbeidsresultater for å forbedre modelltilpasningen kan også ha ført til
+at viktige aspekter ved jobbressurser er utelatt.
+
+Utvalgsstørrelsen reduseres betydelig i Modell 2 (fra N=6103 til
+N=2021), noe som reduserer den statistiske styrken og kan gjøre
+resultatene mindre stabile. Det er også viktig å merke seg at frafallet
+i den opprinnelige Levekårsundersøkelsen var betydelig, og selv om
+dataene er vektet, kan det fortsatt være systematiske skjevheter mellom
+de som deltok og de som ikke gjorde det. Vår ytterligere filtrering av
+data (f.eks. fjerning av langtidssykemeldte over 14 dager og
+respondenter med manglende verdier på sentrale variabler) reduserte
+utvalget ytterligere til n=6103, noe som kan påvirke
+representativiteten.
 
 \subsubsection{Diskusjon av implikasjoner for policy gitt
 svakheter}\label{diskusjon-av-implikasjoner-for-policy-gitt-svakheter}
 
-\subsubsection{Eventuelt: diskusjon av hva framtidig forskning kan
-forske videre på (basert påderes funn og svakheter i
-analysen)}\label{eventuelt-diskusjon-av-hva-framtidig-forskning-kan-forske-videre-puxe5-basert-puxe5deres-funn-og-svakheter-i-analysen}
+Til tross for svakhetene, gir studien noen viktige indikasjoner. Det
+mest robuste funnet er den negative sammenhengen mellom formue og
+sykefravær. Dette antyder at tiltak som bidrar til å redusere økonomisk
+sårbarhet og bygge formue for bredere lag av befolkningen, potensielt
+kan ha positive effekter på folkehelsen og redusere sykefraværet. Dette
+kan inkludere politikk for økt boligtilgjengelighet, bedre
+spareordninger, eller tiltak som motvirker økende gjeldsbelastning. I et
+samfunnsperspektiv understreker funnene betydningen av å følge med på
+formuesfordelingen og dens konsekvens
 
-Formues påvirkning på avtalte timer og ikke-lineære effekter. Vi har en
-antakelse om at formue potensielt kan ha en effekt på avtalte timer, som
-igjen vil påvirke sykefraværet. Dette fremstår som en mer intrikat
-sammenheng enn det vi har hatt rom for å utforske, utover å inkludere
-stillingsprosent som en kontrollvariabel. Dette representerer en svakhet
-ved den nåværende modellen. Fremtidige studier kunne med fordel
-undersøke denne mekanismen nærmere.
+\subsubsection{Framtidig forskning:}\label{framtidig-forskning}
 
-I teori i \autoref{sec-formue-jdr} så vi at effekten av formue på
-sykefravær kan være ikke lineær eller evt bue formet. Vår nåværende
-modell har primært antatt lineære sammenhenger for formues direkte
-roller (utenom den normaliserte transformasjonen av formuevariabelen i
-seg selv).
+\paragraph{Interaksjon mellom stillingsprosent og
+formue:}\label{interaksjon-mellom-stillingsprosent-og-formue}
 
-Basert på dette, og inspirert av tidligere ideer som ikke ble fullt ut
-testet i denne omgang, ser vi flere konkrete områder for videre
-utforskning:
+Vi har ikke testet hvordan formue eventuelt endrer effekten av
+arbeidstimer (representert ved stillingsprosent) på sykefravær.
+JD-R-modellen understreker at jobbkrav kan gå negativt ut på helsen. Det
+er imidlertid uklart om en økonomisk buffer i form av høyere formue kan
+dempe den negative effekten av høy arbeidsbelastning. Fremtidige studier
+burde vurdere et eksplisitt interaksjonsledd mellom stillingsprosent og
+formue for å undersøke om den potensielt positive sammenhengen mellom
+stillingsprosent og sykefravær blir svakere eller endrer retning ved
+økende formuesnivå.
 
-Interaksjon mellom stillingsprosent og formue: Vi har ikke testet
-hvordan formue eventuelt endrer effekten av arbeidstimer (representert
-ved stillingsprosent, på sykefravær. JD-R-modellen understreker at
-jobbkrav kan tære på helsen. Det er imidlertid uklart om en økonomisk
-buffer i form av høyere formue kan dempe den negative effekten av høy
-arbeidsbelastning. Individer med lav formue har ofte mindre
-fleksibilitet til å justere arbeidstempo eller jobbe redusert ved
-slitasje. De med høyere formue kan derimot i større grad ha mulighet til
-å velge jobber med høyt timeantall som også tilbyr bedre
-restitusjonsmuligheter eller andre kompenserende faktorer.
+\paragraph{Ikke-lineære sammenhenger og
+modereringseffekter:}\label{ikke-lineuxe6re-sammenhenger-og-modereringseffekter}
 
-Videre forskning: En fremtidig studie burde vurdere et eksplisitt
-interaksjonsledd mellom (sentrert) stillingsprosent og formue. Målet
-ville være å undersøke om den potensielt positive sammenhengen mellom
-stillingsprosent og sykefravær, kanskje blir svakere (eller til og med
-snur) ved økende formuesnivå.
-
-Formues indirekte påvirkning på sykefravær via motivasjon: Vi har antatt
-at formue kan påvirke sykefravær indirekte gjennom arbeidsmotivasjon.
-Forventningen er at høyere formue kan bidra til økt motivasjon ved å
-redusere finansiell usikkerhet og skape positive fremtidsutsikter (en
-positiv effekt, \(\alpha_2\)\textgreater0 i vår motivasjonsmodell,
-\autoref{eq:motivasjon}). Videre, i tråd med funn som hos Langseth-Eide
-\& Vittersø (2021), kan høyere motivasjon og engasjement tenkes å
-redusere sykefraværet (en negativ effekt i vår sykefraværsmodell.
-
-Videre forskning: Selv om vår nåværende SEM-modell estimerer disse
-separate stiene, og en indirekte effekt kan beregnes, behandlet vi
-motivasjon som en enkel observert variabel basert på ett spørsmål.
-Fremtidig arbeid kunne med fordel teste en mer utdypende
-medieringsmodell hvor motivasjon kanskje operasjonaliseres som en latent
-variabel basert på flere indikatorer. Det vil være sentralt å kartlegge
-mer robust om økt formue faktisk styrker ulike fasetter av motivasjon
-(f.eks. indre vs.~ytre), og om denne motivasjonsøkningen i sin tur har
-en signifikant og substansiell fraværsreduserende effekt.
-
-Ikke-lineær moderering av jobbkrav med formue: JD-R-modellen forutsetter
-ofte en lineær effekt av jobbkrav på utfall som stress eller sykefravær.
-Vi har i våre tidligere betraktninger tenkt at formue kunne moderere
-denne sammenhengen lineært.
-
-Videre forskning: I virkeligheten kan det tenkes at individer med svært
-lav formue er spesielt sensitive for økte jobbkrav, grunnet frykt for
-tap av inntektsmulighet og forverret helse. Samtidig kan formues
-buffereffekt flate ut på svært høye formuesnivåer (de rikeste opplever
-kanskje uansett lite fravær relatert til jobbstress, uavhengig av små
-variasjoner i jobbkrav). Det kan også være at de med aller lavest formue
-mister motivasjon dersom opplevd ulikhet og manglende muligheter blir
-for store. Fremtidige studier bør derfor utforske potensielle
-ikke-lineære modereringseffekter. Dette kan innebære å teste
+Som diskutert i teoridelen (\autoref{sec-formue-jdr}), kan effekten av
+formue på sykefravær være ikke-lineær. Fremtidige studier bør utforske
+potensielle ikke-lineære modereringseffekter av formue på sammenhengen
+mellom jobbkrav og sykefravær. Dette kan innebære å teste
 interaksjonsledd som tillater effekten av jobbkrav å variere på en mer
-kompleks måte med formuesnivået, for eksempel ved å bruke
-spline-funksjoner for formue i interaksjonen, eller ved å sammenligne
-effekter på tvers av flere, mer detaljerte formueskategorier.
+kompleks måte med formuesnivået, for eksempel ved å sammenligne effekter
+på tvers av mer detaljerte formueskategorier.
 
-Avtagende grensenytte av jobbressurser for de med høy formue:
-JJobbressurser antas å fungere beskyttende, men effekten kan tenkes å
+\paragraph{Avtagende grensenytte av jobbressurser for de med høy
+formue:}\label{avtagende-grensenytte-av-jobbressurser-for-de-med-huxf8y-formue}
+
+Jobbressurser antas å fungere beskyttende, men effekten kan tenkes å
 avta med økende formue. De med lav formue kan få relativt større utbytte
-av ekstra støtte, autonomi og påvirkningsmulighet fordi de har mindre
-økonomisk spillerom og færre alternative buffere. De med høy formue har
-allerede en betydelig buffer, så den marginale gevinsten av ytterligere
-jobbressurser kan være mindre.
+av ekstra støtte og autonomi. Dette kan testes mer inngående med
+interaksjonsledd eller ved å undersøke effekter separat for ulike
+formuessegmenter.
 
-Videre forskning: Dette kan testes mer inngående, ikke bare med et
-lineært interaksjonsledd mellom jobbressurser og formue (hvor man ville
-forvente en positiv koeffisient hvis den negative effekten av
-jobbressurser på sykefravær svekkes med økende formue), men også ved å
-undersøke effekter separat for ulike formuessegmenter (f.eks. laveste,
-midterste og høyeste kvintil/kvartil av formuesfordelingen) for å se om
-styrken på sammenhengen mellom jobbressurser og sykefravær varierer
-systematisk.
+\paragraph{Ulike dimensjoner av
+formue:}\label{ulike-dimensjoner-av-formue}
 
-Ulike operasjonaliseringer og dimensjoner av formue: Vi har benyttet
-bruttofinanskapital, transformert til en normalfordeling (Z-skåre). Det
-er imidlertid sannsynlig at ulike typer formue kan ha ulik psykologisk
-betydning og dermed ulik effekt. For eksempel kan nettoformue (som tar
-hensyn til gjeld), sammensetningen av formuen (boligformue
-vs.~verdipapirformue), eller kilden til formuen (arvet vs.~opparbeidet)
-spille forskjellig inn på opplevd trygghet og handlingsrom. En person
-med betydelig boligformue, men også høy gjeld, opplever kanskje mindre
-reell økonomisk trygghet enn en med tilsvarende bruttoformue plassert i
-likvide midler.
+Vi har benyttet bruttofinanskapital. Det er sannsynlig at ulike typer
+formue (f.eks. nettoformue, boligformue vs.~finansformue, arvet
+vs.~opparbeidet) kan ha ulik psykologisk betydning og dermed ulik effekt
+på opplevd trygghet og handlingsrom. Fremtidige studier bør utforske og
+sammenligne ulike formuemål.
 
-Videre forskning: Fremtidige studier bør derfor utforske og sammenligne
-ulike formuemål for å se om typen formue modererer effekten av jobbkrav
-og jobbressurser på ulike måter.
+\paragraph{Samfunnsmessig ulikhet og
+motivasjon:}\label{samfunnsmessig-ulikhet-og-motivasjon}
 
-\begin{verbatim}
-Differensiering av jobbkrav og -ressurser:
-Vi har operert med relativt brede latente skalaer for jobbkrav (inkludert arbeidsmengde, tidspress, ekstra arbeid) og jobbressurser (inkludert støtte, autonomi, påvirkning). Teoretisk sett er det mulig at formue modererer effekten av ulike spesifikke dimensjoner av krav og ressurser forskjellig.
-
-    Videre forskning: Kan formue i større grad dempe effekten av fysiske belastninger enn emosjonelle krav? Eller kan høy formue paradoksalt nok føre til høyere personlige ambisjoner og krav til egen prestasjon, som delvis nøytraliserer fordelene av økte ressurser? Fremtidige studier kunne med fordel dekomponere disse brede konstruktene for å undersøke slike nyanserte interaksjoner.
-\end{verbatim}
+Utover individuelt formuenivå, kan den generelle opplevelsen av
+økonomisk ulikhet i samfunnet påvirke motivasjon og helse. Studier som
+\href{https://pmc.ncbi.nlm.nih.gov/articles/PMC7473543}{} og analyser
+fra for eksempel Brookings Institution
+\href{https://www.brookings.edu/articles/income-inequality-social-mobility-and-the-decision-to-drop-out-of-high-school/}{}
+peker på at store mulighetsgap kan redusere viljen til å investere i
+egen fremtid for de med færre ressurser. Fremtidig forskning kunne
+utforske hvordan makronivåindikatorer på ulikhet interagerer med
+individuelle faktorer for å påvirke sykefravær.
 
 \newpage
 
 \section{Konklusjon}\label{konklusjon}
+
+Denne studien viser at formue har en signifikant og negativ sammenheng
+med sykefravær i Norge: Høyere relativ formue er assosiert med lavere
+log-transformert sykefraværsrate, både i fullstendig utvalg (Modell 1)
+og blant de som faktisk har vært sykmeldt (Modell 2). Dette funnet
+støtter antagelsen om at formue fungerer som en økonomisk buffer som
+reduserer stress og bidrar til bedre helse, uavhengig av jobbkrav og
+-ressurser. Jobbressurser fremmer motivasjon og bidrar til lavere
+sykefravær i Modell 1, men taper noe av sin direkte effekt når analysen
+begrenses til de som har vært sykmeldt. Jobbkrav har en svak, men
+signifikant positiv effekt på sykefravær i det fulle utvalget, mens
+denne effekten ikke lenger er signifikant i utvalget med kun sykmeldte.
+
+Motivasjon styrkes av jobbressurser, men påvirkes ikke direkte av
+formue, og høy motivasjon er tilknyttet lavere sykefravær.
+Kontrollvariabler som kjønn, alder, utdanning og stillingsprosent viser
+forventede sammenhenger: Kvinner og de med lavere utdanning har høyere
+fravær, mens høy stillingsprosent knyttes til noe økt fravær i Modell 1
+og motsatt i Modell 2. Modelltilpasningen (\(CFI>0.93\), \(TLI>0.96\),
+\(RMSEA<0.06\)) indikerer god overensstemmelse med dataene, men
+tolkningen av resultater må gjøres med forsiktighet på grunn av
+tverrsnittsdesign, selvrapporterte data og stor andel nullverdier i
+sykefravær.
+
+Sammenfattende gir analysen solid støtte for at individuell formue
+bidrar til lavere sykefravær, og begrenser delvis støtte til
+JD--R-modellens forutsigelser om jobbkrav og -ressurser. Fremtidig
+forskning bør undersøke ikke-lineære effekter av formue, interaksjoner
+mellom formue og arbeidsbelastning, samt mer detaljerte målinger av
+motivasjon og formueskomponenter for å klargjøre de underliggende
+mekanismene.
 
 \newpage
 
@@ -2292,7 +2442,7 @@ Avhengig variabel & Prediktor & Estimat & Std.Err & z‐verdi & p‐verdi & Std.
 \bottomrule
 \end{tabular}
 \raggedright
-\footnotesize{%
+\footnotesize{\\
 \textit{Merk:} Estimat = ustandardisert koeffisient; Std.Err = robust standardfeil; Std.all = fullstendig standardisert koeffisient. Referansekategorier: Alder (30–54 år), Utdanning (videregående).}
 \end{table}
 
@@ -2364,6 +2514,16 @@ siden samtalen er veldig lang så er det ikke mulig å legge ved alt. Det
 er også viktig å merke seg at det er brukt ChatGPT 04-mini-high versjon,
 og at det er muligens brukt en del av de avanserte funksjonene som ikke
 er tilgjengelig for alle brukere ettersom man har Plus-abonnement.
+
+Det er også vært brukt ChatGPT til oppsettet i Lavaan og til å lage
+tabellene i latex.
+
+\href{https://chatgpt.com/share/683d8c4a-308c-8001-a893-50b7c6211421}{Konklusjon
+og sammendrag} er skrevet av ChatGPT, ettersom dette er noe den er
+veldig god til å brukes for.
+
+\href{https://chatgpt.com/share/683d8d67-1bb0-8006-a168-0f8c9175261a}{Opprydding
+av ideer rundt videre forskning}
 
 
 
